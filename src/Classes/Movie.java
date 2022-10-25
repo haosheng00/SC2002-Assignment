@@ -1,17 +1,19 @@
 package Classes;
 
+import Classes.Enum;
+
 public class Movie {
 
     // TODO: Add javadocs
     
-    private MovieStatus movieStatus;
+    private Enum.MovieStatus movieStatus;
     private String movieTitle;
-    private MovieGenre[] movieGenres;
+    private Enum.MovieGenre[] movieGenres;
     private String synopsis;
     private String director;
     private String[] casts;
     private int movieDuration;
-    private AgeRestriction ageRestriction;
+    private Enum.AgeRestriction ageRestriction;
     private boolean is3D;
     private double overallRating;
     private Review[] reviews;
@@ -19,7 +21,7 @@ public class Movie {
     public Movie() {
     }
 
-    public void setMovieStatus(MovieStatus movieStatus) {
+    public void setMovieStatus(Enum.MovieStatus movieStatus) {
         this.movieStatus = movieStatus;
     }
 
@@ -27,7 +29,7 @@ public class Movie {
         this.movieTitle = movieTitle;
     }
 
-    public void setMovieGenres(MovieGenre[] movieGenres) {
+    public void setMovieGenres(Enum.MovieGenre[] movieGenres) {
         this.movieGenres = movieGenres;
     }
 
@@ -47,7 +49,7 @@ public class Movie {
         this.movieDuration = movieDuration;
     }
 
-    public void setAgeRestriction(AgeRestriction ageRestriction) {
+    public void setAgeRestriction(Enum.AgeRestriction ageRestriction) {
         this.ageRestriction = ageRestriction;
     }
 
@@ -63,11 +65,11 @@ public class Movie {
         return movieTitle;
     }
 
-    public MovieStatus getMovieStatus() {
+    public Enum.MovieStatus getMovieStatus() {
         return movieStatus;
     }
 
-    public AgeRestriction getAgeRestriction() {
+    public Enum.AgeRestriction getAgeRestriction() {
         return ageRestriction;
     }
     }
