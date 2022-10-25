@@ -1,3 +1,4 @@
+package Classes;
 
 public class Seat {
 	private char row;

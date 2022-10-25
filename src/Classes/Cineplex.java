@@ -1,3 +1,5 @@
+package Classes;
+
 public class Cineplex {
     public enum Outlets {DEFAULT, JEM, CINELEISURE_ORCHARD, CAUSEWAY_POINT, PARKWAY_PARADE}
     protected String[] CinemaList; //get cinemalist for each cineplex //what to store in each index of cinemalist?

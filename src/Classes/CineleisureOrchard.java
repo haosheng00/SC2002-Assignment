@@ -1,3 +1,5 @@
+package Classes;
+
 public class CineleisureOrchard extends Cineplex{
     public CineleisureOrchard(String[] CinemaList) {
         super(CinemaList);
