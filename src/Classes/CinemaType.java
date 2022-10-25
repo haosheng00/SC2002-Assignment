@@ -1,4 +1,4 @@
-package MOBLIMA;
+package Classes;
 
 public enum CinemaType {
     PLATINUMMOVIESUITES,
