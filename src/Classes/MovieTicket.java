@@ -1,5 +1,5 @@
 package Classes;
-import java.util.Scanner;
+import java.util.Scanner; 
 
 public class MovieTicket{
 
