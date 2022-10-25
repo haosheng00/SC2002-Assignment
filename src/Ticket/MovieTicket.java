@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class MovieTicket{
 
-
     private MovieTitle movietitle;
     private Cineplex cineplex;
     private CinemaType cinematype;
