@@ -1,3 +1,5 @@
+package Classes
+
 public class Payment {
     //only method of payment is thru credit card - online purchase
 
