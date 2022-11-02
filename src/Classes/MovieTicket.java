@@ -19,8 +19,8 @@ public class MovieTicket{
         this.seat = seat;
         this.price = price;
     } 
-
-    Movie m = new Movie();
+ 
+    //Movie m = new Movie();
     
 
     //TODO: use a MovieTicket printer instead of get func
