@@ -1,33 +1,26 @@
-package Classes;
+import java.util.ArrayList;
 
 public class Cineplex {
-    public enum Outlets {DEFAULT, JEM, CINELEISURE_ORCHARD, CAUSEWAY_POINT, PARKWAY_PARADE}
-    protected String[] CinemaList; //get cinemalist for each cineplex //what to store in each index of cinemalist?
-    protected Outlets outlet;
+    private String cineplexName;
+    private ArrayList<Cinema> cinemas;
 
-    //constructor
-    public Cineplex(String[] CinemaList) {
-        this.CinemaList = CinemaList;
-        outlet = Outlets.DEFAULT;
+    public Cineplex(String cineplexName, ArrayList<Cinema> cinemas){
+        this.cineplexName = cineplexName;
+        this.cinemas = cinemas;
     }
 
-    //get CinemaList
-    public String[] getCinemaList() {
-        return CinemaList;
+    public String getCineplexName() {
+        return cineplexName;
+    }
+    public void setCineplexName(String cineplexName) {
+        this.cineplexName = cineplexName;
     }
 
-    //get specific index of cinema in Cineplex
-    public String getCinema(int i) {
-        return CinemaList[i];
+    public ArrayList<Cinema> getCinemas() {
+        return cinemas;
     }
 
-    //set CinemaList
-    public void setCinemaList(String[] CinemaList) {
-        this.CinemaList = CinemaList;
-    } 
-
-    //set specific index in CinemaList
-    public void setCinema(String Cinema, int i) {
-        this.CinemaList[i] = Cinema;
+    public void setCinemas(ArrayList<Cinema> cinemas) {
+        this.cinemas = cinemas;
     }
 }
