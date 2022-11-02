@@ -1,11 +1,11 @@
 package ui;
 import java.util.Scanner;
 
-import Classes.MovieController;
+import controller.MovieController;
 
 public class MovieUI {
 
-    public void initiateMovieUI(){
+    public static void initiateMovieUI(){
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
@@ -14,7 +14,7 @@ public class MovieUI {
             System.out.println("(2) Delete Movie");
             System.out.println("(3) Update Movie");
             System.out.println("(4) Search Movie");
-            System.out.println("(5) back");
+            System.out.println("(5) Back");
             choice = sc.nextInt();
             switch(choice){
                 case 1:

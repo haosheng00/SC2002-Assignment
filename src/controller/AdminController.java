@@ -1,13 +1,16 @@
-package Classes;
+package controller;
 import java.util.ArrayList;
-import java.util.Scanner; 
+import java.util.Scanner;
+
+import Classes.Admin; 
 public class AdminController {
     Scanner sc = new Scanner(System.in);
-    private  ArrayList<Admin> admins = new ArrayList<Admin>();
+    private  ArrayList<Admin> admins;
 
-    public AdminController(){
-
+    public AdminController(ArrayList<Admin> adminList){
+        this.admins = adminList;
     }
+
     public ArrayList<Admin> getAdminsList(){
         return admins;
     }

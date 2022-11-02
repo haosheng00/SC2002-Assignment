@@ -3,10 +3,13 @@ package ui;
 import java.util.Scanner;
 import java.util.Calendar;
 
+import controller.*;
+import Classes.*;
+
 public class TicketUI {
     
     private static Scanner sc = new Scanner(System.in);
-
+// TODO: INITIATE ADMINTICKET UI
     public static void initiateTicketUI(){
 
         int option;
@@ -31,11 +34,11 @@ public class TicketUI {
             switch(option){
 
                 case 1:
-                Initialise.bktics.createBookingUI();
+                TicketController.createBooking();
                 break;
 
                 case 2:
-                Initialise.bktics.cancelBooking();
+                TicketController.cancelBooking();
                 break;
 
                 case 3:

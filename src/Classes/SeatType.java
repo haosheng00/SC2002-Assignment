@@ -1,4 +1,1 @@
-public enum SeatType {
-    COUPLE_SEAT,
-    ORDINARY
-}
+package Classes;

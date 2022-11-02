@@ -1,6 +1,10 @@
+package Classes;
+import ui.*;
 public class Main {
     public static void main(String[] args){
         Initialise.initialiseEverything();
-        CineplexUI.cineplexOptions(Initialise.cineplex);
+        AccountUI.chooseAccountType(); 
+
+        
         }
     }

@@ -1,15 +1,21 @@
-package Classes;
+package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Classes.Customer;
+import Classes.Ticket;
+import Classes.Initialise;
 
 
 public class CustomerController{
     Scanner sc = new Scanner(System.in);
     private  ArrayList<Customer> customers = new ArrayList<Customer>();
 
-    public CustomerController(){
+    public CustomerController(ArrayList<Customer> custList){
+        this.customers = custList;
 
     }
+
     public int searchCustomer(String username){
         for(int i=0; i<customers.size(); i++){
             if(customers.get(i).getUserName() == username){
@@ -113,10 +119,24 @@ public class CustomerController{
             System.out.println("Customer mobile number: " + customers.get(index).getMobileNumber());
         }
     }
-    public ArrayList<Customer> getCustomerList(){
-        return this.customers;
+    
+
+    public  void viewPastTickets(String username){
+        int index = searchCustomer(username);
+        ArrayList<Ticket> arr;
+        arr=customers.get(index).getBoughtTix();
+        for(int x=0;x<arr.size();x++){
+            Initialise.tc.printTicket();
+        }
+
+    
     }
 
+    public void clearcart(String username){
+        int index = searchCustomer(username);
+        customers.get(index).getCartTickets().clear();
+    }
+    
     
 
 

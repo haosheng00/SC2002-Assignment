@@ -1,8 +1,12 @@
+package Classes;
+
 import java.util.Scanner;
 import java.util.TimeZone;
 
+import controller.ScreeningController;
+
 public class ScreeningUI {
-    public static void screeningOptions(Cineplex cineplex) {
+    public static void initiateScreeningUI(Cineplex cineplex) {
         String movieTitle;
         int option = 0;
         boolean exit = false;

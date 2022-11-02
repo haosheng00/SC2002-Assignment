@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Classes.Cineplex;
 public class CineplexUI {
     //TODO: Get the ArrayList from Initialise
     public static void cineplexOptions(ArrayList<Cineplex> cineplexes){

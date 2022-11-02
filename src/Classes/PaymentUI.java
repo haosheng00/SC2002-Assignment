@@ -3,7 +3,7 @@ package Classes;
 import java.util.Scanner;
 
 public class PaymentUI {
-    public void initiatePaymentUI() {
+    public static void initiatePaymentUI() {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
 

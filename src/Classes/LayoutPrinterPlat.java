@@ -1,3 +1,5 @@
+package Classes;
+
 public class LayoutPrinterPlat implements LayoutPrinter{
         public static void printLayout(Screening screening) {
             System.out.printf("%36s", "Screen");

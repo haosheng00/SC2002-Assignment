@@ -1,22 +1,17 @@
 package ui;
-import java.util.Scanner;
 
-import Classes.Admin;
-import Classes.AdminController;
-import Classes.Customer;
-import Classes.CustomerController;
+import java.util.Scanner;
+import Classes.*;
+import controller.*;
 
 import java.util.ArrayList;
 public class AccountUI {
-
-
-
     /*Created a customer controller object here for practice but need to discuss with team 
     on where it should actually be */
-    static AdminController adminPrac = new AdminController();
-    static CustomerController custPrac = new CustomerController();
+    //static AdminController adminPrac = new AdminController();
+    //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
-    public void chooseAccountType(){
+    public static void chooseAccountType(){
         System.out.println("MOBLIMA Login");
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -38,7 +33,7 @@ public class AccountUI {
         }while(choice<4);
         sc.close();
     }
-    public void initiateCustomerUI(){
+    public static void initiateCustomerUI(){
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
@@ -52,14 +47,15 @@ public class AccountUI {
             switch(choice){
                 case 1:
                     logInCustomer();
+                    //TODO: if logInCustomer == true, bring them to MainMenuUI for customer
                     break;
                 case 2:
-                    custPrac.addCustomer();
+                    Initialise.cc.addCustomer();
                     break;
                 case 3:
-                    custPrac.deleteCustomer();
+                    Initialise.cc.deleteCustomer();
                 case 4:
-                    custPrac.updateCustomerPassword();
+                    Initialise.cc.updateCustomerPassword();
                 default:
                     break;
             }
@@ -69,7 +65,7 @@ public class AccountUI {
 
 
 
-    public  void initiateAdminUI(){
+    public static void initiateAdminUI(){
         int choice;
         Scanner sc = new Scanner(System.in);
         do{
@@ -81,6 +77,7 @@ public class AccountUI {
             switch(choice){
                 case 1:
                     logInAdmin();
+                    //TODO: if logInAdmin == true, bring them to MainMenuUI for customer
                     break;
                 default:
                     break;
@@ -89,19 +86,19 @@ public class AccountUI {
         sc.close();
     }
 
-    public boolean logInCustomer(){
+    public static boolean logInCustomer(){
         Scanner sc = new Scanner(System.in);
         String username;
         String password;
         int i;
-        ArrayList<Customer> arr = custPrac.getCustomerList();
+        ArrayList<Customer> arr = Initialise.cc.getCustomerList();
         int quit = 0;
         do{
             System.out.println("Enter username: ");
             username = sc.next();
             System.out.println("Enter password: ");
             password = sc.next();
-            i = custPrac.searchCustomer(username);
+            i = Initialise.cc.searchCustomer(username);
             if(i==-1){
                 System.out.println("username not found");
                 System.out.println("If you would like to quit enter 0 else enter 1");
@@ -123,21 +120,21 @@ public class AccountUI {
         return false;
     }
 
-    public boolean logInAdmin(){
+    public static boolean logInAdmin(){
         Scanner sc = new Scanner(System.in);
         String username;
         String password;
         int i;
-        ArrayList<Admin> arr = adminPrac.getAdminsList();
+        ArrayList<Admin> arr = Initialise.ac.getAdminsList();
         int quit = 0;
         do{
             System.out.println("Enter username: ");
             username = sc.next();
             System.out.println("Enter password: ");
             password = sc.next();
-            i = adminPrac.searchAdmin(username);
+            i = Initialise.ac.searchAdmin(username);
             if(i==-1){
-                System.out.println("username not found");
+                System.out.println("Username not found");
                 System.out.println("If you would like to quit enter 0 else enter 1");
                 quit = sc.nextInt();
             }

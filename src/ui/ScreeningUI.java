@@ -1,6 +1,10 @@
+package ui;
+
 import java.util.Scanner;
 import java.util.TimeZone;
 
+import Classes.Cineplex;
+import controller.ScreeningController;
 public class ScreeningUI {
     public static void screeningOptions(Cineplex cineplex) {
         String movieTitle;

@@ -1,3 +1,7 @@
+package Classes;
+
+import Classes.Enum.SeatType;
+
 public class LayoutPrinterOrdinary implements LayoutPrinter{
     public static void printLayout(Screening screening) {
         System.out.printf("%36s", "Screen");

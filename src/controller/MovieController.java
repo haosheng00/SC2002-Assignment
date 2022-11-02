@@ -1,15 +1,15 @@
-package Classes;
+package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Classes.*;
 
 
 public class MovieController{
     static Scanner sc = new Scanner(System.in);
     private static  ArrayList<Movie> movies = new ArrayList<Movie>();
 
-    public MovieController(){
-
-    }
+    public MovieController(){}
     public static int searchMovie(String movie){
         for(int i=0; i<movies.size(); i++){
             if(movies.get(i).getMovieTitle() == movie){
@@ -21,9 +21,9 @@ public class MovieController{
     public static void addMovie(){
         String movieTitle, synopsis, director;
         String[] casts;
-        Enum.MovieGenre[] movieGenres;
-        Enum.MovieStatus movieStatus;
-        Enum.AgeRestriction ageRestriction;
+        Classes.Enum.MovieGenre[] movieGenres;
+        Classes.Enum.MovieStatus movieStatus;
+        Classes.Enum.AgeRestriction ageRestriction;
         boolean is3D;
         double overallRating;
         Review[] reviews;
@@ -31,14 +31,13 @@ public class MovieController{
         String s = null;
         String ms = null;
 
-        Movie newMovie = new Movie();
-
         // movieTitle = null;
         int exists = -2;
         System.out.println("Please enter new Movie Title:");
         movieTitle = sc.next();
         exists = searchMovie(movieTitle);
         while(exists!=-1){
+            Movie newMovie = new Movie(movieTitle);
             newMovie.setMovieTitle(movieTitle);
             // System.out.println("Please enter Movie Status:");
             // ms = sc.next();
@@ -81,17 +80,16 @@ public class MovieController{
     //     return 0;
     // }
 
-    // public void printCustomer(String username){
+    // public void printMovie(String movieTitle){
     //     int index = searchMovie(username);
     //     if(index != -1){
     //         System.out.println("Movie Title: " );
     //     }
     // }
     public ArrayList<Movie> getMovieList(){
-        return this.movies;
+        return MovieController.movies;
     }
 
-    
 
 
 

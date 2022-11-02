@@ -50,4 +50,9 @@ public class Enum {
             this.ageRestriction = ageRestriction;
         }
     }
+
+    public enum SeatType {
+        COUPLE_SEAT,
+        ORDINARY
+    }
 }

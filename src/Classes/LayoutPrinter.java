@@ -1,3 +1,4 @@
+package Classes;
 public interface LayoutPrinter {
         public static char setNewRow(char rowNumber){
             rowNumber++;
