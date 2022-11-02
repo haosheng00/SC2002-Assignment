@@ -3,24 +3,29 @@ import java.util.Scanner;
 
 public class MovieTicket{
 
-    private MovieTitle movietitle;
+    private String movieTitle;
     private Cineplex cineplex;
-    private CinemaType cinematype;
-    private ShowTime showtime;
+    private CinemaType cinemaType;
+    private String showTime;
     private Seat seat;
     private double price;
 
 
-    public MovieTicket(MovieTitle movietitle, Cineplex cineplex, CinemaType cinematype, ShowTime showtime, Seat seat, double price){
-        this.movietitle = movietitle;
+    public MovieTicket(String movieTitle, Cineplex cineplex, CinemaType cinemaType, String showTime, Seat seat, double price){
+        this.movieTitle = movieTitle;
         this.cineplex = cineplex;
-        this.cinematype = cinematype;
-        this.showtime = showtime;
+        this.cinemaType = cinemaType;
+        this.showTime = showTime;
         this.seat = seat;
         this.price = price;
-    }
+    } 
+
+    Movie m = new Movie();
+    
+
+    //TODO: use a MovieTicket printer instead of get func
 
     public String getMovieTicket(){
-        return movietitle.getMovieTitle() + cineplex.getCineplex() + cinematype.getCinemaType() + showtime.getShowTime() + seat.getSeat() + price.getPrice();
+        return m.getMovieTitle() + cineplex.getCineplex() + cinemaType.getCinemaType() + showTime.getShowTime() + seat.getSeatId() + price.getPrice();
     }
 }

@@ -24,7 +24,7 @@ public class Cineplex {
     //set CinemaList
     public void setCinemaList(String[] CinemaList) {
         this.CinemaList = CinemaList;
-    }
+    } 
 
     //set specific index in CinemaList
     public void setCinema(String Cinema, int i) {

@@ -1,7 +1,5 @@
 package Classes;
 
-import Classes.Enum;
-
 public class Movie {
 
     // TODO: Add javadocs
