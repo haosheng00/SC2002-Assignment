@@ -1,34 +1,48 @@
-package Classes;
+import java.util.ArrayList;
 
-public class Cinema{
+public class Cinema {
     private CinemaType cinemaType;
-    private int maxCap;
-    private Seats[] seats;
+    private String cinemaCode;
+    private String cinemaName;
+    private ArrayList<Screening> screenings;
 
-    public Cinema(CinemaType cinemaType, int maxCap) {
+    public Cinema(){
+        CinemaType cinemaType = CinemaType.ORDINARY;
+        String cinemaCode = "Z99";
+        ArrayList<Screening> screenings = new ArrayList<Screening>();
+    }
+    public Cinema(CinemaType cinemaType, String cinemaCode, String cinemaName, ArrayList<Screening> screenings) {
         this.cinemaType = cinemaType;
-        this.maxCap = maxCap;
-        seats = new Seats[maxCap];
-        for (int i = 0; i < maxCap; i++){
-            seats[i] = new Seats();
-        }
+        this.cinemaCode = cinemaCode;
+        this.cinemaName = cinemaName;
+        this.screenings = screenings;
     }
 
     public CinemaType getCinemaType(){
         return this.cinemaType;
     }
-    public void setCinemaType(CinemaType cinemaType) {
+    public void setCinemaType(CinemaType cinemaType){
         this.cinemaType = cinemaType;
     }
 
-    public int getMaxCap(){
-        return maxCap;
+    public String getCinemaCode(){
+        return this.cinemaCode;
     }
-    public void setMaxCap(int maxCap){
-        this.maxCap = maxCap;
+    public void setCinemaCode(String cinemaCode){
+        this.cinemaCode = cinemaCode;
     }
 
-    public Seats getSeats(int i){
-        return this.seats[i];
+    public String getCinemaName(){
+        return this.cinemaName;
+    }
+    public void setCinemaName(String cinemaName){
+        this.cinemaName = cinemaName;
+    }
+
+    public ArrayList<Screening> getScreenings(){
+        return this.screenings;
+    }
+    public void setScreenings(ArrayList<Screening> screenings){
+        this.screenings = screenings;
     }
 }
