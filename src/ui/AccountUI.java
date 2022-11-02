@@ -1,5 +1,11 @@
-package Classes;
-import java.util.Scanner; 
+package ui;
+import java.util.Scanner;
+
+import Classes.Admin;
+import Classes.AdminController;
+import Classes.Customer;
+import Classes.CustomerController;
+
 import java.util.ArrayList;
 public class AccountUI {
 
