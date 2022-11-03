@@ -38,7 +38,7 @@ public class Initialise {
     public static PaymentController pc = new PaymentController(Payments);
 
     public static ArrayList<Review> Reviews = new ArrayList<Review>();
-    public static ReviewController rw = new ReviewController(Reviews);
+    public static ReviewController rc = new ReviewController(Reviews);
     
     public static ArrayList<Customer> customers = new ArrayList<Customer>();
     public static CustomerController cc = new CustomerController(customers);
