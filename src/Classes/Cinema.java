@@ -8,11 +8,6 @@ public class Cinema {
     private String cinemaName;
     private ArrayList<Screening> screenings;
 
-    public Cinema(){
-        CinemaType cinemaType = CinemaType.ORDINARY;
-        String cinemaCode = "Z99";
-        ArrayList<Screening> screenings = new ArrayList<Screening>();
-    }
     public Cinema(CinemaType cinemaType, String cinemaCode, String cinemaName, ArrayList<Screening> screenings) {
         this.cinemaType = cinemaType;
         this.cinemaCode = cinemaCode;
