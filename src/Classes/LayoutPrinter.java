@@ -12,7 +12,7 @@ public interface LayoutPrinter {
         }
 
         public static int printEmptySeats(int columnNumber){
-            System.out.print("   ");
+            System.out.print("     ");
             columnNumber++;
             return columnNumber;
         }

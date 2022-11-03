@@ -16,13 +16,13 @@ public class Screening {
     }
     public void initiateSeats(){
         if (cinema.getCinemaType() == CinemaType.ORDINARY){
-            this.seats = new Seat[170];
+            this.seats = new Seat[Initialise.Ordinary_Capacity];
             for (int i = 0; i < seats.length;i++){
                 seats[i] = new Seat();
             }
         }
         else if (cinema.getCinemaType() == CinemaType.PLATINUMMOVIESUITES){
-            this.seats = new Seat[22];
+            this.seats = new Seat[Initialise.Plat_Capacity];
             for (int i = 0; i < seats.length;i++){
                 seats[i] = new Seat();
             }

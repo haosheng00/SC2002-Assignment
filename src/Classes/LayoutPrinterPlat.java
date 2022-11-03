@@ -6,7 +6,7 @@ public class LayoutPrinterPlat implements LayoutPrinter{
             System.out.println();
             int columnNumber = 1;
             char rowNumber = LayoutPrinter.setNewRow('@');
-            for (int i = 0; i < 22; i++) {
+            for (int i = 0; i < Initialise.Plat_Capacity; i++) {
                 int leftSectionWidth = 2;
                 int midSectionWidth = 2;
                 int rightSectionWidth = 2;
@@ -27,8 +27,8 @@ public class LayoutPrinterPlat implements LayoutPrinter{
 
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
                 columnNumber++;
-                screening.getSeat(i).printSeats();
-                if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < 22 - 1) {
+                screening.getSeat(i).printSeats(screening.getSeat(i));
+                if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < Initialise.Plat_Capacity - 1) {
                     rowNumber = LayoutPrinter.setNewRow(rowNumber);
                     columnNumber = 1;
                 }

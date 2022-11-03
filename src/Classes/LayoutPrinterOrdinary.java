@@ -8,7 +8,7 @@ public class LayoutPrinterOrdinary implements LayoutPrinter{
         System.out.println();
         int columnNumber = 1;
         char rowNumber = LayoutPrinter.setNewRow('@');
-        for (int i = 0; i < 170; i++) {
+        for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
             if (rowNumber >= 'I') {
                 screening.getSeat(i).setSeatType(SeatType.COUPLE_SEAT);
             }
@@ -26,14 +26,14 @@ public class LayoutPrinterOrdinary implements LayoutPrinter{
             }
             screening.getSeat(i).setEverything(rowNumber, columnNumber);
             columnNumber++;
-            screening.getSeat(i).printSeats();
+            screening.getSeat(i).printSeats(screening.getSeat(i));
             if (screening.getSeat(i).getSeatType() == SeatType.COUPLE_SEAT) {
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
                 i++;
                 columnNumber++;
             }
             int rightSectionWidth = 2;
-            if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < 170 - 1) {
+            if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < Initialise.Ordinary_Capacity - 1) {
                 rowNumber = LayoutPrinter.setNewRow(rowNumber);
                 columnNumber = 1;
             }
