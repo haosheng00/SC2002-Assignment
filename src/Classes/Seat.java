@@ -2,7 +2,7 @@ package Classes;
 public class Seat {
     private char row;
     private int column;
-    private static SeatType seatType;
+    private SeatType seatType;
     private String seatId;
     private boolean isBooked;
 
@@ -45,9 +45,9 @@ public class Seat {
     }
 
     public void setSeatType(SeatType seatType) {
-        seatType = seatType;
+        this.seatType = seatType;
     }
-    public static SeatType getSeatType() {
+    public SeatType getSeatType() {
         return seatType;
     }
 
@@ -59,6 +59,8 @@ public class Seat {
     }
 
     public void setEverything(char rowNumber, int columnNumber){
+        setRow(rowNumber);
+        setColumn(columnNumber);
         if (columnNumber < 10) {
             this.seatId = rowNumber + String.format("%02d", columnNumber);
         }
@@ -67,18 +69,18 @@ public class Seat {
         }
     }
 
-    public void printSeats(){
-        if (this.isBooked && Seat.getSeatType() == SeatType.COUPLE_SEAT){
-            System.out.print("[x||x]");
+    public void printSeats(Seat seat){
+        if (this.isBooked && seat.getSeatType() == SeatType.COUPLE_SEAT){
+            System.out.print("[xxx||xxx]");
         }
-        else if (Seat.getSeatType() == SeatType.COUPLE_SEAT){
-            System.out.print("[ || ]");
+        else if (seat.getSeatType() == SeatType.COUPLE_SEAT){
+            System.out.print("[" + seat.getSeatId() + "||" + seat.getSeatId() + "]");
         }
         else if (this.isBooked){
-            System.out.print("[x]");
+            System.out.print("[xxx]");
         }
         else{
-            System.out.print("[ ]");
+            System.out.print("[" + seat.getSeatId() + "]");
         }
     }
 }
