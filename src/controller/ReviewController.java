@@ -58,6 +58,9 @@ public class ReviewController {
         System.out.println("Please enter your review: ");
         review = sc.next();
 
+        //get current time
+        String dateTime = Initialise.dt.reviewDateTime();
+
         //add review to the review array of each movie!!
         //get particular movie --> get review array --> add review 
         Movie movie = Initialise.Movies.get(movieIndex);
@@ -130,6 +133,8 @@ public class ReviewController {
         //Update reviews array for movie
         reviews.get(reviewIndex).setDescription(review);
         reviews.get(reviewIndex).setRating(rating);
+        //update time 
+        String dateTime = Initialise.dt.reviewDateTime();
         reviews.get(reviewIndex).setDateTime(dateTime);
 
         //NEED TO UPDATE FOR OVERALL REVIEWS ARRAY???
@@ -139,13 +144,20 @@ public class ReviewController {
         movie.setOverallRating(updatedRating);
     }
 
-    //print reviews of movie -- sort by dateTime
+    //print all reviews of movie -- sort by dateTime (NOT SORTED - COULD UPDATE AND IS EARLIER TIMING)
+    //WHEN UPDATE -- CAN REMOVE AND BE ADDED AGN TO LAST INDEX 
     public void printReview(Movie movie) {
-
-
         
+        int lastIndex = movie.getReview().size()-1;
 
+        System.out.println(movie.getMovieTitle() + " Reviews");
 
+        for (int i=lastIndex; i>=0; i++) {
+            Review r = movie.getReview().get(i);
+            System.out.println("Time of Review: " + r.getDateTime());
+            System.out.println("Username: " + r.getUserName());
+            System.out.println("Rating: " + r.getRating());
+            System.out.println("Review: " + r.getDescription());
+        }
     }
-
 }

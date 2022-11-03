@@ -2,10 +2,8 @@ package controller;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import Classes.Payment;
-import Classes.Customer;
+import Classes.*;
 import controller.CustomerController;
-import Classes.Ticket;
 import Initialiser.Initialise;
 
 public class PaymentController {
@@ -70,36 +68,35 @@ public class PaymentController {
         System.out.println("The amount of " + totalCharges + "will be charged to your card, under the name " + name);
         TID = createTID();
         madePayment(TID, totalCharges, name, billingAddress, cardNumber);
+
+        //mark the seats as booked 
+
+        //clear cart tickets  - can remove func in customer class?
+        cartTickets.clear();
+
+        //add tickets to customers' ticket array?
+
         System.out.println("Thank you for your purchase. We hope you enjoy for movie!");
     }
 
     //made payment and add payment to the Payment list
-    //do we need to cfm the seats is booked or sth?
-    //clear cart tickets 
-    //add tickets to customers' ticket array?
-
     public void madePayment(int TID, double totalCharges, String CreditCardName, String billingAddress, String billingCardNumber) {
         Payments.add(new Payment(TID,totalCharges,CreditCardName,billingAddress,billingCardNumber));
     }
 
     public int createTID() {
-
-        //one TID for each payment
-
         //Each payment will have a transaction id (TID). 
         //The TID is of the format XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour, m : minutes, XXX:cinemacodeinletters)
-
-        //CinemaCode --> First letter of cineplex + 
-
-        //get cineplex from the ticket of the customer 
-
-
-
-
-       
-
-
-        
+        //get XXX (CinemaCode) 
+        //EDIT AFTER WX ADD HIS CODE 
+        String cinemaCode = "";
+        //get YYYYMMDDhhmm
+        String dateTime = Initialise.dt.paymentDateTime();
+        //combine to get TID 
+        String StringTID = cinemaCode + dateTime;
+        //convert string to int
+        int TID = Integer.parseInt(StringTID);
+        return TID;
     }
 
     public double calcPayment(ArrayList<Ticket> cartTickets) {
@@ -141,5 +138,12 @@ public class PaymentController {
         }
     }
  
+    public void updateSales() {
+
+    }
+
+    public void updatePastTickets() {
+
+    }
 
 }

@@ -4,11 +4,11 @@ public class Review {
     private String description;
     private double rating;
     private String userName;
-    private DateTime dateTime;
+    private String dateTime;
     private Movie movie;
 
     //constructor
-    public Review(String description, double rating, String userName, DateTime dateTime, Movie movie) {
+    public Review(String description, double rating, String userName, String dateTime, Movie movie) {
         this.description = description;
         this.rating = rating;
         this.userName = userName;
@@ -26,8 +26,8 @@ public class Review {
     public String getUserName() { return userName; }
     public void setUserName(String userName) { this.userName = userName;}
 
-    public DateTime getDateTime() { return dateTime; }
-    public void setDateTime(DateTime dateTime) { this.dateTime = dateTime;}
+    public String getDateTime() { return dateTime; }
+    public void setDateTime(String dateTime) { this.dateTime = dateTime;}
 
     public Movie getMovie() { return movie; }
     public void setMovie(Movie movie) { this.movie = movie;}

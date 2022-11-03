@@ -31,6 +31,8 @@ public class Initialise {
     public static final int Ordinary_Capacity = 170;
     public static final int Plat_Capacity = 22;
 
+    public static DateTime dt = new DateTime();
+
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
     public static ScreeningController screeningController = new ScreeningController();
     
