@@ -7,9 +7,9 @@ import Classes.Cineplex;
 import controller.ScreeningController;
 public class ScreeningUI {
     public static void screeningOptions(Cineplex cineplex) {
-        String movieTitle;
         int option = 0;
-        boolean exit = false;
+        Scanner sc = new Scanner(System.in);
+
         do {
             System.out.println("========================================");
             System.out.println("Welcome to MOBLIMA ScreeningController for " + cineplex.getCineplexName() + " cineplex");
@@ -20,7 +20,6 @@ public class ScreeningUI {
             System.out.println("(4) Show Screening");
             System.out.println("(5) Go Back To Previous Page");
             System.out.println("========================================");
-            Scanner sc = new Scanner(System.in);
             option = sc.nextInt();
             //TODO: Screening Manager to be created at Initialise
             switch (option) {
@@ -42,5 +41,5 @@ public class ScreeningUI {
                     System.out.println("Invalid Input");
             }
     }while (option != 5);
-    }}
-
+    }
+}
