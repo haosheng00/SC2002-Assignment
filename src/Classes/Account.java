@@ -12,7 +12,6 @@ public class Account{
     }
 
     public Account(){
-
     }
     public String getUserName(){
         return this.userName;

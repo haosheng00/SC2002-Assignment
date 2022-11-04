@@ -2,8 +2,8 @@ package Classes;
 import java.util.ArrayList;
 public class Customer extends Account{
     //ADD CLEAR CART TIX METHOD IN CUSTOMER CONTROLLER
-    private ArrayList<Ticket> cartTix = new ArrayList<Ticket>();
-    private ArrayList<Ticket> boughtTix = new ArrayList<Ticket>();
+    private ArrayList<Ticket> cartTickets = new ArrayList<Ticket>();
+    private ArrayList<Ticket> boughtTickets = new ArrayList<Ticket>();
     private String emailAddress;
     private String mobileNumber;
 
@@ -28,11 +28,11 @@ public class Customer extends Account{
     }
 
     public ArrayList<Ticket> getCartTickets(){
-        return cartTix;
+        return cartTickets;
     }
 
-    public ArrayList<Ticket> getBoughtTix(){
-        return boughtTix;
+    public ArrayList<Ticket> getBoughtTickets(){
+        return boughtTickets;
     }
 
 }
