@@ -42,5 +42,6 @@ public class PaymentUI {
                     break;
             }
         }
+        sc.close();
     }
 }
