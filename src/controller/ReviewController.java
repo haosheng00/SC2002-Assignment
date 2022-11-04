@@ -6,8 +6,7 @@ import Initialiser.Initialise;
 import Classes.*;
 
 public class ReviewController {
-
-
+    
     //DO WE NEED A ARRAYLIST OF REVIEWS? OR JUST ARRAYLIST OF EACH MOVIE WILL DO?
     private ArrayList<Review> Reviews;
 
