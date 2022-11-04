@@ -1,10 +1,7 @@
 package ui;
 
 import java.util.Scanner;
-
-import controller.CustomerController;
-import controller.MovieController;
-import Initialiser.Initialise;
+import controller.*;
 
 public class CustomerMenuUI{
 
@@ -35,7 +32,7 @@ public class CustomerMenuUI{
                         } while (index != -1);
                         break;
                     case 2:
-                        TicketUI.initiateTicketUI();
+                        TicketController.createBooking();
                         break;
                     case 3:
                         //TODO: CREATE VIEW PAST TICKETS METHOD UNDER CUSTOMER CONTROLLER
