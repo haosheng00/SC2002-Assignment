@@ -12,27 +12,30 @@ public class AccountUI {
     //static AdminController adminPrac = new AdminController();
     //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
-    public static void chooseAccountType(){
-        System.out.println("MOBLIMA Login");
+    public static void WelcomePage(){
+        System.out.println("Welcome to MOBLIMA");
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
-            System.out.println("Customer: 1");
+            /*System.out.println("Customer: 1");
             System.out.println("Admin: 2");
             System.out.println("Back: 3");
-            System.out.println("Choose login account type: ");
+            System.out.println("Choose login account type: ");*/
+            System.out.println("(1) Login");
+            System.out.println("(2) Continue as guest");
             choice = sc.nextInt();
             if(choice == 1){
                 initiateCustomerUI();
             }
             else if(choice == 2){
-                initiateAdminUI();
+                // initiateAdminUI();
             }
-            else if(choice == 3) {
-                break;
-            }
-        }while(choice<4);
+            
+        }while(choice<3);
         sc.close();
+    }
+    public static void initiateLoginUI(){
+        
     }
     public static void initiateCustomerUI(){
         Scanner sc = new Scanner(System.in);

@@ -124,7 +124,7 @@ public class CustomerController{
     public  void viewPastTickets(String username){
         int index = searchCustomer(username);
         ArrayList<Ticket> arr;
-        arr=customers.get(index).getBoughtTix();
+        arr=customers.get(index).getBoughtTickets();
         for(int x=0;x<arr.size();x++){
             Initialise.tc.printTicket();
         }

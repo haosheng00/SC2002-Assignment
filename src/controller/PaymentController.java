@@ -10,11 +10,11 @@ public class PaymentController {
     Scanner sc = new Scanner(System.in);
 
     //list of all payments made in the cinema
-    private ArrayList<Payment> Payments;
+    private static ArrayList<Payment> Payments;
 
     //constructor of PaymentController
     public PaymentController(ArrayList<Payment> Payments) {
-        this.Payments = Payments;
+        PaymentController.Payments = Payments;
     }
 
     //checkout all tickets in the cart
@@ -119,7 +119,7 @@ public class PaymentController {
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
-            System.out.println("Movie: " + cartTickets.get(i).getmovie());
+            System.out.println("Movie: " + cartTickets.get(i).getMovie());
             System.out.println("Showtime: "+ cartTickets.get(i).getshowDate() + " " + cartTickets.get(i).getshowTime());
             System.out.println("Cineplex: " + cartTickets.get(i).getcineplex() + " Cinema " + cartTickets.get(i).getcinema());
             System.out.println("Seat Number: " + cartTickets.get(i).getseat().getseatId());
@@ -161,7 +161,7 @@ public class PaymentController {
         ArrayList <Ticket> cartTickets = cus.getCartTickets();
         int size = cartTickets.size(); 
         for (int i=0; i<size; i++) {
-            cus.getBoughtTix().add(cartTickets.get(i));
+            cus.getBoughtTickets().add(cartTickets.get(i));
         }
     }
 }

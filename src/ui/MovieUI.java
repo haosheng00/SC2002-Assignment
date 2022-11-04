@@ -2,6 +2,7 @@ package ui;
 import java.util.Scanner;
 
 import controller.MovieController;
+import Initialiser.Initialise;
 
 public class MovieUI {
 
@@ -18,16 +19,16 @@ public class MovieUI {
             choice = sc.nextInt();
             switch(choice){
                 case 1:
-                    MovieController.addMovie();
+                    Initialise.mc.addMovie();
                     break;
                 case 2:
-                    MovieController.deleteMovie();
+                    Initialise.mc.deleteMovie();
                     break;
                 case 3:
                     // MovieController.updateMovie();
                 case 4:
                     String movieTitle = sc.next();
-                    MovieController.searchMovie(movieTitle);
+                    Initialise.mc.searchMovie(movieTitle);
                 default:
                     break;
             }

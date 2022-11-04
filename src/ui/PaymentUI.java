@@ -21,8 +21,8 @@ public class PaymentUI {
             System.out.println("Hi! Please select an option:");
             System.out.println("(1) View Tickets in Cart");
             System.out.println("(2) Checkout and Make Payment");
-            System.out.println("(3) View Ticket History");
-            System.out.println("(4) Go Back To Main Menu");
+            //System.out.println("(3) View Ticket History");
+            System.out.println("(3) Go Back To Main Menu");
             System.out.println("========================================");
             choice = sc.nextInt();
             switch(choice) {
@@ -32,15 +32,16 @@ public class PaymentUI {
                 case 2:
                     Initialise.pc.checkoutUI();
                     break;
+                //case 3:
+                    //Initialise.pc.showTickets(Initialise.customers.get(customerIndex).getBoughtTickets());
+                    //break;
                 case 3:
-                    Initialise.pc.showTickets(Initialise.customers.get(customerIndex).getBoughtTix());
-                    break;
-                case 4:
                     break;
                 default:
                     System.out.println("Invalid input!");
                     break;
             }
         }
+        sc.close();
     }
 }
