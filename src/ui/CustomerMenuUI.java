@@ -1,14 +1,7 @@
 package ui;
 
 import java.util.Scanner;
-<<<<<<< HEAD
 import controller.*;
-=======
-
-import controller.CustomerController;
-import controller.MovieController;
-import Initialiser.Initialise;
->>>>>>> 5eb73e059fbb65968063ae0066c519a7c6730610
 
 public class CustomerMenuUI{
 
