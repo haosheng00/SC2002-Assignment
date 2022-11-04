@@ -24,7 +24,8 @@ public class TicketController {
     public static void createBooking(){
 
         int i = 0;
-
+        
+        System.out.println("========================================");
         System.out.println("Select Cineplex: ");
         for (i=0; i<cineplexes.size(); i++){
             System.out.println((i+1) + ": " + cineplexes.get(i).getCineplexName());
@@ -85,6 +86,9 @@ public class TicketController {
 
     public static int ticketPrice(int child, int adult, int senior){
         
+        // if (screenings.get(i).getShowTime())
+
+        //CHECK IF HOLIDAY OR PUBLIC HOLIDAY
 
     }
 
@@ -100,17 +104,19 @@ public class TicketController {
 
 
     public Boolean updateTicketPrice(){
-
+        //FOR ADMIN
+        
+        System.out.println();
     }
 
 
     public Boolean updateScreeningTime(){
-
+        //FOR ADMIN
     }
 
 
     public Boolean updateTicketBooked(){
-        if 
+        //IF PAYMENT DONE THEN UPDATE??
     }
 
 
@@ -123,7 +129,7 @@ public class TicketController {
         System.out.println("Show Time: " + Ticket.getShowTime());
         System.out.println("Show Date: " + Ticket.getShowDate());
         System.out.println("Seat: " + Ticket.getSeat());
-        System.out.println("Price: " + Ticket.getPrice());
+        System.out.println("Price: " + Ticket.getTicketPrice());
 
     }
 
