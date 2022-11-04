@@ -4,33 +4,23 @@ import java.util.Scanner;
 
 public class Ticket{
 
-    private static Movie movie;
-    private static Cineplex cineplex;
-    private static Cinema cinema;
-    private static String showTime;
-    private static Seat seat;
-    private static double ticketPrice;
-    private static String showDate;
+    private Movie movie;
+    private Cineplex cineplex;
+    private Cinema cinema;
+    private String showDateTime;
+    private Seat seat;
+    private double ticketPrice;
+    private String showDate;
 
 
-    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showTime, Seat seat, double ticketPrice, String showDate){
-        // this.movie = movie;
-        // this.cineplex = cineplex;
-        // this.cinema = cinema;
-        // this.showTime = showTime;
-        // this.seat = seat;
-        // this.ticketPrice = ticketPrice;
-        // this.showDate = showDate;
-    } 
-
-    public void setTicket(Movie movie, Cineplex cineplex, Cinema cinema, String showTime, Seat seat, double ticketPrice, String showDate){
-        Ticket.movie = movie;
-        Ticket.cineplex = cineplex;
-        Ticket.cinema = cinema;
-        Ticket.showTime = showTime;
-        Ticket.seat = seat;
-        Ticket.ticketPrice = ticketPrice;
-        Ticket.showDate = showDate;
+    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDateTime, Seat seat, double ticketPrice){
+        this.movie = movie;
+        this.cineplex = cineplex;
+        this.cinema = cinema;
+        this.showDateTime = showDateTime;
+        this.seat = seat;
+        this.ticketPrice = ticketPrice;
+        
     } 
 
     public void setMovie(Movie movie){
@@ -45,19 +35,19 @@ public class Ticket{
         Ticket.cinema = cinema;
     }
 
-    public static void setShowTime(){
-        return showTime;
+    public void setShowTime(){
+        Ticket.showTime = showTime;
     }
 
-    public static void setSeat(){
+    public void setSeat(){
         return seat;
     }
 
-    public static void setTicketPrice(){
+    public void setTicketPrice(){
         return ticketPrice;
     }
 
-    public static void setShowDate(){
+    public  void setShowDate(){
         return showDate;
 
     public Object getTicket(){
@@ -65,7 +55,7 @@ public class Ticket{
         return ticket;
     }
 
-    public static Movie getMovie(){
+    public Movie getMovie(){
         return movie;
     }
 
