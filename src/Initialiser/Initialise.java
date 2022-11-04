@@ -53,10 +53,11 @@ public class Initialise {
     public static MovieController mc = new MovieController();
 
     public static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
-    public static TicketController tc = new TicketController(tickets, screenings, holidays);
-
     public static ArrayList<Screening> screenings = new ArrayList<Screening>();
     public static ArrayList<DateTime> holidays = new ArrayList<DateTime>();
+    public static TicketController tc = new TicketController(tickets, screenings, holidays);
+
+
 
     public static void initialiseEverything(){
         /* Initialise Cinema  */

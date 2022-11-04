@@ -23,7 +23,7 @@ public class AdminMenuUI{
                     ScreeningUI.initiateScreeningUI(cineplex);
                     break;
                 case 3:
-                    TicketUI.initiateTicketUI();
+                    TicketUI.initiateAdminTicketUI();
                     break;
                 default:
                     System.out.println("Invalid Input");

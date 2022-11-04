@@ -51,8 +51,16 @@ public class Enum {
         }
     }
 
+    // SeatType
     public enum SeatType {
         COUPLE_SEAT,
         ORDINARY
+    }
+
+    //TicketType
+    public enum TicketType{
+        STUDENT,
+        ADULT,
+        SENIORCITIZEN
     }
 }
