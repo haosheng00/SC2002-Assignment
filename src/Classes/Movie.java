@@ -42,7 +42,7 @@ public class Movie {
         this.director = director;
     }
 
-    public void setCast(String[] casts) {
+    public void setCasts(String[] casts) {
         this.casts = casts;
     }
 
@@ -62,6 +62,10 @@ public class Movie {
         this.overallRating = overallRating;
     }
 
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
+    
     public String getMovieTitle() {
         return movieTitle;
     }
@@ -73,4 +77,41 @@ public class Movie {
     public Enum.AgeRestriction getAgeRestriction() {
         return ageRestriction;
     }
+
+    public Enum.MovieGenre[] getMovieGenres() {
+        return movieGenres;
+    }
+
+    public String getSynopsis(){
+        return synopsis;
+    }
+
+    public String getDirector(){
+        return director;
+    }
+
+    public String[] getCasts(){
+        return casts;
+    }
+
+    public int getMovieDuration(){
+        return movieDuration;
+    }
+
+    public int getSales(){
+        return sales;
+    }
+
+    public boolean getIs3D(){
+        return is3D;
+    }
+
+    public double getOverallRating(){
+        return overallRating;
+    }
+
+    public Review[] getReviews(){
+        return reviews;
+    }
+
     }
