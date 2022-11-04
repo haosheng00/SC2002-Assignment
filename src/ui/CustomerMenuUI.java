@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import controller.CustomerController;
 import controller.MovieController;
+import Initialiser.Initialise;
 
 public class CustomerMenuUI{
 
@@ -16,7 +17,7 @@ public class CustomerMenuUI{
                 System.out.println("(1) - Search Movie");
                 System.out.println("(2) - Book Tickets");
                 System.out.println("(3) - View Past Tickets");
-                System.out.println("(4) - Log out");
+                System.out.println("(4) - Back");
                 option = sc.nextInt();
                 switch(option){
                     case 1: 
@@ -29,7 +30,7 @@ public class CustomerMenuUI{
                         }
                         //if movie exists --> show all the details of the movie 
                         else {
-                            MovieController.printMovie();
+                            Initialise.mc.printMovie(movieTitle);
                         }
                         } while (index != -1);
                         break;
