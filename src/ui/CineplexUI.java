@@ -1,13 +1,14 @@
+package ui;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Classes.Cineplex;
 public class CineplexUI {
-    //TODO: Get the ArrayList from Initialise
     public static void cineplexOptions(ArrayList<Cineplex> cineplexes){
         Scanner sc = new Scanner(System.in);
         int option = 0;
         int i = 0;
+        boolean exit = false;
 
         do{
             System.out.println("========================================");
@@ -16,17 +17,17 @@ public class CineplexUI {
                 System.out.println("(" + i + ")" + cineplexes.get(i - 1).getCineplexName());
             }
             option = sc.nextInt();
-            if (!(option > 0 && option < i)) {
+            if ((option > 0 && option < i)){
+                ScreeningUI.screeningOptions(cineplexes.get(option-1));
+            }
+            else {
                 System.out.println("Do you want to exit? (y/n)");
                 char response = sc.next().charAt(0);
                 if (response == 'y' || response == 'Y') {
                     System.out.println("Exit successful");
-                    //TODO: exit to main menu
-                    System.exit(1);
+                    exit = true;
                 }
             }
-            ScreeningUI.screeningOptions(cineplexes.get(option-1));
-        }while(true);
-
+        }while(!exit);
     }
 }
