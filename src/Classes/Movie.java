@@ -11,6 +11,7 @@ public class Movie {
     private String director;
     private String[] casts;
     private int movieDuration;
+    private int sales;
     private Enum.AgeRestriction ageRestriction;
     private boolean is3D;
     private double overallRating;
@@ -18,6 +19,7 @@ public class Movie {
 
     public Movie(String movieTitle){
         this.movieTitle = movieTitle;
+        this.sales = 0;
     }
 
     public void setMovieStatus(Enum.MovieStatus movieStatus) {
