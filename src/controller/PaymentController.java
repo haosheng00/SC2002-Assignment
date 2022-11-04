@@ -71,10 +71,14 @@ public class PaymentController {
 
         //mark the seats as booked 
 
+        //update Sales
+        updateSales(cartTickets);
+
+        //update Ticket History for each customer
+        updateTicketHistory(cus.get(customerIndex));
+
         //clear cart tickets  - can remove func in customer class?
         cartTickets.clear();
-
-        //add tickets to customers' ticket array?
 
         System.out.println("Thank you for your purchase. We hope you enjoy for movie!");
     }
@@ -138,12 +142,26 @@ public class PaymentController {
         }
     }
  
-    public void updateSales() {
+    //update sales of each movie
+    public void updateSales(ArrayList <Ticket> cartTickets) {
 
+        int size = cartTickets.size();
+        //iterate thru Tickets --> find movie and add ticketprice to sales 
+        for (int i=0; i<size; i++) {
+            //find movie for each ticket 
+            Movie movie = cartTickets.get(i).getMovie();
+            //update sales for each ticket 
+            movie.setSales() += cartTickets.get(i).getTicketPrice();
+        }
     }
 
-    public void updatePastTickets() {
-
+    //update ticket history for each customer
+    //add cartTickets to the boughtTix array
+    public void updateTicketHistory(Customer cus) {
+        ArrayList <Ticket> cartTickets = cus.getCartTickets();
+        int size = cartTickets.size(); 
+        for (int i=0; i<size; i++) {
+            cus.getBoughtTix().add(cartTickets.get(i));
+        }
     }
-
 }
