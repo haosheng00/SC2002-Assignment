@@ -75,7 +75,8 @@ public class TicketController {
         int senior = sc.nextInt();
 
 
-
+        System.out.println("Ticket put to cart");
+        Ticket ticket = new Ticket()
 
     }
 
@@ -110,26 +111,20 @@ public class TicketController {
     }
 
 
-    public Boolean updateScreeningTime(){
-        //FOR ADMIN
-    }
 
 
-    public Boolean updateTicketBooked(){
-        //IF PAYMENT DONE THEN UPDATE??
-    }
 
 
-    public void printTicket(){
+    public void printTicket(Ticket ticket){
         
         System.out.println("Your ticket details are as follows: ");
-        System.out.println("Movie: " + Ticket.getMovie());
-        System.out.println("Cineplex: " + Ticket.getCineplex());
-        System.out.println("Cinema: " + Ticket.getCinema());
-        System.out.println("Show Time: " + Ticket.getShowTime());
-        System.out.println("Show Date: " + Ticket.getShowDate());
-        System.out.println("Seat: " + Ticket.getSeat());
-        System.out.println("Price: " + Ticket.getTicketPrice());
+        System.out.println("Movie: " + ticket.getMovie());
+        System.out.println("Cineplex: " + ticket.getCineplex());
+        System.out.println("Cinema: " + ticket.getCinema());
+        System.out.println("Show Time: " + ticket.getShowTime());
+        System.out.println("Show Date: " + ticket.getShowDate());
+        System.out.println("Seat: " + ticket.getSeat());
+        System.out.println("Price: " + ticket.getTicketPrice());
 
     }
 
