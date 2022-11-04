@@ -9,11 +9,10 @@ import Initialiser.Initialise;
 
 public class CustomerController{
     Scanner sc = new Scanner(System.in);
-    private  ArrayList<Customer> customers = new ArrayList<Customer>();
+    private ArrayList<Customer> customers;
 
     public CustomerController(ArrayList<Customer> custList){
         this.customers = custList;
-
     }
 
     public int searchCustomer(String username){
@@ -126,7 +125,7 @@ public class CustomerController{
         ArrayList<Ticket> arr;
         arr=customers.get(index).getBoughtTickets();
         for(int x=0;x<arr.size();x++){
-            Initialise.tc.printTicket();
+            Initialise.tc.printTicket(); 
         }
 
     

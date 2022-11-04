@@ -1,7 +1,7 @@
 package ui;
 
 import java.util.Scanner;
-
+import Initialiser.Initialise;
 import controller.CustomerController;
 import controller.MovieController;
 
@@ -16,22 +16,21 @@ public class CustomerMenuUI{
                 System.out.println("(1) - Search Movie");
                 System.out.println("(2) - Book Tickets");
                 System.out.println("(3) - View Past Tickets");
+                System.out.println("(3) - Review");
                 System.out.println("(4) - Log out");
                 option = sc.nextInt();
                 switch(option){
                     case 1: 
                         System.out.println("Enter the title of the Movie: ");
                         String movieTitle = sc.next();
-                        int index = MovieController.searchMovie(movieTitle);
+                        /*int index = MovieController.searchMovie(movieTitle);
                         do {
                             if (index == -1) {
                             System.out.println("The movie entered does not exists. Please enter the title again");
                         }
                         //if movie exists --> show all the details of the movie 
-                        else {
-                            MovieController.printMovie();
-                        }
-                        } while (index != -1);
+                        else {*/
+                        Initialise.mc.printMovie(movieTitle);
                         break;
                     case 2:
                         TicketUI.initiateTicketUI();
@@ -39,7 +38,7 @@ public class CustomerMenuUI{
                     case 3:
                         //TODO: CREATE VIEW PAST TICKETS METHOD UNDER CUSTOMER CONTROLLER
                         //use serialiser to call username of the customer
-                        CustomerController.viewPastTickets (username);
+                        CustomerController.viewPastTickets (current.username);
                     case 4: 
                         break;
                     default:
