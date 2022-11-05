@@ -195,9 +195,7 @@ public class TicketController {
                     }
                 } while (validSeatId == false);
             }
-
             PaymentUI.initiatePaymentUI();
-
         }
     }
 

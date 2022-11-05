@@ -1,4 +1,4 @@
-package serialiser;
+package Serialiser;
 
 import java.io.*;
 import java.util.List;
