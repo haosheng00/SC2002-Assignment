@@ -1,11 +1,10 @@
 package Initialiser;
 
-import java.util.ArrayList;
-import java.util.TimeZone;
-
 import Classes.*;
-import Serialiser.*;
+import Serialiser.ReadMovieDB;
 import controller.*;
+
+import java.util.ArrayList;
 
 public class Initialise {
 
@@ -40,7 +39,7 @@ public class Initialise {
     public static TicketController tc = new TicketController(tickets, screenings, holidays);
 
 
-    public static void initialiseEverything() throws Exception{
+    public static void initialiseEverything() throws Exception {
         ReadMovieDB.readMovieDB();
     }
 
