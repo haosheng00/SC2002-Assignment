@@ -1,7 +1,8 @@
-import java.util.Scanner;
+package ui;
 
-import controller.*;
-import Classes.*;
+import Initialiser.Initialise;
+
+import java.util.Scanner;
 public class AdminMenuUI{
     public static void adminMenuOptions(){
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +23,12 @@ public class AdminMenuUI{
                     MovieUI.initiateMovieUI();
                     break;
                 case 2:
-                    ScreeningUI.initiateScreeningUI(cineplex);
+                    System.out.println("Choose the Cineplex: ");
+                    for (int i = 0; i < Initialise.cineplexes.size(); i++){
+                        System.out.println("("+(i+1)+") "+Initialise.cineplexes.get(i).getCineplexName());
+                    }
+                    int cineplexChoice = scanner.nextInt();
+                    ScreeningUI.initiateScreeningUI(Initialise.cineplexes.get(cineplexChoice-1));
                     break;
                 case 3:
                     TicketUI.initiateTicketUI();
