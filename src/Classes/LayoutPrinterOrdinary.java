@@ -1,6 +1,6 @@
 package Classes;
 
-import Classes.Enum.SeatType;
+import Initialiser.Initialise;
 
 public class LayoutPrinterOrdinary implements LayoutPrinter{
     public static void printLayout(Screening screening) {
