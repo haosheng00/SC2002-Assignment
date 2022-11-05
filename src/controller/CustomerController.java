@@ -2,20 +2,20 @@ package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Classes.Customer;
+import Classes.Customer; 
 import Classes.Ticket;
 import Initialiser.Initialise;
 
 
 public class CustomerController{
-    Scanner sc = new Scanner(System.in);
-    private ArrayList<Customer> customers;
+    static Scanner sc = new Scanner(System.in);
+    private static ArrayList<Customer> customers = new ArrayList<Customer>();
 
-    public CustomerController(ArrayList<Customer> custList){
-        this.customers = custList;
+    public CustomerController(){
+
     }
 
-    public int searchCustomer(String username){
+    public static int searchCustomer(String username){
         for(int i=0; i<customers.size(); i++){
             if(customers.get(i).getUserName() == username){
                 return i;
@@ -24,15 +24,17 @@ public class CustomerController{
         }
         return -1;
     }
-    public void addCustomer(){
+    public static void addCustomer(){
         String username, password,email, phno;
         username = null;
-        int exists = -2;
-        System.out.println("Please enter username to create new account:");
-        while(exists!=-1 && username != "0"){
+        int customerExists = -2;
+        int adminExists = -2;
+       do{
+            System.out.println("Please enter username to create new account:");
             username = sc.next();
-            exists = searchCustomer(username);
-            if(exists==-1){
+            customerExists = searchCustomer(username);
+            adminExists = AdminController.searchAdmin(username);
+            if(customerExists==-1 && adminExists ==-1){
                 System.out.println("Please enter password to create new account:");
                 password = sc.next();
                 System.out.println("Please enter your email: ");
@@ -41,19 +43,20 @@ public class CustomerController{
                 phno = sc.next();
                 Customer newCust = new Customer(username, password, email, phno);
                 customers.add(newCust);
-                this.sortCustomerList();
+                sortCustomerList();
                 break;
             }
             else {
                 System.out.println("Username already exists please enter another username: ");
                 System.out.println("Enter 0 to quit");
+                username = sc.next();
             }
 
-        }
+        } while(username!= "0");
         
     }
 
-    public void sortCustomerList ()
+    public static void sortCustomerList ()
 	{
 
         int min;
@@ -76,7 +79,8 @@ public class CustomerController{
         int exists = searchCustomer(username);
         if(exists == -1){
         customers.remove(exists);
-        this.sortCustomerList();
+        sortCustomerList();
+        //to access in a static way --> CustomerController.sortCustomerList();
         return 1;
         }
         else 
@@ -85,7 +89,7 @@ public class CustomerController{
         return 0;
     }
 
-    public int updateCustomerPassword(){
+    public static int updateCustomerPassword(){
         String username;
         System.out.println("Enter username: ");
         username = sc.next();
@@ -110,7 +114,7 @@ public class CustomerController{
         return 0;
     }
 
-    public void printCustomer(String username){
+    public static void printCustomer(String username){
         int index = searchCustomer(username);
         if(index != -1){
             System.out.println("Customer account username: " + username);
@@ -120,18 +124,18 @@ public class CustomerController{
     }
     
 
-    public  void viewPastTickets(String username){
+    public  static void viewPastTickets(String username){
         int index = searchCustomer(username);
         ArrayList<Ticket> arr;
         arr=customers.get(index).getBoughtTickets();
         for(int x=0;x<arr.size();x++){
-            Initialise.tc.printTicket(); 
+            TicketController.printTicket(); 
         }
 
     
     }
 
-    public void clearcart(String username){
+    public static void clearcart(String username){
         int index = searchCustomer(username);
         customers.get(index).getCartTickets().clear();
     }

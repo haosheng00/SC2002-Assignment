@@ -7,8 +7,6 @@ import controller.*;
 
 import java.util.ArrayList;
 public class AccountUI {
-    /*Created a customer controller object here for practice but need to discuss with team 
-    on where it should actually be */
     //static AdminController adminPrac = new AdminController();
     //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
@@ -25,10 +23,11 @@ public class AccountUI {
             System.out.println("(2) Continue as guest");
             choice = sc.nextInt();
             if(choice == 1){
-                initiateCustomerUI();
+                initiateLoginUI();
             }
             else if(choice == 2){
-                // initiateAdminUI();
+
+                //CustomerMenuUI.guestUI();
             }
             
         }while(choice<3);

@@ -11,8 +11,9 @@ public class Account{
         this. isAdmin = isAdmin;
     }
 
-    public Account(){
-    }
+    /*public Account(){
+    }*/
+    
     public String getUserName(){
         return this.userName;
     }
