@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CineplexUI {
-    public static void cineplexOptions(ArrayList<Cineplex> cineplexes){
+    public static void initiateCineplexUI(ArrayList<Cineplex> cineplexes){
         Scanner sc = new Scanner(System.in);
         int option = 0;
         int i = 0;
@@ -20,7 +20,7 @@ public class CineplexUI {
             }
             option = sc.nextInt();
             if ((option > 0 && option < i)){
-                ScreeningUI.screeningOptions(cineplexes.get(option-1));
+                ScreeningUI.initiateScreeningUI(cineplexes.get(option-1));
             }
             else {
                 System.out.println("Do you want to exit? (y/n)");
