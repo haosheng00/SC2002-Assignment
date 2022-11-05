@@ -1,9 +1,8 @@
-package serialiser;
+package Serialiser;
 
 import Initialiser.*;
 
 public class WriteMovieDB {
-
 	public static void writeMovieDB() throws Exception{
 			SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
 			SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
