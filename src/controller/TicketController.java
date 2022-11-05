@@ -22,7 +22,7 @@ public class TicketController {
     }
 
 
-    public static void createBooking(ArrayList<Cineplex> cineplexes) {
+    public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) {
 
         int i, childTicketNo, adultTicketNo, seniorTicketNo = 0;
         int cineplexChoice, cinemaChoice, screeningChoice;
@@ -97,18 +97,18 @@ public class TicketController {
                             if (seatIdChoice == cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getSeatId()) {
                                 if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getIsBooked() == false) {
                                     validSeatId = true;
-                                    //TODO: They will change the isBooked at payment?
+                                    //TODO: They will change the isBooked at payment? -> isReserved
                                     cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).setIsBooked(true);
                                     System.out.println("Ticket added to cart successfully!");
                                     //TODO: We add this ticket to cartTickets or what?
-                                    Ticket ticket = new Ticket(cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getMovie(),
+                                    customer.getCartTickets().add(new Ticket(cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getMovie(),
                                             cineplexes.get(cineplexChoice - 1),
                                             cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1),
                                             cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getShowDateTime(),
                                             cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i),
                                             //TODO: Change when TicketPrice change
                                             10
-                                    );
+                                    ));
                                 }
                             }
                         }
@@ -204,6 +204,9 @@ public class TicketController {
 
         public static double ticketPrice() {
 
+            double ticketPrice = 0;
+            // cinemaType, SeatType
+
             //PUBLIC HOLIDAYS FOR SG (YYYYMMDD) - NEW YEARS DAY (20220101), CHINESE NEW YEAR(20220201, 20220202), GOOD FRIDAY (20220415), LABOUR DAY (20220501), HARI RAYA PUASA (20220503),
             //VESAK DAY (20220515), HARI RAYA HAJI (20220710), NATIONAL DAY (20220809), DEEPAVALI (20221024), CHRISTMAS (20221225)
 
@@ -213,7 +216,7 @@ public class TicketController {
 
             //CHECK IF HOLIDAY OR PUBLIC HOLIDAY
 
-
+            return ticketPrice;
         }
 
         public Boolean searchTicket(ArrayList < Ticket > tickets) {
@@ -234,7 +237,6 @@ public class TicketController {
 
         public static void printTicket(Ticket ticket){
 
-            System.out.println("Your ticket details are as follows: ");
             System.out.println("Movie: " + ticket.getMovie());
             System.out.println("Cineplex: " + ticket.getCineplex());
             System.out.println("Cinema: " + ticket.getCinema());

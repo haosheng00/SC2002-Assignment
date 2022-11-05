@@ -1,7 +1,7 @@
 package Initialiser;
 
 import Classes.*;
-import Serialiser.ReadMovieDB;
+import serialiser.ReadMovieDB;
 import controller.*;
 
 import java.util.ArrayList;

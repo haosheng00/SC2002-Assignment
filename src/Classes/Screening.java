@@ -2,7 +2,7 @@ package Classes;
 
 import Initialiser.Initialise;
 
-//Left showDateTime to String first
+//Split Date & Time
 public class Screening {
     private Cinema cinema;
     private String showDateTime;

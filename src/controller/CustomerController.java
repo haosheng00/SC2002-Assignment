@@ -49,12 +49,12 @@ public class CustomerController{
             else {
                 System.out.println("Username already exists ");
                 System.out.println("Please choose: ");
-                System.out.println("(0): Try again");
-                System.out.println("(1): Back");
+                System.out.println("(1): Try again");
+                System.out.println("(2): Back");
                 exit = sc.nextInt();
             }
 
-        } while(exit != 1);
+        } while(exit != 2);
         
     }
 
@@ -89,10 +89,10 @@ public class CustomerController{
             else 
                 System.out.println("Account with this username does not exist");
                 System.out.println("Do you want to try again or exit? ");
-                System.out.println("(0): Try again");
-                System.out.println("(1): Exit");
+                System.out.println("(1): Try again");
+                System.out.println("(2): Exit");
                 exit = sc.nextInt();
-        }while(exit != 1);
+        }while(exit != 2);
         
     }
 
@@ -116,19 +116,19 @@ public class CustomerController{
                 else{
                     System.out.println("Wrong password ");
                     System.out.println("Do you want to try again or exit? ");
-                    System.out.println("(0): Try again");
-                    System.out.println("(1): Exit");
+                    System.out.println("(1): Try again");
+                    System.out.println("(2): Exit");
                     exit = sc.nextInt();
                 }
             }
             else{
                 System.out.println("Sorry, user account with this username does not exist");
                 System.out.println("Do you want to try again or exit? ");
-                System.out.println("(0): Try again");
-                System.out.println("(1): Exit");
+                System.out.println("(1): Try again");
+                System.out.println("(2): Exit");
                 exit = sc.nextInt();
             }
-        }while(exit!=1);
+        }while(exit!=2);
 
 
     }
@@ -143,11 +143,20 @@ public class CustomerController{
     }
     
 
-    public  static void viewPastTickets(String username){
+    public static void viewPastTickets(String username){
         int index = searchCustomer(username);
         System.out.println("Tickets you purchased in the past: ");
         ArrayList<Ticket> arr;
         arr=customers.get(index).getBoughtTickets();
+        for(int x=0;x<arr.size();x++){
+            TicketController.printTicket(arr.get(x));
+        }
+    }
+
+    //TODO: Too many searches, past in Customer object instead?
+    public static void viewPastTickets(Customer customer){
+        System.out.println("Tickets you purchased in the past: ");
+        ArrayList<Ticket> arr = customer.getBoughtTickets();
         for(int x=0;x<arr.size();x++){
             TicketController.printTicket(arr.get(x));
         }

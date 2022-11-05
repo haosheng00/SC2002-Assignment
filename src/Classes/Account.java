@@ -8,7 +8,7 @@ public class Account{
     public Account(String u, String p, boolean isAdmin){
         this.userName = u;
         this.password = p;
-        this. isAdmin = isAdmin;
+        this.isAdmin = isAdmin;
     }
 
     /*public Account(){

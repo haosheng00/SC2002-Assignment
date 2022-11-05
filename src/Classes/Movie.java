@@ -7,16 +7,16 @@ public class Movie {
 
     private Enum.MovieStatus movieStatus;
     private String movieTitle;
-    private Enum.MovieGenre[] movieGenres;
+    private ArrayList<Enum.MovieGenre> movieGenres;
     private String synopsis;
     private String director;
-    private String[] casts;
+    private ArrayList<String> casts;
     private int movieDuration;
     private int sales;
     private Enum.AgeRestriction ageRestriction;
     private boolean is3D;
     private double overallRating;
-    private ArrayList <Review> reviews;
+    private ArrayList<Review> reviews;
 
     public Movie(String movieTitle){
         this.movieTitle = movieTitle;
@@ -31,7 +31,7 @@ public class Movie {
         this.movieTitle = movieTitle;
     }
 
-    public void setMovieGenres(Enum.MovieGenre[] movieGenres) {
+    public void setMovieGenres(ArrayList<Enum.MovieGenre> movieGenres) {
         this.movieGenres = movieGenres;
     }
 
@@ -43,7 +43,7 @@ public class Movie {
         this.director = director;
     }
 
-    public void setCasts(String[] casts) {
+    public void setCasts(ArrayList<String> casts) {
         this.casts = casts;
     }
 
@@ -79,7 +79,7 @@ public class Movie {
         return ageRestriction;
     }
 
-    public Enum.MovieGenre[] getMovieGenres() {
+    public ArrayList<Enum.MovieGenre> getMovieGenres() {
         return movieGenres;
     }
 
@@ -91,7 +91,7 @@ public class Movie {
         return director;
     }
 
-    public String[] getCasts(){
+    public ArrayList<String> getCasts(){
         return casts;
     }
 

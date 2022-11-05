@@ -1,6 +1,8 @@
 package ui;
 
 import java.util.Scanner;
+
+import Initialiser.Initialise;
 import controller.*;
 public class AccountUI {
     //static AdminController adminPrac = new AdminController();
@@ -19,7 +21,7 @@ public class AccountUI {
             System.out.println("(2) Continue as guest");
             choice = sc.nextInt();
             if(choice == 1){
-                initiateLoginUI();
+                initiateLoginUI(0);
             }
             else if(choice == 2){
                 Login("guest","guest");
@@ -29,7 +31,7 @@ public class AccountUI {
         sc.close();
     }
 
-    public static void initiateLoginUI(){
+    public static void initiateLoginUI(int x){
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
@@ -38,11 +40,11 @@ public class AccountUI {
             System.out.println("(2) Create a new account");
             System.out.println("(3) Delete account");
             System.out.println("(4) Change Password");
-            System.out.println("(5) back");
+            System.out.println("(5) Back");
             choice = sc.nextInt();
             switch(choice){
                 case 1:
-                    LoginUI();
+                    LoginUI(x);
                     //TODO: if logInCustomer == true, bring them to MainMenuUI for customer
                     break;
                 case 2:
@@ -58,7 +60,7 @@ public class AccountUI {
         }while(choice<5);
         sc.close();
     }
-    public static void LoginUI(){
+    public static void LoginUI(int x){
         Scanner sc = new Scanner(System.in);
         String username;
         int success;
@@ -79,19 +81,27 @@ public class AccountUI {
                 case 1:
                     AdminMenuUI.adminMenuOptions();
                 case 2:
+                    int index = CustomerController.searchCustomer(username);
+                    if (x == 2){
+                        TicketController.createBooking(Initialise.cineplexes, Initialise.customers.get(index));
+                    }
                     CustomerMenuUI.customerMenuOptions();
             }
         }while(exitChoice !=2);
         sc.close();
     }
 
-    private static int  Login(String username, String password){
-        int isCustomer = -2;
-        isCustomer = CustomerController.searchCustomer(username);
+    private static int Login(String username, String password){
         int isAdmin = -2;
-        isAdmin = CustomerController.searchCustomer(username);
+        isAdmin = AdminController.searchAdmin(username);
+        int isCustomer = -2;
+
+        if(isAdmin == -1){
+            isCustomer = CustomerController.searchCustomer(username);
+        }
+
         int isGuest=0;
-        if(isCustomer ==0) isGuest = 1;
+        if(isCustomer == 0) isGuest = 1;
 
         if(isAdmin !=-1){
             if(AdminController.getAdminsList().get(isAdmin).getPassword()==password)

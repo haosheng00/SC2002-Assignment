@@ -146,6 +146,9 @@ public class MovieController{
             if (!movie.getMovieStatus().equals(MovieStatus.END_OF_SHOWING)) top5.add(movie);
         }
            //TODO: sort movie by rating
+
+           //TODO: sort movie by sales
+
         while (top5.size() > 5) {
             top5.remove(5);
         }
