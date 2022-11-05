@@ -1,7 +1,7 @@
 package ui;
 import Initialiser.Initialise;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 import controller.*;
 import Classes.*;
 
@@ -26,10 +26,11 @@ public class CustomerMenuUI{
                     case 1: 
                     int exit = -1;
                     do{
-                        System.out.println("Enter the title of the Movie: ");
+                        System.out.println("Movie List");
                         for (i = 0; i < Initialise.Movies.size(); i++){
                             System.out.println("(" + (i+1) + ")" + " - " + Initialise.Movies.get(i).getMovieTitle());
                         }
+                        System.out.println("Please select movie: ");
                         movieChoice = sc.nextInt();
                         //String movieTitle = sc.next();
                         //int index = MovieController.searchMovie(movieTitle);
@@ -56,12 +57,15 @@ public class CustomerMenuUI{
                         CustomerController.viewPastTickets(customer);
                         break;
                     case 4: 
-                        ReviewUI.initiateReviewUI();
+                        ReviewUI.initiateReviewUI(customer);
                         break;
                     case 5:
-                    //current returns an array of top5 movies, tp discuss with team on whether we need a movie UI
+                    //current returns an array of top5 movies, to discuss with team on whether we need a movie UI
                     // because searchMovie also has a similar problem
-                        MovieController.getTop5Movies();
+                        ArrayList<Movie> top5 = MovieController.getTop5Movies();
+                        for (i = 0; i < top5.size(); i++){
+                            MovieController.printMovie(top5.get(i).getMovieTitle());
+                        }
                         break;
                     case 6:
                         break;

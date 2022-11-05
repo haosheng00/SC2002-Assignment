@@ -9,11 +9,11 @@ public class ReviewController {
     //DO WE NEED A ARRAYLIST OF REVIEWS? OR JUST ARRAYLIST OF EACH MOVIE WILL DO?
     private ArrayList<Review> Reviews;
 
-    Scanner sc = new Scanner(System.in);
-
     public ReviewController (ArrayList <Review> Reviews) {
         this.Reviews = Reviews;
     }
+
+    //TODO: UPDATE TOP5 REVIEWS 
 
     //returns the index of the movie in the Movie array 
     public static int searchMovie() {
@@ -22,6 +22,9 @@ public class ReviewController {
         String movieTitle;
         int exist;
         int choice;
+
+        //TODO: DO DROPDOWN OF MOVIES
+
         //get movie name 
         System.out.println("Please enter the title of the movie:");
         movieTitle = sc.next();
@@ -44,7 +47,7 @@ public class ReviewController {
         }
         return exist;
     }    
-    public static void addReview(String userName) {
+    public static void addReview(Customer customer) {
 
         Scanner sc = new Scanner(System.in);
         
@@ -66,7 +69,7 @@ public class ReviewController {
         //add review to the review array of each movie!!
         //get particular movie --> get review array --> add review 
         Movie movie = Initialise.Movies.get(movieIndex);
-        movie.getReviews().add(new Review(review,rating,userName,dateTime,movie));
+        movie.getReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
 
         //add review to all reviews array - NEED???
         //Reviews.add(new Review(review,rating,userName,dateTime,movie));
@@ -79,7 +82,7 @@ public class ReviewController {
     }
 
     //iterate thru the reviews to find the particular username
-    public static void deleteReview(String userName) {
+    public static void deleteReview(Customer customer) {
         int movieIndex = searchMovie();
         if (movieIndex == -1) {
             return;
@@ -91,7 +94,7 @@ public class ReviewController {
         double oldRating = 0;
         //iterate thru the reviews of each movie to find the particular username
         for (int i=0; i<size; i++) {
-            if (r.get(i).getUserName() == userName) {
+            if (r.get(i).getUserName() == customer.getUserName()) {
                 oldRating = r.get(i).getRating();
                 r.remove(i);
                 break;
@@ -107,7 +110,7 @@ public class ReviewController {
         System.out.println("Your review has been deleted.");
     }
 
-    public static void updateReview(String userName) {
+    public static void updateReview(Customer customer) {
 
         Scanner sc = new Scanner(System.in);
 
@@ -127,7 +130,7 @@ public class ReviewController {
 
         //search whether his rating exists
         for (int i=0; i<size; i++) {
-            if (reviews.get(i).getUserName() == userName) {
+            if (reviews.get(i).getUserName() == customer.getUserName()) {
                 ratingExist = 1;
                 reviewIndex = i;
                 oldRating = reviews.get(i).getRating();
@@ -153,7 +156,7 @@ public class ReviewController {
         //delete review from Reviews array 
         reviews.remove(reviewIndex);
         //add review to the end of Reviews array -- ensure that review array is updated by time
-        reviews.add(new Review(review, rating, userName, dateTime, movie));
+        reviews.add(new Review(review, rating, customer.getUserName(), dateTime, movie));
         
         // //Update reviews array for movie
         // reviews.get(reviewIndex).setDescription(review);

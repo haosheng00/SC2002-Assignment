@@ -195,7 +195,7 @@ public class TicketController {
                     }
                 } while (validSeatId == false);
             }
-            PaymentUI.initiatePaymentUI();
+            PaymentUI.initiatePaymentUI(customer);
         }
     }
 
@@ -227,10 +227,17 @@ public class TicketController {
         }
 
 
-        public static void updateTicketPrice () {
+        public static void updateTicketPrice(){
             //FOR ADMIN
 
             System.out.println();
+        }
+
+        public static void updateHolidays(){
+            //FOR ADMIN
+
+            System.out.println();
+
         }
 
         public static void printTicket(Ticket ticket){

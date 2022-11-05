@@ -3,7 +3,7 @@ package controller;
 import java.util.Scanner;
 import java.util.ArrayList;
 import Classes.*;
-import controller.CustomerController;
+import ui.*;
 import Initialiser.Initialise;
 
 public class PaymentController {
@@ -16,8 +16,11 @@ public class PaymentController {
         PaymentController.Payments = Payments;
     }
 
+
+    //TODO: UPDATE TOP5 SALES ARRAY 
+
     //checkout all tickets in the cart
-    public static void checkoutUI() {
+    public static void checkoutUI(Customer customer) {
         int choice = 0;
         int TID = 0;
         double totalCharges;
@@ -29,17 +32,13 @@ public class PaymentController {
 
         System.out.println("Cart: ");
 
-
-        //HOW TO USE USERNAME FROM LOGIN???
-        String username = "Hello";
-
-        //initialise customer array 
-        ArrayList <Customer> cus = Initialise.customers;
-        //get index of customer by searching their username 
-        //DONT NEED ACCOUNT FOR IF THEIR USERNAME DOESNT EXIST - MUST EXIST SINCE CAN LOG IN 
-        int customerIndex = CustomerController.searchCustomer(username);
+        // //initialise customer array 
+        // ArrayList <Customer> cus = Initialise.customers;
+        // //get index of customer by searching their username 
+        // //DONT NEED ACCOUNT FOR IF THEIR USERNAME DOESNT EXIST - MUST EXIST SINCE CAN LOG IN 
+        // int customerIndex = CustomerController.searchCustomer(username);
         //get the cartTickets of the target customer 
-        ArrayList <Ticket> cartTickets = cus.get(customerIndex).getCartTickets();
+        ArrayList <Ticket> cartTickets = customer.getCartTickets();
 
         //get cart tickets from customer class
         showTickets(cartTickets);
@@ -48,17 +47,19 @@ public class PaymentController {
         //if cancel checkout
         if (choice == 0) {
             System.out.println("Cancelling check out...");
+            //TODO: undo isReserved
             return;
         }
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
-        //ADD DECIMALS FOR DIS 
+        //TODO: ADD DECIMALS FOR DIS 
         System.out.println("The total amount is: " + totalCharges);
         System.out.println("Please enter your credit card details");
-        System.out.println("Name: ");
+        System.out.println("Full Name: ");
         name = sc.next();
         System.out.println("Card Number: ");
         cardNumber = sc.next();
+        //TODO: ADD EXPIRY NUMBER 
         System.out.println("Billing Address: ");
         billingAddress = sc.next();
         System.out.println("Please enter your CVC/CVV: ");
@@ -66,6 +67,9 @@ public class PaymentController {
         System.out.println("The amount of " + totalCharges + "will be charged to your card, under the name " + name);
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, billingAddress, cardNumber);
+
+        //print Receipt 
+        printReceipt(cartTickets);
 
         //mark the seats as booked for all tickets in the cart 
         for (int i=0; i<cartTickets.size(); i++) {
@@ -76,12 +80,14 @@ public class PaymentController {
         updateSales(cartTickets);
 
         //update Ticket History for each customer
-        updateTicketHistory(cus.get(customerIndex));
+        updateTicketHistory(customer);
 
         //clear cart tickets  - can remove func in customer class?
         cartTickets.clear();
 
         System.out.println("Thank you for your purchase. We hope you enjoy for movie!");
+
+        CustomerMenuUI.customerMenuOptions(customer);
     }
 
     //made payment and add payment to the Payment list
@@ -154,7 +160,7 @@ public class PaymentController {
             //find movie for each ticket 
             Movie movie = cartTickets.get(i).getMovie();
             //update sales for each ticket 
-            movie.setSales() += cartTickets.get(i).getTicketPrice();
+            movie.setSales(movie.getSales() + cartTickets.get(i).getTicketPrice());
         }
     }
 
@@ -167,4 +173,5 @@ public class PaymentController {
             cus.getBoughtTickets().add(cartTickets.get(i));
         }
     }
+
 }

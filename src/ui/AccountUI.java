@@ -3,6 +3,7 @@ package ui;
 import java.util.Scanner;
 
 import Initialiser.Initialise;
+import Classes.*;
 import controller.*;
 public class AccountUI {
     //static AdminController adminPrac = new AdminController();
@@ -85,7 +86,7 @@ public class AccountUI {
                     if (x == 2){
                         TicketController.createBooking(Initialise.cineplexes, Initialise.customers.get(index));
                     }
-                    CustomerMenuUI.customerMenuOptions();
+                    CustomerMenuUI.customerMenuOptions(Initialise.customers.get(index));
             }
         }while(exitChoice !=2);
         sc.close();

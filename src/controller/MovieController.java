@@ -7,9 +7,11 @@ import Classes.Enum.MovieGenre;
 import Classes.Enum.MovieStatus;
 
 
-public class MovieController{
+public class MovieController {
     static Scanner sc = new Scanner(System.in);
     private static ArrayList<Movie> movies = new ArrayList<Movie>();
+    private static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
+    private static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
 
     public MovieController(){}
     
@@ -76,13 +78,13 @@ public class MovieController{
 
     public static int updateMovie(){
         String movieTitle;
-        System.out.println("Enter movie title: ");
+        System.out.println("Enter Movie Title: ");
         movieTitle = sc.next();
         int index = searchMovie(movieTitle);
         int choice = 0;
 
         System.out.println("Select one option:");
-        System.out.println("(1) Update Movie title");
+        System.out.println("(1) Update Movie Title");
         System.out.println("(2) Update Movie Synopsis");
         System.out.println("(3) Update Movie Status");
         System.out.println("(4) Back to previous menu");
@@ -130,29 +132,23 @@ public class MovieController{
             System.out.println("Movie Title: " );
         }
 
-        //PRINT DETAILS 
-
-
-
+        //TODO: PRINT DETAILS 
 
     }
     public static ArrayList<Movie> getMovieList(){
         return MovieController.movies;
     }
 
-    public static ArrayList<Movie> getTop5Movies(){
-        ArrayList<Movie> top5 = new ArrayList<Movie>();
-        for (Movie movie : movies) {
-            if (!movie.getMovieStatus().equals(MovieStatus.END_OF_SHOWING)) top5.add(movie);
-        }
-           //TODO: sort movie by rating
+    public static ArrayList<Movie> getTop5Movies(){        
 
-           //TODO: sort movie by sales
+        System.out.println("Sort by:");
+        System.out.println("(1) - By Overall Rating");
+        System.out.println("(2) - By Sales");
+        int choice = sc.nextInt();
 
-        while (top5.size() > 5) {
-            top5.remove(5);
-        }
-        return top5;
+        if (choice == 1) return top5ByRatings;
+        else return top5BySales;
+        
     }
 
 

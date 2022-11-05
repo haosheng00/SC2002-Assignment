@@ -2,15 +2,14 @@ package ui;
 
 import java.util.Scanner;
 import controller.*;
+import Classes.*;
 
 public class ReviewUI {
 
-    public static void initiateReviewUI() {
+    public static void initiateReviewUI(Customer customer) {
 
         Scanner sc = new Scanner(System.in);
         int choice = 0;
-
-        String username = "Hello";
 
         do {
             System.out.println("========================================");
@@ -24,13 +23,13 @@ public class ReviewUI {
 
             switch(choice) {
                 case 1: 
-                    ReviewController.addReview(username);
+                    ReviewController.addReview(customer);
                     break;
                 case 2:
-                    ReviewController.deleteReview(username);
+                    ReviewController.deleteReview(customer);
                     break;
                 case 3:
-                    ReviewController.updateReview(username);
+                    ReviewController.updateReview(customer);
                     break;
                 case 4:
                     break;

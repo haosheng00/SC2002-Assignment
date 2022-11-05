@@ -1,20 +1,15 @@
 package ui;
 
 import java.util.Scanner;
-import controller.PaymentController;
+import controller.*;
+import Classes.*;
 
 import Initialiser.Initialise;
 
 public class PaymentUI {
-    public static void initiatePaymentUI() {
+    public static void initiatePaymentUI(Customer customer) {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
-
-        //CHANGE 
-        String username = "Hello";
-
-        //get index of customer
-        int customerIndex = Initialise.cc.searchCustomer(username);
 
         while (choice != 4) {
             System.out.println("========================================");
@@ -27,10 +22,10 @@ public class PaymentUI {
             choice = sc.nextInt();
             switch(choice) {
                 case 1:
-                    PaymentController.showTickets(Initialise.customers.get(customerIndex).getCartTickets());
+                    PaymentController.showTickets(customer.getCartTickets());
                     break;
                 case 2:
-                    PaymentController.checkoutUI();
+                    PaymentController.checkoutUI(customer);
                     break;
                 //case 3:
                     //Initialise.pc.showTickets(Initialise.customers.get(customerIndex).getBoughtTickets());

@@ -55,7 +55,6 @@ public class CustomerController{
             }
 
         } while(exit != 2);
-        
     }
 
     public static void sortCustomerList ()
@@ -170,6 +169,4 @@ public class CustomerController{
     public static ArrayList<Customer> getCustomersList(){
         return customers;
     }
-
-
 }
