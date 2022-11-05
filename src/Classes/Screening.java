@@ -38,11 +38,10 @@ public class Screening {
         this.cinema = cinema;
     }
 
-    public TimeZone getshowDateTime() {
+    public TimeZone getShowDateTime() {
         return showDateTime;
     }
-
-    public void setshowDateTime(TimeZone showDateTime) {
+    public void setShowDateTime(TimeZone showDateTime) {
         this.showDateTime = showDateTime;
     }
 
