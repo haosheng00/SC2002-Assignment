@@ -1,7 +1,7 @@
 package ui;
 
 import java.util.Scanner;
-import Initialiser.Initialise;
+import controller.*;
 
 public class ReviewUI {
 
@@ -24,13 +24,13 @@ public class ReviewUI {
 
             switch(choice) {
                 case 1: 
-                    Initialise.rc.addReview(username);
+                    ReviewController.addReview(username);
                     break;
                 case 2:
-                    Initialise.rc.deleteReview(username);
+                    ReviewController.deleteReview(username);
                     break;
                 case 3:
-                    Initialise.rc.updateReview(username);
+                    ReviewController.updateReview(username);
                     break;
                 case 4:
                     break;

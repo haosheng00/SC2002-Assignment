@@ -1,7 +1,5 @@
 package Classes;
 
-import java.util.Scanner; 
-
 public class Ticket{
 
     private Movie movie;
@@ -10,7 +8,6 @@ public class Ticket{
     private String showDateTime;
     private Seat seat;
     private double ticketPrice;
-    private String showDate;
 
 
     public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDateTime, Seat seat, double ticketPrice){
@@ -24,34 +21,31 @@ public class Ticket{
     } 
 
     public void setMovie(Movie movie){
-        Ticket.movie = movie;
+        this.movie = movie;
     }
 
     public void setCineplex(Cineplex cineplex){
-        Ticket.cineplex = cineplex;
+        this.cineplex = cineplex;
     }
 
     public void setCinema(Cinema cinema){
-        Ticket.cinema = cinema;
+        this.cinema = cinema;
     }
 
-    public void setShowTime(){
-        Ticket.showTime = showTime;
+    public void setShowDateTime(String showDateTime){
+        this.showDateTime = showDateTime;
     }
 
-    public void setSeat(){
-        return seat;
+    public void setSeat(Seat seat){
+        this.seat = seat;
     }
 
-    public void setTicketPrice(){
-        return ticketPrice;
+    public void setTicketPrice(double ticketPrice){
+        this.ticketPrice = ticketPrice;
     }
-
-    public  void setShowDate(){
-        return showDate;
 
     public Object getTicket(){
-        Ticket ticket = new Ticket(movie, cineplex, cinema, showTime, seat, ticketPrice, showDate);
+        Ticket ticket = new Ticket(movie, cineplex, cinema, showDateTime, seat, ticketPrice);
         return ticket;
     }
 
@@ -59,28 +53,24 @@ public class Ticket{
         return movie;
     }
 
-    public static Cineplex getCineplex(){
+    public Cineplex getCineplex(){
         return cineplex;
     }
 
-    public static Cinema getCinema(){
+    public Cinema getCinema(){
         return cinema;
     }
 
-    public static String getShowTime(){
-        return showTime;
+    public String getShowDateTime(){
+        return showDateTime;
     }
 
-    public static Seat getSeat(){
+    public Seat getSeat(){
         return seat;
     }
 
-    public static double getTicketPrice(){
+    public double getTicketPrice(){
         return ticketPrice;
-    }
-
-    public static String getShowDate(){
-        return showDate;
     }
 
 }

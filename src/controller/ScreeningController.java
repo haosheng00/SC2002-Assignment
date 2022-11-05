@@ -1,9 +1,8 @@
 package controller;
 
-import java.util.Scanner;
-import java.util.TimeZone;
-
 import Classes.*;
+
+import java.util.Scanner;
 
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
@@ -28,7 +27,8 @@ public class ScreeningController {
             System.out.println("addScreening fail");
             return;
         }
-        cineplex.getCinemas().get(cinemaChoice - 1).getScreenings().add(new Screening(cineplex.getCinemas().get(cinemaChoice - 1), TimeZone.getTimeZone("Singapore"), movie));
+        //TODO: Update the showDateTime
+        cineplex.getCinemas().get(cinemaChoice - 1).getScreenings().add(new Screening(cineplex.getCinemas().get(cinemaChoice - 1), "160400", movie));
         System.out.println("addScreening success");
     }
     public static void deleteScreening(Cineplex cineplex){
@@ -45,7 +45,7 @@ public class ScreeningController {
         }
         System.out.println("Select screening: ");
         for (i = 1; i <= cineplex.getCinemas().get(cinemaChoice-1).getScreenings().size();i++){
-            System.out.println("(" + i + ")" + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(i-1).getShowTime());
+            System.out.println("(" + i + ")" + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(i-1).getShowDateTime());
         }
         int screeningChoice = sc.nextInt();
         if (screeningChoice <= 0 || screeningChoice > i){
@@ -71,7 +71,7 @@ public class ScreeningController {
             return;
         }
         for (i = 1; i <= cineplex.getCinemas().get(cinemaChoice-1).getScreenings().size();i++){
-            System.out.println("(" + i + ")" + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(i-1).getShowTime());
+            System.out.println("(" + i + ")" + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(i-1).getShowDateTime());
         }
         int screeningChoice = sc.nextInt();
         if (screeningChoice <= 0 || screeningChoice > i){
@@ -80,8 +80,8 @@ public class ScreeningController {
             return;
         }
         System.out.println("Cinema: " + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(screeningChoice-1).getCinema().getCinemaName());
-        System.out.println("ShowTime: " + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(screeningChoice-1).getShowTime());
-        System.out.println("Movie: " + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(screeningChoice-1).getMovie().getMovieName());
+        System.out.println("ShowTime: " + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(screeningChoice-1).getShowDateTime());
+        System.out.println("Movie: " + cineplex.getCinemas().get(cinemaChoice-1).getScreenings().get(screeningChoice-1).getMovie().getMovieTitle());
 
         //TESTING
         if (cineplex.getCinemas().get(cinemaChoice-1).getCinemaType() == CinemaType.ORDINARY){

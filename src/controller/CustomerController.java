@@ -8,8 +8,8 @@ import Initialiser.Initialise;
 
 
 public class CustomerController{
-    static Scanner sc = new Scanner(System.in);
-    private static ArrayList<Customer> customers = new ArrayList<Customer>();
+    Scanner sc = new Scanner(System.in);
+    private  ArrayList<Customer> customers = new ArrayList<Customer>();
 
     public CustomerController(){
 
@@ -19,7 +19,6 @@ public class CustomerController{
         for(int i=0; i<customers.size(); i++){
             if(customers.get(i).getUserName() == username){
                 return i;
-                
             }
         }
         return -1;
@@ -129,10 +128,8 @@ public class CustomerController{
         ArrayList<Ticket> arr;
         arr=customers.get(index).getBoughtTickets();
         for(int x=0;x<arr.size();x++){
-            TicketController.printTicket(); 
+            Initialise.tc.printTicket();
         }
-
-    
     }
 
     public static void clearcart(String username){

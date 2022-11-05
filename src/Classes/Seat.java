@@ -51,10 +51,10 @@ public class Seat {
         return seatType;
     }
 
-    public void setBookingStatus(boolean status) {
+    public void setIsBooked(boolean status) {
         isBooked = status;
     }
-    public boolean getBookingStatus() {
+    public boolean getIsBooked() {
         return isBooked;
     }
 

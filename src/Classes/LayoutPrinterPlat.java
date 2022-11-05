@@ -1,6 +1,8 @@
 package Classes;
 
-public class LayoutPrinterPlat implements LayoutPrinter{
+import Initialiser.Initialise;
+
+public class LayoutPrinterPlat extends LayoutPrinter{
         public static void printLayout(Screening screening) {
             System.out.printf("%36s", "Screen");
             System.out.println();

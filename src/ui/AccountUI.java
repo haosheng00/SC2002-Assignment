@@ -66,8 +66,6 @@ public class AccountUI {
         sc.close();
     }
 
-
-
     public static void initiateAdminUI(){
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -94,7 +92,7 @@ public class AccountUI {
         String username;
         String password;
         int i;
-        ArrayList<Customer> arr = Initialise.cc.getCustomerList();
+        ArrayList<Customer> arr = CustomerController.getCustomerList();
         int quit = 0;
         do{
             System.out.println("Enter username: ");

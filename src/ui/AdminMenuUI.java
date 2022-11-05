@@ -1,7 +1,8 @@
-import java.util.Scanner;
+package ui;
 
-import controller.*;
-import Classes.*;
+import Initialiser.Initialise;
+
+import java.util.Scanner;
 public class AdminMenuUI{
     public static void adminMenuOptions(){
         Scanner scanner = new Scanner(System.in);
@@ -12,7 +13,7 @@ public class AdminMenuUI{
             System.out.println("(1) - Movie Controls");
             System.out.println("(2) - Screening Controls");
             System.out.println("(3) - Ticket Controls");
-            System.out.println("(4) - Listing Controlsl");
+            System.out.println("(4) - Listing Controls");
             System.out.println("(5) - Go Back to Main Menu");
             System.out.println("========================================");
             option = scanner.nextInt();
@@ -22,10 +23,15 @@ public class AdminMenuUI{
                     MovieUI.initiateMovieUI();
                     break;
                 case 2:
-                    ScreeningUI.initiateScreeningUI(cineplex);
+                    System.out.println("Choose the Cineplex: ");
+                    for (int i = 0; i < Initialise.cineplexes.size(); i++){
+                        System.out.println("("+(i+1)+") "+Initialise.cineplexes.get(i).getCineplexName());
+                    }
+                    int cineplexChoice = scanner.nextInt();
+                    ScreeningUI.initiateScreeningUI(Initialise.cineplexes.get(cineplexChoice-1));
                     break;
                 case 3:
-                    TicketUI.initiateTicketUI();
+                    TicketUI.initiateAdminTicketUI();
                     break;
                 default:
                     System.out.println("Invalid Input");
