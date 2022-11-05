@@ -38,5 +38,6 @@ public class AdminMenuUI{
                     break;
             }
         }while (option != 3);
+        scanner.close();
     }
 }

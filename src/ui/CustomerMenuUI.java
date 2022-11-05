@@ -91,5 +91,6 @@ public class CustomerMenuUI{
                 break;
             }
         }while(option<4);
+        sc.close();
     }
 }
