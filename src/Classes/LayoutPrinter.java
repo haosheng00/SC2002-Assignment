@@ -1,5 +1,5 @@
 package Classes;
-public interface LayoutPrinter {
+public class LayoutPrinter {
         public static char setNewRow(char rowNumber){
             rowNumber++;
             System.out.println();
