@@ -97,6 +97,7 @@ public class TicketController {
                             if (seatIdChoice == cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getSeatId()) {
                                 if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getIsBooked() == false) {
                                     validSeatId = true;
+                                    //TODO: They will change the isBooked at payment?
                                     cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).setIsBooked(true);
                                     System.out.println("Ticket added to cart successfully!");
                                     //TODO: We add this ticket to cartTickets or what?
@@ -136,6 +137,7 @@ public class TicketController {
                             if (seatIdChoice == cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getSeatId()) {
                                 if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getIsBooked() == false) {
                                     validSeatId = true;
+                                    //TODO: They will change the isBooked at payment?
                                     cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).setIsBooked(true);
                                     System.out.println("Ticket added to cart successfully!");
                                     //TODO: We add this ticket to cartTickets or what?
@@ -175,6 +177,7 @@ public class TicketController {
                             if (seatIdChoice == cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getSeatId()) {
                                 if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getIsBooked() == false) {
                                     validSeatId = true;
+                                    //TODO: They will change the isBooked at payment?
                                     cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).setIsBooked(true);
                                     System.out.println("Ticket added to cart successfully!");
                                     //TODO: We add this ticket to cartTickets or what?
@@ -196,6 +199,7 @@ public class TicketController {
             PaymentUI.initiatePaymentUI();
 
         }
+    }
 
 
         public static double ticketPrice() {
@@ -244,4 +248,4 @@ public class TicketController {
         // }
 
     }
-}
+

@@ -13,7 +13,7 @@ public class AdminMenuUI{
             System.out.println("(1) - Movie Controls");
             System.out.println("(2) - Screening Controls");
             System.out.println("(3) - Ticket Controls");
-            System.out.println("(4) - Listing Controlsl");
+            System.out.println("(4) - Listing Controls");
             System.out.println("(5) - Go Back to Main Menu");
             System.out.println("========================================");
             option = scanner.nextInt();
@@ -31,7 +31,7 @@ public class AdminMenuUI{
                     ScreeningUI.initiateScreeningUI(Initialise.cineplexes.get(cineplexChoice-1));
                     break;
                 case 3:
-                    TicketUI.initiateTicketUI();
+                    TicketUI.initiateAdminTicketUI();
                     break;
                 default:
                     System.out.println("Invalid Input");

@@ -15,6 +15,7 @@ public class Movie {
     private Enum.AgeRestriction ageRestriction;
     private boolean is3D;
     private double overallRating;
+    //TODO: instead of a review array, we should make a arraylist, then we can remove the arraylist at serialiser
     private Review[] reviews;
 
     public Movie(String movieTitle){

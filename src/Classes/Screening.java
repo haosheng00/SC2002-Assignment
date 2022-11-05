@@ -2,15 +2,14 @@ package Classes;
 
 import Initialiser.Initialise;
 
-import java.util.TimeZone;
-
+//Left showDateTime to String first
 public class Screening {
     private Cinema cinema;
-    private TimeZone showDateTime;
+    private String showDateTime;
     private Movie movie;
     private Seat[] seats;
 
-    public Screening(Cinema cinema, TimeZone showDateTime, Movie movie){
+    public Screening(Cinema cinema, String showDateTime, Movie movie){
         this.cinema = cinema;
         this.showDateTime = showDateTime;
         this.movie = movie;
@@ -38,10 +37,10 @@ public class Screening {
         this.cinema = cinema;
     }
 
-    public TimeZone getShowDateTime() {
+    public String getShowDateTime() {
         return showDateTime;
     }
-    public void setShowDateTime(TimeZone showDateTime) {
+    public void setShowDateTime(String showDateTime) {
         this.showDateTime = showDateTime;
     }
 

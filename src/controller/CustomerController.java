@@ -9,7 +9,7 @@ import Initialiser.Initialise;
 
 public class CustomerController{
     Scanner sc = new Scanner(System.in);
-    private  ArrayList<Customer> customers = new ArrayList<Customer>();
+    private ArrayList<Customer> customers = new ArrayList<Customer>();
 
     public CustomerController(ArrayList<Customer> custList){
         this.customers = custList;
@@ -20,7 +20,6 @@ public class CustomerController{
         for(int i=0; i<customers.size(); i++){
             if(customers.get(i).getUserName() == username){
                 return i;
-                
             }
         }
         return -1;
@@ -126,10 +125,8 @@ public class CustomerController{
         ArrayList<Ticket> arr;
         arr=customers.get(index).getBoughtTickets();
         for(int x=0;x<arr.size();x++){
-            Initialise.tc.printTicket();
+            TicketController.printTicket(ticket);
         }
-
-    
     }
 
     public void clearcart(String username){

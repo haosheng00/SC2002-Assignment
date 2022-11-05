@@ -3,7 +3,6 @@ package controller;
 import Classes.*;
 
 import java.util.Scanner;
-import java.util.TimeZone;
 
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
@@ -28,7 +27,8 @@ public class ScreeningController {
             System.out.println("addScreening fail");
             return;
         }
-        cineplex.getCinemas().get(cinemaChoice - 1).getScreenings().add(new Screening(cineplex.getCinemas().get(cinemaChoice - 1), TimeZone.getTimeZone("Singapore"), movie));
+        //TODO: Update the showDateTime
+        cineplex.getCinemas().get(cinemaChoice - 1).getScreenings().add(new Screening(cineplex.getCinemas().get(cinemaChoice - 1), "160400", movie));
         System.out.println("addScreening success");
     }
     public static void deleteScreening(Cineplex cineplex){
