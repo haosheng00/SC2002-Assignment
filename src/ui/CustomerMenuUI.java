@@ -2,8 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-import controller.CustomerController;
-import controller.MovieController;
+import controller.*;
 
 public class CustomerMenuUI{
 
