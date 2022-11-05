@@ -69,7 +69,10 @@ public class PaymentController {
         TID = createTID();
         madePayment(TID, totalCharges, name, billingAddress, cardNumber);
 
-        //mark the seats as booked 
+        //mark the seats as booked for all tickets in the cart 
+        for (int i=0; i<cartTickets.size(); i++) {
+            cartTickets.get(i).getSeat().setBookingStatus(true);
+        }
 
         //update Sales
         updateSales(cartTickets);
