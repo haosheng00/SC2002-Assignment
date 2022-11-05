@@ -6,6 +6,7 @@ import controller.MovieController;
 import controller.TicketController;
 
 import java.util.Scanner;
+import controller.*;
 
 public class CustomerMenuUI{
 
@@ -18,7 +19,7 @@ public class CustomerMenuUI{
                 System.out.println("(1) - Search Movie");
                 System.out.println("(2) - Book Tickets");
                 System.out.println("(3) - View Past Tickets");
-                System.out.println("(4) - Back");
+                System.out.println("(4) - Log out");
                 option = sc.nextInt();
                 switch(option){
                     case 1: 
@@ -31,7 +32,7 @@ public class CustomerMenuUI{
                         }
                         //if movie exists --> show all the details of the movie 
                         else {
-                            Initialise.mc.printMovie(movieTitle);
+                            MovieController.printMovie();
                         }
                         } while (index != -1);
                         break;
@@ -41,7 +42,7 @@ public class CustomerMenuUI{
                     case 3:
                         //TODO: CREATE VIEW PAST TICKETS METHOD UNDER CUSTOMER CONTROLLER
                         //use serialiser to call username of the customer
-                        CustomerController.viewPastTickets (username);
+                        CustomerController.viewPastTickets (current.username);
                     case 4: 
                         break;
                     default:
