@@ -26,16 +26,68 @@ public class AccountUI {
                 initiateLoginUI();
             }
             else if(choice == 2){
-
-                //CustomerMenuUI.guestUI();
+                Login("guest","guest");
+                CustomerMenuUI.guestMenuOptions();
             }
             
         }while(choice<3);
         sc.close();
     }
     public static void initiateLoginUI(){
-        
+        Scanner sc = new Scanner(System.in);
+        String username;
+        int success;
+        int exitChoice=-3;
+        do{
+            System.out.println("Please enter username");
+            username = sc.next();
+            System.out.println("Please enter password");
+            String password = sc.next();
+            success = Login(username, password);
+            switch (success){
+                case 0:
+                    System.out.println("Username or password incorrect");
+                    System.out.println("1: Try again");
+                    System.out.println("2: Exit");
+                    exitChoice = sc.nextInt();
+                    break;
+                case 1:
+                    AdminMenuUI.adminMenuOptions();
+                case 2:
+                    CustomerMenuUI.customerMenuOptions();
+            }
+        }while(exitChoice !=2);
+        sc.close();
     }
+    public static int  Login(String username, String password){
+        int isCustomer = -2;
+        isCustomer = CustomerController.searchCustomer(username);
+        int isAdmin = -2;
+        isAdmin = CustomerController.searchCustomer(username);
+        int isGuest=0;
+        if(isCustomer ==0) isGuest = 1;
+
+        if(isAdmin !=-1){
+            if(AdminController.getAdminsList().get(isAdmin).getPassword()==password)
+            return 1;
+            else 
+                return 0;
+                
+        }
+        if(isCustomer >0){
+            if(CustomerController.getCustomersList().get(isCustomer).getPassword()==password){
+                return 2;
+            }
+            else 
+                return 0;
+
+        }
+        if(isGuest ==1){
+            return 3;
+        }
+        return 4;
+    }
+
     public static void initiateCustomerUI(){
         Scanner sc = new Scanner(System.in);
         int choice;

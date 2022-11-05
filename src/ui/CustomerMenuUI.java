@@ -1,60 +1,95 @@
 package ui;
-
-<<<<<<< HEAD
-import java.util.Scanner;
-
-=======
 import Initialiser.Initialise;
-import controller.CustomerController;
-import controller.MovieController;
-import controller.TicketController;
-
 import java.util.Scanner;
->>>>>>> 85f84b6e3ddd24b834e86936e8083d9fa7c307bd
+
 import controller.*;
 
 public class CustomerMenuUI{
 
     public static void customerMenuOptions(){
         try (Scanner sc = new Scanner(System.in)) {
-            int option = 0;
-            do{
+        int option = 0;
+        do{
                 System.out.println("========================================");
-                System.out.println("Hello! Please select an option.");
+                System.out.println("Please select an option.");
                 System.out.println("(1) - Search Movie");
                 System.out.println("(2) - Book Tickets");
                 System.out.println("(3) - View Past Tickets");
-                System.out.println("(4) - Log out");
+                System.out.println("(4) - Movie reviews");
+                System.out.println("(5) - See Top 5 Movies");
+                System.out.println("(6) - Log Out");
                 option = sc.nextInt();
                 switch(option){
                     case 1: 
                         System.out.println("Enter the title of the Movie: ");
                         String movieTitle = sc.next();
                         int index = MovieController.searchMovie(movieTitle);
-                        do {
-                            if (index == -1) {
-                            System.out.println("The movie entered does not exists. Please enter the title again");
-                        }
+                        if (index == -1) {
+                        System.out.println("The movie entered does not exist. Please enter the title again");}
                         //if movie exists --> show all the details of the movie 
                         else {
-                            MovieController.printMovie();
+                            MovieController.printMovie(movieTitle);
                         }
-                        } while (index != -1);
                         break;
                     case 2:
                         TicketController.createBooking(Initialise.cineplexes);
                         break;
                     case 3:
-                        //TODO: CREATE VIEW PAST TICKETS METHOD UNDER CUSTOMER CONTROLLER
-                        //use serialiser to call username of the customer
+                        //Use serialiser here 
                         CustomerController.viewPastTickets (current.username);
+                        break;
                     case 4: 
+                        ReviewUI.initiateReviewUI();
+                        break;
+                    case 5:
+                    //current returns an array of top5 movies, tp discuss with team on whether we need a movie UI
+                    // because searchMovie also has a similar problem
+                        MovieController.getTop5Movies();
+                        break;
+                    case 6:
                         break;
                     default:
-                        System.out.println("Invalid Input");
-                        break;
+                    System.out.println("Invalid Input");
+                    break;
                 }
-            }while (option != 3);
+            }while (option < 6);
         }
+    }
+
+    public static void guestMenuOptions(){
+        Scanner sc = new Scanner(System.in);
+        int option;
+        do{
+            System.out.println("========================================");
+            System.out.println("Please select an option.");
+            System.out.println("(1) - Search Movie");
+            System.out.println("(2) - Book Tickets");
+            System.out.println("(3) - See Top 5 Movies");
+            System.out.println("(4) - back");
+            option = sc.nextInt();
+            switch(option){
+                case 1: 
+                System.out.println("Enter the title of the Movie: ");
+                String movieTitle = sc.next();
+                int index = MovieController.searchMovie(movieTitle);
+                if (index == -1) {
+                System.out.println("The movie entered does not exist. Please enter the title again");}
+                //if movie exists --> show all the details of the movie 
+                else {
+                    MovieController.printMovie(movieTitle);
+                }
+                break;
+            case 2:
+                TicketController.createBooking(Initialise.cineplexes);
+                break;
+            case 3:
+                MovieController.getTop5Movies();
+                break;
+            case 4:
+                break;
+            default:
+                break;
+            }
+        }while(option<4);
     }
 }

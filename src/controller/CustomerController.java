@@ -8,8 +8,8 @@ import Initialiser.Initialise;
 
 
 public class CustomerController{
-    Scanner sc = new Scanner(System.in);
-    private  ArrayList<Customer> customers = new ArrayList<Customer>();
+    static Scanner sc = new Scanner(System.in);
+    private  static ArrayList<Customer> customers = new ArrayList<Customer>();
 
     public CustomerController(){
 
@@ -28,9 +28,9 @@ public class CustomerController{
         username = null;
         int customerExists = -2;
         int adminExists = -2;
+        System.out.println("Please enter username to create new account:");
+        username = sc.next();
        do{
-            System.out.println("Please enter username to create new account:");
-            username = sc.next();
             customerExists = searchCustomer(username);
             adminExists = AdminController.searchAdmin(username);
             if(customerExists==-1 && adminExists ==-1){
@@ -128,7 +128,7 @@ public class CustomerController{
         ArrayList<Ticket> arr;
         arr=customers.get(index).getBoughtTickets();
         for(int x=0;x<arr.size();x++){
-            Initialise.tc.printTicket();
+            TicketController.printTicket(arr.get(x));
         }
     }
 
@@ -137,7 +137,9 @@ public class CustomerController{
         customers.get(index).getCartTickets().clear();
     }
     
-    
+    public static ArrayList<Customer> getCustomersList(){
+        return customers;
+    }
 
 
 

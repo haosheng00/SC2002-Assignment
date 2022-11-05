@@ -232,7 +232,7 @@ public class TicketController {
             System.out.println();
         }
 
-        public void printTicket(Ticket ticket){
+        public static void printTicket(Ticket ticket){
 
             System.out.println("Your ticket details are as follows: ");
             System.out.println("Movie: " + ticket.getMovie());
