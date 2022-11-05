@@ -22,7 +22,7 @@ public class CustomerMenuUI{
                     case 1: 
                         System.out.println("Enter the title of the Movie: ");
                         String movieTitle = sc.next();
-                        /*int index = MovieController.searchMovie(movieTitle);
+                        int index = MovieController.searchMovie(movieTitle);
                         do {
                             if (index == -1) {
                             System.out.println("The movie entered does not exists. Please enter the title again");
