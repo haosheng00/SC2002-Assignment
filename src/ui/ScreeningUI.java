@@ -8,7 +8,6 @@ public class ScreeningUI {
     public static void initiateScreeningUI(Cineplex cineplex) {
         int option = 0;
         Scanner sc = new Scanner(System.in);
-
         do {
             System.out.println("========================================");
             System.out.println("Welcome to MOBLIMA ScreeningController for " + cineplex.getCineplexName() + " cineplex");
