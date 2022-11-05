@@ -1,5 +1,7 @@
 package ui;
 
+import Classes.Cineplex;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
