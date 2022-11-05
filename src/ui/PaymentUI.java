@@ -1,7 +1,7 @@
 package ui;
 
 import java.util.Scanner;
-//import controller.PaymentController;
+import controller.PaymentController;
 
 import Initialiser.Initialise;
 
@@ -27,10 +27,10 @@ public class PaymentUI {
             choice = sc.nextInt();
             switch(choice) {
                 case 1:
-                    Initialise.pc.showTickets(Initialise.customers.get(customerIndex).getCartTickets());
+                    PaymentController.showTickets(Initialise.customers.get(customerIndex).getCartTickets());
                     break;
                 case 2:
-                    Initialise.pc.checkoutUI();
+                    PaymentController.checkoutUI();
                     break;
                 //case 3:
                     //Initialise.pc.showTickets(Initialise.customers.get(customerIndex).getBoughtTickets());

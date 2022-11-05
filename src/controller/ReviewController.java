@@ -6,7 +6,6 @@ import Initialiser.Initialise;
 import Classes.*;
 
 public class ReviewController {
-    
     //DO WE NEED A ARRAYLIST OF REVIEWS? OR JUST ARRAYLIST OF EACH MOVIE WILL DO?
     private ArrayList<Review> Reviews;
 
@@ -17,7 +16,9 @@ public class ReviewController {
     }
 
     //returns the index of the movie in the Movie array 
-    public int searchMovie() {
+    public static int searchMovie() {
+
+        Scanner sc = new Scanner(System.in);
         String movieTitle;
         int exist;
         int choice;
@@ -43,7 +44,9 @@ public class ReviewController {
         }
         return exist;
     }    
-    public void addReview(String userName) {
+    public static void addReview(String userName) {
+
+        Scanner sc = new Scanner(System.in);
         
         int movieIndex = searchMovie();
         if (movieIndex == -1) {
@@ -63,49 +66,63 @@ public class ReviewController {
         //add review to the review array of each movie!!
         //get particular movie --> get review array --> add review 
         Movie movie = Initialise.Movies.get(movieIndex);
-        movie.getReview().add(new Review(review,rating,userName,dateTime,movie));
-        //how to get the DATETIME?
-        //add review to all reviews array 
-        Reviews.add(new Review(review,rating,userName,dateTime,movie));
+        movie.getReviews().add(new Review(review,rating,userName,dateTime,movie));
+
+        //add review to all reviews array - NEED???
+        //Reviews.add(new Review(review,rating,userName,dateTime,movie));
 
         //update overallRating 
-        double updatedRating = (rating+movie.getOverallRating())/(movie.getReview().size());
+        double updatedRating = (rating+movie.getOverallRating())/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
+
+        System.out.println("Your review has been added.");
     }
 
     //iterate thru the reviews to find the particular username
-    public void deleteReview(String userName) {
+    public static void deleteReview(String userName) {
         int movieIndex = searchMovie();
         if (movieIndex == -1) {
             return;
         }
 
         Movie movie = Initialise.Movies.get(movieIndex);
+        ArrayList <Review> r = movie.getReviews();
+        int size = movie.getReviews().size();
+        double oldRating = 0;
         //iterate thru the reviews of each movie to find the particular username
-        for (Review r: movie.getReview()) {
-            if (r.getUserName() == userName) {
-                r.remove(movieIndex);
+        for (int i=0; i<size; i++) {
+            if (r.get(i).getUserName() == userName) {
+                oldRating = r.get(i).getRating();
+                r.remove(i);
+                break;
             }
         }
 
-        //NEED TO REMOVE FROM OVERALL REVIEWS LIST
+        //NEED TO REMOVE FROM OVERALL REVIEWS LIST???
 
         //update ratings 
-        double updatedRating = (movie.getOverallRating())/(movie.getReview().size());
+        double updatedRating = (movie.getOverallRating()-oldRating)/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
+
+        System.out.println("Your review has been deleted.");
     }
 
-    public void updateReview(String userName) {
+    public static void updateReview(String userName) {
+
+        Scanner sc = new Scanner(System.in);
+
+        //get movie index 
         int movieIndex = searchMovie();
         if (movieIndex == -1) {
             return;
         }
+        
         int ratingExist = 0;
-        int reviewIndex;
-        double oldRating;
+        int reviewIndex = 0;
+        double oldRating = 0;
 
         Movie movie = Initialise.Movies.get(movieIndex);
-        ArrayList <Review> reviews = movie.getReview();
+        ArrayList <Review> reviews = movie.getReviews();
         int size = reviews.size();
 
         //search whether his rating exists
@@ -117,42 +134,50 @@ public class ReviewController {
                 break;
             }
         }
-        //if rating don't exist 
+
+        //if rating doesn't exists
         if (ratingExist == 0) {
             System.out.println("You have not entered a rating for this movie before.");
             return;
         }
+
+        //if rating exists
         String review;
         Double rating;
         System.out.println("Please enter your new rating: ");
         rating = sc.nextDouble();
         System.out.println("Please enter your new review: ");
         review = sc.next();
-
-        //Update reviews array for movie
-        reviews.get(reviewIndex).setDescription(review);
-        reviews.get(reviewIndex).setRating(rating);
-        //update time 
         String dateTime = Initialise.dt.reviewDateTime();
-        reviews.get(reviewIndex).setDateTime(dateTime);
+
+        //delete review from Reviews array 
+        reviews.remove(reviewIndex);
+        //add review to the end of Reviews array -- ensure that review array is updated by time
+        reviews.add(new Review(review, rating, userName, dateTime, movie));
+        
+        // //Update reviews array for movie
+        // reviews.get(reviewIndex).setDescription(review);
+        // reviews.get(reviewIndex).setRating(rating);
+        // reviews.get(reviewIndex).setDateTime(dateTime);
 
         //NEED TO UPDATE FOR OVERALL REVIEWS ARRAY???
                 
         //update overallRating 
         double updatedRating = (movie.getOverallRating()-oldRating+rating)/(reviews.size());
         movie.setOverallRating(updatedRating);
+
+        System.out.println("Your review has been updated.");
     }
 
-    //print all reviews of movie -- sort by dateTime (NOT SORTED - COULD UPDATE AND IS EARLIER TIMING)
-    //WHEN UPDATE -- CAN REMOVE AND BE ADDED AGN TO LAST INDEX 
-    public void printReview(Movie movie) {
+    //print all reviews of movie -- sort by dateTime 
+    public static void printReview(Movie movie) {
         
-        int lastIndex = movie.getReview().size()-1;
+        int lastIndex = movie.getReviews().size()-1;
 
         System.out.println(movie.getMovieTitle() + " Reviews");
 
         for (int i=lastIndex; i>=0; i++) {
-            Review r = movie.getReview().get(i);
+            Review r = movie.getReviews().get(i);
             System.out.println("Time of Review: " + r.getDateTime());
             System.out.println("Username: " + r.getUserName());
             System.out.println("Rating: " + r.getRating());

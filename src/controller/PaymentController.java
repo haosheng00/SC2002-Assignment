@@ -7,7 +7,6 @@ import controller.CustomerController;
 import Initialiser.Initialise;
 
 public class PaymentController {
-    Scanner sc = new Scanner(System.in);
 
     //list of all payments made in the cinema
     private static ArrayList<Payment> Payments;
@@ -18,7 +17,7 @@ public class PaymentController {
     }
 
     //checkout all tickets in the cart
-    public void checkoutUI() {
+    public static void checkoutUI() {
         int choice = 0;
         int TID = 0;
         double totalCharges;
@@ -26,6 +25,7 @@ public class PaymentController {
         String cardNumber;
         String billingAddress;
         String cvc;
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Cart: ");
 
@@ -35,11 +35,9 @@ public class PaymentController {
 
         //initialise customer array 
         ArrayList <Customer> cus = Initialise.customers;
-        //initialise customer controller
-        CustomerController cusController = Initialise.cc;
         //get index of customer by searching their username 
         //DONT NEED ACCOUNT FOR IF THEIR USERNAME DOESNT EXIST - MUST EXIST SINCE CAN LOG IN 
-        int customerIndex = cusController.searchCustomer(username);
+        int customerIndex = CustomerController.searchCustomer(username);
         //get the cartTickets of the target customer 
         ArrayList <Ticket> cartTickets = cus.get(customerIndex).getCartTickets();
 
@@ -66,12 +64,12 @@ public class PaymentController {
         System.out.println("Please enter your CVC/CVV: ");
         cvc = sc.next();
         System.out.println("The amount of " + totalCharges + "will be charged to your card, under the name " + name);
-        TID = createTID();
+        TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, billingAddress, cardNumber);
 
         //mark the seats as booked for all tickets in the cart 
         for (int i=0; i<cartTickets.size(); i++) {
-            cartTickets.get(i).getSeat().setBookingStatus(true);
+            cartTickets.get(i).getSeat().setIsBooked(true);
         }
 
         //update Sales
@@ -87,16 +85,16 @@ public class PaymentController {
     }
 
     //made payment and add payment to the Payment list
-    public void madePayment(int TID, double totalCharges, String CreditCardName, String billingAddress, String billingCardNumber) {
+    public static void madePayment(int TID, double totalCharges, String CreditCardName, String billingAddress, String billingCardNumber) {
         Payments.add(new Payment(TID,totalCharges,CreditCardName,billingAddress,billingCardNumber));
     }
 
-    public int createTID() {
+    public static int createTID(Ticket t) {
         //Each payment will have a transaction id (TID). 
         //The TID is of the format XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour, m : minutes, XXX:cinemacodeinletters)
+        
         //get XXX (CinemaCode) 
-        //EDIT AFTER WX ADD HIS CODE 
-        String cinemaCode = "";
+        String cinemaCode = t.getCinema().getCinemaCode();
         //get YYYYMMDDhhmm
         String dateTime = Initialise.dt.paymentDateTime();
         //combine to get TID 
@@ -106,7 +104,7 @@ public class PaymentController {
         return TID;
     }
 
-    public double calcPayment(ArrayList<Ticket> cartTickets) {
+    public static double calcPayment(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
         int sum = 0;
         for (int i=0; i<size; i++) {
@@ -116,37 +114,39 @@ public class PaymentController {
         return sum;
     }
 
-    public void printReceipt(ArrayList<Ticket> cartTickets) {
+    public static void printReceipt(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
         System.out.println("Receipt:");
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
-            System.out.println("Movie: " + cartTickets.get(i).getMovie());
-            System.out.println("Showtime: "+ cartTickets.get(i).getshowDate() + " " + cartTickets.get(i).getshowTime());
-            System.out.println("Cineplex: " + cartTickets.get(i).getcineplex() + " Cinema " + cartTickets.get(i).getcinema());
-            System.out.println("Seat Number: " + cartTickets.get(i).getseat().getseatId());
-            System.out.println("Ticket Price: " + cartTickets.get(i).getticketPrice());
+            TicketController.printTicket(cartTickets.get(i));
+            // System.out.println("Movie: " + cartTickets.get(i).getMovie());
+            // System.out.println("Showtime: "+ cartTickets.get(i).getShowDate() + " " + cartTickets.get(i).getShowTime());
+            // System.out.println("Cineplex: " + cartTickets.get(i).getCineplex() + " Cinema " + cartTickets.get(i).getCinema());
+            // System.out.println("Seat Number: " + cartTickets.get(i).getSeat().getSeatId());
+            // System.out.println("Ticket Price: " + cartTickets.get(i).getTicketPrice());
         }
         System.out.println("Total Payment: " + calcPayment(cartTickets));
     }
 
-    public void showTickets(ArrayList<Ticket> Tickets) {
+    public static void showTickets(ArrayList<Ticket> Tickets) {
         int size = Tickets.size();
-        System.out.println("Tickets:");
+        System.out.println("Here are the details of your tickets:");
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
-            System.out.println("Movie: " + Tickets.get(i).getmovie());
-            System.out.println("Showtime: "+ Tickets.get(i).getshowDate() + " " + Tickets.get(i).getshowTime());
-            System.out.println("Cineplex: " + Tickets.get(i).getcineplex() + " Cinema " + Tickets.get(i).getcinema());
-            System.out.println("Seat Number: " + Tickets.get(i).getseat().getseatId());
-            System.out.println("Ticket Price: " + Tickets.get(i).getticketPrice());
+            TicketController.printTicket(Tickets.get(i));
+            // System.out.println("Movie: " + Tickets.get(i).getMovie());
+            // System.out.println("Showtime: "+ Tickets.get(i).getShowDate() + " " + Tickets.get(i).getShowTime());
+            // System.out.println("Cineplex: " + Tickets.get(i).getCineplex() + " Cinema " + Tickets.get(i).getCinema());
+            // System.out.println("Seat Number: " + Tickets.get(i).getSeat().getSeatId());
+            // System.out.println("Ticket Price: " + Tickets.get(i).getTicketPrice());
         }
     }
  
     //update sales of each movie
-    public void updateSales(ArrayList <Ticket> cartTickets) {
+    public static void updateSales(ArrayList <Ticket> cartTickets) {
 
         int size = cartTickets.size();
         //iterate thru Tickets --> find movie and add ticketprice to sales 
@@ -160,7 +160,7 @@ public class PaymentController {
 
     //update ticket history for each customer
     //add cartTickets to the boughtTix array
-    public void updateTicketHistory(Customer cus) {
+    public static void updateTicketHistory(Customer cus) {
         ArrayList <Ticket> cartTickets = cus.getCartTickets();
         int size = cartTickets.size(); 
         for (int i=0; i<size; i++) {

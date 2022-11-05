@@ -1,5 +1,6 @@
 package Classes;
 
+import java.util.ArrayList;
 public class Movie {
 
     // TODO: Add javadocs
@@ -15,8 +16,7 @@ public class Movie {
     private Enum.AgeRestriction ageRestriction;
     private boolean is3D;
     private double overallRating;
-    //TODO: instead of a review array, we should make a arraylist, then we can remove the arraylist at serialiser
-    private Review[] reviews;
+    private ArrayList <Review> reviews;
 
     public Movie(String movieTitle){
         this.movieTitle = movieTitle;
@@ -111,7 +111,7 @@ public class Movie {
         return overallRating;
     }
 
-    public Review[] getReviews(){
+    public ArrayList<Review> getReviews(){
         return reviews;
     }
 

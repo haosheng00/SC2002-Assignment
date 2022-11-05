@@ -1,4 +1,4 @@
-package Serialiser;
+package serialiser;
 
 import Initialiser.*;
 

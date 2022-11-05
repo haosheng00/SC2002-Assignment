@@ -12,7 +12,8 @@ public class MovieController{
     private static ArrayList<Movie> movies = new ArrayList<Movie>();
 
     public MovieController(){}
-    public int searchMovie(String movieTitle){
+    
+    public static int searchMovie(String movieTitle){
         movieTitle = movieTitle.toUpperCase();
         for(int i=0; i<movies.size(); i++){
             if(movies.get(i).getMovieTitle() == movieTitle){
@@ -21,7 +22,7 @@ public class MovieController{
         }
         return -1;
     }
-    public void addMovie(){
+    public static void addMovie(){
         String movieTitle, synopsis, director;
         String[] casts;
         Classes.Enum.MovieGenre[] movieGenres;
@@ -59,7 +60,7 @@ public class MovieController{
         }
     }
         
-    public int deleteMovie(){
+    public static int deleteMovie(){
         System.out.println("Please enter Movie to delete: ");
         String movieTitle = sc.next();
         int exists = searchMovie(movieTitle);
@@ -73,7 +74,7 @@ public class MovieController{
         return 0;
     }
 
-    public int updateMovie(){
+    public static int updateMovie(){
         String movieTitle;
         System.out.println("Enter movie title: ");
         movieTitle = sc.next();
@@ -123,7 +124,7 @@ public class MovieController{
         return 0;
     }
 
-    public void printMovie(String movieTitle){
+    public static void printMovie(String movieTitle){
         int index = searchMovie(movieTitle);
         if(index != -1){
             System.out.println("Movie Title: " );
@@ -135,11 +136,11 @@ public class MovieController{
 
 
     }
-    public ArrayList<Movie> getMovieList(){
+    public static ArrayList<Movie> getMovieList(){
         return MovieController.movies;
     }
 
-    public ArrayList<Movie> getTop5Movies(){
+    public static ArrayList<Movie> getTop5Movies(){
         ArrayList<Movie> top5 = new ArrayList<Movie>();
         for (Movie movie : movies) {
             if (!movie.getMovieStatus().equals(MovieStatus.END_OF_SHOWING)) top5.add(movie);
