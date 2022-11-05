@@ -15,10 +15,10 @@ public class TicketUI {
 
         do{
             System.out.println("========================================");
-            System.out.println("Select choice");
+            System.out.println("Select choice:");
             System.out.println("(1) Update Ticket Price");
             System.out.println("(2) Update Holidays");
-            System.out.println("(2) Go Back To Main Menu");
+            System.out.println("(3) Go Back To Main Menu");
             System.out.println("========================================");
 
             option  = 0;

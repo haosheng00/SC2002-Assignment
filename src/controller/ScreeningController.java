@@ -12,11 +12,14 @@ public class ScreeningController {
         int i;
         System.out.println("Movie Title: ");
         String movieTitle = sc.next();
-        //TODO: create a check movieTitle function in movie, if it aligns, returns me the movie object OR do drop-down options
+        // (1) - OPTIOISND
+        // (2) - SDAJSDASD
+        //TODO: do drop-down options
         //TODO: Don't Create a Movie 
         Movie movie = new Movie(movieTitle);
-        System.out.println("Show Time: ");
+        System.out.println("Add date(TODO:format): ");
         //TODO: parsing of date and time format
+        System.out.println("Add time(TODO:format): ");
         System.out.println("Cinema: ");
         for (i = 1; i <= cineplex.getCinemas().size(); i++) {
             System.out.println("(" + i + ")" + cineplex.getCinemas().get(i - 1).getCinemaName());
@@ -56,9 +59,9 @@ public class ScreeningController {
         cineplex.getCinemas().get(cinemaChoice - 1).getScreenings().remove(screeningChoice-1);
         System.out.println("deleteScreening success");
     }
-    public static void updateScreening(Cineplex cineplex){
-    }
+
     public static void showScreening(Cineplex cineplex){
+        //TODO: showScreening based on cineplex->movie->print
         int i;
         System.out.println("Cinema: ");
         for (i = 1; i <= cineplex.getCinemas().size(); i++) {

@@ -30,8 +30,14 @@ public class Initialise {
     //public static AdminController ac = new AdminController(admins);
     
     /* Initialise MovieController */
-    public static ArrayList<Movie> Movies = new ArrayList<Movie>();
+    public static ArrayList<Movie> movies = new ArrayList<Movie>();
     //public static MovieController mc = new MovieController();
+    public static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
+    public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
+
+
+
+    
 
     //public static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
     //public static ArrayList<Screening> screenings = new ArrayList<Screening>();

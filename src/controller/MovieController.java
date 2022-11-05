@@ -1,7 +1,7 @@
 package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import Initialiser.Initialise;
 import Classes.*;
 import Classes.Enum.MovieGenre;
 import Classes.Enum.MovieStatus;
@@ -9,11 +9,9 @@ import Classes.Enum.MovieStatus;
 
 public class MovieController {
     static Scanner sc = new Scanner(System.in);
-    private static ArrayList<Movie> movies = new ArrayList<Movie>();
-    private static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
-    private static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
-
-    public MovieController(){}
+    static ArrayList<Movie> movies = Initialise.movies;
+    static ArrayList<Movie> top5BySales = Initialise.top5BySales;
+    static ArrayList<Movie> top5ByRatings = Initialise.top5ByRatings;
     
     public static int searchMovie(String movieTitle){
         movieTitle = movieTitle.toUpperCase();
@@ -57,7 +55,6 @@ public class MovieController {
                 if (s == "Y") newMovie.setIs3D(true);
                 else if (s == "N") newMovie.setIs3D(false);
             }
-
             break;
         }
     }
@@ -85,9 +82,8 @@ public class MovieController {
 
         System.out.println("Select one option:");
         System.out.println("(1) Update Movie Title");
-        System.out.println("(2) Update Movie Synopsis");
-        System.out.println("(3) Update Movie Status");
-        System.out.println("(4) Back to previous menu");
+        System.out.println("(2) Update Movie Status");
+        System.out.println("(3) Back to previous menu");
 
         choice = sc.nextInt();
         switch(choice){
@@ -95,9 +91,6 @@ public class MovieController {
                 movies.get(index).setMovieTitle(sc.next().toUpperCase());
                 break;
             case 2:
-                movies.get(index).setSynopsis(sc.next().toUpperCase());
-                break;
-            case 3:
                 System.out.println("Update to:");
                 System.out.println("(1) Coming soon");
                 System.out.println("(2) Preview");
@@ -119,10 +112,9 @@ public class MovieController {
                         break;
                 }
                 break;
-                case 4:
+                case 3:
                     break;
         }
-
         return 0;
     }
 
@@ -139,20 +131,39 @@ public class MovieController {
         return MovieController.movies;
     }
 
-    public static ArrayList<Movie> getTop5Movies(){        
+    //TODO: create function for printing list of movies
 
-        System.out.println("Sort by:");
-        System.out.println("(1) - By Overall Rating");
-        System.out.println("(2) - By Sales");
-        int choice = sc.nextInt();
-
-        if (choice == 1) return top5ByRatings;
-        else return top5BySales;
+    public static void getTop5Movies(int criteria){        
         
+        int choice = sc.nextInt();
+        
+        if(criteria == 3){
+            System.out.println("Sort by:");
+            System.out.println("(1) - By Overall Rating");
+            System.out.println("(2) - By Sales");
+            //TODO: Catch invalid option
+            if (choice == 1) {
+                for (int i = 0; i < top5ByRatings.size(); i++){
+                    MovieController.printMovie(top5ByRatings.get(i).getMovieTitle());
+                }
+            }
+            else {
+                for (int i = 0; i < top5BySales.size(); i++){
+                    MovieController.printMovie(top5BySales.get(i).getMovieTitle());
+                }
+            }
+        }
+        else if (criteria == 1){
+            System.out.println("Movies by Overall Rating: ");
+            for (int i = 0; i < top5ByRatings.size(); i++){
+                    MovieController.printMovie(top5ByRatings.get(i).getMovieTitle());
+                }
+        }
+        else if (criteria == 2){
+            System.out.println("Movies by Sales: ");
+            for(int i = 0; i < top5BySales.size(); i++){
+                MovieController.printMovie(top5BySales.get(i).getMovieTitle());
+            }
+        }
     }
-
-
-
-
-
 }

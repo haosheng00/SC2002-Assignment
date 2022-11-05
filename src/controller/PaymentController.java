@@ -8,8 +8,11 @@ import Initialiser.Initialise;
 
 public class PaymentController {
 
+    //static and initialise all the arrays 
+
     //list of all payments made in the cinema
-    private static ArrayList<Payment> Payments;
+    //private static ArrayList<Payment> Payments;
+    private static ArrayList<Payment> Payments = Initialise.payments;
 
     //constructor of PaymentController
     public PaymentController(ArrayList<Payment> Payments) {

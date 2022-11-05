@@ -9,18 +9,10 @@ import ui.*;
 
 public class TicketController {
 
-    private static ArrayList<Ticket> tickets;
-    private static ArrayList<Screening> screenings;
-    private static ArrayList<DateTime> holidays;
+    static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
+    //initialise holidays;
 
     static Scanner sc = new Scanner(System.in);
-
-    public TicketController(ArrayList<Ticket> tickets, ArrayList<Screening> screenings, ArrayList<DateTime> holidays) {
-        TicketController.tickets = tickets;
-        TicketController.screenings = screenings;
-        TicketController.holidays = holidays;
-    }
-
 
     public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) {
 
@@ -44,8 +36,9 @@ public class TicketController {
         } while (cineplexChoice < 0 || cineplexChoice > i);
 
         do {
+            //TODO - ask for Movie 
             System.out.println("========================================");
-            System.out.println("Select Cineplex: ");
+            System.out.println("Select Movie: ");
             for (i = 0; i < cineplexes.get(cineplexChoice - 1).getCinemas().size(); i++) {
                 System.out.println((i + 1) + ": " + cineplexes.get(cineplexChoice - 1).getCinemas().get(i).getCinemaName());
             }
@@ -217,25 +210,27 @@ public class TicketController {
             return ticketPrice;
         }
 
-        public Boolean searchTicket(ArrayList < Ticket > tickets) {
-            for (int i = 0; i < tickets.size(); i++) {
-                if (tickets.contains(tickets.get(i).getTicket())) {
-                    return true;
-                }
-            }
-            return false;
-        }
+        // public Boolean searchTicket(ArrayList<Ticket> tickets) {
+        //     for (int i = 0; i < tickets.size(); i++) {
+        //         if (tickets.contains(tickets.get(i).getTicket())) {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
 
 
         public static void updateTicketPrice(){
             //FOR ADMIN
-
+            //TODO
+            // drop down type of ticket
             System.out.println();
         }
 
-        public static void updateHolidays(){
+        public static void updateHolidays(Initialise.Holidays){
             //FOR ADMIN
-
+            //TODO
+            // put holiday array under initaliser
             System.out.println();
 
         }

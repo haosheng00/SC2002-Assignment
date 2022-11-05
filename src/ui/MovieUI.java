@@ -24,10 +24,12 @@ public class MovieUI {
                     MovieController.deleteMovie();
                     break;
                 case 3:
-                    // MovieController.updateMovie();
+                    MovieController.updateMovie();
+                    break;
                 case 4:
                     String movieTitle = sc.next();
                     MovieController.searchMovie(movieTitle);
+                    break;
                 default:
                     break;
             }

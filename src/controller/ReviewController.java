@@ -7,10 +7,11 @@ import Classes.*;
 
 public class ReviewController {
     //DO WE NEED A ARRAYLIST OF REVIEWS? OR JUST ARRAYLIST OF EACH MOVIE WILL DO?
-    private ArrayList<Review> Reviews;
+    
+    private static ArrayList<Review> reviews = Initialise.reviews;
 
     public ReviewController (ArrayList <Review> Reviews) {
-        this.Reviews = Reviews;
+        ReviewController.reviews = Reviews;
     }
 
     //TODO: UPDATE TOP5 REVIEWS 
@@ -68,7 +69,7 @@ public class ReviewController {
 
         //add review to the review array of each movie!!
         //get particular movie --> get review array --> add review 
-        Movie movie = Initialise.Movies.get(movieIndex);
+        Movie movie = MovieController.movies.get(movieIndex);
         movie.getReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
 
         //add review to all reviews array - NEED???
@@ -88,7 +89,7 @@ public class ReviewController {
             return;
         }
 
-        Movie movie = Initialise.Movies.get(movieIndex);
+        Movie movie = Initialise.movies.get(movieIndex);
         ArrayList <Review> r = movie.getReviews();
         int size = movie.getReviews().size();
         double oldRating = 0;
@@ -124,7 +125,7 @@ public class ReviewController {
         int reviewIndex = 0;
         double oldRating = 0;
 
-        Movie movie = Initialise.Movies.get(movieIndex);
+        Movie movie = Initialise.movies.get(movieIndex);
         ArrayList <Review> reviews = movie.getReviews();
         int size = reviews.size();
 

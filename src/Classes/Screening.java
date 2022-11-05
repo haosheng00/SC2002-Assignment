@@ -3,6 +3,7 @@ package Classes;
 import Initialiser.Initialise;
 
 //Split Date & Time
+//TODO: just pass in movieTitle instead of whole movie object?
 public class Screening {
     private Cinema cinema;
     private String showDateTime;

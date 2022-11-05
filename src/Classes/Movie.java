@@ -114,5 +114,4 @@ public class Movie {
     public ArrayList<Review> getReviews(){
         return reviews;
     }
-
     }

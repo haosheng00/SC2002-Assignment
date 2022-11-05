@@ -59,13 +59,9 @@ public class CustomerMenuUI{
                     case 4: 
                         ReviewUI.initiateReviewUI(customer);
                         break;
-                    case 5:
-                    //current returns an array of top5 movies, to discuss with team on whether we need a movie UI
-                    // because searchMovie also has a similar problem
-                        ArrayList<Movie> top5 = MovieController.getTop5Movies();
-                        for (i = 0; i < top5.size(); i++){
-                            MovieController.printMovie(top5.get(i).getMovieTitle());
-                        }
+                    case 
+                    //TODO: new ListingController, 1 2 3
+                        MovieController.getTop5Movies(ListingController.getListingCriteria());
                         break;
                     case 6:
                         break;

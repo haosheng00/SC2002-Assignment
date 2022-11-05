@@ -39,6 +39,7 @@ public class Cinema {
     public ArrayList<Screening> getScreenings(){
         return this.screenings;
     }
+    
     public void setScreenings(ArrayList<Screening> screenings){
         this.screenings = screenings;
     }

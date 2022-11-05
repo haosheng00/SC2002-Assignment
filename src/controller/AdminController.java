@@ -1,14 +1,13 @@
 package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import Initialiser.Initialise;
 import Classes.Admin; 
 public class AdminController {
     static Scanner sc = new Scanner(System.in);
-    private static ArrayList<Admin> admins = new ArrayList<Admin>();
+    private static ArrayList<Admin> admins = Initialise.admins;
 
-    public AdminController(){
-        
+    public AdminController(){ 
     }
 
     public static ArrayList<Admin> getAdminsList(){
@@ -19,7 +18,6 @@ public class AdminController {
         for(int i=0; i<admins.size(); i++){
             if(admins.get(i).getUserName() == username){
                 return i;
-                
             }
         }
         return -1;

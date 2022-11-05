@@ -11,7 +11,6 @@ public class Customer extends Account{
         super(s, p, false ); this.emailAddress = email; this.mobileNumber = phno;
     }
 
-
     public void setEmailAddress(String email){
         this.emailAddress = email;
     }
@@ -34,5 +33,4 @@ public class Customer extends Account{
     public ArrayList<Ticket> getBoughtTickets(){
         return boughtTickets;
     }
-
 }
