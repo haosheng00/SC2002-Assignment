@@ -1,12 +1,11 @@
 package ui;
 
-import java.util.Scanner;
-import java.util.TimeZone;
-
 import Classes.Cineplex;
 import controller.ScreeningController;
+
+import java.util.Scanner;
 public class ScreeningUI {
-    public static void screeningOptions(Cineplex cineplex) {
+    public static void initiateScreeningUI(Cineplex cineplex) {
         int option = 0;
         Scanner sc = new Scanner(System.in);
 
