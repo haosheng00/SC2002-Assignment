@@ -12,7 +12,7 @@ public class Movie {
     private String director;
     private ArrayList<String> casts;
     private int movieDuration;
-    private int sales;
+    private double sales;
     private Enum.AgeRestriction ageRestriction;
     private boolean is3D;
     private double overallRating;
@@ -63,7 +63,7 @@ public class Movie {
         this.overallRating = overallRating;
     }
 
-    public void setSales(int sales) {
+    public void setSales(double sales) {
         this.sales = sales;
     }
     
@@ -99,7 +99,7 @@ public class Movie {
         return movieDuration;
     }
 
-    public int getSales(){
+    public double getSales(){
         return sales;
     }
 
