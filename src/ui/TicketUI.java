@@ -10,48 +10,50 @@ public class TicketUI {
     
     private static Scanner sc = new Scanner(System.in);
 
-    public static void initiateAdminTicketUI(){
+    // public static void initiateAdminTicketUI(){
 
-        int option;
+    //     int option;
 
-        do{
-            System.out.println("========================================");
-            System.out.println("Select choice");
-            System.out.println("(1) Create Booking");
-            System.out.println("(2) Cancel Booking");
-            System.out.println("(3) Go Back To Main Menu");
-            System.out.println("========================================");
+    //     do{
+    //         System.out.println("========================================");
+    //         System.out.println("Select choice");
+    //         System.out.println("(1) Create Booking");
+    //         System.out.println("(2) Cancel Booking");
+    //         System.out.println("(3) Go Back To Main Menu");
+    //         System.out.println("========================================");
 
-            option  = 0;
-            try{
-                option = sc.nextInt();
-            }
-            catch (Exception e){
+    //         option  = 0;
+    //         try{
+    //             option = sc.nextInt();   
+    //         }
+    //         catch (Exception e){
 
-            }
-            sc.nextLine();
+    //         }
+    //         sc.nextLine();
 
-            switch(option){
+    //         switch(option){
 
-                case 1:
-                TicketController.createBooking();
-                break;
+    //             case 1:
+    //             TicketController.createBooking();
+    //             break;
 
-                case 2:
-                TicketController.cancelBooking();
-                break;
+    //             case 2:
+    //             TicketController.cancelBooking();
+    //             break;
 
-                case 3:
-                break;
+    //             case 3:
+    //             break;
 
-                default:
-                System.out.println("Invalid Input!");
+    //             default:
+    //             System.out.println("Invalid Input!");
 
-            }
-        }
-        while (option != 3);
-    }
+    //         }
+    //     }
+    //     while (option != 3);
+    // }
 
+
+    // UPDATE PRICE BY ADMIN TODO
 
     public static void initiateTicketUI(){
 

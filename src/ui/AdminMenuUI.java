@@ -8,11 +8,13 @@ public class AdminMenuUI{
         int option = 0;
         do{
             System.out.println("========================================");
-            System.out.println("Hello! Please select a Controller.");
+            System.out.println("Hello! Please select an option.");
             System.out.println("(1) - Movie Controls");
             System.out.println("(2) - Screening Controls");
             System.out.println("(3) - Ticket Controls");
-            System.out.println("(4) - Payment Controls");
+            System.out.println("(4) - Listing Controlsl");
+            System.out.println("(5) - Go Back to Main Menu");
+            System.out.println("========================================");
             option = scanner.nextInt();
             switch(option){
                 case 1:
@@ -23,7 +25,7 @@ public class AdminMenuUI{
                     ScreeningUI.initiateScreeningUI(cineplex);
                     break;
                 case 3:
-                    TicketUI.initiateAdminTicketUI();
+                    TicketUI.initiateTicketUI();
                     break;
                 default:
                     System.out.println("Invalid Input");

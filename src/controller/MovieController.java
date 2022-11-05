@@ -9,10 +9,10 @@ import Classes.Enum.MovieStatus;
 
 public class MovieController{
     static Scanner sc = new Scanner(System.in);
-    private static  ArrayList<Movie> movies = new ArrayList<Movie>();
+    private static ArrayList<Movie> movies = new ArrayList<Movie>();
 
     public MovieController(){}
-    public static int searchMovie(String movieTitle){
+    public int searchMovie(String movieTitle){
         movieTitle = movieTitle.toUpperCase();
         for(int i=0; i<movies.size(); i++){
             if(movies.get(i).getMovieTitle() == movieTitle){
@@ -21,7 +21,7 @@ public class MovieController{
         }
         return -1;
     }
-    public static void addMovie(){
+    public void addMovie(){
         String movieTitle, synopsis, director;
         String[] casts;
         Classes.Enum.MovieGenre[] movieGenres;
@@ -59,7 +59,7 @@ public class MovieController{
         }
     }
         
-    public static int deleteMovie(){
+    public int deleteMovie(){
         System.out.println("Please enter Movie to delete: ");
         String movieTitle = sc.next();
         int exists = searchMovie(movieTitle);
@@ -128,6 +128,12 @@ public class MovieController{
         if(index != -1){
             System.out.println("Movie Title: " );
         }
+
+        //PRINT DETAILS 
+
+
+
+
     }
     public ArrayList<Movie> getMovieList(){
         return MovieController.movies;
