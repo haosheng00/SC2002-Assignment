@@ -26,11 +26,12 @@ public class CustomerController{
     public static void addCustomer(){
         String username, password,email, phno;
         username = null;
+        int exit = -1;
         int customerExists = -2;
         int adminExists = -2;
-        System.out.println("Please enter username to create new account:");
-        username = sc.next();
        do{
+            System.out.println("Please enter username to create new account:");
+            username = sc.next();
             customerExists = searchCustomer(username);
             adminExists = AdminController.searchAdmin(username);
             if(customerExists==-1 && adminExists ==-1){
@@ -46,12 +47,14 @@ public class CustomerController{
                 break;
             }
             else {
-                System.out.println("Username already exists please enter another username: ");
-                System.out.println("Enter 0 to quit");
-                username = sc.next();
+                System.out.println("Username already exists ");
+                System.out.println("Please choose: ");
+                System.out.println("(0): Try again");
+                System.out.println("(1): Back");
+                exit = sc.nextInt();
             }
 
-        } while(username!= "0");
+        } while(exit != 1);
         
     }
 
@@ -72,45 +75,62 @@ public class CustomerController{
             customers.set(index, temp);
 		}
 	}
-    public int deleteCustomer(){
-        System.out.println("Please enter username of account to delete: ");
-        String username = sc.next();
-        int exists = searchCustomer(username);
-        if(exists == -1){
-        customers.remove(exists);
-        sortCustomerList();
-        //to access in a static way --> CustomerController.sortCustomerList();
-        return 1;
-        }
-        else 
-            System.out.println("Account with this username does not exist");
+    public static void deleteCustomer(){
+        int exit=-1;
+        do{
+            System.out.println("Please enter username of account to delete: ");
+            String username = sc.next();
+            int exists = searchCustomer(username);
+            if(exists == -1){
+            customers.remove(exists);
+            sortCustomerList();
+            //to access in a static way --> CustomerController.sortCustomerList();
+            }
+            else 
+                System.out.println("Account with this username does not exist");
+                System.out.println("Do you want to try again or exit? ");
+                System.out.println("(0): Try again");
+                System.out.println("(1): Exit");
+                exit = sc.nextInt();
+        }while(exit != 1);
         
-        return 0;
     }
 
-    public static int updateCustomerPassword(){
+    public static void updateCustomerPassword(){
         String username;
-        System.out.println("Enter username: ");
-        username = sc.next();
-        int index = searchCustomer(username);
-        String match;
-        String newpass;
-        if(index != -1){
-            System.out.println("Enter current Password: ");
-            match = sc.next();
-            if(customers.get(index).getPassword() == match){
-                System.out.println("Enter new Password: ");
-                newpass = sc.next();
-                customers.get(index).setPassword(newpass);
-                return 1;
+        int exit = -1;
+        do{
+            System.out.println("Enter username: ");
+            username = sc.next();
+            int index = searchCustomer(username);
+            String match;
+            String newpass;
+            if(index != -1){
+                System.out.println("Enter current Password: ");
+                match = sc.next();
+                if(customers.get(index).getPassword() == match){
+                    System.out.println("Enter new Password: ");
+                    newpass = sc.next();
+                    customers.get(index).setPassword(newpass);
+                }
+                else{
+                    System.out.println("Wrong password ");
+                    System.out.println("Do you want to try again or exit? ");
+                    System.out.println("(0): Try again");
+                    System.out.println("(1): Exit");
+                    exit = sc.nextInt();
+                }
             }
-            else
-                System.out.println("Wrong password, try again");
-        }
-        else 
-            System.out.println("Sorry, user account with this username does not exist");
+            else{
+                System.out.println("Sorry, user account with this username does not exist");
+                System.out.println("Do you want to try again or exit? ");
+                System.out.println("(0): Try again");
+                System.out.println("(1): Exit");
+                exit = sc.nextInt();
+            }
+        }while(exit!=1);
 
-        return 0;
+
     }
 
     public static void printCustomer(String username){
@@ -125,6 +145,7 @@ public class CustomerController{
 
     public  static void viewPastTickets(String username){
         int index = searchCustomer(username);
+        System.out.println("Tickets you purchased in the past: ");
         ArrayList<Ticket> arr;
         arr=customers.get(index).getBoughtTickets();
         for(int x=0;x<arr.size();x++){
@@ -140,8 +161,6 @@ public class CustomerController{
     public static ArrayList<Customer> getCustomersList(){
         return customers;
     }
-
-
 
 
 }

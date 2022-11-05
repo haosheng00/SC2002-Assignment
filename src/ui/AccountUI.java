@@ -28,12 +28,41 @@ public class AccountUI {
             else if(choice == 2){
                 Login("guest","guest");
                 CustomerMenuUI.guestMenuOptions();
-            }
-            
+            }  
         }while(choice<3);
         sc.close();
     }
+
     public static void initiateLoginUI(){
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        do{
+            System.out.println("Please select an option");
+            System.out.println("(1) Login to an existing account");
+            System.out.println("(2) Create a new account");
+            System.out.println("(3) Delete account");
+            System.out.println("(4) Change Password");
+            System.out.println("(5) back");
+            choice = sc.nextInt();
+            switch(choice){
+                case 1:
+                    LoginUI();
+                    //TODO: if logInCustomer == true, bring them to MainMenuUI for customer
+                    break;
+                case 2:
+                    CustomerController.addCustomer();
+                    break;
+                case 3:
+                    CustomerController.deleteCustomer();
+                case 4:
+                    CustomerController.updateCustomerPassword();
+                default:
+                    break;
+            }
+        }while(choice<5);
+        sc.close();
+    }
+    public static void LoginUI(){
         Scanner sc = new Scanner(System.in);
         String username;
         int success;
@@ -59,7 +88,8 @@ public class AccountUI {
         }while(exitChoice !=2);
         sc.close();
     }
-    public static int  Login(String username, String password){
+
+    private static int  Login(String username, String password){
         int isCustomer = -2;
         isCustomer = CustomerController.searchCustomer(username);
         int isAdmin = -2;
@@ -88,37 +118,10 @@ public class AccountUI {
         return 4;
     }
 
-    public static void initiateCustomerUI(){
-        Scanner sc = new Scanner(System.in);
-        int choice;
-        do{
-            System.out.println("Please select an option");
-            System.out.println("(1) Login to an existing account");
-            System.out.println("(2) Create a new account");
-            System.out.println("(3) Delete account");
-            System.out.println("(4) Change Password");
-            System.out.println("(5) back");
-            choice = sc.nextInt();
-            switch(choice){
-                case 1:
-                    logInCustomer();
-                    //TODO: if logInCustomer == true, bring them to MainMenuUI for customer
-                    break;
-                case 2:
-                    Initialise.cc.addCustomer();
-                    break;
-                case 3:
-                    Initialise.cc.deleteCustomer();
-                case 4:
-                    Initialise.cc.updateCustomerPassword();
-                default:
-                    break;
-            }
-        }while(choice<5);
-        sc.close();
-    }
+     
+    
 
-    public static void initiateAdminUI(){
+    /*public static void initiateAdminUI(){
         int choice;
         Scanner sc = new Scanner(System.in);
         do{
@@ -205,6 +208,6 @@ public class AccountUI {
         }while(quit!=1);
         sc.close();
         return false;
-    }
+    }*/
 }
 
