@@ -91,28 +91,43 @@ public class TicketController {
     }
 
 
-
-        public static double TicketPrice() {
+        public static double TicketPrice(int student, int adult, int senior) {
             // FOR CREATEBOOKING    
 
-            //PH ARRAYLIST IN INITIALISE
+            //PH ARRAYLIST TO INITIALISE
             //PUBLIC HOLIDAYS OF SG (YYYYMMDD) - NEW YEARS DAY (20220101), CHINESE NEW YEAR(20220201, 20220202), GOOD FRIDAY (20220415), LABOUR DAY (20220501), HARI RAYA PUASA (20220503),
             //VESAK DAY (20220515), HARI RAYA HAJI (20220710), NATIONAL DAY (20220809), DEEPAVALI (20221024), CHRISTMAS (20221225)
            
             double ticketPrice = 0;
 
-            for 
+            //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
+            for (int i=0; i<holidays.size(); i++){
+                if ((Enum.DayOfWeek.isWeekend()) == true || (Screening.getShowDate()) == (holidays.get(i).getPublicHolidayDate())){
+                    ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
+                }
+                else{
+                    //RETURN STUDENT PRICE
+                    if (student == 1){
+                        // TODO: NEED TO CHECK CINEMATYPE
+                        ticketPrice = Enum.TicketType.STUDENT.getTicketPrice() + CinemaType.getTicketPrice();
+                    }
 
+                    //RETURN ADULT PRICE
+                    if (adult == 1){
+                        ticketPrice = Enum.TicketType.ADULT.getTicketPrice() + CinemaType.getTicketPrice();
+                    }
 
+                    //RETURN SENIOR PRICE
+                    if (senior == 1){
+                        ticketPrice = Enum.TicketType.SENIORCITIZEN.getTicketPrice() + CinemaType.getTicketPrice();
+                    }
 
+                }
 
-            //CHECK IF HOLIDAY OR PUBLIC HOLIDAY
-
+            }
             return ticketPrice;
         }
-
-
-
+        
 
         public static void updateTicketPriceByAge(){
             //FOR ADMIN
@@ -320,7 +335,7 @@ public class TicketController {
             System.out.println("Enter Name of Public Holiday: ");
             String name = sc.next();
             System.out.println("Enter Date of Public Holiday: ");
-            LocalDate date = sc.next(); //ADD STRING TO DATE
+            LocalDate date = sc.next(); // TODO: ADD STRING TO DATE
 
             PublicHoliday publicholiday = new PublicHoliday(name, date);
 
@@ -334,7 +349,7 @@ public class TicketController {
             int i;
             int cineplexChoice, movieChoice, screeningChoice;
 
-            Ticket ticket = new Ticket(); //INSERT PARAMETERS
+            Ticket ticket = new Ticket(); //TODO: INSERT PARAMETERS
 
         }
 
@@ -366,4 +381,4 @@ public class TicketController {
         // }
 
     }
-
+}

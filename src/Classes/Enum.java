@@ -91,8 +91,8 @@ public class Enum {
         WEDNESDAY(false, 0),
         THURSDAY(false, 0),
         FRIDAY(false, 0),
-        SATURDAY(true, 5),
-        SUNDAY(true, 5);
+        SATURDAY(true, 15),
+        SUNDAY(true, 15);
 
         private final Boolean weekend;
         private double price;
@@ -102,7 +102,7 @@ public class Enum {
             this.price = price;
         }
 
-        Boolean isWeekend(){
+        public Boolean isWeekend(){
             return weekend;
         }
 

@@ -16,8 +16,8 @@ public class PublicHoliday {
         return name;
     }
 
-    public LocalDate getPublicHolidayDate(){
-        return date;
+    public String getPublicHolidayDate(){
+        return stringdate;
     }
 
     public void setPublicHolidayName(String name){
