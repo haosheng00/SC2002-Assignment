@@ -82,9 +82,9 @@ public class AccountUI {
                 case 1:
                     AdminMenuUI.adminMenuOptions();
                 case 2:
-                    int index = CustomerController.searchCustomer(username);
+                    //int index = CustomerController.searchCustomer(username);
                     if (x == 2){
-                        TicketController.createBooking(Initialise.cineplexes, Initialise.customers.get(index));
+                        TicketController.createBooking(Initialise.cineplexes, current);
                     }
                     CustomerMenuUI.customerMenuOptions(current);
             }
