@@ -59,8 +59,59 @@ public class Enum {
 
     //TicketType
     public enum TicketType{
-        STUDENT,
-        ADULT,
-        SENIORCITIZEN
+        STUDENT("STUDENT", 8),
+        ADULT("ADULT", 12),
+        SENIORCITIZEN("SENIORCITIZEN", 5);
+
+        private String groupType;
+        private double price;
+
+        TicketType(String groupType, double price){
+            this.groupType = groupType;
+            this.price = price;
+        }
+
+        public String getGroupType(){
+            return groupType;
+        }
+
+        public double getTicketPrice(){
+            return price;
+        }
+
+        public void setTicketPrice(double price){
+            this.price = price;
+        }
+    }
+
+    //DayOfWeek
+    public enum DayOfWeek{
+        MONDAY(false, 0),
+        TUESDAY(false, 0),
+        WEDNESDAY(false, 0),
+        THURSDAY(false, 0),
+        FRIDAY(false, 0),
+        SATURDAY(true, 5),
+        SUNDAY(true, 5);
+
+        private final Boolean weekend;
+        private double price;
+
+        DayOfWeek(Boolean weekend, double price){
+            this.weekend = weekend;
+            this.price = price;
+        }
+
+        Boolean isWeekend(){
+            return weekend;
+        }
+
+        public double getTicketPrice(){
+            return price;
+        }
+
+        public void setTicketPrice(double price){
+            this.price = price;
+        }
     }
 }

@@ -45,7 +45,7 @@ public class PaymentController {
 
         //get cart tickets from customer class
         showTickets(cartTickets);
-        System.out.println("Would you like to proceed to check out your cart? (Enter 1 for yes, 0 to cancel check out");
+        System.out.println("Would you like to proceed to check out your cart? (Enter 1 for yes, 0 to cancel check out)");
         choice = sc.nextInt();
         //if cancel checkout
         if (choice == 0) {

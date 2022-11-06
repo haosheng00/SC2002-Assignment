@@ -1,16 +1,21 @@
 package controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import Classes.*;
+import Classes.Enum;
 import Initialiser.Initialise;
 import ui.*;
 
 public class TicketController {
 
     static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
-    //initialise holidays;
+    static ArrayList<PublicHoliday> holidays = Initialise.holidays;
+    static ArrayList<Ticket> cartTickets = Initialise.cartTickets;
+
+    private static double basePrice;
 
     static Scanner sc = new Scanner(System.in);
 
@@ -86,22 +91,266 @@ public class TicketController {
     }
 
 
-        public static double ticketPrice() {
 
-            double ticketPrice = 0;
-            // cinemaType, SeatType
+        public static double TicketPrice() {
+            // FOR CREATEBOOKING    
 
-            //PUBLIC HOLIDAYS FOR SG (YYYYMMDD) - NEW YEARS DAY (20220101), CHINESE NEW YEAR(20220201, 20220202), GOOD FRIDAY (20220415), LABOUR DAY (20220501), HARI RAYA PUASA (20220503),
+            //PH ARRAYLIST IN INITIALISE
+            //PUBLIC HOLIDAYS OF SG (YYYYMMDD) - NEW YEARS DAY (20220101), CHINESE NEW YEAR(20220201, 20220202), GOOD FRIDAY (20220415), LABOUR DAY (20220501), HARI RAYA PUASA (20220503),
             //VESAK DAY (20220515), HARI RAYA HAJI (20220710), NATIONAL DAY (20220809), DEEPAVALI (20221024), CHRISTMAS (20221225)
+           
+            double ticketPrice = 0;
 
-            String[] holidays = new String[]{};
+            for 
 
-            // if (screenings.get(i).getShowTime())
+
+
 
             //CHECK IF HOLIDAY OR PUBLIC HOLIDAY
 
             return ticketPrice;
         }
+
+
+
+
+        public static void updateTicketPriceByAge(){
+            //FOR ADMIN
+            
+            //LIST AGE GROUP
+            int i = 0, option;
+            do {
+                System.out.println("========================================");
+                System.out.println("Select Age Group: ");
+                for (Enum.TicketType groupType: Enum.TicketType.values()) {
+                    System.out.println("(" + i + 1 + ")" + groupType);
+                    i++;
+                }
+                option = sc.nextInt();
+                if (option <= 0 || option > i) {
+                    System.out.println("Invalid Input! Try again!");
+                }
+            } while (option <= 0 || option > i);
+
+
+            switch(option){
+
+                case 1:
+                double newstudtp;
+                do{
+                    System.out.println("Input new ticket price: ");
+                    newstudtp = sc.nextInt();
+                    Enum.TicketType.STUDENT.setTicketPrice(newstudtp);
+
+                    if (newstudtp <0){
+                        System.out.println("Invalid Input! Try again!");
+                    }
+                } while (newstudtp <0);
+
+                System.out.println("Ticket Price (Student) has been updated successfully!");
+
+                break;
+
+                case 2:
+                double newadutp;
+                do{
+                    System.out.println("Input new ticket price: ");
+                    newadutp = sc.nextInt();
+                    Enum.TicketType.STUDENT.setTicketPrice(newadutp);
+
+                    if (newadutp <0){
+                        System.out.println("Invalid Input! Try again!");
+                    }
+                } while (newadutp <0);
+
+                System.out.println("Ticket Price (Adult) has been updated successfully!");
+
+                break;
+
+                case 3:
+                double newsnrtp;
+                do{
+                    System.out.println("Input new ticket price: ");
+                    newsnrtp = sc.nextInt();
+                    Enum.TicketType.STUDENT.setTicketPrice(newsnrtp);
+
+                    if (newsnrtp <0){
+                        System.out.println("Invalid Input! Try again!");
+                    }
+                } while (newsnrtp <0);
+
+                System.out.println("Ticket Price (Senior Citizen) has been updated successfully!");
+
+                break;
+
+                default:
+                System.out.println("Invalid Input!");
+
+            }
+        }
+
+
+        public static void updateTicketPriceByCinemaType(){
+            //FOR ADMIN
+            
+            //LIST CINEMA TYPE
+            int i = 0, option;
+            do {
+                System.out.println("========================================");
+                System.out.println("Select Cinema Type: ");
+                for (CinemaType groupType: CinemaType.values()) {
+                      System.out.println("(" + i + 1 + ")" + groupType);
+                      i++;
+                }
+                option = sc.nextInt();
+                if (option <= 0 || option > i) {
+                    System.out.println("Invalid Input! Try again!");
+                }
+              } while (option <= 0 || option > i);
+  
+  
+            switch(option){
+  
+                  case 1:
+                  double newpmstp;
+                  do{
+                      System.out.println("Input new ticket price: ");
+                      newpmstp = sc.nextInt();
+                      CinemaType.PLATINUMMOVIESUITES.setTicketPrice(newpmstp);
+  
+                      if (newpmstp <0){
+                          System.out.println("Invalid Input! Try again!");
+                      }
+                  } while (newpmstp <0);
+  
+                  System.out.println("Ticket Price (Platinum Movie Suites) has been updated successfully!");
+  
+                  break;
+  
+                  case 2:
+                  double newordtp;
+                  do{
+                      System.out.println("Input new ticket price: ");
+                      newordtp = sc.nextInt();
+                      CinemaType.ORDINARY.setTicketPrice(newordtp);
+  
+                      if (newordtp <0){
+                          System.out.println("Invalid Input! Try again!");
+                      }
+                  } while (newordtp <0);
+  
+                  System.out.println("Ticket Price (Ordinary) has been updated successfully!");
+  
+                  break;
+  
+                  default:
+                  System.out.println("Invalid Input!");
+  
+              }
+        }
+
+
+        public static void updateTicketPriceByDayOfWeek(){
+            //FOR ADMIN
+            
+            //CHOOSE DAY OF WEEK
+            int option;
+            do {
+                System.out.println("========================================");
+                System.out.println("Select Day of Week: ");
+                System.out.println("(1) Weekdays (Monday to Friday)");
+                System.out.println("(2) Weekends (Saturday and Sunday)");
+
+                option = sc.nextInt();
+                if (option <= 0 || option > 2) {
+                    System.out.println("Invalid Input! Try again!");
+                }
+              } while (option <= 0 || option > 2);
+  
+  
+            switch(option){
+  
+                  case 1:
+                  double newdaytp;
+                  do{
+                      System.out.println("Input new ticket price: ");
+                      newdaytp = sc.nextInt();
+                      Enum.DayOfWeek.MONDAY.setTicketPrice(newdaytp);
+                      Enum.DayOfWeek.TUESDAY.setTicketPrice(newdaytp);
+                      Enum.DayOfWeek.WEDNESDAY.setTicketPrice(newdaytp);
+                      Enum.DayOfWeek.THURSDAY.setTicketPrice(newdaytp);
+                      Enum.DayOfWeek.FRIDAY.setTicketPrice(newdaytp);
+  
+                      if (newdaytp <0){
+                          System.out.println("Invalid Input! Try again!");
+                      }
+                  } while (newdaytp <0);
+  
+                  System.out.println("Ticket Price (Weekdays) has been updated successfully!");
+  
+                  break;
+  
+                  case 2:
+                  double newendtp;
+                  do{
+                      System.out.println("Input new ticket price: ");
+                      newendtp = sc.nextInt();
+                      Enum.DayOfWeek.SATURDAY.setTicketPrice(newendtp);
+                      Enum.DayOfWeek.SUNDAY.setTicketPrice(newendtp);
+  
+                      if (newendtp <0){
+                          System.out.println("Invalid Input! Try again!");
+                      }
+                  } while (newendtp <0);
+  
+                  System.out.println("Ticket Price (Weekends) has been updated successfully!");
+  
+                  break;
+  
+                  default:
+                  System.out.println("Invalid Input!");
+  
+              }
+        }
+
+
+        public static void addHolidays(ArrayList<PublicHoliday> holidays){
+            //FOR ADMIN
+
+            System.out.println("Enter Name of Public Holiday: ");
+            String name = sc.next();
+            System.out.println("Enter Date of Public Holiday: ");
+            LocalDate date = sc.next(); //ADD STRING TO DATE
+
+            PublicHoliday publicholiday = new PublicHoliday(name, date);
+
+            System.out.println("New Public Holiday has been added!");
+
+        }
+
+        public static void addCartTicket(ArrayList<Ticket> cartTickets){
+            // FOR CREATEBOOKING
+
+            int i;
+            int cineplexChoice, movieChoice, screeningChoice;
+
+            Ticket ticket = new Ticket(); //INSERT PARAMETERS
+
+        }
+
+        public static void printTicket(Ticket ticket){
+            //FOR PRINTRECEIPT
+
+            System.out.println("Movie: " + ticket.getMovie());
+            System.out.println("Cineplex: " + ticket.getCineplex());
+            System.out.println("Cinema: " + ticket.getCinema());
+            System.out.println("Show Date and Time: " + ticket.getShowDateTime());
+            System.out.println("Seat: " + ticket.getSeat());
+            System.out.println("Price: " + ticket.getTicketPrice());
+
+        }
+
+
 
         // public Boolean searchTicket(ArrayList<Ticket> tickets) {
         //     for (int i = 0; i < tickets.size(); i++) {
@@ -112,32 +361,6 @@ public class TicketController {
         //     return false;
         // }
 
-
-        public static void updateTicketPrice(){
-            //FOR ADMIN
-            //TODO
-            // drop down type of ticket
-            System.out.println();
-        }
-
-        public static void updateHolidays(Initialise.Holidays){
-            //FOR ADMIN
-            //TODO
-            // put holiday array under initaliser
-            System.out.println();
-
-        }
-
-        public static void printTicket(Ticket ticket){
-
-            System.out.println("Movie: " + ticket.getMovie());
-            System.out.println("Cineplex: " + ticket.getCineplex());
-            System.out.println("Cinema: " + ticket.getCinema());
-            System.out.println("Show Date and Time: " + ticket.getShowDateTime());
-            System.out.println("Seat: " + ticket.getSeat());
-            System.out.println("Price: " + ticket.getTicketPrice());
-
-        }
         // public static void cancelBooking() {
 
         // }

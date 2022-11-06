@@ -1,13 +1,16 @@
 package ui;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.*;
 import Classes.*;
+import Initialiser.Initialise;
 
 public class TicketUI {
     
     private static Scanner sc = new Scanner(System.in);
+    static ArrayList<PublicHoliday> holidays = Initialise.holidays;
 
     public static void initiateAdminTicketUI(){
 
@@ -33,11 +36,11 @@ public class TicketUI {
             switch(option){
 
                 case 1:
-                TicketController.updateTicketPrice();
+                TicketUI.updateTicketUI();
                 break;
 
                 case 2:
-                TicketController.updateHolidays();
+                TicketController.addHolidays(holidays);
                 break;
 
                 case 3:
@@ -52,42 +55,51 @@ public class TicketUI {
     }
 
 
+    public static void updateTicketUI(){
 
+        int option;
 
-    // public static void initiateTicketUI(){
+        do{
+            System.out.println("========================================");
+            System.out.println("Which Pricing Category would you like to update?:");
+            System.out.println("(1) Age Group");
+            System.out.println("(2) Cinema Type");
+            System.out.println("(3) Day of Week");
+            System.out.println("(4) Go Back To Main Menu");
+            System.out.println("========================================");
 
-    //     int option;
+            option  = 0;
+            try{
+                option = sc.nextInt();   
+            }
+            catch (Exception e){
 
-    //     do{
-    //         System.out.println("========================================");
-    //         System.out.println("Select choice");
-    //         System.out.println("(1) Create Booking");
-    //         System.out.println("(2) Go Back To Main Menu");
-    //         System.out.println("========================================");
+            }
+            sc.nextLine();
 
-    //         option  = 0;
-    //         try{
-    //             option = sc.nextInt();
-    //         }
-    //         catch (Exception e){
+            switch(option){
 
-    //         }
-    //         sc.nextLine();
+                case 1:
+                TicketController.updateTicketPriceByAge();
+                break;
 
-    //         switch(option){
+                case 2:
+                TicketController.updateTicketPriceByCinemaType();
+                break;
 
-    //             case 1:
-    //             TicketController.createBooking();
-    //             break;
+                case 3:
+                TicketController.updateTicketPriceByDayOfWeek();
+                break;
 
-    //             case 2:
-    //             break;
+                case 4:
+                break;
 
-    //             default:
-    //             System.out.println("Invalid Input!");
+                default:
+                System.out.println("Invalid Input!");
 
-    //         }
-    //     }
-    //     while (option != 2);
-    // }
+            }
+        }
+        while (option != 3);
+    }
+
 }
