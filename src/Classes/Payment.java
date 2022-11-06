@@ -11,16 +11,20 @@ public class Payment {
     public double totalCharges;
     //customer's credit card name
     public String CreditCardName;
+    //customer's card expiration date
+    public String CardExpirationDate;
     //customer's billing address
     public String billingAddress;
     //customer's billing card number
     public String billingCardNumber;
+    
 
     //constructor
-    public Payment (int TID, double totalCharges, String CreditCardName, String billingAddress, String billingCardNumber) {
+    public Payment (int TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) {
         this.TID = TID;
         this.totalCharges = totalCharges;
         this.CreditCardName = CreditCardName;
+        this.CardExpirationDate = CardExpirationDate;
         this.billingAddress = billingAddress;
         this.billingCardNumber = billingCardNumber;
     }
@@ -31,6 +35,9 @@ public class Payment {
 
     public double getTotalCharges() { return totalCharges; }
     public void setTotalCharges(double totalCharges) { this.totalCharges = totalCharges;}
+
+    public String getCardExpirationDate() { return CardExpirationDate; }
+    public void setCardExpirationDate(String CardExpirationDate) { this.CardExpirationDate = CardExpirationDate;}
 
     public String getCreditCardName() { return CreditCardName; }
     public void setCreditCardName(String CreditCardName) { this.CreditCardName = CreditCardName;}
