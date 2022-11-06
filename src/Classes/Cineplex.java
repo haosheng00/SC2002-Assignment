@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Cineplex {
     private String cineplexName;
     private ArrayList<Cinema> cinemas;
+    private ArrayList<Movie> movies;
 
-    public Cineplex(String cineplexName, ArrayList<Cinema> cinemas){
+    public Cineplex(String cineplexName, ArrayList<Cinema> cinemas, ArrayList<Movie> movies){
         this.cineplexName = cineplexName;
         this.cinemas = cinemas;
+        this.movies = movies;
     }
 
     public String getCineplexName() {
@@ -24,5 +26,12 @@ public class Cineplex {
 
     public void setCinemas(ArrayList<Cinema> cinemas) {
         this.cinemas = cinemas;
+    }
+
+    public ArrayList<Movie> getMovies(){
+        return movies;
+    }
+    public void setMovies(ArrayList<Movie> movies){
+        this.movies = movies;
     }
 }

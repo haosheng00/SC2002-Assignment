@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Movie {
 
     // TODO: Add javadocs
+    // Weixian: I believe the movie should have an arraylist of screenings
 
     private Enum.MovieStatus movieStatus;
     private String movieTitle;
