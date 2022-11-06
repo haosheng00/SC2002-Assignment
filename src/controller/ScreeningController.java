@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
 
+    //TODO: getScreenings()?
     public ScreeningController(){};
     public static void addScreening(ArrayList<Cineplex> cineplexes){
-        int i;
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         int cinemaChoice = DropDownMenu.initiateCinemaChoice(cineplexes.get(cineplexChoice-1).getCinemas());
         int movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice-1).getMovies());
@@ -24,7 +24,6 @@ public class ScreeningController {
         System.out.println("addScreening success");
     }
     public static void deleteScreening(ArrayList<Cineplex> cineplexes){
-        int i;
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         int movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice-1).getMovies());
         Movie movieChosen = cineplexes.get(cineplexChoice-1).getMovies().get(movieChoice-1);
@@ -34,7 +33,6 @@ public class ScreeningController {
     }
 
     public static void showScreening(ArrayList<Cineplex> cineplexes){
-        //TODO: showScreening based on cineplex->movie->print
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         int movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice-1).getMovies());
         Movie movieChosen = cineplexes.get(cineplexChoice-1).getMovies().get(movieChoice-1);

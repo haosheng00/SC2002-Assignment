@@ -43,7 +43,7 @@ public class DropDownMenu {
             System.out.println("========================================");
             System.out.println("Select Screening: ");
             for (i = 0; i < screenings.size(); i++) {
-                System.out.println("(" + i + 1 + ")" + screenings.get(i).getShowDateTime());
+                System.out.println("(" + i + 1 + ")" + screenings.get(i).getShowDate() + " " + screenings.get(i).getShowTime());
             }
             screeningChoice = sc.nextInt();
             if (screeningChoice < 0 || screeningChoice > i) {
