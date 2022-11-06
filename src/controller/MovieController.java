@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import javax.sound.sampled.SourceDataLine;
-
 import Initialiser.Initialise;
 import ui.MovieUI;
 import Classes.*;
@@ -256,6 +254,14 @@ public class MovieController {
         for (int i = 0; i < movies.size(); i++){
             System.out.println("(" + (i+1) + ")" + " - " + movies.get(i).getMovieTitle());
         }
+    }
+
+    public static ArrayList<Movie> getTop5ByRatings(){
+        return top5ByRatings;
+    }
+
+    public static ArrayList<Movie> getTop5BySales(){
+        return top5BySales;
     }
 
     public static void getTop5Movies(int criteria){        
