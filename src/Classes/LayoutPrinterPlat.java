@@ -29,7 +29,7 @@ public class LayoutPrinterPlat extends LayoutPrinter{
 
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
                 columnNumber++;
-                screening.getSeat(i).printSeats(screening.getSeat(i));
+                SeatFormatter.printSeat(screening.getSeat(i));
                 if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < Initialise.Plat_Capacity - 1) {
                     rowNumber = LayoutPrinter.setNewRow(rowNumber);
                     columnNumber = 1;
