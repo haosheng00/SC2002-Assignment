@@ -23,6 +23,16 @@ public class DropDownMenu {
         return i;
     }
 
+    public static int initiateScreeningChoice(ArrayList<Screening> screenings){
+        int i;
+        System.out.println("========================================");
+        System.out.println("Select Cinema: ");
+        for (i = 0; i < screenings.size(); i++){
+            System.out.println("(" + i + 1 + ")" + screenings.get(i).getShowDateTime());
+        }
+        return i;
+    }
+
     public static int initiateMovieChoice(ArrayList<Movie> movies){
         int i;
         System.out.println("========================================");
