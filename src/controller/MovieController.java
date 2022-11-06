@@ -29,17 +29,10 @@ public class MovieController {
         return -1;
     }
     public static void addMovie(){
-        String movieTitle, synopsis, director;
+        String movieTitle;
         String[] casts = null;
-        Classes.Enum.MovieGenre[] movieGenres = null;;
-        Classes.Enum.MovieStatus movieStatus;
-        Classes.Enum.AgeRestriction ageRestriction;
-        boolean is3D;
-        double overallRating;
-        Review[] reviews;
-        int movieDuration;
+        Classes.Enum.MovieGenre[] movieGenres = null;
         String s = null;
-        String ms = null;
 
         int exists = -2;
         int j = -1;
