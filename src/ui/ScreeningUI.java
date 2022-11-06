@@ -24,10 +24,10 @@ public class ScreeningUI {
                     ScreeningController.addScreening(Initialise.cineplexes);
                     break;
                 case 2:
-                    ScreeningController.deleteScreening(cineplex);
+                    ScreeningController.deleteScreening(Initialise.cineplexes);
                     break;
                 case 3:
-                    ScreeningController.showScreening(cineplex);
+                    ScreeningController.showScreening(Initialise.cineplexes);
                     break;
                 case 4:
                     break;
