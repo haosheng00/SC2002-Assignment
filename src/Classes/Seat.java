@@ -5,6 +5,7 @@ public class Seat {
     private SeatType seatType;
     private String seatId;
     private boolean isBooked;
+    private boolean isReserved;
 
 
     public Seat(char r, int c, SeatType seatType) {
@@ -13,6 +14,7 @@ public class Seat {
         this.seatType = seatType;
         this.seatId = String.valueOf(r) + String.valueOf(c);
         isBooked = false;
+        isReserved = false;
     }
     public Seat() {
         row = 'Z';
@@ -20,6 +22,7 @@ public class Seat {
         seatType = SeatType.ORDINARY;
         seatId =  String.valueOf(row) + String.valueOf(column);
         isBooked = false;
+        isReserved = false;
     }
 
 
@@ -69,18 +72,10 @@ public class Seat {
         }
     }
 
-    public void printSeats(Seat seat){
-        if (this.isBooked && seat.getSeatType() == SeatType.COUPLE_SEAT){
-            System.out.print("[xxx||xxx]");
-        }
-        else if (seat.getSeatType() == SeatType.COUPLE_SEAT){
-            System.out.print("[" + seat.getSeatId() + "||" + seat.getSeatId() + "]");
-        }
-        else if (this.isBooked){
-            System.out.print("[xxx]");
-        }
-        else{
-            System.out.print("[" + seat.getSeatId() + "]");
-        }
+    public boolean isReserved() {
+        return isReserved;
+    }
+    public void setReserved(boolean reserved) {
+        isReserved = reserved;
     }
 }
