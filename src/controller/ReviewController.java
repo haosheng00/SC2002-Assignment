@@ -1,12 +1,10 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import Initialiser.Initialise;
 import Classes.*;
 
 public class ReviewController {
-    //DO WE NEED A ARRAYLIST OF REVIEWS? OR JUST ARRAYLIST OF EACH MOVIE WILL DO?
     
     private static ArrayList<Review> reviews = Initialise.reviews;
 
@@ -14,45 +12,43 @@ public class ReviewController {
         ReviewController.reviews = Reviews;
     }
 
-    //TODO: UPDATE TOP5 REVIEWS 
+    // //returns the index of the movie in the Movie array 
+    // public static int searchMovie() {
 
-    //returns the index of the movie in the Movie array 
-    public static int searchMovie() {
+    //     Scanner sc = new Scanner(System.in);
+    //     String movieTitle;
+    //     int exist;
+    //     int choice;
 
-        Scanner sc = new Scanner(System.in);
-        String movieTitle;
-        int exist;
-        int choice;
-
-        //TODO: DO DROPDOWN OF MOVIES
-
-        //get movie name 
-        System.out.println("Please enter the title of the movie:");
-        movieTitle = sc.next();
-        //search movie to see if it exists 
-        //static method 
-        exist = MovieController.searchMovie(movieTitle);
-        //non-static method 
-        //exist = Initialise.mc.searchMovie(movieTitle);
-        while (exist == 0) {
-            System.out.println("The movie does not exist!");
-            System.out.println("Would you like to enter the movie title again? (Click 0 for No and 1 for Yes)");
-            choice = sc.nextInt();
-            if (choice == 0) {
-                System.out.println("Returning...");
-                return -1;
-            }
-            System.out.println("Please enter the title of the movie:");
-            movieTitle = sc.next();
-            exist = MovieController.searchMovie(movieTitle);
-        }
-        return exist;
-    }    
+    //     //TODO: DO DROPDOWN OF MOVIES
+    //     int movieChoice = DropDownMenu.initiateMovieChoice(MovieController.getMovieList());
+    //     //get movie name 
+    //     System.out.println("Please enter the title of the movie:");
+    //     movieTitle = sc.next();
+    //     //search movie to see if it exists 
+    //     //static method 
+    //     exist = MovieController.searchMovie(movieTitle);
+    //     //non-static method 
+    //     //exist = Initialise.mc.searchMovie(movieTitle);
+    //     while (exist == 0) {
+    //         System.out.println("The movie does not exist!");
+    //         System.out.println("Would you like to enter the movie title again? (Click 0 for No and 1 for Yes)");
+    //         choice = sc.nextInt();
+    //         if (choice == 0) {
+    //             System.out.println("Returning...");
+    //             return -1;
+    //         }
+    //         System.out.println("Please enter the title of the movie:");
+    //         movieTitle = sc.next();
+    //         exist = MovieController.searchMovie(movieTitle);
+    //     }
+    //     return exist;
+    // }    
     public static void addReview(Customer customer) {
 
         Scanner sc = new Scanner(System.in);
         
-        int movieIndex = searchMovie();
+        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList())-1 ;
         if (movieIndex == -1) {
             return;
         }
@@ -79,12 +75,15 @@ public class ReviewController {
         double updatedRating = (rating+movie.getOverallRating())/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
 
+        //update top5Rating
+        updateTop5Rating(movie);
+
         System.out.println("Your review has been added.");
     }
 
     //iterate thru the reviews to find the particular username
     public static void deleteReview(Customer customer) {
-        int movieIndex = searchMovie();
+        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList())-1 ;
         if (movieIndex == -1) {
             return;
         }
@@ -108,6 +107,9 @@ public class ReviewController {
         double updatedRating = (movie.getOverallRating()-oldRating)/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
 
+        //update top5Rating
+        updateTop5Rating(movie);
+
         System.out.println("Your review has been deleted.");
     }
 
@@ -116,7 +118,7 @@ public class ReviewController {
         Scanner sc = new Scanner(System.in);
 
         //get movie index 
-        int movieIndex = searchMovie();
+        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList())-1 ;
         if (movieIndex == -1) {
             return;
         }
@@ -170,7 +172,43 @@ public class ReviewController {
         double updatedRating = (movie.getOverallRating()-oldRating+rating)/(reviews.size());
         movie.setOverallRating(updatedRating);
 
+        //update top5Rating
+        updateTop5Rating(movie);
+
         System.out.println("Your review has been updated.");
+    }
+
+    public static void updateTop5Rating(Movie movie) {
+
+        int exist = 0;
+
+        //update top5 sales array 
+        ArrayList <Movie> top5Ratings = MovieController.getTop5ByRatings();
+        //check if movie is alr in the top5ratings 
+        for (int i=0; i< top5Ratings.size(); i++) {
+            if (movie.getMovieTitle() == top5Ratings.get(i).getMovieTitle()) {
+                exist = 1;
+                break;
+            }
+        }
+        //add movie into the top5ratings array (if it isn't alr in the top5array)
+        if (exist == 0) {
+            //TO DO(MC) NEED NEW MOVIE CONSTRUCTOR --> TO put in movie with the new ratings value 
+            top5Ratings.add(movie);
+        }
+        //sort the array 
+        Collections.sort(top5Ratings, new CompareByRating());
+        //remove last index if (size > 5)
+        if (top5Ratings.size() > 5) {
+            //remove the sixth movie 
+            top5Ratings.remove(5);
+        }
+    }
+
+    class CompareByRating implements Comparator<Movie> {
+        public int compare(Movie a, Movie b) {
+                    return (int)(a.getOverallRating() - b.getOverallRating());
+        }   
     }
 
     //print all reviews of movie -- sort by dateTime 
