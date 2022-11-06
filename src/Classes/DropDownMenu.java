@@ -26,7 +26,7 @@ public class DropDownMenu {
     public static int initiateScreeningChoice(ArrayList<Screening> screenings){
         int i;
         System.out.println("========================================");
-        System.out.println("Select Cinema: ");
+        System.out.println("Select Screening: ");
         for (i = 0; i < screenings.size(); i++){
             System.out.println("(" + i + 1 + ")" + screenings.get(i).getShowDateTime());
         }
