@@ -1,6 +1,7 @@
 package ui;
 
 import Initialiser.Initialise;
+import controller.ListingController;
 
 import java.util.Scanner;
 public class AdminMenuUI{
@@ -27,6 +28,9 @@ public class AdminMenuUI{
                     break;
                 case 3:
                     TicketUI.initiateAdminTicketUI();
+                    break;
+                case 4: 
+                    ListingController.initiateListingUI();
                     break;
                 default:
                     System.out.println("Invalid Input");
