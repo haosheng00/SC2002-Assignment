@@ -13,7 +13,6 @@ public class SerializeMovieDB {
 		in.close();
 		return pDetails;
 	}
-	
 	public static void writeSerializedObject(String filename, List list) throws IOException{
 		FileOutputStream fos = new FileOutputStream(filename);
 		ObjectOutputStream out = new ObjectOutputStream(fos);
