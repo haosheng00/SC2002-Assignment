@@ -2,7 +2,10 @@ package Classes;
 
 import Initialiser.Initialise;
 
+import java.util.Scanner;
+
 public class SeatFormatter {
+    static Scanner sc = new Scanner(System.in);
     public static String seatIdFormat(char rowChoice, int columnChoice) {
         String seatID;
         if (columnChoice < 10) {
@@ -13,7 +16,12 @@ public class SeatFormatter {
         return seatID;
     }
 
-    public static boolean checkIfValidSeat(Screening screening, String seatIdChoice) {
+    public static boolean checkIfValidSeat(Screening screening) {
+        System.out.println("Enter Row Letter:");
+        char rowChoice = Character.toUpperCase(sc.next().charAt(0));
+        System.out.println("Enter Column Number:");
+        int columnChoice = sc.nextInt();
+        String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
         boolean validSeatId = false;
         if (screening.getCinema().getCinemaType() == CinemaType.ORDINARY) {
             for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {

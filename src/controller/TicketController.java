@@ -41,109 +41,45 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + i + 1 + ") : ");
                 do {
-                    System.out.println("Enter Row Letter:");
-                    rowChoice = Character.toUpperCase(sc.next().charAt(0));
-                    System.out.println("Enter Column Number:");
-                    columnChoice = sc.nextInt();
-                    seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
-                    //TODO: Can make another method for this so that it can break out of the loop
-                    validSeatId = SeatFormatter.checkIfValidSeat(screeningChosen, seatIdChoice);
-                    if (validSeatId == true){
+                    validSeatId = SeatFormatter.checkIfValidSeat(screeningChosen);
+                    if (validSeatId){
                         //Add to cart tickets Make it a function... since we are going to make it over again
                         //Add to cart
                         //change the seats to reserve
-
-                        customer.getCartTickets().add(new Ticket(?????));
-                        //Change to reserve
-
-
-                            //TODO: They will change the isBooked at payment? -> isReserved
-
-                            System.out.println("Ticket added to cart successfully!");
-                            //TODO: We add this ticket to cartTickets or what?
+                        //System.out.println("Ticket added to cart successfully!");
+                        //customer.getCartTickets().add(new Ticket(?????));
                         }
-
-                } while (validSeatId == false);
+                } while (!validSeatId);
             }
-            LayoutPrinterOrdinary.printLayout(cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1));
+            LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < adultTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + i + 1 + ") : ");
                 do {
-                    System.out.println("Enter Row Letter:");
-                    rowChoice = Character.toUpperCase(sc.next().charAt(0));
-                    System.out.println("Enter Column Number:");
-                    columnChoice = sc.nextInt();
-                    //TODO: Can make this a method in Seats
-                    if (columnChoice < 10) {
-                        seatIdChoice = rowChoice + String.format("%02d", columnChoice);
-                    } else {
-                        seatIdChoice = rowChoice + String.valueOf(columnChoice);
+                    validSeatId = SeatFormatter.checkIfValidSeat(screeningChosen);
+                    if (validSeatId) {
+                        //Add to cart tickets Make it a function... since we are going to make it over again
+                        //Add to cart
+                        //change the seats to reserve
+                        //System.out.println("Ticket added to cart successfully!");
+                        //customer.getCartTickets().add(new Ticket(?????));
                     }
-                    //TODO: Can make another method for this so that it can break out of the loop
-                    validSeatId = false;
-                    if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getCinemaType() == CinemaType.ORDINARY) {
-                        for (i = 0; i < Initialise.Ordinary_Capacity; i++) {
-                            if (seatIdChoice == cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getSeatId()) {
-                                if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getIsBooked() == false) {
-                                    validSeatId = true;
-                                    //TODO: They will change the isBooked at payment?
-                                    cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).setIsBooked(true);
-                                    System.out.println("Ticket added to cart successfully!");
-                                    //TODO: We add this ticket to cartTickets or what?
-                                    Ticket ticket = new Ticket(cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getMovie(),
-                                            cineplexes.get(cineplexChoice - 1),
-                                            cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1),
-                                            cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getShowDateTime(),
-                                            cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i),
-                                            //TODO: Change when TicketPrice change
-                                            10
-                                    );
-                                }
-                            }
-                        }
-                    }
-                } while (validSeatId == false);
+                } while (!validSeatId);
             }
-            LayoutPrinterOrdinary.printLayout(cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1));
+            LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < seniorTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + i + 1 + ") : ");
                 do {
-                    System.out.println("Enter Row Letter:");
-                    rowChoice = Character.toUpperCase(sc.next().charAt(0));
-                    System.out.println("Enter Column Number:");
-                    columnChoice = sc.nextInt();
-                    //TODO: Can make this a method in Seats
-                    if (columnChoice < 10) {
-                        seatIdChoice = rowChoice + String.format("%02d", columnChoice);
-                    } else {
-                        seatIdChoice = rowChoice + String.valueOf(columnChoice);
+                    validSeatId = SeatFormatter.checkIfValidSeat(screeningChosen);
+                    if (validSeatId) {
+                        //Add to cart tickets Make it a function... since we are going to make it over again
+                        //Add to cart
+                        //change the seats to reserve
+                        //System.out.println("Ticket added to cart successfully!");
+                        //customer.getCartTickets().add(new Ticket(?????));
                     }
-                    //TODO: Can make another method for this so that it can break out of the loop
-                    validSeatId = false;
-                    if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getCinemaType() == CinemaType.ORDINARY) {
-                        for (i = 0; i < Initialise.Ordinary_Capacity; i++) {
-                            if (seatIdChoice == cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getSeatId()) {
-                                if (cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).getIsBooked() == false) {
-                                    validSeatId = true;
-                                    //TODO: They will change the isBooked at payment?
-                                    cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i).setIsBooked(true);
-                                    System.out.println("Ticket added to cart successfully!");
-                                    //TODO: We add this ticket to cartTickets or what?
-                                    Ticket ticket = new Ticket(cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getMovie(),
-                                            cineplexes.get(cineplexChoice - 1),
-                                            cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1),
-                                            cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getShowDateTime(),
-                                            cineplexes.get(cineplexChoice - 1).getCinemas().get(cinemaChoice - 1).getScreenings().get(screeningChoice - 1).getSeat(i),
-                                            //TODO: Change when TicketPrice change
-                                            10
-                                    );
-                                }
-                            }
-                        }
-                    }
-                } while (validSeatId == false);
+                } while (!validSeatId);
             }
             PaymentUI.initiatePaymentUI(customer);
         }
