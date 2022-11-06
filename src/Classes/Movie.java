@@ -1,6 +1,8 @@
 package Classes;
 
 import java.util.ArrayList;
+
+import Classes.Enum.MovieGenre;
 public class Movie {
 
     // TODO: Add javadocs
@@ -8,10 +10,10 @@ public class Movie {
 
     private Enum.MovieStatus movieStatus;
     private String movieTitle;
-    private ArrayList<Enum.MovieGenre> movieGenres;
+    private Enum.MovieGenre[] movieGenres;
     private String synopsis;
     private String director;
-    private ArrayList<String> casts;
+    private String[] casts;
     private int movieDuration;
     private double sales;
     private Enum.AgeRestriction ageRestriction;
@@ -32,7 +34,7 @@ public class Movie {
         this.movieTitle = movieTitle;
     }
 
-    public void setMovieGenres(ArrayList<Enum.MovieGenre> movieGenres) {
+    public void setMovieGenres(MovieGenre[] movieGenres) {
         this.movieGenres = movieGenres;
     }
 
@@ -44,7 +46,7 @@ public class Movie {
         this.director = director;
     }
 
-    public void setCasts(ArrayList<String> casts) {
+    public void setCasts(String[] casts) {
         this.casts = casts;
     }
 
@@ -80,7 +82,7 @@ public class Movie {
         return ageRestriction;
     }
 
-    public ArrayList<Enum.MovieGenre> getMovieGenres() {
+    public MovieGenre[] getMovieGenres() {
         return movieGenres;
     }
 
@@ -92,7 +94,7 @@ public class Movie {
         return director;
     }
 
-    public ArrayList<String> getCasts(){
+    public String[] getCasts(){
         return casts;
     }
 
