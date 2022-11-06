@@ -7,6 +7,8 @@ import Classes.*;
 
 public class CustomerMenuUI{
 
+    private static final String Syst = null;
+
     public static void customerMenuOptions(Customer customer){
         try (Scanner sc = new Scanner(System.in)) {
         int movieChoice = -1;
@@ -27,8 +29,8 @@ public class CustomerMenuUI{
                     int exit = -1;
                     do{
                         System.out.println("Movie List");
-                        for (i = 0; i < Initialise.Movies.size(); i++){
-                            System.out.println("(" + (i+1) + ")" + " - " + Initialise.Movies.get(i).getMovieTitle());
+                        for (i = 0; i < Initialise.movies.size(); i++){
+                            System.out.println("(" + (i+1) + ")" + " - " + Initialise.movies.get(i).getMovieTitle());
                         }
                         System.out.println("Please select movie: ");
                         movieChoice = sc.nextInt();
@@ -42,7 +44,7 @@ public class CustomerMenuUI{
                         }
                         //if movie exists --> show all the details of the movie 
                         else {
-                            MovieController.printMovie(Initialise.Movies.get(movieChoice-1).getMovieTitle());
+                            MovieController.printMovie(Initialise.movies.get(movieChoice-1).getMovieTitle());
                             System.out.println("(1) - Search again");
                             System.out.println("(2) - Exit");
                             exit = sc.nextInt();
@@ -91,8 +93,8 @@ public class CustomerMenuUI{
                 case 1: 
                     do{
                         System.out.println("Enter the title of the Movie: ");
-                        for (i = 0; i < Initialise.Movies.size(); i++){
-                            System.out.println("(" + (i+1) + ")" + " - " + Initialise.Movies.get(i).getMovieTitle());
+                        for (i = 0; i < Initialise.movies.size(); i++){
+                            System.out.println("(" + (i+1) + ")" + " - " + Initialise.movies.get(i).getMovieTitle());
                         }
                         movieChoice = sc.nextInt();
                         //String movieTitle = sc.next();
@@ -105,7 +107,7 @@ public class CustomerMenuUI{
                         }
                         //if movie exists --> show all the details of the movie 
                         else {
-                            MovieController.printMovie(Initialise.Movies.get(movieChoice-1).getMovieTitle());
+                            MovieController.printMovie(Initialise.movies.get(movieChoice-1).getMovieTitle());
                             System.out.println("(1) - Search again");
                             System.out.println("(2) - Exit");
                             exit = sc.nextInt();
@@ -115,15 +117,16 @@ public class CustomerMenuUI{
                 case 2:
                     AccountUI.initiateLoginUI(2);
                     break;
-            case 3:
-                MovieController.getTop5Movies();
-                break;
-            case 4:
-                break;
-            default:
-                break;
+                case 3:
+                    MovieController.getTop5Movies(ListingController.getListingCriteria());
+                    break;
+                case 4:
+                    break;
+                default:
+                    break;
             }
         }while(option<4);
         sc.close();
     }
+
 }
