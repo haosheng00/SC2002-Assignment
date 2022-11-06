@@ -6,6 +6,7 @@ import Initialiser.Initialise;
 import Classes.*;
 import controller.*;
 public class AccountUI {
+    public static Customer current;
     //static AdminController adminPrac = new AdminController();
     //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
@@ -46,7 +47,6 @@ public class AccountUI {
             switch(choice){
                 case 1:
                     LoginUI(x);
-                    //TODO: if logInCustomer == true, bring them to MainMenuUI for customer
                     break;
                 case 2:
                     CustomerController.addCustomer();
@@ -82,11 +82,11 @@ public class AccountUI {
                 case 1:
                     AdminMenuUI.adminMenuOptions();
                 case 2:
-                    int index = CustomerController.searchCustomer(username);
+                    //int index = CustomerController.searchCustomer(username);
                     if (x == 2){
-                        TicketController.createBooking(Initialise.cineplexes, Initialise.customers.get(index));
+                        TicketController.createBooking(Initialise.cineplexes, current);
                     }
-                    CustomerMenuUI.customerMenuOptions(Initialise.customers.get(index));
+                    CustomerMenuUI.customerMenuOptions(current);
             }
         }while(exitChoice !=2);
         sc.close();
@@ -103,25 +103,27 @@ public class AccountUI {
 
         int isGuest=0;
         if(isCustomer == 0) isGuest = 1;
+        
 
         if(isAdmin !=-1){
-            if(AdminController.getAdminsList().get(isAdmin).getPassword()==password)
-            return 1;
+            if(AdminController.getAdminsList().get(isAdmin).getPassword()==password){
+                return 1;}
             else 
                 return 0;
                 
         }
         if(isCustomer >0){
             if(CustomerController.getCustomersList().get(isCustomer).getPassword()==password){
+                current = Initialise.customers.get(isCustomer);
                 return 2;
             }
             else 
                 return 0;
-
-        }
-        if(isGuest ==1){
+       }
+       if(isGuest ==1){
             return 3;
         }
+        
         return 4;
     }
 
