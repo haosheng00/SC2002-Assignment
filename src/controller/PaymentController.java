@@ -1,8 +1,8 @@
 package controller;
 
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 import Classes.*;
+import controller.*;
 import ui.*;
 import Initialiser.Initialise;
 
@@ -19,9 +19,6 @@ public class PaymentController {
         PaymentController.Payments = Payments;
     }
 
-
-    //TODO: UPDATE TOP5 SALES ARRAY 
-
     //checkout all tickets in the cart
     public static void checkoutUI(Customer customer) {
         int choice = 0;
@@ -29,6 +26,7 @@ public class PaymentController {
         double totalCharges;
         String name;
         String cardNumber;
+        String cardExpirationDate;
         String billingAddress;
         String cvc;
         Scanner sc = new Scanner(System.in);
@@ -50,26 +48,26 @@ public class PaymentController {
         //if cancel checkout
         if (choice == 0) {
             System.out.println("Cancelling check out...");
-            //TODO: undo isReserved
+            //TODO: undo isReserved --> Don't you undo isReserved before they make payment (after they select the seats)?
             return;
         }
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
-        //TODO: ADD DECIMALS FOR DIS 
-        System.out.println("The total amount is: " + totalCharges);
+        System.out.printf("The total amount is: %.2f", totalCharges);
         System.out.println("Please enter your credit card details");
         System.out.println("Full Name: ");
         name = sc.next();
         System.out.println("Card Number: ");
         cardNumber = sc.next();
-        //TODO: ADD EXPIRY NUMBER 
+        System.out.println("Expiration Date:");
+        cardExpirationDate = sc.next();
         System.out.println("Billing Address: ");
         billingAddress = sc.next();
         System.out.println("Please enter your CVC/CVV: ");
         cvc = sc.next();
-        System.out.println("The amount of " + totalCharges + "will be charged to your card, under the name " + name);
+        System.out.printf("The amount of %.2f", totalCharges + "will be charged to your card, under the name " + name);
         TID = createTID(cartTickets.get(0));
-        madePayment(TID, totalCharges, name, billingAddress, cardNumber);
+        madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
 
         //print Receipt 
         printReceipt(cartTickets);
@@ -94,8 +92,8 @@ public class PaymentController {
     }
 
     //made payment and add payment to the Payment list
-    public static void madePayment(int TID, double totalCharges, String CreditCardName, String billingAddress, String billingCardNumber) {
-        Payments.add(new Payment(TID,totalCharges,CreditCardName,billingAddress,billingCardNumber));
+    public static void madePayment(int TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) {
+        Payments.add(new Payment(TID,totalCharges,CreditCardName,CardExpirationDate,billingAddress,billingCardNumber));
     }
 
     public static int createTID(Ticket t) {
@@ -154,19 +152,52 @@ public class PaymentController {
         }
     }
  
-    //update sales of each movie
+    //update sales of each movie and top5 array 
     public static void updateSales(ArrayList <Ticket> cartTickets) {
 
         int size = cartTickets.size();
         //iterate thru Tickets --> find movie and add ticketprice to sales 
+        //all tickets in cart have the same movie 
+        Movie movie = cartTickets.get(0).getMovie();
+
         for (int i=0; i<size; i++) {
-            //find movie for each ticket 
-            Movie movie = cartTickets.get(i).getMovie();
             //update sales for each ticket 
             movie.setSales(movie.getSales() + cartTickets.get(i).getTicketPrice());
         }
+
+
+        int exist = 0;
+        //movie sales updated
+        //update top5 sales array 
+        ArrayList <Movie> top5Sales = MovieController.getTop5BySales();
+        //check if movie is alr in the top5sales
+        for (int i=0; i< top5Sales.size(); i++) {
+            if (movie.getMovieTitle() == top5Sales.get(i).getMovieTitle()) {
+                exist = 1;
+                break;
+            }
+        }
+        //add movie with updated sales into the top5sales array (if it isn't alr in the top5array)
+        if (exist == 0) {
+            //TO DO(MC) NEED NEW MOVIE CONSTRUCTOR --> TO put in movie with the new sales value 
+            top5Sales.add(movie);
+
+        }
+        //sort the array 
+        Collections.sort(top5Sales, new CompareBySales());
+        //remove last index if (size > 5)
+        if (top5Sales.size() > 5) {
+            //remove the sixth movie 
+            top5Sales.remove(5);
+        }
     }
 
+    class CompareBySales implements Comparator<Movie> {
+        public int compare(Movie a, Movie b) {
+                    return (int)(a.getSales() - b.getSales());
+        }   
+    }
+ 
     //update ticket history for each customer
     //add cartTickets to the boughtTix array
     public static void updateTicketHistory(Customer cus) {

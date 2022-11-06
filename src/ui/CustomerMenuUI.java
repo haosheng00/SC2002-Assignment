@@ -61,7 +61,7 @@ public class CustomerMenuUI{
                     case 4: 
                         ReviewUI.initiateReviewUI(customer);
                         break;
-                    case 
+                    case 5:
                     //TODO: new ListingController, 1 2 3
                         MovieController.getTop5Movies(ListingController.getListingCriteria());
                         break;
