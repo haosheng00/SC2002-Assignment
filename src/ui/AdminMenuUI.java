@@ -23,12 +23,7 @@ public class AdminMenuUI{
                     MovieUI.initiateMovieUI();
                     break;
                 case 2:
-                    System.out.println("Choose the Cineplex: ");
-                    for (int i = 0; i < Initialise.cineplexes.size(); i++){
-                        System.out.println("("+(i+1)+") "+Initialise.cineplexes.get(i).getCineplexName());
-                    }
-                    int cineplexChoice = scanner.nextInt();
-                    ScreeningUI.initiateScreeningUI(Initialise.cineplexes.get(cineplexChoice-1));
+                    ScreeningUI.initiateScreeningUI();
                     break;
                 case 3:
                     TicketUI.initiateAdminTicketUI();

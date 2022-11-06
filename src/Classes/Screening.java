@@ -6,13 +6,15 @@ import Initialiser.Initialise;
 //TODO: just pass in movieTitle instead of whole movie object?
 public class Screening {
     private Cinema cinema;
-    private String showDateTime;
+    private String showDate;
+    private String showTime;
     private Movie movie;
     private Seat[] seats;
 
-    public Screening(Cinema cinema, String showDateTime, Movie movie){
+    public Screening(Cinema cinema, String showDate, String showTime, Movie movie){
         this.cinema = cinema;
-        this.showDateTime = showDateTime;
+        this.showDate = showDate;
+        this.showTime = showTime;
         this.movie = movie;
         initiateSeats();
     }
@@ -38,13 +40,6 @@ public class Screening {
         this.cinema = cinema;
     }
 
-    public String getShowDateTime() {
-        return showDateTime;
-    }
-    public void setShowDateTime(String showDateTime) {
-        this.showDateTime = showDateTime;
-    }
-
     public Movie getMovie() {
         return movie;
     }
@@ -64,5 +59,19 @@ public class Screening {
     }
     public void setSeat(Seat seat, int i){
         this.seats[i] = seat;
+    }
+
+    public String getShowTime() {
+        return showTime;
+    }
+    public void setShowTime(String showTime) {
+        this.showTime = showTime;
+    }
+
+    public String getShowDate() {
+        return showDate;
+    }
+    public void setShowDate(String showDate) {
+        this.showDate = showDate;
     }
 }

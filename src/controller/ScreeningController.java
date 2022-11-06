@@ -2,36 +2,25 @@ package controller;
 
 import Classes.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
 
     public ScreeningController(){};
-    public static void addScreening(Cineplex cineplex){
+    public static void addScreening(ArrayList<Cineplex> cineplexes){
         int i;
-        System.out.println("Movie Title: ");
-        String movieTitle = sc.next();
-        // (1) - OPTIOISND
-        // (2) - SDAJSDASD
-        //TODO: do drop-down options
-        //TODO: Don't Create a Movie 
-        Movie movie = new Movie(movieTitle);
-        System.out.println("Add date(TODO:format): ");
-        //TODO: parsing of date and time format
-        System.out.println("Add time(TODO:format): ");
-        System.out.println("Cinema: ");
-        for (i = 1; i <= cineplex.getCinemas().size(); i++) {
-            System.out.println("(" + i + ")" + cineplex.getCinemas().get(i - 1).getCinemaName());
-        }
-        int cinemaChoice = sc.nextInt();
-        if (cinemaChoice <= 0 || cinemaChoice > i){
-            System.out.println("Invalid Input");
-            System.out.println("addScreening fail");
-            return;
-        }
-        //TODO: Update the showDateTime
-        cineplex.getCinemas().get(cinemaChoice - 1).getScreenings().add(new Screening(cineplex.getCinemas().get(cinemaChoice - 1), "160400", movie));
+        int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
+        int cinemaChoice = DropDownMenu.initiateCinemaChoice(cineplexes.get(cineplexChoice-1).getCinemas());
+        int movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice-1).getMovies());
+        System.out.println("Add date(YYYYMMDD): ");
+        String dateChosen = sc.next();
+        System.out.println("Add time(HHmmss): ");
+        String timeChosen = sc.next();
+        Cinema cinemaChosen = cineplexes.get(cinemaChoice-1).getCinemas().get(cinemaChoice-1);
+        Movie movieChosen = cineplexes.get(cineplexChoice-1).getMovies().get(movieChoice-1);
+        cinemaChosen.getScreenings().add(new Screening(cinemaChosen,dateChosen,timeChosen,movieChosen));
         System.out.println("addScreening success");
     }
     public static void deleteScreening(Cineplex cineplex){
