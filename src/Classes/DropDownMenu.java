@@ -75,4 +75,20 @@ public class DropDownMenu {
         } while (movieChoice < 0 || movieChoice > maxCounter);
         return movieChoice;
     }
+
+    public static int initiateAdminMovieChoice(ArrayList<Movie> movies) {
+        int i, movieChoice;
+        do {
+            System.out.println("========================================");
+            System.out.println("Select Movie: ");
+            for (i = 0; i < movies.size(); i++) {
+                System.out.println("(" + i + 1 + ")" + movies.get(i).getMovieTitle());
+            }
+            movieChoice = sc.nextInt();
+            if (movieChoice < 0 || movieChoice > i) {
+                System.out.println("Invalid Input! Try again");
+            }
+        } while (movieChoice < 0 || movieChoice > i);
+        return movieChoice;
+    }
 }
