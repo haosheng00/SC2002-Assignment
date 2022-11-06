@@ -19,14 +19,12 @@ public class LayoutPrinterPlat extends LayoutPrinter{
                 if (columnNumber == leftSectionWidth + 1 || columnNumber == leftSectionWidth + midSectionWidth + 1) {
                     LayoutPrinter.printAisle();
                 }
-
                 while (Character.getNumericValue(rowNumber) % 3 == 1 && (columnNumber > leftSectionWidth && columnNumber < leftSectionWidth + midSectionWidth + 1)){
                     columnNumber = LayoutPrinter.printEmptySeats(columnNumber);
                     if (columnNumber == leftSectionWidth + midSectionWidth + 1) {
                         LayoutPrinter.printAisle();
                     }
                 }
-
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
                 columnNumber++;
                 SeatFormatter.printSeat(screening.getSeat(i));

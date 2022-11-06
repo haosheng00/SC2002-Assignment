@@ -55,17 +55,24 @@ public class DropDownMenu {
 
     public static int initiateMovieChoice(ArrayList<Movie> movies) {
         int i, movieChoice;
+        int counter = 0, maxCounter = 0;
         do {
             System.out.println("========================================");
             System.out.println("Select Movie: ");
             for (i = 0; i < movies.size(); i++) {
-                System.out.println("(" + i + 1 + ")" + movies.get(i).getMovieTitle());
+                if (movies.get(i).getMovieStatus() == Enum.MovieStatus.END_OF_SHOWING){
+                    counter++;
+                }
+                else {
+                    System.out.println("(" + i + 1 + ")" + movies.get(i+counter).getMovieTitle());
+                    maxCounter++;
+                }
             }
             movieChoice = sc.nextInt();
-            if (movieChoice < 0 || movieChoice > i) {
+            if (movieChoice < 0 || movieChoice > maxCounter) {
                 System.out.println("Invalid Input! Try again");
             }
-        } while (movieChoice < 0 || movieChoice > i);
+        } while (movieChoice < 0 || movieChoice > maxCounter);
         return movieChoice;
     }
 }
