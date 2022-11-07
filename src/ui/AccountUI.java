@@ -77,12 +77,20 @@ public class AccountUI {
                     break;
                 case 1:
                     AdminMenuUI.adminMenuOptions();
+                    break;
                 case 2:
                     //int index = CustomerController.searchCustomer(username);
                     if (x == 2){
                         TicketController.createBooking(Initialise.cineplexes, current);
                     }
                     CustomerMenuUI.customerMenuOptions(current);
+                    break;
+                case 3:
+                    CustomerMenuUI.guestMenuOptions();
+                    break;
+                default:
+                    break;
+                    
             }
         }while(exitChoice !=2);
         sc.close();

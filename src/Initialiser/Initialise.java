@@ -14,6 +14,7 @@ public class Initialise {
 
     public static DateTime dt = new DateTime();
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
+    //cineplexes.add(new Cineplex(null, null,null));
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
     public static ArrayList<Review> reviews = new ArrayList<Review>();
     public static ArrayList<Customer> customers = new ArrayList<Customer>();

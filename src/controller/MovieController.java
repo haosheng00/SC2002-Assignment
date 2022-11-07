@@ -38,7 +38,7 @@ public class MovieController {
         System.out.println("Please enter new Movie Title:");
         movieTitle = sc.next();
         exists = searchMovie(movieTitle);
-        while (exists == -1) {
+        while (!(exists == -1 || exists == -2)) {
             System.out.println("The movie already exists.");
             System.out.println("Please enter new Movie Title:");
             System.out.println("Or press 0 to go back");
@@ -49,7 +49,7 @@ public class MovieController {
         }
         movieTitle = sc.next();
         exists = searchMovie(movieTitle);
-        while(exists!=-1){
+        while(exists==-1){
             Movie newMovie = new Movie(movieTitle.toUpperCase());
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
