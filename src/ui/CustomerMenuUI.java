@@ -93,7 +93,8 @@ public class CustomerMenuUI{
             switch(option){
                 case 1: 
                     do{
-                        System.out.println("Enter the title of the Movie: ");
+                        int movieIndex = DropDownMenu.initiateMovieChoice(Initialise.cineplexes, 1 )
+                        /*System.out.println("Enter the title of the Movie: ");
                         for (i = 0; i < Initialise.movies.size(); i++){
                             System.out.println("(" + (i+1) + ")" + " - " + Initialise.movies.get(i).getMovieTitle());
                         }
@@ -111,7 +112,7 @@ public class CustomerMenuUI{
                             MovieController.printMovie(Initialise.movies.get(movieChoice-1).getMovieTitle());
                             System.out.println("(1) - Search again");
                             System.out.println("(2) - Exit");
-                            exit = sc.nextInt();
+                            exit = sc.nextInt();*/
                         }
                     }while(exit != 2);
                     break;

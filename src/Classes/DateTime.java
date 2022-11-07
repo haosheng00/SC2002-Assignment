@@ -2,6 +2,9 @@ package classes;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.temporal.*;
+import java.text.SimpleDateFormat;
 
 public class DateTime{
 
@@ -25,6 +28,11 @@ public class DateTime{
         //change date time obj to string 
         String formattedDate = myDateObj.format(myFormatObj);
         return formattedDate;
+    }
+
+    public String stringToDate(String stringdate){
+
+        // TODO: convert string format to date format
     }
     
 }

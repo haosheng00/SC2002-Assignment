@@ -25,5 +25,6 @@ public class ListingController {
         int listingChoice = sc.nextInt();
 
         ListingController.setListingCriteria(listingChoice);
+        sc.close();
     }
 }    

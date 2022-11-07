@@ -2,8 +2,6 @@ package classes;
 
 import initialiser.Initialise;
 
-//Split Date & Time
-//TODO: just pass in movieTitle instead of whole movie object?
 public class Screening {
     private Cinema cinema;
     private String showDate;
@@ -18,14 +16,15 @@ public class Screening {
         this.movie = movie;
         initiateSeats();
     }
+    
     public void initiateSeats(){
-        if (cinema.getCinemaType() == CinemaType.ORDINARY){
+        if (cinema.getCinemaType() == Enum.CinemaType.ORDINARY){
             this.seats = new Seat[Initialise.Ordinary_Capacity];
             for (int i = 0; i < seats.length;i++){
                 seats[i] = new Seat();
             }
         }
-        else if (cinema.getCinemaType() == CinemaType.PLATINUMMOVIESUITES){
+        else if (cinema.getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
             this.seats = new Seat[Initialise.Plat_Capacity];
             for (int i = 0; i < seats.length;i++){
                 seats[i] = new Seat();

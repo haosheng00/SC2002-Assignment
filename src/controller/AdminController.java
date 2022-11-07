@@ -8,9 +8,6 @@ public class AdminController {
     static Scanner sc = new Scanner(System.in);
     private static ArrayList<Admin> admins = Initialise.admins;
 
-    public AdminController(){ 
-    }
-
     public static ArrayList<Admin> getAdminsList(){
         return admins;
     }

@@ -72,5 +72,4 @@ public class Ticket{
     public double getTicketPrice(){
         return ticketPrice;
     }
-
 }

@@ -1,6 +1,5 @@
 package controller;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import classes.*;
@@ -10,12 +9,13 @@ import classes.Enum.MovieStatus;
 import ui.MovieUI;
 import initialiser.Initialise;
 
-
 public class MovieController {
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Movie> movies = Initialise.movies;
     static ArrayList<Movie> top5BySales = Initialise.top5BySales;
     static ArrayList<Movie> top5ByRatings = Initialise.top5ByRatings;
+    
+    //TODO: CHANGE STATUS TO END_OF_SHOWING AFTER LAST SCREENING DATE IS PASSED
     
     public static int searchMovie(String movieTitle){
         movieTitle = movieTitle.toUpperCase();
@@ -26,10 +26,11 @@ public class MovieController {
         }
         return -1;
     }
+
     public static void addMovie(){
         String movieTitle;
-        String[] casts = null;
-        classes.Enum.MovieGenre[] movieGenres = null;
+        ArrayList<String> casts = new ArrayList<>();
+        ArrayList<classes.Enum.MovieGenre> movieGenres = new ArrayList<>();
         String s = null;
 
         int exists = -2;
@@ -37,13 +38,23 @@ public class MovieController {
         System.out.println("Please enter new Movie Title:");
         movieTitle = sc.next();
         exists = searchMovie(movieTitle);
+        while (exists == -1) {
+            System.out.println("The movie already exists.");
+            System.out.println("Please enter new Movie Title:");
+            System.out.println("Or press 0 to go back");
+            String input = sc.next();
+            if (input == "0") MovieUI.initiateMovieUI();
+            else movieTitle = input;
+            exists = searchMovie(movieTitle);
+        }
+        movieTitle = sc.next();
+        exists = searchMovie(movieTitle);
         while(exists!=-1){
             Movie newMovie = new Movie(movieTitle.toUpperCase());
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
             System.out.println("(2) Preview");
-            System.out.println("(3) End of showing");
-            System.out.println("(4) Now showing");
+            System.out.println("(3) Now showing");
             int i = sc.nextInt();
             switch(i){
                 case 1:
@@ -53,12 +64,12 @@ public class MovieController {
                     newMovie.setMovieStatus(MovieStatus.PREVIEW);
                     break;
                 case 3:
-                    newMovie.setMovieStatus(MovieStatus.END_OF_SHOWING);
-                    break;
-                case 4:
                     newMovie.setMovieStatus(MovieStatus.NOW_SHOWING);
                     break;
             }
+            System.out.println("Please enter the date where the movie stops showing: (YYYYMMDD)");
+            newMovie.setExpiryDate(sc.next());
+            
             System.out.println("Please select movie genre: ");
             do{
                 System.out.println("(1) Action");
@@ -73,37 +84,36 @@ public class MovieController {
                 System.out.println("(10) Others");
                 System.out.println("(0) Go to Next Section");
                 i = sc.nextInt();
-                movieGenres = Arrays.copyOf(movieGenres, movieGenres.length+1);
                 switch(i){
                     case 1:
-                        movieGenres[movieGenres.length-1] = MovieGenre.ACTION;
+                        movieGenres.add(MovieGenre.ACTION);
                         break;
                     case 2:
-                        movieGenres[movieGenres.length-1] = MovieGenre.HORROR;
+                        movieGenres.add(MovieGenre.HORROR);
                         break;
                     case 3:
-                        movieGenres[movieGenres.length-1] = MovieGenre.THRILLER;
+                        movieGenres.add(MovieGenre.THRILLER);
                         break;
                     case 4:
-                        movieGenres[movieGenres.length-1] = MovieGenre.ADVENTURE;
+                        movieGenres.add(MovieGenre.ADVENTURE);
                         break;
                     case 5:
-                        movieGenres[movieGenres.length-1] = MovieGenre.COMEDY;
+                        movieGenres.add(MovieGenre.COMEDY);
                         break;
                     case 6:
-                        movieGenres[movieGenres.length-1] = MovieGenre.ANIME;
+                        movieGenres.add(MovieGenre.ANIME);
                         break;
                     case 7:
-                        movieGenres[movieGenres.length-1] = MovieGenre.ROMANCE;
+                        movieGenres.add(MovieGenre.ROMANCE);
                         break;
                     case 8:
-                        movieGenres[movieGenres.length-1] = MovieGenre.DRAMA;
+                        movieGenres.add(MovieGenre.DRAMA);
                         break;
                     case 9:
-                        movieGenres[movieGenres.length-1] = MovieGenre.TRUE_STORY;
+                        movieGenres.add(MovieGenre.TRUE_STORY);
                         break;
                     case 10:
-                        movieGenres[movieGenres.length-1] = MovieGenre.OTHERS;
+                        movieGenres.add(MovieGenre.OTHERS);
                         break;
                 }
             }while (i != 0);
@@ -143,8 +153,7 @@ public class MovieController {
             newMovie.setDirector(sc.next());
             System.out.println("Please enter name of cast:");
             do{
-                casts = Arrays.copyOf(casts, casts.length+1);
-                casts[casts.length-1] = sc.next();
+                casts.add(sc.next());
                 System.out.println("Please enter name of next cast or 0 to continue");
             }while (j != 0);
             while (s != "Y" || s !="N"){
@@ -153,21 +162,31 @@ public class MovieController {
                 if (s == "Y") newMovie.setIs3D(true);
                 else if (s == "N") newMovie.setIs3D(false);
             }
-            break;
+            System.out.println("Please select the Cineplex(s) to screen the movie");
+            DropDownMenu.initiateCineplexAddition(Initialise.cineplexes, newMovie);
+            movies.add(newMovie);
+            break;        
         }
     }
         
     public static int deleteMovie(){
-        System.out.println("Please enter Movie to delete: ");
-        String movieTitle = sc.next();
-        int exists = searchMovie(movieTitle);
-        if(exists == -1){
-            movies.remove(exists);
-            return 1;
-        }
-        else 
-            System.out.println("Movie does not exist");
-        
+        int exit = -2;
+        do{
+            System.out.println("Please enter Movie to delete: ");
+            String movieTitle = sc.next();
+            int exists = searchMovie(movieTitle);
+            if(exists != -1){
+                movies.get(exists).setMovieStatus(MovieStatus.END_OF_SHOWING);
+                return 1;
+            }
+            else {
+                System.out.println("Movie does not exist");
+                System.out.println("Please select an option: ");
+                System.out.println("(1) - Try again");
+                System.out.println("(2) - Back");
+                exit = sc.nextInt();
+            }
+        }while(exit!=2);
         return 0;
     }
 

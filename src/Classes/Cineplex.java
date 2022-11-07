@@ -22,12 +22,10 @@ public class Cineplex {
 
     public ArrayList<Cinema> getCinemas() {
         return cinemas;
-    }
-
-    public void setCinemas(ArrayList<Cinema> cinemas) {
+    }    public void setCinemas(ArrayList<Cinema> cinemas) {
         this.cinemas = cinemas;
     }
-
+    
     public ArrayList<Movie> getMovies(){
         return movies;
     }

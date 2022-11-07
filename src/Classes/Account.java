@@ -5,14 +5,11 @@ public class Account{
     private String password;
     private boolean isAdmin;
 
-    public Account(String u, String p, boolean isAdmin){
-        this.userName = u;
-        this.password = p;
+    public Account(String username, String password, boolean isAdmin){
+        this.userName = username;
+        this.password = password;
         this.isAdmin = isAdmin;
     }
-
-    /*public Account(){
-    }*/
     
     public String getUserName(){
         return this.userName;
@@ -23,10 +20,10 @@ public class Account{
     public boolean getIsAdmin(){
         return this.isAdmin;
     }
+
     public void setUserName(String s){
         this.userName = s;
     } 
-
     public void setPassword(String p){
         this.password = p;
     }

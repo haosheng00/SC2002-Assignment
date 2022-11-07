@@ -3,7 +3,7 @@ package controller;
 import java.util.*;
 
 import classes.*;
-import controller.*;
+//import controller.*;
 import initialiser.Initialise;
 import ui.*;
 
@@ -90,6 +90,7 @@ public class PaymentController {
         System.out.println("Thank you for your purchase. We hope you enjoy for movie!");
 
         CustomerMenuUI.customerMenuOptions(customer);
+       
     }
 
     //made payment and add payment to the Payment list

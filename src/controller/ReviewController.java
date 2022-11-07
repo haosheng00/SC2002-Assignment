@@ -49,7 +49,7 @@ public class ReviewController {
 
         Scanner sc = new Scanner(System.in);
         
-        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList())-1 ;
+        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList(), ) ;
         if (movieIndex == -1) {
             return;
         }
@@ -84,7 +84,7 @@ public class ReviewController {
 
     //iterate thru the reviews to find the particular username
     public static void deleteReview(Customer customer) {
-        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList())-1 ;
+        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList()) ;
         if (movieIndex == -1) {
             return;
         }
@@ -119,7 +119,7 @@ public class ReviewController {
         Scanner sc = new Scanner(System.in);
 
         //get movie index 
-        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList())-1 ;
+        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList());
         if (movieIndex == -1) {
             return;
         }

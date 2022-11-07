@@ -7,9 +7,9 @@ public class PublicHoliday {
     private String stringdate;
     private LocalDate date;
 
-    public PublicHoliday(String name, LocalDate date){
+    public PublicHoliday(String name, String stringdate){
         this.name = name;
-        this.date = date;
+        this.stringdate = stringdate;
     }
 
     public String getPublicHolidayName(){

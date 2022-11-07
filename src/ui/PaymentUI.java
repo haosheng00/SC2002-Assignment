@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import classes.*;
 import controller.*;
-import initialiser.Initialise;
+//import initialiser.Initialise;
 
 public class PaymentUI {
     public static void initiatePaymentUI(Customer customer) {

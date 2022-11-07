@@ -23,7 +23,7 @@ public class SeatFormatter {
         int columnChoice = sc.nextInt();
         String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
         boolean validSeatId = false;
-        if (screening.getCinema().getCinemaType() == CinemaType.ORDINARY) {
+        if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
             for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
                     if (!screening.getSeat(i).getIsBooked()) {
@@ -31,7 +31,7 @@ public class SeatFormatter {
                     }
                 }
             }
-        } else if (screening.getCinema().getCinemaType() == CinemaType.PLATINUMMOVIESUITES) {
+        } else if (screening.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES) {
             for (int i = 0; i < Initialise.Plat_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
                     if (!screening.getSeat(i).getIsBooked()) {
@@ -45,21 +45,21 @@ public class SeatFormatter {
 
     public static void printSeat(Seat seat) {
         if (seat.getIsBooked()) {
-            if (seat.getSeatType() == SeatType.COUPLE_SEAT) {
+            if (seat.getSeatType() == Enum.SeatType.COUPLE_SEAT) {
                 System.out.print("[xxx||xxx]");
             } else {
                 System.out.print("[xxx]");
             }
         }
         else if (seat.getIsReserved()) {
-            if (seat.getSeatType() == SeatType.COUPLE_SEAT) {
+            if (seat.getSeatType() == Enum.SeatType.COUPLE_SEAT) {
                 System.out.print("[---||---]");
             } else {
                 System.out.print("[---]");
             }
         }
         else{
-            if (seat.getSeatType() == SeatType.COUPLE_SEAT) {
+            if (seat.getSeatType() == Enum.SeatType.COUPLE_SEAT) {
                 System.out.print("[" + seat.getSeatId() + "||" + seat.getSeatId() + "]");
             }
             else {
