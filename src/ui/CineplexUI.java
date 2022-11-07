@@ -1,9 +1,9 @@
 package ui;
 
-import Classes.Cineplex;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import classes.Cineplex;
 
 public class CineplexUI {
     public static void initiateCineplexUI(ArrayList<Cineplex> cineplexes){

@@ -1,7 +1,7 @@
 package ui;
 
-import Initialiser.Initialise;
 import controller.ListingController;
+import initialiser.Initialise;
 
 import java.util.Scanner;
 public class AdminMenuUI{

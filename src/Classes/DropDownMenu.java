@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -64,7 +64,7 @@ public class DropDownMenu {
                     counter++;
                 }
                 else {
-                    System.out.println("(" + i + 1 + ")" + movies.get(i+counter).getMovieTitle());
+                    System.out.println("(" + i+1 + ")" + movies.get(i+counter).getMovieTitle());
                     maxCounter++;
                 }
             }

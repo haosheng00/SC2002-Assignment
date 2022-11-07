@@ -1,8 +1,8 @@
-package Classes;
+package classes;
 
 import java.util.ArrayList;
 
-import Classes.Enum.MovieGenre;
+import classes.Enum.MovieGenre;
 public class Movie {
 
     // TODO: Add javadocs

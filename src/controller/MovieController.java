@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import Initialiser.Initialise;
+import classes.*;
+import classes.Enum.AgeRestriction;
+import classes.Enum.MovieGenre;
+import classes.Enum.MovieStatus;
 import ui.MovieUI;
-import Classes.*;
-import Classes.Enum.AgeRestriction;
-import Classes.Enum.MovieGenre;
-import Classes.Enum.MovieStatus;
+import initialiser.Initialise;
 
 
 public class MovieController {
@@ -29,7 +29,7 @@ public class MovieController {
     public static void addMovie(){
         String movieTitle;
         String[] casts = null;
-        Classes.Enum.MovieGenre[] movieGenres = null;
+        classes.Enum.MovieGenre[] movieGenres = null;
         String s = null;
 
         int exists = -2;
@@ -248,12 +248,6 @@ public class MovieController {
     }
     public static ArrayList<Movie> getMovieList(){
         return MovieController.movies;
-    }
-
-    public static void printMovieList() {
-        for (int i = 0; i < movies.size(); i++){
-            System.out.println("(" + (i+1) + ")" + " - " + movies.get(i).getMovieTitle());
-        }
     }
 
     public static ArrayList<Movie> getTop5ByRatings(){

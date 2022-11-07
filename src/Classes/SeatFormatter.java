@@ -1,8 +1,8 @@
-package Classes;
-
-import Initialiser.Initialise;
+package classes;
 
 import java.util.Scanner;
+
+import initialiser.Initialise;
 
 public class SeatFormatter {
     static Scanner sc = new Scanner(System.in);

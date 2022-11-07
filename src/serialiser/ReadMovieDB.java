@@ -1,13 +1,14 @@
-package Serialiser;
+package serialiser;
 
-import Classes.Cineplex;
-import Classes.Customer;
-import Classes.Payment;
-import Classes.Review;
-import Initialiser.Initialise;
+import initialiser.Initialise;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import classes.Cineplex;
+import classes.Customer;
+import classes.Payment;
+import classes.Review;
 
 public class ReadMovieDB {
 	public static void readMovieDB() throws Exception{

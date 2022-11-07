@@ -1,5 +1,5 @@
-package Classes;
-import Initialiser.Initialise;
+package classes;
+import initialiser.Initialise;
 import ui.*;
 public class Main {
     public static void main(String[] args) throws Exception {

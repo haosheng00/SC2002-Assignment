@@ -1,9 +1,11 @@
 package controller;
 
-import Classes.*;
+import initialiser.Initialise;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import classes.*;
 
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
@@ -20,15 +22,16 @@ public class ScreeningController {
         String timeChosen = sc.next();
         Cinema cinemaChosen = cineplexes.get(cinemaChoice-1).getCinemas().get(cinemaChoice-1);
         Movie movieChosen = cineplexes.get(cineplexChoice-1).getMovies().get(movieChoice-1);
-        cinemaChosen.getScreenings().add(new Screening(cinemaChosen,dateChosen,timeChosen,movieChosen));
+        Initialise.screenings.add(new Screening(cinemaChosen,dateChosen,timeChosen,movieChosen));
         System.out.println("addScreening success");
     }
     public static void deleteScreening(ArrayList<Cineplex> cineplexes){
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         int movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice-1).getMovies());
         Movie movieChosen = cineplexes.get(cineplexChoice-1).getMovies().get(movieChoice-1);
-        int screeningChoice = DropDownMenu.initiateScreeningChoice(movieChosen.getScreenings());
-        movieChosen.getScreenings().remove(screeningChoice-1);
+        int counter = 0;
+        int screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings);
+        Initialise.screenings.remove(screeningChoice-1);
         System.out.println("deleteScreening success");
     }
 

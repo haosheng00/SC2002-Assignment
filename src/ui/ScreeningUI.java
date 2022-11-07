@@ -1,10 +1,11 @@
 package ui;
 
-import Classes.Cineplex;
-import Initialiser.Initialise;
 import controller.ScreeningController;
+import initialiser.Initialise;
 
 import java.util.Scanner;
+
+import classes.Cineplex;
 public class ScreeningUI {
     public static void initiateScreeningUI() {
         int option = 0;

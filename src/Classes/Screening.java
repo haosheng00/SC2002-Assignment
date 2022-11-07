@@ -1,6 +1,6 @@
-package Classes;
+package classes;
 
-import Initialiser.Initialise;
+import initialiser.Initialise;
 
 //Split Date & Time
 //TODO: just pass in movieTitle instead of whole movie object?

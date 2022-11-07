@@ -1,13 +1,14 @@
 package ui;
-import Initialiser.Initialise;
 import java.util.Scanner;
-import java.util.ArrayList;
+
+import classes.*;
+//import java.util.ArrayList;
 import controller.*;
-import Classes.*;
+import initialiser.Initialise;
 
 public class CustomerMenuUI{
 
-    private static final String Syst = null;
+    //private static final String Syst = null;
 
     public static void customerMenuOptions(Customer customer){
         try (Scanner sc = new Scanner(System.in)) {

@@ -1,10 +1,10 @@
-package Initialiser;
+package initialiser;
 
-import Classes.*;
 import serialiser.ReadMovieDB;
 
-
 import java.util.ArrayList;
+
+import classes.*;
 
 public class Initialise {
 
@@ -19,6 +19,7 @@ public class Initialise {
     public static ArrayList<Customer> customers = new ArrayList<Customer>();
     public static ArrayList<Admin> admins = new ArrayList<Admin>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
+    public static ArrayList<Screening> screenings = new ArrayList<Screening>();
     public static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();

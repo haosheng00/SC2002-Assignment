@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 public class Seat {
     private char row;
     private int column;

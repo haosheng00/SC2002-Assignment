@@ -2,9 +2,9 @@ package ui;
 
 import java.util.Scanner;
 
-import Initialiser.Initialise;
-import Classes.*;
+import classes.*;
 import controller.*;
+import initialiser.Initialise;
 public class AccountUI {
     public static Customer current;
     //static AdminController adminPrac = new AdminController();
@@ -15,10 +15,6 @@ public class AccountUI {
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
-            /*System.out.println("Customer: 1");
-            System.out.println("Admin: 2");
-            System.out.println("Back: 3");
-            System.out.println("Choose login account type: ");*/
             System.out.println("(1) Login");
             System.out.println("(2) Continue as guest");
             choice = sc.nextInt();

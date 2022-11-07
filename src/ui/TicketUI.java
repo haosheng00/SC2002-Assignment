@@ -3,9 +3,9 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import classes.*;
 import controller.*;
-import Classes.*;
-import Initialiser.Initialise;
+import initialiser.Initialise;
 
 public class TicketUI {
     

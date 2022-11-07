@@ -2,9 +2,9 @@ package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Classes.Customer; 
-import Classes.Ticket;
-import Initialiser.Initialise;
+import classes.Customer;
+import classes.Ticket;
+import initialiser.Initialise;
 
 
 public class CustomerController{
