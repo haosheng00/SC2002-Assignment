@@ -34,7 +34,6 @@ public class MovieController {
 
 
         int exists = -2;
-        int j = -1;
         System.out.println("Please enter new Movie Title:");
         movieTitle = sc.next();
         exists = searchMovie(movieTitle);
@@ -47,8 +46,6 @@ public class MovieController {
             else movieTitle = input;
             exists = searchMovie(movieTitle);
         }
-        movieTitle = sc.next();
-        exists = searchMovie(movieTitle);
         while(exists==-1){
             Movie newMovie = new Movie(movieTitle.toUpperCase());
             System.out.println("Please select movie status:");
@@ -121,10 +118,13 @@ public class MovieController {
                         break;
                 }
             }while (i != 0);
+            newMovie.setMovieGenres(movieGenres);
             System.out.println("Please enter Movie Synopsis:");
             newMovie.setSynopsis(sc.next());
             System.out.println("Please enter movie duration in mins:");
+            // TODO: CATCH NON-INTEGER INPUTS
             newMovie.setMovieDuration(sc.nextInt());
+            
             System.out.println("Please set age rating/restriction:");
             System.out.println("(1) G");
             System.out.println("(2) PG");
@@ -156,10 +156,15 @@ public class MovieController {
             System.out.println("Please enter Movie Director: ");
             newMovie.setDirector(sc.next());
             System.out.println("Please enter name of cast:");
-            do{
-                casts.add(sc.next());
+            s = sc.next();
+            casts.add(s);
+            while (s != "0") {
+                casts.add(s);
                 System.out.println("Please enter name of next cast or 0 to continue");
-            }while (j != 0);
+                s = sc.next();
+                System.out.println(s);
+            }
+            newMovie.setCasts(casts);
             while (s != "Y" || s !="N"){
                 System.out.println("Is the movie 3D? (Y/N)");
                 s = sc.next();
