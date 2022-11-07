@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 
 public class Payment {
     //only method of payment is thru credit card - online purchase
@@ -6,17 +6,17 @@ public class Payment {
     //transaction ID
     // XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour,
     // m :minutes, XXX : cinema code in letters)
-    public int TID;
+    private int TID;
     //sum of all the charges
-    public double totalCharges;
+    private double totalCharges;
     //customer's credit card name
-    public String CreditCardName;
+    private String CreditCardName;
     //customer's card expiration date
-    public String CardExpirationDate;
+    private String CardExpirationDate;
     //customer's billing address
-    public String billingAddress;
+    private String billingAddress;
     //customer's billing card number
-    public String billingCardNumber;
+    private String billingCardNumber;
     
 
     //constructor

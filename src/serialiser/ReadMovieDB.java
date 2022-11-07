@@ -1,13 +1,11 @@
-package Serialiser;
+package serialiser;
 
-import Classes.Cineplex;
-import Classes.Customer;
-import Classes.Payment;
-import Classes.Review;
-import Initialiser.Initialise;
+import initialiser.Initialise;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import classes.*;
 
 public class ReadMovieDB {
 	public static void readMovieDB() throws Exception{
@@ -32,10 +30,46 @@ public class ReadMovieDB {
 			}
 			
 			//TODO: customer -> account
-			list = (ArrayList)SerializeMovieDB.readSerializedObject("Account.dat");
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Customer.dat");
 			for (int i = 0 ; i < list.size() ; i++) {
 				Customer customer = (Customer)list.get(i);
 				Initialise.customers.add(customer);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Admin.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Admin admin = (Admin) list.get(i);
+				Initialise.admins.add(admin);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Movie.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Movie movie = (Movie) list.get(i);
+				Initialise.movies.add(movie);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Screening.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Screening screening = (Screening) list.get(i);
+				Initialise.screenings.add(screening);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Top5BySales.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Movie movie = (Movie) list.get(i);
+				Initialise.top5BySales.add(movie);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Top5ByRatings.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Movie movie = (Movie) list.get(i);
+				Initialise.top5ByRatings.add(movie);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Holiday.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				PublicHoliday publicHoliday = (PublicHoliday) list.get(i);
+				Initialise.holidays.add(publicHoliday);
 			}
 	}
 }

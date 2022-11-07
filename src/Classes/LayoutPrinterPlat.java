@@ -1,6 +1,6 @@
-package Classes;
+package classes;
 
-import Initialiser.Initialise;
+import initialiser.Initialise;
 
 public class LayoutPrinterPlat extends LayoutPrinter{
         public static void printLayout(Screening screening) {

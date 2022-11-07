@@ -1,25 +1,27 @@
-package Classes;
+package classes;
 
 import java.util.ArrayList;
 
-import Classes.Enum.MovieGenre;
+import classes.Enum.MovieGenre;
 public class Movie {
 
     // TODO: Add javadocs
-    // Weixian: I believe the movie should have an arraylist of screenings
 
     private Enum.MovieStatus movieStatus;
     private String movieTitle;
-    private Enum.MovieGenre[] movieGenres;
+    private ArrayList<Enum.MovieGenre> movieGenres;
     private String synopsis;
     private String director;
-    private String[] casts;
+    private ArrayList<String> casts;
     private int movieDuration;
     private double sales;
     private Enum.AgeRestriction ageRestriction;
     private boolean is3D;
     private double overallRating;
     private ArrayList<Review> reviews;
+    private String expiryDate;
+    private String startDate;
+
 
     public Movie(String movieTitle){
         this.movieTitle = movieTitle;
@@ -34,7 +36,7 @@ public class Movie {
         this.movieTitle = movieTitle;
     }
 
-    public void setMovieGenres(MovieGenre[] movieGenres) {
+    public void setMovieGenres(ArrayList<MovieGenre> movieGenres) {
         this.movieGenres = movieGenres;
     }
 
@@ -46,7 +48,7 @@ public class Movie {
         this.director = director;
     }
 
-    public void setCasts(String[] casts) {
+    public void setCasts(ArrayList<String> casts) {
         this.casts = casts;
     }
 
@@ -69,6 +71,14 @@ public class Movie {
     public void setSales(double sales) {
         this.sales = sales;
     }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
     
     public String getMovieTitle() {
         return movieTitle;
@@ -82,7 +92,7 @@ public class Movie {
         return ageRestriction;
     }
 
-    public MovieGenre[] getMovieGenres() {
+    public ArrayList<MovieGenre> getMovieGenres() {
         return movieGenres;
     }
 
@@ -94,7 +104,7 @@ public class Movie {
         return director;
     }
 
-    public String[] getCasts(){
+    public ArrayList<String> getCasts(){
         return casts;
     }
 
@@ -117,4 +127,13 @@ public class Movie {
     public ArrayList<Review> getReviews(){
         return reviews;
     }
+
+    public String getExpiryDate() {
+        return expiryDate;
     }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+}

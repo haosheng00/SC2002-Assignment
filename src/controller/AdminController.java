@@ -1,14 +1,12 @@
 package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
-import Initialiser.Initialise;
-import Classes.Admin; 
+
+import classes.Admin;
+import initialiser.Initialise; 
 public class AdminController {
     static Scanner sc = new Scanner(System.in);
     private static ArrayList<Admin> admins = Initialise.admins;
-
-    public AdminController(){ 
-    }
 
     public static ArrayList<Admin> getAdminsList(){
         return admins;

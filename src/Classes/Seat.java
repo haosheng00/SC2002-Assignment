@@ -1,8 +1,11 @@
-package Classes;
+package classes;
+
+import classes.Enum.SeatType;
+
 public class Seat {
     private char row;
     private int column;
-    private SeatType seatType;
+    private Enum.SeatType seatType;
     private String seatId;
     private boolean isBooked;
     private boolean isReserved;
@@ -50,7 +53,7 @@ public class Seat {
     public void setSeatType(SeatType seatType) {
         this.seatType = seatType;
     }
-    public SeatType getSeatType() {
+    public Enum.SeatType getSeatType() {
         return seatType;
     }
 

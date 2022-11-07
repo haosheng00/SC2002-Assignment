@@ -1,14 +1,13 @@
-package Classes;
+package classes;
 import java.util.ArrayList;
 public class Customer extends Account{
-    //ADD CLEAR CART TIX METHOD IN CUSTOMER CONTROLLER//done
     private ArrayList<Ticket> cartTickets = new ArrayList<Ticket>();
     private ArrayList<Ticket> boughtTickets = new ArrayList<Ticket>();
     private String emailAddress;
     private String mobileNumber;
 
-    public Customer(String s, String p, String email, String phno){
-        super(s, p, false ); this.emailAddress = email; this.mobileNumber = phno;
+    public Customer(String username, String password, String email, String mobileno){
+        super(username, password, false ); this.emailAddress = email; this.mobileNumber = mobileno;
     }
 
     public void setEmailAddress(String email){

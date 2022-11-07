@@ -1,19 +1,16 @@
 package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import Classes.Customer; 
-import Classes.Ticket;
-import Initialiser.Initialise;
+import ui.AccountUI;
+import classes.Customer;
+import classes.Ticket;
+import initialiser.Initialise;
+import ui.CustomerMenuUI;
 
 
 public class CustomerController{
     static Scanner sc = new Scanner(System.in);
     private  static ArrayList<Customer> customers = Initialise.customers;
-
-    public CustomerController(){
-
-    }
 
     public static int searchCustomer(String username){
         for(int i=0; i<customers.size(); i++){
@@ -43,7 +40,7 @@ public class CustomerController{
                 phno = sc.next();
                 Customer newCust = new Customer(username, password, email, phno);
                 customers.add(newCust);
-                sortCustomerList();
+                sortCustomersList();
                 break;
             }
             else {
@@ -55,11 +52,14 @@ public class CustomerController{
             }
 
         } while(exit != 2);
+        if(exit == 2){
+            AccountUI.LoginUI(0);
+        } 
+
     }
 
-    public static void sortCustomerList ()
+    public static void sortCustomersList()
 	{
-
         int min;
 		Customer temp;
 		for (int index = 0; index < customers.size()-1; index++)
@@ -82,8 +82,8 @@ public class CustomerController{
             int exists = searchCustomer(username);
             if(exists == -1){
             customers.remove(exists);
-            sortCustomerList();
-            //to access in a static way --> CustomerController.sortCustomerList();
+            sortCustomersList();
+            //to access in a static way --> CustomerController.sortCustomersList();
             }
             else 
                 System.out.println("Account with this username does not exist");
@@ -92,7 +92,9 @@ public class CustomerController{
                 System.out.println("(2): Exit");
                 exit = sc.nextInt();
         }while(exit != 2);
-        
+        if(exit ==2){
+            AccountUI.LoginUI(0);
+        }
     }
 
     public static void updateCustomerPassword(){
@@ -128,8 +130,9 @@ public class CustomerController{
                 exit = sc.nextInt();
             }
         }while(exit!=2);
-
-
+        if(exit == 2){
+            AccountUI.LoginUI(0);
+        }
     }
 
     public static void printCustomer(String username){
@@ -140,17 +143,16 @@ public class CustomerController{
             System.out.println("Customer mobile number: " + customers.get(index).getMobileNumber());
         }
     }
-    
 
-    public static void viewPastTickets(String username){
-        int index = searchCustomer(username);
-        System.out.println("Tickets you purchased in the past: ");
-        ArrayList<Ticket> arr;
-        arr=customers.get(index).getBoughtTickets();
-        for(int x=0;x<arr.size();x++){
-            TicketController.printTicket(arr.get(x));
-        }
-    }
+    // public static void viewPastTickets(String username){
+    //     int index = searchCustomer(username);
+    //     System.out.println("Tickets you purchased in the past: ");
+    //     ArrayList<Ticket> arr;
+    //     arr=customers.get(index).getBoughtTickets();
+    //     for(int x=0;x<arr.size();x++){
+    //         TicketController.printTicket(arr.get(x));
+    //     }
+    // }
 
     //TODO: Too many searches, past in Customer object instead?
     public static void viewPastTickets(Customer customer){
@@ -159,12 +161,16 @@ public class CustomerController{
         for(int x=0;x<arr.size();x++){
             TicketController.printTicket(arr.get(x));
         }
+        if(customer.getUserName() == "guest")
+        CustomerMenuUI.guestMenuOptions();
+        else
+            CustomerMenuUI.customerMenuOptions(customer);
     }
 
-    public static void clearcart(String username){
-        int index = searchCustomer(username);
-        customers.get(index).getCartTickets().clear();
-    }
+    // public static void clearCart(String username){
+    //     int index = searchCustomer(username);
+    //     customers.get(index).getCartTickets().clear();
+    // }
     
     public static ArrayList<Customer> getCustomersList(){
         return customers;

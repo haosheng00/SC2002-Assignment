@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 public class LayoutPrinter {
         public static void printLayout(Screening screening){}
         public static char setNewRow(char rowNumber){

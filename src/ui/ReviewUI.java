@@ -1,8 +1,9 @@
 package ui;
 
 import java.util.Scanner;
+
+import classes.*;
 import controller.*;
-import Classes.*;
 
 public class ReviewUI {
 
@@ -38,5 +39,7 @@ public class ReviewUI {
                     break;
             } 
         } while (choice != 4);
+        sc.close();
     }
+    
 }

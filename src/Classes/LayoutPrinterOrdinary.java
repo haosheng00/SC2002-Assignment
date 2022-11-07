@@ -1,6 +1,6 @@
-package Classes;
+package classes;
 
-import Initialiser.Initialise;
+import initialiser.Initialise;
 
 public class LayoutPrinterOrdinary extends LayoutPrinter{
     public static void printLayout(Screening screening) {
@@ -10,7 +10,7 @@ public class LayoutPrinterOrdinary extends LayoutPrinter{
         char rowNumber = LayoutPrinter.setNewRow('@');
         for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
             if (rowNumber >= 'I') {
-                screening.getSeat(i).setSeatType(SeatType.COUPLE_SEAT);
+                screening.getSeat(i).setSeatType(Enum.SeatType.COUPLE_SEAT);
             }
             int leftSectionWidth = 4;
             while (rowNumber == 'A' && (columnNumber <= leftSectionWidth)) {
@@ -27,7 +27,7 @@ public class LayoutPrinterOrdinary extends LayoutPrinter{
             screening.getSeat(i).setEverything(rowNumber, columnNumber);
             columnNumber++;
             SeatFormatter.printSeat(screening.getSeat(i));
-            if (screening.getSeat(i).getSeatType() == SeatType.COUPLE_SEAT) {
+            if (screening.getSeat(i).getSeatType() == Enum.SeatType.COUPLE_SEAT) {
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
                 i++;
                 columnNumber++;

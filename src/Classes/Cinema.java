@@ -1,24 +1,20 @@
-package Classes;
-
-import java.util.ArrayList;
+package classes;
 
 public class Cinema {
-    private CinemaType cinemaType;
+    private Enum.CinemaType cinemaType;
     private String cinemaCode;
     private String cinemaName;
-    private ArrayList<Screening> screenings;
 
-    public Cinema(CinemaType cinemaType, String cinemaCode, String cinemaName, ArrayList<Screening> screenings) {
+    public Cinema(Enum.CinemaType cinemaType, String cinemaCode, String cinemaName) {
         this.cinemaType = cinemaType;
         this.cinemaCode = cinemaCode;
         this.cinemaName = cinemaName;
-        this.screenings = screenings;
     }
 
-    public CinemaType getCinemaType(){
+    public Enum.CinemaType getCinemaType(){
         return this.cinemaType;
     }
-    public void setCinemaType(CinemaType cinemaType){
+    public void setCinemaType(Enum.CinemaType cinemaType){
         this.cinemaType = cinemaType;
     }
 
@@ -34,13 +30,5 @@ public class Cinema {
     }
     public void setCinemaName(String cinemaName){
         this.cinemaName = cinemaName;
-    }
-
-    public ArrayList<Screening> getScreenings(){
-        return this.screenings;
-    }
-    
-    public void setScreenings(ArrayList<Screening> screenings){
-        this.screenings = screenings;
     }
 }

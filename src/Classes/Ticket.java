@@ -1,20 +1,22 @@
-package Classes;
+package classes;
 
 public class Ticket{
 
     private Movie movie;
     private Cineplex cineplex;
     private Cinema cinema;
-    private String showDateTime;
+    private String showDate;
+    private String showTime;
     private Seat seat;
     private double ticketPrice;
 
 
-    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDateTime, Seat seat, double ticketPrice){
+    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDate, String showTime, Seat seat, double ticketPrice){
         this.movie = movie;
         this.cineplex = cineplex;
         this.cinema = cinema;
-        this.showDateTime = showDateTime;
+        this.showDate = showDate;
+        this.showTime = showTime;
         this.seat = seat;
         this.ticketPrice = ticketPrice;
         
@@ -32,8 +34,12 @@ public class Ticket{
         this.cinema = cinema;
     }
 
-    public void setShowDateTime(String showDateTime){
-        this.showDateTime = showDateTime;
+    public void setShowDate(String showDate){
+        this.showDate = showDate;
+    }
+
+    public void setShowTime(String showTime){
+        this.showTime = showTime;
     }
 
     public void setSeat(Seat seat){
@@ -45,7 +51,7 @@ public class Ticket{
     }
 
     public Object getTicket(){
-        Ticket ticket = new Ticket(movie, cineplex, cinema, showDateTime, seat, ticketPrice);
+        Ticket ticket = new Ticket(movie, cineplex, cinema, showDate, showTime, seat, ticketPrice);
         return ticket;
     }
 
@@ -61,8 +67,12 @@ public class Ticket{
         return cinema;
     }
 
-    public String getShowDateTime(){
-        return showDateTime;
+    public String getShowDate(){
+        return showDate;
+    }
+
+    public String getShowTime(){
+        return showTime;
     }
 
     public Seat getSeat(){
@@ -72,5 +82,4 @@ public class Ticket{
     public double getTicketPrice(){
         return ticketPrice;
     }
-
 }
