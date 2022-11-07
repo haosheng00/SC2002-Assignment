@@ -205,7 +205,7 @@ public class ReviewController {
         }
     }
 
-    class CompareByRating implements Comparator<Movie> {
+    static class CompareByRating implements Comparator<Movie> {
         public int compare(Movie a, Movie b) {
                     return (int)(a.getOverallRating() - b.getOverallRating());
         }   

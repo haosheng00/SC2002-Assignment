@@ -192,7 +192,7 @@ public class PaymentController {
         }
     }
 
-    class CompareBySales implements Comparator<Movie> {
+    static class CompareBySales implements Comparator<Movie> {
         public int compare(Movie a, Movie b) {
                     return (int)(a.getSales() - b.getSales());
         }   
