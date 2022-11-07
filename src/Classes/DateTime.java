@@ -30,8 +30,10 @@ public class DateTime{
         return formattedDate;
     }
 
-    public String stringToDate(String stringdate){
+    public static LocalDate stringToDate(String stringdate){
 
+        LocalDate stringToDate = LocalDate.parse(stringdate, DateTimeFormatter.ofPattern("YYYYMMDD"));
+        return stringToDate;
         // TODO: convert string format to date format
     }
     

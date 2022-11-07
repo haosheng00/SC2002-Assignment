@@ -70,7 +70,9 @@ public class Screening {
     public String getShowDate() {
         return showDate;
     }
+
     public void setShowDate(String showDate) {
         this.showDate = showDate;
     }
+
 }

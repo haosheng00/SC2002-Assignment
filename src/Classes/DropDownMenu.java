@@ -2,6 +2,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import initialiser.Initialise;
 
 //The DropDownMenu will return the index of the chosen item
 public class DropDownMenu {
@@ -130,6 +131,53 @@ public class DropDownMenu {
                     else {
                         optionNo = i + 1 - counter;
                         System.out.println("(" + optionNo + ")" + cineplex.getMovies().get(i+counter).getMovieTitle());
+                        maxCounter++;
+                        }
+                }
+                movieChoice = sc.nextInt();
+                if (movieChoice < 0 || movieChoice > maxCounter) {
+                    System.out.println("Invalid Input! Try again");
+                }
+            }while (movieChoice < 0 || movieChoice > maxCounter);
+        }
+        return movieChoice + counter - 1;
+        
+    }
+
+     public static int initiateMovieChoice_CustomerMenu(int haveComingSoon) {
+        int i, optionNo;
+        int movieChoice = 1,counter = 0, maxCounter = 0;
+        if(haveComingSoon == 1){
+        do {
+                System.out.println("========================================");
+                System.out.println("Select Movie: ");
+                for (i = 0; i < Initialise.movies.size(); i++) {
+                    if (Initialise.movies.get(i).getMovieStatus() == Enum.MovieStatus.END_OF_SHOWING){
+                        counter++;
+                    }
+                    else {
+                        optionNo = i + 1 - counter;
+                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i+counter).getMovieTitle());
+                        maxCounter++;
+                        }
+            }
+            movieChoice = sc.nextInt();
+            if (movieChoice < 0 || movieChoice > maxCounter) {
+                System.out.println("Invalid Input! Try again");
+            }
+        } while (movieChoice < 0 || movieChoice > maxCounter);
+        }
+        else{
+            do {
+                System.out.println("========================================");
+                System.out.println("Select Movie: ");
+                for (i = 0; i < Initialise.movies.size(); i++) {
+                    if (Initialise.movies.get(i).getMovieStatus() == Enum.MovieStatus.END_OF_SHOWING || Initialise.movies.get(i).getMovieStatus() == Enum.MovieStatus.COMING_SOON){
+                        counter++;
+                    }
+                    else {
+                        optionNo = i + 1 - counter;
+                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i+counter).getMovieTitle());
                         maxCounter++;
                         }
                 }

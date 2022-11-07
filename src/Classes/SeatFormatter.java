@@ -16,11 +16,13 @@ public class SeatFormatter {
         return seatID;
     }
 
-    public static boolean checkIfValidSeat(Screening screening) {
+    public static Seat checkIfValidSeat(Screening screening) {
         System.out.println("Enter Row Letter:");
         char rowChoice = Character.toUpperCase(sc.next().charAt(0));
         System.out.println("Enter Column Number:");
         int columnChoice = sc.nextInt();
+        int seatIndex = 0;
+
         String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
         boolean validSeatId = false;
         if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
@@ -35,12 +37,20 @@ public class SeatFormatter {
             for (int i = 0; i < Initialise.Plat_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
                     if (!screening.getSeat(i).getIsBooked()) {
+                        seatIndex = i;
                         validSeatId = true;
                     }
                 }
             }
         }
-        return validSeatId;
+        if (validSeatId == true){
+            System.out.println("Adding to cart...");
+            return screening.getSeat(seatIndex);
+        }
+        else{
+            System.out.println("Unsuccessful...");
+            return null;
+        }
     }
 
     public static void printSeat(Seat seat) {

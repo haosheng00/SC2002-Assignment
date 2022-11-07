@@ -50,6 +50,7 @@ public class PaymentController {
         if (choice == 0) {
             System.out.println("Cancelling check out...");
             //TODO: undo isReserved --> Don't you undo isReserved before they make payment (after they select the seats)?
+            sc.close();
             return;
         }
         //proceed with the checkout
@@ -90,7 +91,7 @@ public class PaymentController {
         System.out.println("Thank you for your purchase. We hope you enjoy for movie!");
 
         CustomerMenuUI.customerMenuOptions(customer);
-       
+       sc.close();
     }
 
     //made payment and add payment to the Payment list

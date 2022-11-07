@@ -7,11 +7,11 @@ import initialiser.Initialise;
 
 public class ReviewController {
     
-    private static ArrayList<Review> reviews = Initialise.reviews;
+    //private static ArrayList<Review> reviews = Initialise.reviews;
 
-    public ReviewController (ArrayList <Review> Reviews) {
+    /*public ReviewController (ArrayList <Review> Reviews) {
         ReviewController.reviews = Reviews;
-    }
+    }*/ 
 
     // //returns the index of the movie in the Movie array 
     // public static int searchMovie() {
@@ -49,8 +49,9 @@ public class ReviewController {
 
         Scanner sc = new Scanner(System.in);
         
-        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList(), ) ;
+        int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
+            sc.close();
             return;
         }
         
@@ -80,11 +81,12 @@ public class ReviewController {
         updateTop5Rating(movie);
 
         System.out.println("Your review has been added.");
+        sc.close();
     }
 
     //iterate thru the reviews to find the particular username
     public static void deleteReview(Customer customer) {
-        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList()) ;
+        int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
             return;
         }
@@ -119,9 +121,11 @@ public class ReviewController {
         Scanner sc = new Scanner(System.in);
 
         //get movie index 
-        int movieIndex = DropDownMenu.initiateMovieChoice(MovieController.getMovieList());
+        int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
+            sc.close();
             return;
+
         }
         
         int ratingExist = 0;
@@ -140,6 +144,7 @@ public class ReviewController {
                 oldRating = reviews.get(i).getRating();
                 break;
             }
+        sc.close();
         }
 
         //if rating doesn't exists

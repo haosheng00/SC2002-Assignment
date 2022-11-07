@@ -20,6 +20,7 @@ public class Movie {
     private double overallRating;
     private ArrayList<Review> reviews;
     private String expiryDate;
+    private String startDate;
 
 
     public Movie(String movieTitle){
@@ -74,6 +75,10 @@ public class Movie {
     public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
     }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
     
     public String getMovieTitle() {
         return movieTitle;
@@ -125,6 +130,10 @@ public class Movie {
 
     public String getExpiryDate() {
         return expiryDate;
+    }
+
+    public String getStartDate() {
+        return startDate;
     }
 
 }

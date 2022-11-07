@@ -1,8 +1,6 @@
 package classes;
 
 import initialiser.Initialise;
-import classes.Enum;
-import classes.Enum.SeatType;
 
 public class LayoutPrinterOrdinary extends LayoutPrinter{
     public static void printLayout(Screening screening) {
@@ -29,7 +27,7 @@ public class LayoutPrinterOrdinary extends LayoutPrinter{
             screening.getSeat(i).setEverything(rowNumber, columnNumber);
             columnNumber++;
             SeatFormatter.printSeat(screening.getSeat(i));
-            if (screening.getSeat(i).getSeatType() == SeatType.COUPLE_SEAT) {
+            if (screening.getSeat(i).getSeatType() == Enum.SeatType.COUPLE_SEAT) {
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
                 i++;
                 columnNumber++;

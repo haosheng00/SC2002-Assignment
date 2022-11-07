@@ -1,7 +1,5 @@
 package classes;
 
-import java.util.ArrayList;
-
 public class Cinema {
     private Enum.CinemaType cinemaType;
     private String cinemaCode;

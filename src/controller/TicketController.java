@@ -15,18 +15,28 @@ public class TicketController {
 
     static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
-    static ArrayList<Ticket> cartTickets = Initialise.cartTickets;
-
+    static Customer current; 
     // private static double basePrice;
 
     static Scanner sc = new Scanner(System.in);
+
+public static void checkAndAddToCart(Screening screeningChosen, Seat seatChosen, Movie movieChosen, Cineplex cineplexChosen, double actualTicketPrice){
+    do {
+        seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+        if (seatChosen != null){
+            TicketController.addCartTicket(current.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
+            seatChosen.setIsReserved(true);
+        }
+    } while (seatChosen != null);
+    }
 
     public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) {
 
         int i, childTicketNo, adultTicketNo, seniorTicketNo = 0;
         int cineplexChoice, movieChoice, screeningChoice;
-        boolean validSeatId = false;
-
+        double actualTicketPrice;
+        Seat seatChosen = null;
+        current = customer;
         cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         Cineplex cineplexChosen = Initialise.cineplexes.get(cineplexChoice);
         movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice), 0);
@@ -46,55 +56,33 @@ public class TicketController {
             for (int j = 0; j < childTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + i + 1 + ") : ");
-                do {
-                    validSeatId = SeatFormatter.checkIfValidSeat(screeningChosen);
-                    if (validSeatId){
-                        //Add to cart tickets Make it a function... since we are going to make it over again
-                        //Add to cart
-                        //change the seats to reserve
-                        //System.out.println("Ticket added to cart successfully!");
-                        //customer.getCartTickets().add(new Ticket(?????));
-                        TicketController.addCartTicket(cartTickets, movieChosen, cineplexChosen, screeningChosen);
-                        
-                        }
-                } while (!validSeatId);
+                seatChosen = null;
+                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
+                checkAndAddToCart(screeningChosen, seatChosen, movieChosen, cineplexChosen, actualTicketPrice);
+                
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < adultTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + i + 1 + ") : ");
-                do {
-                    validSeatId = SeatFormatter.checkIfValidSeat(screeningChosen);
-                    if (validSeatId) {
-                        //Add to cart tickets Make it a function... since we are going to make it over again
-                        //Add to cart
-                        //change the seats to reserve
-                        //System.out.println("Ticket added to cart successfully!");
-                        //customer.getCartTickets().add(new Ticket(?????));
-                    }
-                } while (!validSeatId);
+                seatChosen = null;
+                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
+                checkAndAddToCart(screeningChosen, seatChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < seniorTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + i + 1 + ") : ");
-                do {
-                    validSeatId = SeatFormatter.checkIfValidSeat(screeningChosen);
-                    if (validSeatId) {
-                        //Add to cart tickets Make it a function... since we are going to make it over again
-                        //Add to cart
-                        //change the seats to reserve
-                        //System.out.println("Ticket added to cart successfully!");
-                        //customer.getCartTickets().add(new Ticket(?????));
-                    }
-                } while (!validSeatId);
+                seatChosen = null;
+                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
+                checkAndAddToCart(screeningChosen, seatChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
         }
     }
 
 
-        public static double TicketPrice(int student, int adult, int senior, int cineplexChoice, int movieChoice, int screeningChoice, Screening screeningChosen, Movie movieChosen) {
+        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen) {
             // FOR CREATEBOOKING    
 
             //PH ARRAYLIST TO INITIALISE
@@ -105,7 +93,8 @@ public class TicketController {
 
             //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
             for (int i=0; i<holidays.size(); i++){
-                if ((screeningChosen.getShowDate()) ==  || (screeningChosen.getShowDate()) == (holidays.get(i).getPublicHolidayDate())){
+                LocalDate actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+                if ((TicketController.isWeekend(actualDate) == true) || (screeningChosen.getShowDate()) == (holidays.get(i).getPublicHolidayDate())){
                     if (movieChosen.getIs3D() == true){
                         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
                     }
@@ -117,7 +106,7 @@ public class TicketController {
                 else{
                     //RETURN STUDENT PRICE
                     if (student == 1){
-                        // TODO: NEED TO CHECK CINEMATYPE
+                        // TODO: NEED TO CHECK CINEMATYPE (and showtype!!)
                         //cineplex cinema cinematype
                         ticketPrice = Enum.TicketType.STUDENT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
                     }
@@ -357,13 +346,13 @@ public class TicketController {
 
         }
 
-        public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen){
+        public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen, Seat seatChosen, double actualTicketPrice){
             // FOR CREATEBOOKING
 
             int i;
             int cineplexChoice, movieChoice, screeningChoice;
 
-            Ticket ticket = new Ticket(movieChosen, cineplexChosen, screeningChosen.getCinema(), screeningChosen.getShowDateTime(), screeningChosen.getSeatID(), ticketPrice);
+            Ticket ticket = new Ticket(movieChosen, cineplexChosen, screeningChosen.getCinema(), screeningChosen.getShowDate(), screeningChosen.getShowTime(), seatChosen, actualTicketPrice);
             cartTickets.add(ticket);
         }
 
@@ -373,8 +362,9 @@ public class TicketController {
             System.out.println("Movie: " + ticket.getMovie());
             System.out.println("Cineplex: " + ticket.getCineplex());
             System.out.println("Cinema: " + ticket.getCinema());
-            System.out.println("Show Date and Time: " + ticket.getShowDateTime());
-            System.out.println("Seat: " + ticket.getSeat());
+            System.out.println("Show Date: " + ticket.getShowDate());
+            System.out.println("Show Time: " + ticket.getShowTime());
+            System.out.println("Seat: " + ticket.getSeat().getSeatId());
             System.out.println("Price: " + ticket.getTicketPrice());
 
         }

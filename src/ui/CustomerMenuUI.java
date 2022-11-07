@@ -2,19 +2,17 @@ package ui;
 import java.util.Scanner;
 
 import classes.*;
-//import java.util.ArrayList;
 import controller.*;
 import initialiser.Initialise;
+import classes.DropDownMenu;
 
 public class CustomerMenuUI{
 
     //private static final String Syst = null;
 
     public static void customerMenuOptions(Customer customer){
-        try (Scanner sc = new Scanner(System.in)) {
-        int movieChoice = -1;
+        Scanner sc = new Scanner(System.in);
         int option = -1;
-        int i = 0;
         do{
                 System.out.println("========================================");
                 System.out.println("Please select an option.");
@@ -27,30 +25,9 @@ public class CustomerMenuUI{
                 option = sc.nextInt();
                 switch(option){
                     case 1: 
-                    int exit = -1;
-                    do{
-                        System.out.println("Movie List");
-                        for (i = 0; i < Initialise.movies.size(); i++){
-                            System.out.println("(" + (i+1) + ")" + " - " + Initialise.movies.get(i).getMovieTitle());
-                        }
-                        System.out.println("Please select movie: ");
-                        movieChoice = sc.nextInt();
-                        //String movieTitle = sc.next();
-                        //int index = MovieController.searchMovie(movieTitle);
-                        if (movieChoice < 0 || movieChoice > i) {
-                            System.out.println("The movie entered does not exist.");
-                            System.out.println("(1) - Search again");
-                            System.out.println("(2) - Exit");
-                            exit = sc.nextInt();
-                        }
-                        //if movie exists --> show all the details of the movie 
-                        else {
-                            MovieController.printMovie(Initialise.movies.get(movieChoice-1).getMovieTitle());
-                            System.out.println("(1) - Search again");
-                            System.out.println("(2) - Exit");
-                            exit = sc.nextInt();
-                        }
-                        }while(exit != 2);
+                        int movieIndex = -1;
+                        movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                        MovieController.printMovie(Initialise.movies.get(movieIndex).getMovieTitle());
                         break;
                     case 2:
                         TicketController.createBooking(Initialise.cineplexes, customer);
@@ -63,7 +40,6 @@ public class CustomerMenuUI{
                         ReviewUI.initiateReviewUI(customer);
                         break;
                     case 5:
-                    //TODO: new ListingController, 1 2 3
                         MovieController.getTop5Movies(ListingController.getListingCriteria());
                         break;
                     case 6:
@@ -73,15 +49,13 @@ public class CustomerMenuUI{
                     break;
                 }
             }while (option < 6);
+            sc.close();
         }
-    }
+    
 
     public static void guestMenuOptions(){
         Scanner sc = new Scanner(System.in);
-        int movieChoice = -1;
-        int option = -1;
-        int exit = -1;
-        int i;
+        int option = 0;
         do{
             System.out.println("========================================");
             System.out.println("Please select an option.");
@@ -92,29 +66,9 @@ public class CustomerMenuUI{
             option = sc.nextInt();
             switch(option){
                 case 1: 
-                    do{
-                        int movieIndex = DropDownMenu.initiateMovieChoice(Initialise.cineplexes, 1 )
-                        /*System.out.println("Enter the title of the Movie: ");
-                        for (i = 0; i < Initialise.movies.size(); i++){
-                            System.out.println("(" + (i+1) + ")" + " - " + Initialise.movies.get(i).getMovieTitle());
-                        }
-                        movieChoice = sc.nextInt();
-                        //String movieTitle = sc.next();
-                        //int index = MovieController.searchMovie(movieTitle);
-                        if (movieChoice < 0 || movieChoice > i) {
-                            System.out.println("The movie entered does not exist.");
-                            System.out.println("(1) - Search again");
-                            System.out.println("(2) - Exit");
-                            exit = sc.nextInt();
-                        }
-                        //if movie exists --> show all the details of the movie 
-                        else {
-                            MovieController.printMovie(Initialise.movies.get(movieChoice-1).getMovieTitle());
-                            System.out.println("(1) - Search again");
-                            System.out.println("(2) - Exit");
-                            exit = sc.nextInt();*/
-                        }
-                    }while(exit != 2);
+                    int movieIndex = -1;
+                    movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                    MovieController.printMovie(Initialise.movies.get(movieIndex).getMovieTitle());
                     break;
                 case 2:
                     AccountUI.initiateLoginUI(2);
