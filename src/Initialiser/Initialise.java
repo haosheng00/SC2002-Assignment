@@ -1,8 +1,10 @@
 package initialiser;
 
 import serialiser.ReadMovieDB;
+import serialiser.WriteMovieDB;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import classes.*;
 
@@ -18,7 +20,7 @@ public class Initialise {
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
     public static ArrayList<Review> reviews = new ArrayList<Review>();
     public static ArrayList<Customer> customers = new ArrayList<Customer>();
-    public static ArrayList<Admin> admins = new ArrayList<Admin>();
+    public static ArrayList<Admin> admins = new ArrayList<Admin>(List.of(new Admin("admin1", "admin1"), new Admin("admin2", "admin2")));
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
     public static ArrayList<Screening> screenings = new ArrayList<Screening>();
     public static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
@@ -30,6 +32,7 @@ public class Initialise {
     //public static TicketController tc = new TicketController(tickets, screenings, holidays);
 
     public static void initialiseEverything() throws Exception {
+        //WriteMovieDB.writeMovieDB();
         ReadMovieDB.readMovieDB();
     }
 }

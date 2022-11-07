@@ -66,7 +66,7 @@ public class ReadMovieDB {
 				Initialise.top5ByRatings.add(movie);
 			}
 
-			list = (ArrayList)SerializeMovieDB.readSerializedObject("Holidays.dat");
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Holiday.dat");
 			for (int i = 0 ; i < list.size() ; i++) {
 				PublicHoliday publicHoliday = (PublicHoliday) list.get(i);
 				Initialise.holidays.add(publicHoliday);
