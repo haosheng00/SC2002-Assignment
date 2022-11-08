@@ -82,6 +82,7 @@ public class TicketController {
                 TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
+            return;
         }
 
 
@@ -363,9 +364,9 @@ public class TicketController {
         public static void printTicket(Ticket ticket){
             //FOR PRINTRECEIPT
 
-            System.out.println("Movie: " + ticket.getMovie());
-            System.out.println("Cineplex: " + ticket.getCineplex());
-            System.out.println("Cinema: " + ticket.getCinema());
+            System.out.println("Movie: " + ticket.getMovie().getMovieTitle());
+            System.out.println("Cineplex: " + ticket.getCineplex().getCineplexName());
+            System.out.println("Cinema: " + ticket.getCinema().getCinemaName());
             System.out.println("Show Date: " + ticket.getShowDate());
             System.out.println("Show Time: " + ticket.getShowTime());
             System.out.println("Seat: " + ticket.getSeat().getSeatId());
