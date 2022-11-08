@@ -30,7 +30,7 @@ public static void checkAndAddToCart(Screening screeningChosen, Seat seatChosen,
     } while (seatChosen != null);
     }
 
-    public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) {
+    public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) throws Exception {
 
         int i, childTicketNo, adultTicketNo, seniorTicketNo = 0;
         int cineplexChoice, movieChoice, screeningChoice;

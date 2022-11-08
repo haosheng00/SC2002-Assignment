@@ -10,7 +10,7 @@ public class AccountUI {
     //static AdminController adminPrac = new AdminController();
     //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
-    public static void WelcomePage(){
+    public static void WelcomePage() throws Exception{
         System.out.println("Welcome to MOBLIMA");
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -29,7 +29,7 @@ public class AccountUI {
         sc.close();
     }
 
-    public static void initiateLoginUI(int x){
+    public static void initiateLoginUI(int x) throws Exception{
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
@@ -63,7 +63,7 @@ public class AccountUI {
         }while(choice!=5);
         sc.close();
     }
-    public static void LoginUI(int x){
+    public static void LoginUI(int x) throws Exception{
         Scanner sc = new Scanner(System.in);
         String username;
         String password;

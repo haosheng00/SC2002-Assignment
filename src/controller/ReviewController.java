@@ -67,7 +67,7 @@ public class ReviewController {
 
         //add review to the review array of each movie!!
         //get particular movie --> get review array --> add review 
-        Movie movie = MovieController.movies.get(movieIndex);
+        Movie movie = Initialise.movies.get(movieIndex);
         movie.getReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
 
         //add review to all reviews array - NEED???

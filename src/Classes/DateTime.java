@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.*;
 import java.text.SimpleDateFormat;
 
-public class DateTime{
+public class DateTime {
 
     //return formatted data for TID (in payment)
     public String paymentDateTime() {

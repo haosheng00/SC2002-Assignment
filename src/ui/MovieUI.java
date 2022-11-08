@@ -1,14 +1,17 @@
 package ui;
+
 import java.util.Scanner;
 
+import classes.DropDownMenu;
 import controller.MovieController;
+import initialiser.Initialise;
 
 public class MovieUI {
 
-    public static void initiateMovieUI(){
+    public static void initiateMovieUI() throws Exception {
         Scanner sc = new Scanner(System.in);
         int choice;
-        do{
+        do {
             System.out.println("Please select an option");
             System.out.println("(1) Add Movie");
             System.out.println("(2) Delete Movie");
@@ -16,7 +19,7 @@ public class MovieUI {
             System.out.println("(4) Search Movie");
             System.out.println("(5) Back");
             choice = sc.nextInt();
-            switch(choice){
+            switch (choice) {
                 case 1:
                     MovieController.addMovie();
                     break;
@@ -27,14 +30,13 @@ public class MovieUI {
                     MovieController.updateMovie();
                     break;
                 case 4:
-                    String movieTitle = sc.next();
-                    MovieController.searchMovie(movieTitle);
+                    int movieChoice = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
+                    MovieController.printMovie(movieChoice);
                     break;
                 default:
                     break;
             }
-        }while(choice<5);
+        } while (choice < 5);
         sc.close();
     }
 }
-

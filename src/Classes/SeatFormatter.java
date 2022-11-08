@@ -1,10 +1,11 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import initialiser.Initialise;
 
-public class SeatFormatter {
+public class SeatFormatter implements Serializable{
     static Scanner sc = new Scanner(System.in);
     public static String seatIdFormat(char rowChoice, int columnChoice) {
         String seatID;

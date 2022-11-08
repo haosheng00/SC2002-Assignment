@@ -1,8 +1,10 @@
 package classes;
 
+import java.io.Serializable;
+
 import classes.Enum.SeatType;
 
-public class Seat {
+public class Seat implements Serializable{
     private char row;
     private int column;
     private Enum.SeatType seatType;

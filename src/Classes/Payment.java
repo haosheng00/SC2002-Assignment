@@ -1,6 +1,8 @@
 package classes;
 
-public class Payment {
+import java.io.Serializable;
+
+public class Payment implements Serializable{
     //only method of payment is thru credit card - online purchase
 
     //transaction ID

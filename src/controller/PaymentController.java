@@ -21,7 +21,7 @@ public class PaymentController {
     }
 
     //checkout all tickets in the cart
-    public static void checkoutUI(Customer customer) {
+    public static void checkoutUI(Customer customer) throws Exception {
         int choice = 0;
         int TID = 0;
         double totalCharges;

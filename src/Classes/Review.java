@@ -1,6 +1,8 @@
 package classes;
 
-public class Review {
+import java.io.Serializable;
+
+public class Review implements Serializable{
     private String description;
     private double rating;
     private String userName;

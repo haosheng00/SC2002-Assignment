@@ -1,9 +1,10 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import classes.Enum.MovieGenre;
-public class Movie {
+public class Movie implements Serializable{
 
     // TODO: Add javadocs
 

@@ -1,8 +1,10 @@
 package classes;
 
+import java.io.Serializable;
+
 import initialiser.Initialise;
 
-public class Screening {
+public class Screening implements Serializable{
     private Cinema cinema;
     private String showDate;
     private String showTime;

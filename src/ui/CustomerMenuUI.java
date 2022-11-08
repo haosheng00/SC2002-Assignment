@@ -11,7 +11,7 @@ public class CustomerMenuUI{
 
     //private static final String Syst = null;
 
-    public static void customerMenuOptions(Customer customer){
+    public static void customerMenuOptions(Customer customer) throws Exception{
         Scanner sc = new Scanner(System.in);
         int option = -1;
         //do{//
@@ -28,7 +28,7 @@ public class CustomerMenuUI{
                     case 1: 
                         int movieIndex = -1;
                         movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
-                        MovieController.printMovie(Initialise.movies.get(movieIndex).getMovieTitle());
+                        MovieController.printMovie(movieIndex);
                         break;
                     case 2:
                         TicketController.createBooking(Initialise.cineplexes, customer);
@@ -57,7 +57,7 @@ public class CustomerMenuUI{
         }
     
 
-    public static void guestMenuOptions(){
+    public static void guestMenuOptions() throws Exception{
         Scanner sc = new Scanner(System.in);
         int option = 0;
         do{
@@ -72,7 +72,7 @@ public class CustomerMenuUI{
                 case 1: 
                     int movieIndex = -1;
                     movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
-                    MovieController.printMovie(Initialise.movies.get(movieIndex).getMovieTitle());
+                    MovieController.printMovie(movieIndex);
                     break;
                 case 2:
                     AccountUI.initiateLoginUI(2);

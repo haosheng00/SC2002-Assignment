@@ -1,6 +1,8 @@
 package classes;
 
-public class Ticket{
+import java.io.Serializable;
+
+public class Ticket implements Serializable{
 
     private Movie movie;
     private Cineplex cineplex;

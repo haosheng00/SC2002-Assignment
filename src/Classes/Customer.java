@@ -1,6 +1,7 @@
 package classes;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Customer extends Account{
+public class Customer extends Account implements Serializable{
     private ArrayList<Ticket> cartTickets = new ArrayList<Ticket>();
     private ArrayList<Ticket> boughtTickets = new ArrayList<Ticket>();
     private String emailAddress;

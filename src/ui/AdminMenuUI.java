@@ -5,7 +5,7 @@ import controller.ListingController;
 
 import java.util.Scanner;
 public class AdminMenuUI{
-    public static void adminMenuOptions(){
+    public static void adminMenuOptions() throws Exception{
         Scanner scanner = new Scanner(System.in);
         int option = 0;
         do{

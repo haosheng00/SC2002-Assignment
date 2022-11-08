@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,31 +8,29 @@ import classes.*;
 import classes.Enum.*;
 import ui.MovieUI;
 import initialiser.Initialise;
-
+import serialiser.WriteMovieDB;
 public class MovieController {
     static Scanner sc = new Scanner(System.in);
-    static ArrayList<Movie> movies = Initialise.movies;
     static ArrayList<Movie> top5BySales = Initialise.top5BySales;
     static ArrayList<Movie> top5ByRatings = Initialise.top5ByRatings;
-    
-    //TODO: CHANGE STATUS TO END_OF_SHOWING AFTER LAST SCREENING DATE IS PASSED
-    
-    public static int searchMovie(String movieTitle){
+
+    // TODO: CHANGE STATUS TO END_OF_SHOWING AFTER LAST SCREENING DATE IS PASSED
+
+    public static int searchMovie(String movieTitle) {
         movieTitle = movieTitle.toUpperCase();
-        for(int i=0; i<movies.size(); i++){
-            if(movies.get(i).getMovieTitle() == movieTitle){
+        for (int i = 0; i < Initialise.movies.size(); i++) {
+            if (movieTitle.equals(Initialise.movies.get(i).getMovieTitle())) {
                 return i;
             }
         }
         return -1;
     }
 
-    public static void addMovie(){
+    public static void addMovie() throws Exception {
         String movieTitle;
         ArrayList<String> casts = new ArrayList<>();
         ArrayList<classes.Enum.MovieGenre> movieGenres = new ArrayList<>();
         String s = null;
-
 
         int exists = -2;
         System.out.println("Please enter new Movie Title:");
@@ -42,164 +41,175 @@ public class MovieController {
             System.out.println("Please enter new Movie Title:");
             System.out.println("Or press 0 to go back");
             String input = sc.next();
-            if (input == "0") MovieUI.initiateMovieUI();
-            else movieTitle = input;
+            if (input == "0")
+                MovieUI.initiateMovieUI();
+            else
+                movieTitle = input;
             exists = searchMovie(movieTitle);
         }
-        while(exists==-1){
+        while (exists == -1) {
             Movie newMovie = new Movie(movieTitle.toUpperCase());
-            System.out.println("Please select movie status:");
-            System.out.println("(1) Coming soon");
-            System.out.println("(2) Preview");
-            System.out.println("(3) Now showing");
-            int i = sc.nextInt();
-            switch(i){
-                case 1:
-                    newMovie.setMovieStatus(MovieStatus.COMING_SOON);
-                    System.out.println("Please enter the start date of the movie screening (YYYYMMDD):");
-                    newMovie.setStartDate(sc.next());
-                    break;
-                case 2:
-                    newMovie.setMovieStatus(MovieStatus.PREVIEW);
-                    System.out.println("Please enter the start date of the movie screening (YYYYMMDD):");
-                    newMovie.setStartDate(sc.next());
-                    break;
-                case 3:
-                    newMovie.setMovieStatus(MovieStatus.NOW_SHOWING);
-                    break;
-            }
-            System.out.println("Please enter the date where the movie stops showing (YYYYMMDD): ");
-            newMovie.setExpiryDate(sc.next());
+            // System.out.println("Please select movie status:");
+            // System.out.println("(1) Coming soon");
+            // System.out.println("(2) Preview");
+            // System.out.println("(3) Now showing");
+            // int i = sc.nextInt();
+            // switch (i) {
+            // case 1:
+            // newMovie.setMovieStatus(MovieStatus.COMING_SOON);
+            // System.out.println("Please enter the start date of the movie screening
+            // (YYYYMMDD):");
+            // newMovie.setStartDate(sc.next());
+            // break;
+            // case 2:
+            // newMovie.setMovieStatus(MovieStatus.PREVIEW);
+            // System.out.println("Please enter the start date of the movie screening
+            // (YYYYMMDD):");
+            // newMovie.setStartDate(sc.next());
+            // break;
+            // case 3:
+            // newMovie.setMovieStatus(MovieStatus.NOW_SHOWING);
+            // break;
+            // }
+            // System.out.println("Please enter the date where the movie stops showing
+            // (YYYYMMDD): ");
+            // newMovie.setExpiryDate(sc.next());
 
-            System.out.println("Please select movie genre: ");
-            do{
-                System.out.println("(1) Action");
-                System.out.println("(2) Horror");
-                System.out.println("(3) Thriller");
-                System.out.println("(4) Adventure");
-                System.out.println("(5) Comedy");
-                System.out.println("(6) Anime");
-                System.out.println("(7) Romance");
-                System.out.println("(8) Drama");
-                System.out.println("(9) True Story");
-                System.out.println("(10) Others");
-                System.out.println("(0) Go to Next Section");
-                i = sc.nextInt();
-                switch(i){
-                    case 1:
-                        movieGenres.add(MovieGenre.ACTION);
-                        break;
-                    case 2:
-                        movieGenres.add(MovieGenre.HORROR);
-                        break;
-                    case 3:
-                        movieGenres.add(MovieGenre.THRILLER);
-                        break;
-                    case 4:
-                        movieGenres.add(MovieGenre.ADVENTURE);
-                        break;
-                    case 5:
-                        movieGenres.add(MovieGenre.COMEDY);
-                        break;
-                    case 6:
-                        movieGenres.add(MovieGenre.ANIME);
-                        break;
-                    case 7:
-                        movieGenres.add(MovieGenre.ROMANCE);
-                        break;
-                    case 8:
-                        movieGenres.add(MovieGenre.DRAMA);
-                        break;
-                    case 9:
-                        movieGenres.add(MovieGenre.TRUE_STORY);
-                        break;
-                    case 10:
-                        movieGenres.add(MovieGenre.OTHERS);
-                        break;
-                }
-            }while (i != 0);
-            newMovie.setMovieGenres(movieGenres);
-            System.out.println("Please enter Movie Synopsis:");
-            newMovie.setSynopsis(sc.next());
-            System.out.println("Please enter movie duration in mins:");
-            // TODO: CATCH NON-INTEGER INPUTS
-            newMovie.setMovieDuration(sc.nextInt());
-            
-            System.out.println("Please set age rating/restriction:");
-            System.out.println("(1) G");
-            System.out.println("(2) PG");
-            System.out.println("(3) PG13");
-            System.out.println("(4) NC16");
-            System.out.println("(5) M18");
-            System.out.println("(6) R21");
-            i = sc.nextInt();
-            switch(i){
-                case 1:
-                    newMovie.setAgeRestriction(AgeRestriction.G);
-                    break;
-                case 2:
-                    newMovie.setAgeRestriction(AgeRestriction.PG);
-                    break;
-                case 3:
-                    newMovie.setAgeRestriction(AgeRestriction.PG13); 
-                    break;
-                case 4:
-                    newMovie.setAgeRestriction(AgeRestriction.NC16);
-                    break;
-                case 5:
-                    newMovie.setAgeRestriction(AgeRestriction.M18);
-                    break;
-                case 6:
-                    newMovie.setAgeRestriction(AgeRestriction.R21);
-                    break;
-            }
-            System.out.println("Please enter Movie Director: ");
-            newMovie.setDirector(sc.next());
+            // System.out.println("Please select movie genre: ");
+            // do {
+            // System.out.println("(1) Action");
+            // System.out.println("(2) Horror");
+            // System.out.println("(3) Thriller");
+            // System.out.println("(4) Adventure");
+            // System.out.println("(5) Comedy");
+            // System.out.println("(6) Anime");
+            // System.out.println("(7) Romance");
+            // System.out.println("(8) Drama");
+            // System.out.println("(9) True Story");
+            // System.out.println("(10) Others");
+            // System.out.println("(0) Go to Next Section");
+            // i = sc.nextInt();
+            // switch (i) {
+            // case 1:
+            // movieGenres.add(MovieGenre.ACTION);
+            // break;
+            // case 2:
+            // movieGenres.add(MovieGenre.HORROR);
+            // break;
+            // case 3:
+            // movieGenres.add(MovieGenre.THRILLER);
+            // break;
+            // case 4:
+            // movieGenres.add(MovieGenre.ADVENTURE);
+            // break;
+            // case 5:
+            // movieGenres.add(MovieGenre.COMEDY);
+            // break;
+            // case 6:
+            // movieGenres.add(MovieGenre.ANIME);
+            // break;
+            // case 7:
+            // movieGenres.add(MovieGenre.ROMANCE);
+            // break;
+            // case 8:
+            // movieGenres.add(MovieGenre.DRAMA);
+            // break;
+            // case 9:
+            // movieGenres.add(MovieGenre.TRUE_STORY);
+            // break;
+            // case 10:
+            // movieGenres.add(MovieGenre.OTHERS);
+            // break;
+            // }
+            // } while (i != 0);
+            // newMovie.setMovieGenres(movieGenres);
+            // System.out.println("Please enter Movie Synopsis:");
+            // newMovie.setSynopsis(sc.next());
+            // System.out.println("Please enter movie duration in mins:");
+            // // TODO: CATCH NON-INTEGER INPUTS
+            // newMovie.setMovieDuration(sc.nextInt());
+
+            // System.out.println("Please set age rating/restriction:");
+            // System.out.println("(1) G");
+            // System.out.println("(2) PG");
+            // System.out.println("(3) PG13");
+            // System.out.println("(4) NC16");
+            // System.out.println("(5) M18");
+            // System.out.println("(6) R21");
+            // i = sc.nextInt();
+            // while (i < 1 || i > 6) {
+            // System.out.println("Invalid input!");
+            // System.out.println("Please set age rating/restriction:");
+            // System.out.println("(1) G");
+            // System.out.println("(2) PG");
+            // System.out.println("(3) PG13");
+            // System.out.println("(4) NC16");
+            // System.out.println("(5) M18");
+            // System.out.println("(6) R21");
+            // i = sc.nextInt();
+            // }
+            // switch (i) {
+            // case 1:
+            // newMovie.setAgeRestriction(AgeRestriction.G);
+            // break;
+            // case 2:
+            // newMovie.setAgeRestriction(AgeRestriction.PG);
+            // break;
+            // case 3:
+            // newMovie.setAgeRestriction(AgeRestriction.PG13);
+            // break;
+            // case 4:
+            // newMovie.setAgeRestriction(AgeRestriction.NC16);
+            // break;
+            // case 5:
+            // newMovie.setAgeRestriction(AgeRestriction.M18);
+            // break;
+            // case 6:
+            // newMovie.setAgeRestriction(AgeRestriction.R21);
+            // break;
+            // }
+            // System.out.println("Please enter Movie Director: ");
+            // newMovie.setDirector(sc.next());
             System.out.println("Please enter name of cast:");
             s = sc.next();
-            casts.add(s);
-            while (s != "0") {
+            do {
                 casts.add(s);
-                System.out.println("Please enter name of next cast or 0 to continue");
+                System.out.println("Please enter name of next cast or press 0 to go to next section");
                 s = sc.next();
-                System.out.println(s);
-            }
+            } while (!s.equals("0"));
             newMovie.setCasts(casts);
-            while (s != "Y" || s !="N"){
+            while ((!s.equals("Y") && !s.equals("N"))) {
                 System.out.println("Is the movie 3D? (Y/N)");
                 s = sc.next();
-                if (s == "Y") newMovie.setIs3D(true);
-                else if (s == "N") newMovie.setIs3D(false);
+                switch (s) {
+                    case "Y":
+                        newMovie.setIs3D(true);
+                        break;
+                    case "N":
+                        newMovie.setIs3D(false);
+                        break;
+                    default:
+                        System.out.println("Invalid input!");
+                        break;
+                }
             }
             System.out.println("Please select the Cineplex(s) to screen the movie");
             DropDownMenu.initiateCineplexAddition(Initialise.cineplexes, newMovie);
-            movies.add(newMovie);
-            break;        
+            Initialise.movies.add(newMovie);
+            System.out.println("Movie added!");
+            WriteMovieDB.writeMovieDB();
+            break;
         }
     }
-        
-    public static int deleteMovie(){
-        int exit = -2;
-        do{
-            System.out.println("Please enter Movie to delete: ");
-            String movieTitle = sc.next();
-            int exists = searchMovie(movieTitle);
-            if(exists != -1){
-                movies.get(exists).setMovieStatus(MovieStatus.END_OF_SHOWING);
-                return 1;
-            }
-            else {
-                System.out.println("Movie does not exist");
-                System.out.println("Please select an option: ");
-                System.out.println("(1) - Try again");
-                System.out.println("(2) - Back");
-                exit = sc.nextInt();
-            }
-        }while(exit!=2);
-        return 0;
+
+    public static int deleteMovie() {
+        int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
+        Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
+        System.out.println("Movie Deleted!");
+        return 1;
     }
 
-    public static int updateMovie(){
+    public static int updateMovie() {
         String movieTitle;
         System.out.println("Enter Movie Title: ");
         movieTitle = sc.next();
@@ -214,9 +224,9 @@ public class MovieController {
         System.out.println("(5) Back to previous menu");
 
         choice = sc.nextInt();
-        switch(choice){
+        switch (choice) {
             case 1:
-                movies.get(index).setMovieTitle(sc.next().toUpperCase());
+                Initialise.movies.get(index).setMovieTitle(sc.next().toUpperCase());
                 break;
             case 2:
                 System.out.println("Update to:");
@@ -225,48 +235,46 @@ public class MovieController {
                 System.out.println("(3) End of showing");
                 System.out.println("(4) Now showing");
                 int i = sc.nextInt();
-                switch(i){
+                switch (i) {
                     case 1:
-                        movies.get(index).setMovieStatus(MovieStatus.COMING_SOON);
+                        Initialise.movies.get(index).setMovieStatus(MovieStatus.COMING_SOON);
                         break;
                     case 2:
-                        movies.get(index).setMovieStatus(MovieStatus.PREVIEW);
+                        Initialise.movies.get(index).setMovieStatus(MovieStatus.PREVIEW);
                         break;
                     case 3:
-                        movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
+                        Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
                         break;
                     case 4:
-                        movies.get(index).setMovieStatus(MovieStatus.NOW_SHOWING);
+                        Initialise.movies.get(index).setMovieStatus(MovieStatus.NOW_SHOWING);
                         break;
                 }
                 break;
-                case 3:
-                    System.out.println("Please update the date where the movie starts showing (YYYYMMDD): ");
-                    movies.get(index).setStartDate(sc.next());
-                    break;
-                case 4:
-                    System.out.println("Please update the date where the movie stops showing (YYYYMMDD): ");
-                    movies.get(index).setExpiryDate(sc.next());
-                    break;
-                case 5:
-                    break;
+            case 3:
+                System.out.println("Please update the date where the movie starts showing (YYYYMMDD): ");
+                Initialise.movies.get(index).setStartDate(sc.next());
+                break;
+            case 4:
+                System.out.println("Please update the date where the movie stops showing (YYYYMMDD): ");
+                Initialise.movies.get(index).setExpiryDate(sc.next());
+                break;
+            case 5:
+                break;
         }
         return 0;
     }
 
-    public static void printMovie(String movieTitle){
-        int index = searchMovie(movieTitle);
-        if(index != -1){
-            System.out.println("Movie Title: " + movieTitle);
-            System.out.println("Movie Status: " + movies.get(index).getMovieStatus());
-            System.out.println("Movie Genre(s): " + movies.get(index).getMovieGenres());
-            System.out.println("Director: " + movies.get(index).getDirector());
-            System.out.println("Casts: " + movies.get(index).getCasts());
-            System.out.println("Synopsis: " + movies.get(index).getSynopsis());
-            System.out.println("Age Rating: " + movies.get(index).getAgeRestriction());
-            System.out.println(movies.get(index).getIs3D() ? "3D" : "2D");
-            System.out.println("Duration: " + movies.get(index).getMovieDuration());
-            System.out.println("Rating: " + movies.get(index).getOverallRating());
+    public static void printMovie(int index) throws Exception {
+            System.out.println("Movie Title: " + Initialise.movies.get(index).getMovieTitle());
+            System.out.println("Movie Status: " + Initialise.movies.get(index).getMovieStatus());
+            System.out.println("Movie Genre(s): " + Initialise.movies.get(index).getMovieGenres());
+            System.out.println("Director: " + Initialise.movies.get(index).getDirector());
+            System.out.println("Casts: " + Initialise.movies.get(index).getCasts());
+            System.out.println("Synopsis: " + Initialise.movies.get(index).getSynopsis());
+            System.out.println("Age Rating: " + Initialise.movies.get(index).getAgeRestriction());
+            System.out.println(Initialise.movies.get(index).getIs3D() ? "3D" : "2D");
+            System.out.println("Duration: " + Initialise.movies.get(index).getMovieDuration());
+            System.out.println("Rating: " + Initialise.movies.get(index).getOverallRating());
             System.out.println();
             System.out.println("(1) - See Reviews");
             System.out.println("(0) - Back");
@@ -275,120 +283,121 @@ public class MovieController {
             do {
                 System.out.println("Invalid option, try again:");
                 choice = sc.nextInt();
-            }while (choice != 1 || choice != 0);
+            } while (choice != 1 && choice != 0);
 
-            if (choice == 1){
-                ReviewController.printReview(movies.get(index));
-            }
-            else MovieUI.initiateMovieUI();
+            if (choice == 1) {
+                ReviewController.printReview(Initialise.movies.get(index));
+            } else
+                MovieUI.initiateMovieUI();
         }
 
-    }
-    public static ArrayList<Movie> getMovieList(){
-        return MovieController.movies;
+    public static ArrayList<Movie> getMovieList() {
+        return Initialise.movies;
     }
 
-    public static ArrayList<Movie> getTop5ByRatings(){
+    public static ArrayList<Movie> getTop5ByRatings() {
         return top5ByRatings;
     }
 
-    public static ArrayList<Movie> getTop5BySales(){
+    public static ArrayList<Movie> getTop5BySales() {
         return top5BySales;
     }
 
-    public static void getTop5Movies(int criteria){        
-        
+    public static void getTop5Movies(int criteria) {
+
         int choice = sc.nextInt();
-        
-        if(criteria == 3){
+
+        if (criteria == 3) {
             System.out.println("Sort by:");
             System.out.println("(1) - By Overall Rating");
             System.out.println("(2) - By Sales");
-            
+
             while (choice != 1 || choice != 2) {
                 System.out.println("Invalid option, try again: ");
                 choice = sc.nextInt();
             }
             if (choice == 1) {
-                for (int i = 0; i < top5ByRatings.size(); i++){
-                    System.out.println(i+1 + ":");
+                for (int i = 0; i < top5ByRatings.size(); i++) {
+                    System.out.println(i + 1 + ":");
                     System.out.println(top5ByRatings.get(i).getMovieTitle());
                     System.out.println(top5ByRatings.get(i).getOverallRating());
-                    
+
                 }
-            }
-            else {
-                for (int i = 0; i < top5BySales.size(); i++){
-                    System.out.println(i+1 + ":");
+            } else {
+                for (int i = 0; i < top5BySales.size(); i++) {
+                    System.out.println(i + 1 + ":");
                     System.out.println(top5ByRatings.get(i).getMovieTitle());
                     System.out.println(top5ByRatings.get(i).getSales());
                 }
             }
-        }
-        else if (criteria == 1){
+        } else if (criteria == 1) {
             System.out.println("Movies by Overall Rating: ");
-            for (int i = 0; i < top5ByRatings.size(); i++){
-                    MovieController.printMovie(top5ByRatings.get(i).getMovieTitle());
-                }
-        }
-        else if (criteria == 2){
+            for (int i = 0; i < top5ByRatings.size(); i++) {
+                System.out.println(i + 1 + ":");
+                System.out.println(top5ByRatings.get(i).getMovieTitle());
+                System.out.println(top5ByRatings.get(i).getOverallRating());
+            }
+        } else if (criteria == 2) {
             System.out.println("Movies by Sales: ");
-            for(int i = 0; i < top5BySales.size(); i++){
-                MovieController.printMovie(top5BySales.get(i).getMovieTitle());
+            for (int i = 0; i < top5BySales.size(); i++) {
+                System.out.println(i + 1 + ":");
+                System.out.println(top5ByRatings.get(i).getMovieTitle());
+                System.out.println(top5ByRatings.get(i).getSales());
             }
         }
     }
 
-    // public static class MyTimeTask extends TimerTask {
-	// 	//update the moviestatus 
+    public static class MyTimeTask extends TimerTask {
+        // update the moviestatus
 
-    //     public void run() {
-    //         int i = 0;
+        public void run() {
+            int i = 0;
 
-    //         //SimpleDateFormat class obj
-    //         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
-    //         //get current date 
-    //         Date today = new Date();
-    //         //format the current date 
-    //         dateFormatter.format(today);
+            // SimpleDateFormat class obj
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
+            // get current date
+            Date today = new Date();
+            // format the current date
+            dateFormatter.format(today);
 
-    //         ArrayList <Movie> movies = MovieController.getMovieList();
-    //         //for all movies in the Movies Array 
-    //         for (i=0; i<movies.size(); i++) {
+            ArrayList<Movie> movies = MovieController.getMovieList();
+            // for all movies in the Movies Array
+            for (i = 0; i < movies.size(); i++) {
 
-    //             //CHANGE FROM COMING_SOON/PREVIEW TO NOW_SHOWING
-    //             if (movies.get(i).getMovieStatus() == MovieStatus.PREVIEW || movies.get(i).getMovieStatus() == MovieStatus.COMING_SOON)  {
-    //                 //parse the start date  
-    //                 try {
-    //                     Date startDate = dateFormatter.parse(movies.get(i).getStartDate());
-    //                     int difference = startDate.compareTo(today);
-    //                     //expiry date comes after the today date 
-    //                     if (difference >= 0) {
-    //                         movies.get(i).setMovieStatus(MovieStatus.NOW_SHOWING);
-    //                     }
-    //                 } catch (ParseException e) {
-    //                     // TODO Auto-generated catch block
-    //                     e.printStackTrace();
-    //                 }
-    //             }
-            
-    //             //CHANGE FROM NOW_SHOWING TO END_OF_SHOWING
-    //             else if (movies.get(i).getMovieStatus() == MovieStatus.NOW_SHOWING) {
-    //                 //parse the expiry date 
-    //                 try {
-    //                     //get expiry date only if it is now_showing
-    //                     Date expiryDate = dateFormatter.parse(movies.get(i).getExpiryDate());
-    //                     int difference = expiryDate.compareTo(today);
-    //                     //expiry date comes after the today date 
-    //                     if (difference >= 0) {
-    //                         movies.get(i).setMovieStatus(MovieStatus.END_OF_SHOWING);
-    //                     }
-    //                 } catch (ParseException e) {
-    //                     // TODO Auto-generated catch block
-    //                     e.printStackTrace();
-    //                 }
-    //             }   
-    //         }
-	// 	}
-    // }
+                // CHANGE FROM COMING_SOON/PREVIEW TO NOW_SHOWING
+                if (movies.get(i).getMovieStatus() == MovieStatus.PREVIEW
+                        || movies.get(i).getMovieStatus() == MovieStatus.COMING_SOON) {
+                    // parse the start date
+                    try {
+                        Date startDate = dateFormatter.parse(movies.get(i).getStartDate());
+                        int difference = startDate.compareTo(today);
+                        // expiry date comes after the today date
+                        if (difference >= 0) {
+                            movies.get(i).setMovieStatus(MovieStatus.NOW_SHOWING);
+                        }
+                    } catch (ParseException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+
+                // CHANGE FROM NOW_SHOWING TO END_OF_SHOWING
+                else if (movies.get(i).getMovieStatus() == MovieStatus.NOW_SHOWING) {
+                    // parse the expiry date
+                    try {
+                        // get expiry date only if it is now_showing
+                        Date expiryDate = dateFormatter.parse(movies.get(i).getExpiryDate());
+                        int difference = expiryDate.compareTo(today);
+                        // expiry date comes after the today date
+                        if (difference >= 0) {
+                            movies.get(i).setMovieStatus(MovieStatus.END_OF_SHOWING);
+                        }
+                    } catch (ParseException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
 }

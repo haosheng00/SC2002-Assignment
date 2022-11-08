@@ -1,6 +1,8 @@
 package classes;
 
-public class Cinema {
+import java.io.Serializable;
+
+public class Cinema implements Serializable{
     private Enum.CinemaType cinemaType;
     private String cinemaCode;
     private String cinemaName;

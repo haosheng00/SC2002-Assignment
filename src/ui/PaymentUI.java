@@ -7,7 +7,7 @@ import controller.*;
 //import initialiser.Initialise;
 
 public class PaymentUI {
-    public static void initiatePaymentUI(Customer customer) {
+    public static void initiatePaymentUI(Customer customer) throws Exception {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
 
