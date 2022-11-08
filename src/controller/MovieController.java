@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.*;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -8,12 +9,14 @@ import classes.*;
 import classes.Enum.*;
 import ui.MovieUI;
 import initialiser.Initialise;
+import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
 
-public class MovieController {
+public class MovieController implements Serializable{
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Movie> top5BySales = Initialise.top5BySales;
     static ArrayList<Movie> top5ByRatings = Initialise.top5ByRatings;
+    //static ArrayList<Movie> movies = new ArrayList <Movie>(); 
 
     // TODO: CHANGE STATUS TO END_OF_SHOWING AFTER LAST SCREENING DATE IS PASSED
 
@@ -197,15 +200,18 @@ public class MovieController {
             System.out.println("Please select the Cineplex(s) to screen the movie");
             DropDownMenu.initiateCineplexAddition(Initialise.cineplexes, newMovie);
             Initialise.movies.add(newMovie);
+            //movies.add(newMovie);
             System.out.println("Movie added!");
-            //WriteMovieDB.writeMovieDB();
+            WriteMovieDB.writeMovieDB();
             break;
         }
     }
 
-    public static int deleteMovie() {
+    public static int deleteMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
-        Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
+        //Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
+        Initialise.movies.remove(Initialise.movies.get(index));
+        SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
         System.out.println("Movie Deleted!");
         return 1;
     }

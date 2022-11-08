@@ -10,8 +10,8 @@ import controller.MovieController;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Initialise.initialiseRead();
-        Initialise.initialiseWrite();
+        Initialise.initialiseMOBLIMA();
+        
         // AdminMenuUI.adminMenuOptions();
 
         // AccountUI.WelcomePage();
@@ -29,9 +29,9 @@ public class Main {
         // 2.0, null, null, movie));
 
         // FOR PAYMENT TESTING
-        CustomerController.getCustomersList().get(0).getCartTickets().add(new
-        Ticket(null, null, null, null, null, new Seat(), 0));
-        PaymentUI.initiatePaymentUI(CustomerController.getCustomersList().get(0));
+        // CustomerController.getCustomersList().get(0).getCartTickets().add(new
+        // Ticket(null, null, null, null, null, new Seat(), 0));
+        // PaymentUI.initiatePaymentUI(CustomerController.getCustomersList().get(0));
 
         // the Date and time at which you want to execute
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

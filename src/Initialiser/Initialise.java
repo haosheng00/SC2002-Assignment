@@ -1,7 +1,7 @@
 package initialiser;
 
 import serialiser.ReadMovieDB;
-import serialiser.WriteMovieDB;
+//import serialiser.WriteMovieDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,8 @@ public class Initialise {
 
     public static DateTime dt = new DateTime();
     public static ArrayList<Cinema> cinemas = new ArrayList<>();
-    public static ArrayList<Movie> movie1 = new ArrayList<Movie>();
-//     public static ArrayList<Movie> movie1 = new ArrayList<Movie>(
-//             List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear"), new Movie("Movie1")));
+     public static ArrayList<Movie> movie1 = new ArrayList<Movie>(
+             List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear"), new Movie("Movie1")));
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
             List.of(new Cineplex("Cineplex1", cinemas, movie1)));
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
@@ -36,13 +35,13 @@ public class Initialise {
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();
 
-    public static void initialiseRead() throws Exception {
+    public static void initialiseMOBLIMA() throws Exception {
         //WriteMovieDB.writeMovieDB();
         ReadMovieDB.readMovieDB();
     }
 
-        public static void initialiseWrite() throws Exception {
-        WriteMovieDB.writeMovieDB();
-        // ReadMovieDB.readMovieDB();
-    }
+    //     public static void initialiseWrite() throws Exception {
+    //     WriteMovieDB.writeMovieDB();
+    //     // ReadMovieDB.readMovieDB();
+    // }
 }
