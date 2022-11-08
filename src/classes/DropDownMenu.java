@@ -31,36 +31,18 @@ public class DropDownMenu {
     }
 
     public static void initiateCineplexAddition(ArrayList<Cineplex> cineplexes, Movie movie) {
-        int i, cineplexChoice;
-        ArrayList<Integer> selectedCineplexes = new ArrayList<Integer>();
-
-        System.out.println("========================================");
-        System.out.println("Select Cineplex: ");
-        for (i = 0; i < cineplexes.size(); i++) {
-            System.out.println("(" + (i + 1) + ") " + cineplexes.get(i).getCineplexName());
-        }
-        int exit = i + 1;
-        System.out.println("(" + exit + ")" + " Exit");
+        int cineplexChoice, counter = 0;
+        ArrayList<Cineplex> cineplextemp = cineplexes;
+        Cineplex cineplexChosen;
         do {
-            cineplexChoice = sc.nextInt();
-            boolean alreadySelected = false;
-            if (cineplexChoice > 0 && cineplexChoice < exit) {
-                for (int j = 0; j < selectedCineplexes.size(); j++) {
-                    if (cineplexChoice == selectedCineplexes.get(j)) {
-                        System.out.println(
-                                "Cineplex " + cineplexes.get(cineplexChoice).getCineplexName() + "already added");
-                        alreadySelected = true;
-                    }
-                }
-                if (alreadySelected) {
-                    if (cineplexChoice > 0 && cineplexChoice < exit) {
-                        System.out.println("Added to Cineplex " + cineplexes.get(cineplexChoice).getCineplexName()
-                                + " successfully");
-                        cineplexes.get(cineplexChoice).getMovies().add(movie);
-                    }
-                }
+            cineplexChoice = initiateCineplexChoice(cineplextemp);
+            if (cineplexChoice == -1){
+                return;
             }
-        } while (cineplexChoice != exit);
+            cineplexChosen = cineplextemp.get(cineplexChoice);
+            cineplexChosen.getMovies().add(movie);
+            cineplextemp.remove(cineplexChosen);
+        }while(cineplextemp.size()!=0);
     }
 
     public static int initiateCinemaChoice(ArrayList<Cinema> cinemas) {

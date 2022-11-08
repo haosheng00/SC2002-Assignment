@@ -184,7 +184,7 @@ public class MovieController implements Serializable{
             newMovie.setCasts(casts);
             while ((!s.equals("Y") && !s.equals("N"))) {
                 System.out.println("Is the movie 3D? (Y/N)");
-                s = sc.next();
+                s = sc.next().toUpperCase();
                 switch (s) {
                     case "Y":
                         newMovie.setIs3D(true);
