@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
+import classes.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -23,10 +24,11 @@ public class Main {
         // CustomerMenuUI.customerMenuOptions(customer);
 
         // FOR REVIEW TESTING
-        ReviewUI.initiateReviewUI(Initialise.customers.get(0));
+        
         // Movie movie = new Movie("Joy");
-        // MovieController.getMovieList().get(0).getReviews().add(new Review("amazing",
+        // Initialise.movies.get(0).getReviews().add(new Review("amazing",
         // 2.0, null, null, movie));
+        // ReviewUI.initiateReviewUI(Initialise.customers.get(0));
 
         // FOR PAYMENT TESTING
         // CustomerController.getCustomersList().get(0).getCartTickets().add(new
