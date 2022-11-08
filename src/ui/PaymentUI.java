@@ -27,9 +27,6 @@ public class PaymentUI {
                 case 2:
                     PaymentController.checkoutUI(customer);
                     break;
-                //case 3:
-                    //Initialise.pc.showTickets(Initialise.customers.get(customerIndex).getBoughtTickets());
-                    //break;
                 case 3:
                     CustomerMenuUI.customerMenuOptions(customer);
                     //return;
