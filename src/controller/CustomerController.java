@@ -8,6 +8,9 @@ import classes.Ticket;
 import initialiser.Initialise;
 import ui.CustomerMenuUI;
 
+import serialiser.SerializeMovieDB;
+import serialiser.WriteMovieDB;
+
 public class CustomerController {
     static Scanner sc = new Scanner(System.in);
     private static ArrayList<Customer> customers = Initialise.customers;
@@ -47,6 +50,7 @@ public class CustomerController {
                 System.out.println("New account created");
                 // Customer newCust = new Customer(username, password, email, phno);
                 Initialise.customers.add(new Customer(username, password, email, phno));
+                SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
                 // System.out.println(Initialise.customers.get(0).getUserName());
                 // sortCustomersList();
                 break;
@@ -89,10 +93,10 @@ public class CustomerController {
             System.out.println(exists);
             if (exists != -1) {
                 Initialise.customers.remove(exists);
+                SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
                 System.out.println("Removed customer");
                 sortCustomersList();
-                exit = 2;
-                System.out.println("Inserted break here");
+                //exit = 2;
                 break;
                 // to access in a static way --> CustomerController.sortCustomersList();
             } else {
@@ -120,10 +124,13 @@ public class CustomerController {
             if (index != -1) {
                 System.out.println("Enter current Password: ");
                 match = sc.next();
-                if (Initialise.customers.get(index).getPassword() == match) {
+                if (match.equals(customers.get(index).getPassword())) {
                     System.out.println("Enter new Password: ");
                     newpass = sc.next();
                     customers.get(index).setPassword(newpass);
+                    System.out.println("Password successfully changed");
+                    SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+                    exit = 2;
                 } else {
                     System.out.println("Wrong password ");
                     System.out.println("Do you want to try again or exit? ");
@@ -140,7 +147,7 @@ public class CustomerController {
             }
         } while (exit != 2);
         if (exit == 2) {
-            AccountUI.LoginUI(0);
+            AccountUI.WelcomePage();
         }
     }
 

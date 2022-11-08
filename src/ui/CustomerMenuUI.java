@@ -5,7 +5,6 @@ import classes.*;
 import controller.*;
 import initialiser.Initialise;
 import classes.DropDownMenu;
-import ui.AccountUI;
 
 public class CustomerMenuUI{
 

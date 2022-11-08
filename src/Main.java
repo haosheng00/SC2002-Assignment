@@ -14,10 +14,10 @@ public class Main {
         
         // AdminMenuUI.adminMenuOptions();
 
-        // AccountUI.WelcomePage();
+        AccountUI.WelcomePage();
 
         // FOR MOVIE TESTING
-        MovieUI.initiateMovieUI();
+        //MovieUI.initiateMovieUI();
 
         // Customer customer = new Customer(null, null, null, null);
         // CustomerMenuUI.customerMenuOptions(customer);

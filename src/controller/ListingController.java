@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ListingController {
 
-    private static int listingCriteria;
+    private static int listingCriteria = 3;
 
     private static void setListingCriteria(int listingCriteria) {
         ListingController.listingCriteria = listingCriteria;
