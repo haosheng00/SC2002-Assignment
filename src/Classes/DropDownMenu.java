@@ -209,7 +209,7 @@ public class DropDownMenu {
             for (i = 0; i < movies.size(); i++) {
                 System.out.println("(" + (i + 1) + ")" + movies.get(i).getMovieTitle());
             }
-            movieChoice = sc.nextInt();
+            movieChoice = sc.nextInt()-1;
             if (movieChoice < 0 || movieChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }

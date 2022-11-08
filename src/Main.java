@@ -2,6 +2,7 @@ import initialiser.Initialise;
 import ui.ScreeningUI;
 import ui.AccountUI;
 import ui.ReviewUI;
+import ui.MovieUI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,9 +15,9 @@ public class Main {
         // AdminMenuUI.adminMenuOptions();
 
         //AccountUI.WelcomePage();
-        ReviewUI.initiateReviewUI(Initialise.customers.get(1));
+        //ReviewUI.initiateReviewUI(Initialise.customers.get(1));
         // FOR MOVIE TESTING
-        //MovieUI.initiateMovieUI();
+        MovieUI.initiateMovieUI();
 
         // Customer customer = new Customer(null, null, null, null);
         // CustomerMenuUI.customerMenuOptions(customer);
