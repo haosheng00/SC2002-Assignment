@@ -22,15 +22,14 @@ public class SeatFormatter implements Serializable{
         char rowChoice = Character.toUpperCase(sc.next().charAt(0));
         System.out.println("Enter Column Number:");
         int columnChoice = sc.nextInt();
-        int seatIndex = 0;
 
         String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
-        boolean validSeatId = false;
         if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
             for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
                     if (!screening.getSeat(i).getIsBooked()) {
-                        validSeatId = true;
+                        System.out.println("Adding to cart...");
+                        return screening.getSeat(i);
                     }
                 }
             }
@@ -38,20 +37,14 @@ public class SeatFormatter implements Serializable{
             for (int i = 0; i < Initialise.Plat_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
                     if (!screening.getSeat(i).getIsBooked()) {
-                        seatIndex = i;
-                        validSeatId = true;
+                        System.out.println("Adding to cart...");
+                        return screening.getSeat(i);
                     }
                 }
             }
         }
-        if (validSeatId == true){
-            System.out.println("Adding to cart...");
-            return screening.getSeat(seatIndex);
-        }
-        else{
-            System.out.println("Unsuccessful...");
-            return null;
-        }
+        System.out.println("Unsuccessful...");
+        return null;
     }
 
     public static void printSeat(Seat seat) {

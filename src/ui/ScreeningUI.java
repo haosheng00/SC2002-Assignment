@@ -20,7 +20,6 @@ public class ScreeningUI {
             System.out.println("(4) Go Back To Previous Page");
             System.out.println("========================================");
             option = sc.nextInt();
-            //TODO: Screening Manager to be created at Initialise
             switch (option) {
                 case 1:
                     ScreeningController.addScreening(Initialise.cineplexes);

@@ -1,7 +1,9 @@
 package initialiser;
 
 import classes.*;
+import classes.Enum;
 import serialiser.ReadMovieDB;
+import serialiser.WriteMovieDB;
 
 import java.util.ArrayList;
 import java.util.List;
