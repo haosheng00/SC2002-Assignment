@@ -6,11 +6,11 @@ import classes.Admin;
 import initialiser.Initialise; 
 public class AdminController {
     static Scanner sc = new Scanner(System.in);
-    private static ArrayList<Admin> admins = Initialise.admins;
+    //private static ArrayList<Admin> admins = Initialise.admins;
 
-    public static ArrayList<Admin> getAdminsList(){
-        return admins;
-    }
+//    public static ArrayList<Admin> getAdminsList(){
+//        return admins;
+//    }
 
     public static int searchAdmin(String username){
         //System.out.println("Commencing search in admins");
