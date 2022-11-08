@@ -55,8 +55,8 @@ public class PaymentController {
         }
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
-        System.out.printf("The total amount is: %.2f", totalCharges);
-        System.out.println("Please enter your credit card details");
+        System.out.printf("The total amount is: %.2f\n", totalCharges);
+        System.out.println("Please enter your credit card details:");
         System.out.println("Full Name: ");
         name = sc.next();
         System.out.println("Card Number: ");
@@ -67,7 +67,8 @@ public class PaymentController {
         billingAddress = sc.next();
         System.out.println("Please enter your CVC/CVV: ");
         cvc = sc.next();
-        System.out.printf("The amount of %.2f", totalCharges + "will be charged to your card, under the name " + name);
+        System.out.printf("The amount of %.2f ", totalCharges);
+        System.out.println("will be charged to your card, under the name " + name); 
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
 
