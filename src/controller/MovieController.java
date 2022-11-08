@@ -285,17 +285,20 @@ public class MovieController implements Serializable{
             System.out.println();
             System.out.println("(1) - See Reviews");
             System.out.println("(0) - Back");
-
             int choice = sc.nextInt();
-            do {
+            
+            while (choice != 1 && choice != 0){
                 System.out.println("Invalid option, try again:");
+                System.out.println("(1) - See Reviews");
+                System.out.println("(0) - Back");
                 choice = sc.nextInt();
-            } while (choice != 1 && choice != 0);
-
+            }
             if (choice == 1) {
                 ReviewController.printReview(Initialise.movies.get(index));
             } else
                 MovieUI.initiateMovieUI();
+                //This is initiating MovieUI even for cutomers :( 
+                
         }
 
     public static ArrayList<Movie> getMovieList() {

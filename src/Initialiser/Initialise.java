@@ -59,6 +59,9 @@ public class Initialise {
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();
 
+    //public static int listingCriteria; //Need to serialize
+
+
     public static void initialiseMOBLIMA() throws Exception {
         //WriteMovieDB.writeMovieDB();
         ReadMovieDB.readMovieDB();

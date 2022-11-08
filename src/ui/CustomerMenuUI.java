@@ -13,7 +13,7 @@ public class CustomerMenuUI{
     public static void customerMenuOptions(Customer customer) throws Exception{
         Scanner sc = new Scanner(System.in);
         int option = -1;
-        //do{//
+        do{
                 System.out.println("========================================");
                 System.out.println("Please select an option.");
                 System.out.println("(1) - Search Movie");
@@ -49,7 +49,7 @@ public class CustomerMenuUI{
                         System.out.println("Invalid Input");
                         break;
                 }
-            //}while (option < 7);
+            }while (option !=6);
             if(option ==6)
                 AccountUI.WelcomePage();
             sc.close();

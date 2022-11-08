@@ -1,6 +1,7 @@
 import initialiser.Initialise;
 import ui.ScreeningUI;
-
+import ui.AccountUI;
+import ui.ReviewUI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,8 +13,8 @@ public class Main {
         
         // AdminMenuUI.adminMenuOptions();
 
-        AccountUI.WelcomePage();
-
+        //AccountUI.WelcomePage();
+        ReviewUI.initiateReviewUI(Initialise.customers.get(1));
         // FOR MOVIE TESTING
         //MovieUI.initiateMovieUI();
 

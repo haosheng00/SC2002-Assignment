@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ListingController {
 
-    private static int listingCriteria = 3;
+    private static int listingCriteria;
 
     private static void setListingCriteria(int listingCriteria) {
         ListingController.listingCriteria = listingCriteria;
@@ -23,7 +23,7 @@ public class ListingController {
         System.out.println("(2) - Rating");
         System.out.println("(3) - Sales & Rating");
         int listingChoice = sc.nextInt();
-
+        listingCriteria = listingChoice;
         ListingController.setListingCriteria(listingChoice);
         sc.close();
     }
