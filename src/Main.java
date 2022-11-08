@@ -17,13 +17,13 @@ public class Main {
         //AccountUI.WelcomePage();
         //ReviewUI.initiateReviewUI(Initialise.customers.get(1));
         // FOR MOVIE TESTING
-        MovieUI.initiateMovieUI();
+        //MovieUI.initiateMovieUI();
 
         // Customer customer = new Customer(null, null, null, null);
         // CustomerMenuUI.customerMenuOptions(customer);
 
         // FOR REVIEW TESTING
-        // ReviewUI.initiateReviewUI(CustomerController.getCustomersList().get(0));
+        ReviewUI.initiateReviewUI(Initialise.customers.get(0));
         // Movie movie = new Movie("Joy");
         // MovieController.getMovieList().get(0).getReviews().add(new Review("amazing",
         // 2.0, null, null, movie));
@@ -34,7 +34,7 @@ public class Main {
         // PaymentUI.initiatePaymentUI(CustomerController.getCustomersList().get(0));
 
         // FOR SCREENING TESTING
-        ScreeningUI.initiateScreeningUI();
+        //ScreeningUI.initiateScreeningUI();
 
         // the Date and time at which you want to execute
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
