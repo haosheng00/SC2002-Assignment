@@ -1,12 +1,10 @@
-
 import initialiser.Initialise;
-import ui.*;
+import ui.ScreeningUI;
 
-import java.util.*;
-import java.text.*;
-import classes.*;
-import controller.CustomerController;
-import controller.MovieController;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -32,6 +30,9 @@ public class Main {
         // CustomerController.getCustomersList().get(0).getCartTickets().add(new
         // Ticket(null, null, null, null, null, new Seat(), 0));
         // PaymentUI.initiatePaymentUI(CustomerController.getCustomersList().get(0));
+
+        // FOR SCREENING TESTING
+        ScreeningUI.initiateScreeningUI();
 
         // the Date and time at which you want to execute
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

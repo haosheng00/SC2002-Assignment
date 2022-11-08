@@ -1,13 +1,10 @@
 package initialiser;
 
+import classes.*;
 import serialiser.ReadMovieDB;
-//import serialiser.WriteMovieDB;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import classes.*;
-import serialiser.*;
 
 public class Initialise {
 
@@ -16,11 +13,38 @@ public class Initialise {
     public static final int Plat_Capacity = 22;
 
     public static DateTime dt = new DateTime();
-    public static ArrayList<Cinema> cinemas = new ArrayList<>();
-     public static ArrayList<Movie> movie1 = new ArrayList<Movie>(
-             List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear"), new Movie("Movie1")));
-    public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
-            List.of(new Cineplex("Cineplex1", cinemas, movie1)));
+//    public static ArrayList<Cinema> cinemasAMK = new ArrayList<>(
+//            List.of(new Cinema("AMK Hub Screen 1", "AMA", Enum.CinemaType.ORDINARY),
+//                    new Cinema("AMK Hub Screen 2", "AMB", Enum.CinemaType.ORDINARY),
+//                    new Cinema("AMK Hub Screen 3", "AMC", Enum.CinemaType.ORDINARY),
+//                    new Cinema("AMK Hub Screen 4", "AMD", Enum.CinemaType.ORDINARY),
+//                    new Cinema("AMK Hub Screen 5", "AME", Enum.CinemaType.ORDINARY),
+//                    new Cinema("AMK Hub Screen 6", "AMF", Enum.CinemaType.ORDINARY)));
+//
+//    public static ArrayList<Cinema> cinemasJEM = new ArrayList<>(
+//            List.of(new Cinema("JEM Screen 1", "JEA", Enum.CinemaType.ORDINARY),
+//                    new Cinema("JEM Screen 2", "JEB", Enum.CinemaType.ORDINARY),
+//                    new Cinema("JEM Screen 3", "JEC", Enum.CinemaType.ORDINARY),
+//                    new Cinema("JEM Screen 4", "JED", Enum.CinemaType.ORDINARY),
+//                    new Cinema("JEM Screen 5", "JEE", Enum.CinemaType.ORDINARY),
+//                    new Cinema("JEM Screen 6", "JEF", Enum.CinemaType.PLATINUMMOVIESUITES)));
+//
+//    public static ArrayList<Cinema> cinemasOrchard = new ArrayList<>(
+//            List.of(new Cinema("Orchard Screen 1", "ORA", Enum.CinemaType.ORDINARY),
+//                    new Cinema("Orchard Screen 2", "ORB", Enum.CinemaType.ORDINARY),
+//                    new Cinema("Orchard Screen 3", "ORC", Enum.CinemaType.ORDINARY),
+//                    new Cinema("Orchard Screen 4", "ORD", Enum.CinemaType.PLATINUMMOVIESUITES),
+//                    new Cinema("Orchard Screen 5", "ORE", Enum.CinemaType.PLATINUMMOVIESUITES),
+//                    new Cinema("Orchard Screen 6", "ORF", Enum.CinemaType.PLATINUMMOVIESUITES)));
+//
+//    public static ArrayList<Movie> preMovies = new ArrayList<Movie>(
+//            List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
+//    public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
+//            List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, preMovies),
+//                    new Cineplex("Athay Cineplex JEM", cinemasJEM, preMovies),
+//                    new Cineplex("Athay Cineleisure Orchard", cinemasOrchard, preMovies)));
+
+    public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
     public static ArrayList<Review> reviews = new ArrayList<Review>();
     public static ArrayList<Customer> customers = new ArrayList<Customer>(

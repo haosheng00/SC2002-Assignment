@@ -3,11 +3,12 @@ package ui;
 import controller.ScreeningController;
 import initialiser.Initialise;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 //import classes.Cineplex;
 public class ScreeningUI {
-    public static void initiateScreeningUI() {
+    public static void initiateScreeningUI() throws IOException {
         int option = 0;
         Scanner sc = new Scanner(System.in);
         do {

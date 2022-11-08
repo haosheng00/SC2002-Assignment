@@ -1,10 +1,12 @@
 package classes;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import initialiser.Initialise;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 //The DropDownMenu will return the index of the chosen item
+//-1 shall be back option
 public class DropDownMenu {
     static Scanner sc = new Scanner(System.in);
 
@@ -14,9 +16,13 @@ public class DropDownMenu {
             System.out.println("========================================");
             System.out.println("Select Cineplex: ");
             for (i = 0; i < cineplexes.size(); i++) {
-                System.out.println("(" + (i + 1) + ")" + cineplexes.get(i).getCineplexName());
+                System.out.println("(" + (i + 1) + ") " + cineplexes.get(i).getCineplexName());
             }
+            System.out.println("(" + (i + 1) + ") Back");
             cineplexChoice = sc.nextInt();
+            if (cineplexChoice == (i + 1)){
+                return -1;
+            }
             if (cineplexChoice < 0 || cineplexChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }
@@ -31,7 +37,7 @@ public class DropDownMenu {
         System.out.println("========================================");
         System.out.println("Select Cineplex: ");
         for (i = 0; i < cineplexes.size(); i++) {
-            System.out.println("(" + (i + 1) + ")" + cineplexes.get(i).getCineplexName());
+            System.out.println("(" + (i + 1) + ") " + cineplexes.get(i).getCineplexName());
         }
         int exit = i + 1;
         System.out.println("(" + exit + ")" + " Exit");
@@ -63,9 +69,13 @@ public class DropDownMenu {
             System.out.println("========================================");
             System.out.println("Select Cinema: ");
             for (i = 0; i < cinemas.size(); i++) {
-                System.out.println("(" + i + 1 + ")" + cinemas.get(i).getCinemaName());
+                System.out.println("(" + (i + 1) + ") " + cinemas.get(i).getCinemaName());
             }
+            System.out.println("(" + (i + 1) + ") Back");
             cinemaChoice = sc.nextInt();
+            if (cinemaChoice == (i + 1)){
+                return -1;
+            }
             if (cinemaChoice < 0 || cinemaChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }

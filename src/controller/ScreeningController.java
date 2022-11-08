@@ -1,7 +1,9 @@
 package controller;
 
 import initialiser.Initialise;
+import serialiser.SerializeMovieDB;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
 
     public ScreeningController(){};
-    public static void addScreening(ArrayList<Cineplex> cineplexes){
+    public static void addScreening(ArrayList<Cineplex> cineplexes) throws IOException{
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         Cineplex cineplexChosen = cineplexes.get(cineplexChoice);
         int cinemaChoice = DropDownMenu.initiateCinemaChoice(cineplexChosen.getCinemas());
@@ -23,16 +25,18 @@ public class ScreeningController {
         Cinema cinemaChosen = cineplexChosen.getCinemas().get(cinemaChoice);
         Movie movieChosen = cineplexChosen.getMovies().get(movieChoice);
         Initialise.screenings.add(new Screening(cinemaChosen,dateChosen,timeChosen,movieChosen));
-        System.out.println("addScreening success");
+        SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
+        System.out.println("Screening added successfully");
     }
 
-    public static void deleteScreening(ArrayList<Cineplex> cineplexes){
+    public static void deleteScreening(ArrayList<Cineplex> cineplexes) throws IOException{
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         int movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice), 1);
         Movie movieChosen = cineplexes.get(cineplexChoice).getMovies().get(movieChoice);
         int screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen);
         Initialise.screenings.remove(screeningChoice);
-        System.out.println("deleteScreening success");
+        SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
+        System.out.println("Screening deleted successfully");
     }
 
     public static void showScreening(ArrayList<Cineplex> cineplexes){
