@@ -9,6 +9,7 @@ import classes.Enum.*;
 import ui.MovieUI;
 import initialiser.Initialise;
 import serialiser.WriteMovieDB;
+
 public class MovieController {
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Movie> top5BySales = Initialise.top5BySales;
@@ -197,7 +198,7 @@ public class MovieController {
             DropDownMenu.initiateCineplexAddition(Initialise.cineplexes, newMovie);
             Initialise.movies.add(newMovie);
             System.out.println("Movie added!");
-            WriteMovieDB.writeMovieDB();
+            //WriteMovieDB.writeMovieDB();
             break;
         }
     }

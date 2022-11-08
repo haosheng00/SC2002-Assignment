@@ -36,8 +36,13 @@ public class Initialise {
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();
 
-    public static void initialiseEverything() throws Exception {
+    public static void initialiseRead() throws Exception {
         //WriteMovieDB.writeMovieDB();
         ReadMovieDB.readMovieDB();
+    }
+
+        public static void initialiseWrite() throws Exception {
+        WriteMovieDB.writeMovieDB();
+        // ReadMovieDB.readMovieDB();
     }
 }
