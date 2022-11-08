@@ -1,17 +1,19 @@
 package controller;
 
+import java.io.IOException;
 import java.util.*;
 
 import classes.*;
 import initialiser.Initialise;
+import serialiser.SerializeMovieDB;
 
 public class ReviewController {
     
-    //private static ArrayList<Review> reviews = Initialise.reviews;
+    private static ArrayList<Review> reviews = Initialise.reviews;
 
-    /*public ReviewController (ArrayList <Review> Reviews) {
+    public ReviewController (ArrayList <Review> Reviews) {
         ReviewController.reviews = Reviews;
-    }*/ 
+    }
 
     // //returns the index of the movie in the Movie array 
     // public static int searchMovie() {
@@ -45,7 +47,7 @@ public class ReviewController {
     //     }
     //     return exist;
     // }    
-    public static void addReview(Customer customer) {
+    public static void addReview(Customer customer) throws Exception {
 
         Scanner sc = new Scanner(System.in);
         
@@ -77,6 +79,8 @@ public class ReviewController {
         double updatedRating = (rating+movie.getOverallRating())/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
 
+        SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
+
         //update top5Rating
         updateTop5Rating(movie);
 
@@ -85,7 +89,7 @@ public class ReviewController {
     }
 
     //iterate thru the reviews to find the particular username
-    public static void deleteReview(Customer customer) {
+    public static void deleteReview(Customer customer) throws IOException {
         int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
             return;
@@ -110,13 +114,15 @@ public class ReviewController {
         double updatedRating = (movie.getOverallRating()-oldRating)/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
 
+        SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
+
         //update top5Rating
         updateTop5Rating(movie);
 
         System.out.println("Your review has been deleted.");
     }
 
-    public static void updateReview(Customer customer) {
+    public static void updateReview(Customer customer) throws IOException {
 
         Scanner sc = new Scanner(System.in);
 
@@ -178,13 +184,15 @@ public class ReviewController {
         double updatedRating = (movie.getOverallRating()-oldRating+rating)/(reviews.size());
         movie.setOverallRating(updatedRating);
 
+        SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
+
         //update top5Rating
         updateTop5Rating(movie);
 
         System.out.println("Your review has been updated.");
     }
 
-    public static void updateTop5Rating(Movie movie) {
+    public static void updateTop5Rating(Movie movie) throws IOException {
 
         int exist = 0;
 
@@ -209,6 +217,8 @@ public class ReviewController {
             //remove the sixth movie 
             top5Ratings.remove(5);
         }
+
+        SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
     }
 
     static class CompareByRating implements Comparator<Movie> {

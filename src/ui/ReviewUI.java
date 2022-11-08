@@ -7,7 +7,7 @@ import controller.*;
 
 public class ReviewUI {
 
-    public static void initiateReviewUI(Customer customer) {
+    public static void initiateReviewUI(Customer customer) throws Exception {
 
         Scanner sc = new Scanner(System.in);
         int choice = 0;
