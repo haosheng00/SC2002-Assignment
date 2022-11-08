@@ -20,15 +20,15 @@ public class TicketController {
 
     static Scanner sc = new Scanner(System.in);
 
-//public static void checkAndAddToCart(Screening screeningChosen, Seat seatChosen, Movie movieChosen, Cineplex cineplexChosen, double actualTicketPrice){
-//    do {
-//        seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
-//        if (seatChosen != null){
-//            TicketController.addCartTicket(current.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
-//            seatChosen.setIsReserved(true);
-//        }
-//    } while (seatChosen != null);
-//    }
+    public static void addToCart(Screening screeningChosen, Movie movieChosen, Cineplex cineplexChosen, double actualTicketPrice){
+        Seat seatChosen;
+        do {
+            seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+        }while (seatChosen == null);
+        seatChosen.setIsReserved(true);
+        TicketController.addCartTicket(current.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
+        seatChosen = null;
+        }
 
     public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) throws Exception {
 
@@ -64,29 +64,22 @@ public class TicketController {
             for (int j = 0; j < childTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
-                do {
-                    seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
-                }while (seatChosen == null);
-                seatChosen.setIsReserved(true);
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addCartTicket(current.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
-                seatChosen = null;
+                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < adultTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
-                seatChosen = null;
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                //checkAndAddToCart(screeningChosen, seatChosen, movieChosen, cineplexChosen, actualTicketPrice);
+                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < seniorTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
-                seatChosen = null;
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                //checkAndAddToCart(screeningChosen, seatChosen, movieChosen, cineplexChosen, actualTicketPrice);
+                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
         }
