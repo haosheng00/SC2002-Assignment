@@ -130,7 +130,7 @@ public class AccountUI {
         
 
         if(isAdmin !=-1){
-            if(AdminController.getAdminsList().get(isAdmin).getPassword()==password){
+            if(Initialise.admins.get(isAdmin).getPassword().equals(password)){
                 return 1;}
             else return 0;       
         }
