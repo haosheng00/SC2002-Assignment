@@ -1,11 +1,13 @@
 package controller;
 
+import java.io.IOException;
 import java.util.*;
 
 import classes.*;
 //import controller.*;
 import initialiser.Initialise;
 import ui.*;
+import serialiser.*;
 
 public class PaymentController {
 
@@ -23,7 +25,7 @@ public class PaymentController {
     //checkout all tickets in the cart
     public static void checkoutUI(Customer customer) throws Exception {
         int choice = 0;
-        int TID = 0;
+        String TID;
         double totalCharges;
         String name;
         String cardNumber;
@@ -80,6 +82,8 @@ public class PaymentController {
             cartTickets.get(i).getSeat().setIsBooked(true);
         }
 
+        SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
+
         //update Sales
         updateSales(cartTickets);
 
@@ -89,18 +93,19 @@ public class PaymentController {
         //clear cart tickets  - can remove func in customer class?
         cartTickets.clear();
 
-        System.out.println("Thank you for your purchase. We hope you enjoy for movie!");
+        System.out.println("Thank you for your purchase. We hope you enjoy your movie!");
 
         CustomerMenuUI.customerMenuOptions(customer);
        sc.close();
     }
 
     //made payment and add payment to the Payment list
-    public static void madePayment(int TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) {
+    public static void madePayment(String TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) throws IOException {
         Payments.add(new Payment(TID,totalCharges,CreditCardName,CardExpirationDate,billingAddress,billingCardNumber));
+        SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
     }
 
-    public static int createTID(Ticket t) {
+    public static String createTID(Ticket t) {
         //Each payment will have a transaction id (TID). 
         //The TID is of the format XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour, m : minutes, XXX:cinemacodeinletters)
         
@@ -111,8 +116,8 @@ public class PaymentController {
         //combine to get TID 
         String StringTID = cinemaCode + dateTime;
         //convert string to int
-        int TID = Integer.parseInt(StringTID);
-        return TID;
+        //int TID = Integer.parseInt(StringTID);
+        return StringTID;
     }
 
     public static double calcPayment(ArrayList<Ticket> cartTickets) {
@@ -157,7 +162,7 @@ public class PaymentController {
     }
  
     //update sales of each movie and top5 array 
-    public static void updateSales(ArrayList <Ticket> cartTickets) {
+    public static void updateSales(ArrayList <Ticket> cartTickets) throws IOException {
 
         int size = cartTickets.size();
         //iterate thru Tickets --> find movie and add ticketprice to sales 
@@ -169,6 +174,7 @@ public class PaymentController {
             movie.setSales(movie.getSales() + cartTickets.get(i).getTicketPrice());
         }
 
+        SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
 
         int exist = 0;
         //movie sales updated
@@ -194,6 +200,9 @@ public class PaymentController {
             //remove the sixth movie 
             top5Sales.remove(5);
         }
+
+        SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
+
     }
 
     static class CompareBySales implements Comparator<Movie> {
@@ -204,12 +213,14 @@ public class PaymentController {
  
     //update ticket history for each customer
     //add cartTickets to the boughtTix array
-    public static void updateTicketHistory(Customer cus) {
+    public static void updateTicketHistory(Customer cus) throws IOException {
         ArrayList <Ticket> cartTickets = cus.getCartTickets();
         int size = cartTickets.size(); 
         for (int i=0; i<size; i++) {
             cus.getBoughtTickets().add(cartTickets.get(i));
         }
+
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
     }
 
 }

@@ -8,7 +8,7 @@ public class Payment implements Serializable{
     //transaction ID
     // XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour,
     // m :minutes, XXX : cinema code in letters)
-    private int TID;
+    private String TID;
     //sum of all the charges
     private double totalCharges;
     //customer's credit card name
@@ -22,7 +22,7 @@ public class Payment implements Serializable{
     
 
     //constructor
-    public Payment (int TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) {
+    public Payment (String TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) {
         this.TID = TID;
         this.totalCharges = totalCharges;
         this.CreditCardName = CreditCardName;
@@ -32,8 +32,8 @@ public class Payment implements Serializable{
     }
 
     //get set for all variables
-    public int getTID() { return TID; }
-    public void setTID(int TID) { this.TID = TID;}
+    public String getTID() { return TID; }
+    public void setTID(String TID) { this.TID = TID;}
 
     public double getTotalCharges() { return totalCharges; }
     public void setTotalCharges(double totalCharges) { this.totalCharges = totalCharges;}

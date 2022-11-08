@@ -31,7 +31,8 @@ public class PaymentUI {
                     //Initialise.pc.showTickets(Initialise.customers.get(customerIndex).getBoughtTickets());
                     //break;
                 case 3:
-                    break;
+                    CustomerMenuUI.customerMenuOptions(customer);
+                    //return;
                 default:
                     System.out.println("Invalid input!");
                     break;
