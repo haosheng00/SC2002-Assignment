@@ -49,25 +49,35 @@ public class AccountUI {
                     break;
                 case 3:
                     CustomerController.deleteCustomer();
+                    break;
                 case 4:
                     CustomerController.updateCustomerPassword();
+                    break;
+                case 5:
+                    AccountUI.WelcomePage();
+                    break;
                 default:
+                    System.out.println("Invalid Choice");
                     break;
             }
-        }while(choice<5);
+        }while(choice!=5);
         sc.close();
     }
     public static void LoginUI(int x){
         Scanner sc = new Scanner(System.in);
         String username;
+        String password;
         int success;
         int exitChoice=-3;
         do{
             System.out.println("Please enter username");
             username = sc.next();
             System.out.println("Please enter password");
-            String password = sc.next();
+            password = sc.next();
+            System.out.println(username+ password+ "atLoginUI");
+
             success = Login(username, password);
+            System.out.println("Success value is "+ success);
             switch (success){
                 case 0:
                     System.out.println("Username or password incorrect");
@@ -88,21 +98,31 @@ public class AccountUI {
                 case 3:
                     CustomerMenuUI.guestMenuOptions();
                     break;
+                case 4:
+                    AccountUI.WelcomePage();
+                    break;
                 default:
+                    AccountUI.WelcomePage();
                     break;
                     
             }
-        }while(exitChoice !=2);
+        }while(exitChoice != 2 && success<5);
+        if (exitChoice == 2)
+            AccountUI.initiateLoginUI(0);
+
         sc.close();
     }
 
     private static int Login(String username, String password){
+        System.out.println("Entered Login");
+        System.out.println(username + password + "at Login");
         int isAdmin = -2;
         isAdmin = AdminController.searchAdmin(username);
         int isCustomer = -2;
 
         if(isAdmin == -1){
             isCustomer = CustomerController.searchCustomer(username);
+            //isCustomer = CustomerController.searchCustomer(username);
         }
 
         int isGuest=0;
@@ -112,22 +132,18 @@ public class AccountUI {
         if(isAdmin !=-1){
             if(AdminController.getAdminsList().get(isAdmin).getPassword()==password){
                 return 1;}
-            else 
-                return 0;
-                
+            else return 0;       
         }
         if(isCustomer >0){
-            if(CustomerController.getCustomersList().get(isCustomer).getPassword()==password){
+            if(password.equals(Initialise.customers.get(isCustomer).getPassword())){
                 current = Initialise.customers.get(isCustomer);
                 return 2;
             }
-            else 
-                return 0;
+            else return 0;
        }
        if(isGuest ==1){
             return 3;
         }
-        
         return 4;
     }
 

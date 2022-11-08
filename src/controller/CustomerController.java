@@ -14,11 +14,14 @@ public class CustomerController{
 
     public static int searchCustomer(String username){
         for(int i=0; i<customers.size(); i++){
-            if(customers.get(i).getUserName() == username){
+            //System.out.println("iterating through for loop. Username: " + customers.get(i).getUserName());
+            if(username.equals(customers.get(i).getUserName())){
+                //System.out.println("returning"+ i);
                 return i;
             }
         }
         return -1;
+        
     }
     public static void addCustomer(){
         String username, password,email, phno;
@@ -32,15 +35,18 @@ public class CustomerController{
             customerExists = searchCustomer(username);
             adminExists = AdminController.searchAdmin(username);
             if(customerExists==-1 && adminExists ==-1){
+                exit = 2;
                 System.out.println("Please enter password to create new account:");
                 password = sc.next();
                 System.out.println("Please enter your email: ");
                 email = sc.next();
                 System.out.println("Please enter your mobile number: ");
                 phno = sc.next();
-                Customer newCust = new Customer(username, password, email, phno);
-                customers.add(newCust);
-                sortCustomersList();
+                System.out.println("New account created");
+                //Customer newCust = new Customer(username, password, email, phno);
+                customers.add(new Customer(username, password, email, phno));
+                //System.out.println(Initialise.customers.get(0).getUserName());
+                //sortCustomersList();
                 break;
             }
             else {
@@ -53,7 +59,7 @@ public class CustomerController{
 
         } while(exit != 2);
         if(exit == 2){
-            AccountUI.LoginUI(0);
+            AccountUI.initiateLoginUI(0);
         } 
 
     }
@@ -80,17 +86,20 @@ public class CustomerController{
             System.out.println("Please enter username of account to delete: ");
             String username = sc.next();
             int exists = searchCustomer(username);
-            if(exists == -1){
-            customers.remove(exists);
-            sortCustomersList();
+            if(exists != -1){
+                customers.remove(exists);
+                System.out.println("Removed customer");
+                sortCustomersList();
+                exit = 2;
             //to access in a static way --> CustomerController.sortCustomersList();
             }
-            else 
+            else{
                 System.out.println("Account with this username does not exist");
                 System.out.println("Do you want to try again or exit? ");
                 System.out.println("(1): Try again");
                 System.out.println("(2): Exit");
                 exit = sc.nextInt();
+            }
         }while(exit != 2);
         if(exit ==2){
             AccountUI.LoginUI(0);

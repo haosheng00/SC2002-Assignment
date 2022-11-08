@@ -13,11 +13,15 @@ public class AdminController {
     }
 
     public static int searchAdmin(String username){
-        for(int i=0; i<admins.size(); i++){
-            if(admins.get(i).getUserName() == username){
+        //System.out.println("Commencing search in admins");
+        for(int i=0; i<Initialise.admins.size(); i++){
+            //System.out.println("iterating through for loop. Username: " + admins.get(i).getUserName());
+            if(username.equals(Initialise.admins.get(i).getUserName())){
+                //System.out.println("returning"+ i);
                 return i;
             }
         }
         return -1;
+        
     }
 }

@@ -7,7 +7,9 @@ public class Customer extends Account{
     private String mobileNumber;
 
     public Customer(String username, String password, String email, String mobileno){
-        super(username, password, false ); this.emailAddress = email; this.mobileNumber = mobileno;
+        super(username, password, false);
+        this.emailAddress = email;
+        this.mobileNumber = mobileno;
     }
 
     public void setEmailAddress(String email){

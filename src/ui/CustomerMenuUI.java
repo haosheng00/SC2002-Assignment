@@ -5,6 +5,7 @@ import classes.*;
 import controller.*;
 import initialiser.Initialise;
 import classes.DropDownMenu;
+import ui.AccountUI;
 
 public class CustomerMenuUI{
 
@@ -13,7 +14,7 @@ public class CustomerMenuUI{
     public static void customerMenuOptions(Customer customer){
         Scanner sc = new Scanner(System.in);
         int option = -1;
-        do{
+        //do{//
                 System.out.println("========================================");
                 System.out.println("Please select an option.");
                 System.out.println("(1) - Search Movie");
@@ -43,12 +44,15 @@ public class CustomerMenuUI{
                         MovieController.getTop5Movies(ListingController.getListingCriteria());
                         break;
                     case 6:
+                        AccountUI.WelcomePage();
                         break;
                     default:
-                    System.out.println("Invalid Input");
-                    break;
+                        System.out.println("Invalid Input");
+                        break;
                 }
-            }while (option < 6);
+            //}while (option < 7);
+            if(option ==6)
+                AccountUI.WelcomePage();
             sc.close();
         }
     
@@ -77,11 +81,12 @@ public class CustomerMenuUI{
                     MovieController.getTop5Movies(ListingController.getListingCriteria());
                     break;
                 case 4:
-                    break;
+                    AccountUI.WelcomePage();
                 default:
                     break;
             }
-        }while(option<4);
+        }while(option<5);
+        
         sc.close();
     }
 

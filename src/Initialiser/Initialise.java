@@ -1,7 +1,7 @@
 package initialiser;
 
-import serialiser.ReadMovieDB;
-import serialiser.WriteMovieDB;
+//import serialiser.ReadMovieDB;
+//import serialiser.WriteMovieDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Initialise {
     //cineplexes.add(new Cineplex(null, null,null));
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
     public static ArrayList<Review> reviews = new ArrayList<Review>();
-    public static ArrayList<Customer> customers = new ArrayList<Customer>();
+    public static ArrayList<Customer> customers = new ArrayList<Customer>(List.of(new Customer("guest", "guest", "123", "123"), new Customer("mary", "mary123", "hh", "123")));
     public static ArrayList<Admin> admins = new ArrayList<Admin>(List.of(new Admin("admin1", "admin1"), new Admin("admin2", "admin2")));
     public static ArrayList<Movie> movies = new ArrayList<Movie>(List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
     public static ArrayList<Screening> screenings = new ArrayList<Screening>();
@@ -31,8 +31,8 @@ public class Initialise {
     //public static ArrayList<DateTime> holidays = new ArrayList<DateTime>();
     //public static TicketController tc = new TicketController(tickets, screenings, holidays);
 
-    public static void initialiseEverything() throws Exception {
+    //public static void initialiseEverything() throws Exception {
         //WriteMovieDB.writeMovieDB();
-        ReadMovieDB.readMovieDB();
-    }
+    //    ReadMovieDB.readMovieDB();
+    //}
 }

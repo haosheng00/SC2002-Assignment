@@ -36,7 +36,7 @@ public class AdminMenuUI{
                     System.out.println("Invalid Input");
                     break;
             }
-        }while (option != 3);
+        }while (option != 5);
         scanner.close();
     }
 }
