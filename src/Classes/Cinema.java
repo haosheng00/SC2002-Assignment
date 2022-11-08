@@ -3,28 +3,14 @@ package classes;
 import java.io.Serializable;
 
 public class Cinema implements Serializable{
-    private Enum.CinemaType cinemaType;
-    private String cinemaCode;
+
     private String cinemaName;
-
-    public Cinema(Enum.CinemaType cinemaType, String cinemaCode, String cinemaName) {
-        this.cinemaType = cinemaType;
-        this.cinemaCode = cinemaCode;
+    private String cinemaCode;
+    private Enum.CinemaType cinemaType;
+    public Cinema(String cinemaName, String cinemaCode, Enum.CinemaType cinemaType) {
         this.cinemaName = cinemaName;
-    }
-
-    public Enum.CinemaType getCinemaType(){
-        return this.cinemaType;
-    }
-    public void setCinemaType(Enum.CinemaType cinemaType){
-        this.cinemaType = cinemaType;
-    }
-
-    public String getCinemaCode(){
-        return this.cinemaCode;
-    }
-    public void setCinemaCode(String cinemaCode){
         this.cinemaCode = cinemaCode;
+        this.cinemaType = cinemaType;
     }
 
     public String getCinemaName(){
@@ -32,5 +18,17 @@ public class Cinema implements Serializable{
     }
     public void setCinemaName(String cinemaName){
         this.cinemaName = cinemaName;
+    }
+    public String getCinemaCode(){
+        return this.cinemaCode;
+    }
+    public void setCinemaCode(String cinemaCode){
+        this.cinemaCode = cinemaCode;
+    }
+    public Enum.CinemaType getCinemaType(){
+        return this.cinemaType;
+    }
+    public void setCinemaType(Enum.CinemaType cinemaType){
+        this.cinemaType = cinemaType;
     }
 }
