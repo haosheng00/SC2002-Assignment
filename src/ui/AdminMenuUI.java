@@ -15,7 +15,7 @@ public class AdminMenuUI{
             System.out.println("(2) - Screening Controls");
             System.out.println("(3) - Ticket Controls");
             System.out.println("(4) - Listing Controls");
-            System.out.println("(5) - Go Back to Main Menu");
+            System.out.println("(5) - Log out");
             System.out.println("========================================");
             option = scanner.nextInt();
             switch(option){
@@ -31,6 +31,9 @@ public class AdminMenuUI{
                     break;
                 case 4: 
                     ListingController.initiateListingUI();
+                    break;
+                case 5:
+                    AccountUI.initiateLoginUI(0);
                     break;
                 default:
                     System.out.println("Invalid Input");
