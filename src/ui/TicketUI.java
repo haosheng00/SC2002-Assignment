@@ -12,7 +12,7 @@ public class TicketUI {
     private static Scanner sc = new Scanner(System.in);
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
 
-    public static void initiateAdminTicketUI(){
+    public static void initiateAdminTicketUI() throws Exception{
 
         int option;
 
@@ -44,7 +44,7 @@ public class TicketUI {
                 break;
 
                 case 3:
-                break;
+                AdminMenuUI.adminMenuOptions();;
 
                 default:
                 System.out.println("Invalid Input!");
@@ -55,7 +55,7 @@ public class TicketUI {
     }
 
 
-    public static void updateTicketUI(){
+    public static void updateTicketUI() throws Exception{
 
         int option;
 
@@ -92,7 +92,7 @@ public class TicketUI {
                 break;
 
                 case 4:
-                break;
+                TicketUI.initiateAdminTicketUI();
 
                 default:
                 System.out.println("Invalid Input!");
