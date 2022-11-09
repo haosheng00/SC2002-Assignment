@@ -112,7 +112,7 @@ public class DropDownMenu {
                         maxCounter++;
                     }
                 }
-                System.out.println("(" + (optionNo+1) + ") Back");
+                System.out.println("(" + (optionNo+1) + ") Go to next section");
                 movieChoice = sc.nextInt();
                 if (movieChoice == (optionNo+1)){
                     return -1;
@@ -209,7 +209,7 @@ public class DropDownMenu {
             for (i = 0; i < movies.size(); i++) {
                 System.out.println("(" + (i + 1) + ")" + movies.get(i).getMovieTitle());
             }
-            System.out.println("(" + (i+2) + ") Back");
+            System.out.println("(" + (i+2) + ") Done");
             movieChoice = sc.nextInt();
             if (movieChoice == (i+2)){
                 return -1;
