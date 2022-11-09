@@ -30,6 +30,7 @@ public class DropDownMenu {
         return cineplexChoice - 1;
     }
 
+    //Check if it actually writes to the cineplex
     public static void initiateCineplexAddition(ArrayList<Cineplex> cineplexes, Movie movie) {
         int cineplexChoice, counter = 0;
         ArrayList<Cineplex> cineplextemp = cineplexes;
@@ -134,9 +135,9 @@ public class DropDownMenu {
                         maxCounter++;
                     }
                 }
-                System.out.println("(" + optionNo + ") Back");
+                System.out.println("(" + (optionNo+1) + ") Back");
                 movieChoice = sc.nextInt();
-                if (movieChoice == optionNo){
+                if (movieChoice == (optionNo+1)){
                     return -1;
                 }
                 if (movieChoice < 0 || movieChoice > maxCounter) {
@@ -148,7 +149,7 @@ public class DropDownMenu {
     }
 
     public static int initiateMovieChoice_CustomerMenu(int haveComingSoon) {
-        int i, optionNo;
+        int i, optionNo = 0;
         int movieChoice = 1, counter = 0, maxCounter = 0;
         if (haveComingSoon == 1) {
             do {
@@ -163,7 +164,11 @@ public class DropDownMenu {
                         maxCounter++;
                     }
                 }
-                movieChoice = sc.nextInt()-1;
+                System.out.println("(" + (optionNo+1) + ") Back");
+                movieChoice = sc.nextInt();
+                if (movieChoice == (optionNo+1)){
+                    return -1;
+                }
                 if (movieChoice < 0 || movieChoice > maxCounter) {
                     System.out.println("Invalid Input! Try again");
                 }
@@ -182,7 +187,11 @@ public class DropDownMenu {
                         maxCounter++;
                     }
                 }
+                System.out.println("(" + (optionNo+1) + ") Back");
                 movieChoice = sc.nextInt();
+                if (movieChoice == (optionNo+1)){
+                    return -1;
+                }
                 if (movieChoice < 0 || movieChoice > maxCounter) {
                     System.out.println("Invalid Input! Try again");
                 }
@@ -200,11 +209,15 @@ public class DropDownMenu {
             for (i = 0; i < movies.size(); i++) {
                 System.out.println("(" + (i + 1) + ")" + movies.get(i).getMovieTitle());
             }
-            movieChoice = sc.nextInt()-1;
-            if (movieChoice < 0 || movieChoice > i) {
+            System.out.println("(" + (i+2) + ") Back");
+            movieChoice = sc.nextInt();
+            if (movieChoice == (i+2)){
+                return -1;
+            }
+            if (movieChoice < 0 || movieChoice > i+2) {
                 System.out.println("Invalid Input! Try again");
             }
-        } while (movieChoice < 0 || movieChoice > i);
-        return movieChoice;
+        } while (movieChoice < 0 || movieChoice > i+2);
+        return movieChoice-1;
     }
 }
