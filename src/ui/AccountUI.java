@@ -11,7 +11,9 @@ public class AccountUI {
     //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
     public static void WelcomePage() throws Exception{
+        System.out.println("========================================");
         System.out.println("Welcome to MOBLIMA");
+        System.out.println("========================================");
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
@@ -32,6 +34,7 @@ public class AccountUI {
         Scanner sc = new Scanner(System.in);
         int choice=0;
         do{
+            System.out.println("========================================");
             System.out.println("Please select an option");
             System.out.println("(1) Login to an existing account");
             System.out.println("(2) Create a new account");
@@ -76,6 +79,7 @@ public class AccountUI {
         int success;
         int exitChoice=-3;
         do{
+            System.out.println("========================================");
             System.out.println("Please enter username");
             username = sc.next();
             System.out.println("Please enter password");
@@ -87,6 +91,7 @@ public class AccountUI {
             switch (success){
                 case 0:
                     System.out.println("Username or password incorrect");
+                    System.out.println("========================================");
                     System.out.println("1: Try again");
                     System.out.println("2: Exit");
                     exitChoice = sc.nextInt();
