@@ -64,7 +64,15 @@ public class SeatFormatter implements Serializable{
         }
         else{
             if (seat.getSeatType() == Enum.SeatType.COUPLE_SEAT) {
-                System.out.print("[" + seat.getSeatId() + "||" + seat.getSeatId() + "]");
+                String column;
+                int columnNumber = seat.getColumn()+1;
+                if (columnNumber < 10) {
+                    column = String.format("%02d", columnNumber);
+                    System.out.print("[" + seat.getRow() + column + "||" + seat.getRow() + column + "]");
+                }
+                else {
+                    System.out.print("[" + seat.getRow() + (seat.getColumn() + 1) + "||" + seat.getRow() + (seat.getColumn() + 1) + "]");
+                }
             }
             else {
                 System.out.print("[" + seat.getSeatId() + "]");
