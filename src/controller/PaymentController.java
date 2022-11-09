@@ -153,6 +153,7 @@ public class PaymentController {
             //ticket number
             System.out.println("Ticket " + (i+1));
             TicketController.printTicket(Tickets.get(i));
+            System.out.println("\n");
             // System.out.println("Movie: " + Tickets.get(i).getMovie());
             // System.out.println("Showtime: "+ Tickets.get(i).getShowDate() + " " + Tickets.get(i).getShowTime());
             // System.out.println("Cineplex: " + Tickets.get(i).getCineplex() + " Cinema " + Tickets.get(i).getCinema());

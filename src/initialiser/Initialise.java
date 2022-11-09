@@ -59,9 +59,9 @@ public class Initialise {
             List.of(new Customer("guest", "guest", "123", "123"), new Customer("mary", "mary123", "hh", "123")));
     public static ArrayList<Admin> admins = new ArrayList<Admin>(
             List.of(new Admin("admin1", "admin1"), new Admin("admin2", "admin2")));
-            public static ArrayList<Movie> movies = new ArrayList<Movie>();
-     //public static ArrayList<Movie> movies = new ArrayList<Movie>(
-            //List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
+        //public static ArrayList<Movie> movies = new ArrayList<Movie>();
+     public static ArrayList<Movie> movies = new ArrayList<Movie>(
+            List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
     // public static ArrayList<Screening> screenings = new ArrayList<Screening>();
     public static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
@@ -71,7 +71,7 @@ public class Initialise {
 
 
     public static void initialiseMOBLIMA() throws Exception {
-        //WriteMovieDB.writeMovieDB();
+        WriteMovieDB.writeMovieDB();
         ReadMovieDB.readMovieDB();
     }
 

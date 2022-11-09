@@ -26,6 +26,7 @@ public class Movie implements Serializable{
 
     public Movie(String movieTitle){
         this.movieTitle = movieTitle;
+        this.reviews = new ArrayList<>();
         this.sales = 0;
     }
 
