@@ -67,22 +67,28 @@ public class TicketController {
         adultTicketNo = sc.nextInt();
         System.out.println("Number of Senior Citizen Tickets: ");
         seniorTicketNo = sc.nextInt();
-            LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < childTicketNo; j++) {
+                if (j == 0){
+                    LayoutPrinterOrdinary.printLayout(screeningChosen);
+                }
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
-                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
+                actualTicketPrice =0; //TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
                 TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
-            LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < adultTicketNo; j++) {
+                if (j == 0){
+                    LayoutPrinterOrdinary.printLayout(screeningChosen);
+                }
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
-                actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen);
+                actualTicketPrice = 0;//TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen);
                 TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
-            LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < seniorTicketNo; j++) {
+                if (j == 0){
+                    LayoutPrinterOrdinary.printLayout(screeningChosen);
+                }
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
                 actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen);
