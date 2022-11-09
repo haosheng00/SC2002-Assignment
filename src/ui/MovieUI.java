@@ -37,6 +37,7 @@ public class MovieUI {
                     break;
             }
         } while (choice < 5);
+        AdminMenuUI.adminMenuOptions();
         sc.close();
     }
 }
