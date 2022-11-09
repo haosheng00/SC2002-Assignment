@@ -2,13 +2,20 @@ package controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.time.temporal.*;
+import java.io.IOException;
+import java.text.ParseException;
 import java.time.DayOfWeek;  
+import java.util.Calendar;
 
 import classes.*;
 import classes.Enum;
 import initialiser.Initialise;
+import serialiser.SerializeMovieDB;
+import serialiser.WriteMovieDB;
 import ui.*;
 
 public class TicketController {
@@ -65,21 +72,21 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
+                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < adultTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
-                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
+                actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen);
+                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < seniorTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
-                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
+                actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen);
+                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
             return;
@@ -87,7 +94,7 @@ public class TicketController {
 
 
 
-        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen) {
+        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
             //PH ARRAYLIST TO INITIALISE
@@ -97,9 +104,9 @@ public class TicketController {
             double ticketPrice = 0;
 
             //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
-            for (int i=0; i<holidays.size(); i++){
-                LocalDate actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
-                if ((TicketController.isWeekend(actualDate) == true) || (screeningChosen.getShowDate()) == (holidays.get(i).getPublicHolidayDate())){
+            // for (int i=0; i<holidays.size(); i++){
+                Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+                if ((TicketController.isWeekend(actualDate)) || (screeningChosen.getShowDate()).equals((holidays.get(0).getPublicHolidayDate()))){
                     if (movieChosen.getIs3D() == true){
                         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
                     }
@@ -117,24 +124,30 @@ public class TicketController {
                     }
 
                     //RETURN ADULT PRICE
-                    if (adult == 1){
+                    else if (adult == 1){
                         ticketPrice = Enum.TicketType.ADULT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
                     }
 
                     //RETURN SENIOR PRICE
-                    if (senior == 1){
+                    else if (senior == 1){
                         ticketPrice = Enum.TicketType.SENIORCITIZEN.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
                     }
 
-                }
+                // }
 
             }
             return ticketPrice;
         }
 
-        public static Boolean isWeekend(LocalDate date){
-            DayOfWeek day = DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK));
-            return (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY);
+        public static Boolean isWeekend(Date date){
+            Calendar calendar = new GregorianCalendar();
+            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+            if ((dayOfWeek == 7) || (dayOfWeek == 1)){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
 
         public static void updateTicketPriceByAge(){
@@ -337,7 +350,7 @@ public class TicketController {
         }
 
 
-        public static void addHolidays(ArrayList<PublicHoliday> holidays){
+        public static void addHolidays(ArrayList<PublicHoliday> holidays) throws Exception{
             //FOR ADMIN
 
             System.out.println("Enter Name of Public Holiday: ");
@@ -346,8 +359,9 @@ public class TicketController {
             String stringdate = sc.next(); 
 
             PublicHoliday publicHoliday = new PublicHoliday(name, stringdate);
-
+            Initialise.holidays.add(publicHoliday);
             System.out.println("New Public Holiday has been added!");
+            WriteMovieDB.writeMovieDB();
 
         }
 

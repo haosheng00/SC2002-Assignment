@@ -3,11 +3,13 @@ import ui.ScreeningUI;
 import ui.AccountUI;
 import ui.ReviewUI;
 import ui.MovieUI;
+import ui.PaymentUI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import classes.*;
+import controller.PaymentController;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -15,10 +17,10 @@ public class Main {
         
         // AdminMenuUI.adminMenuOptions();
 
-        AccountUI.WelcomePage();
+        // AccountUI.WelcomePage();
         //ReviewUI.initiateReviewUI(Initialise.customers.get(1));
         // FOR MOVIE TESTING
-        //MovieUI.initiateMovieUI();
+        // MovieUI.initiateMovieUI();
 
         // Customer customer = new Customer(null, null, null, null);
         // CustomerMenuUI.customerMenuOptions(customer);
@@ -28,12 +30,12 @@ public class Main {
         // Movie movie = new Movie("Joy");
         // Initialise.movies.get(0).getReviews().add(new Review("amazing",
         // 2.0, null, null, movie));
-        // ReviewUI.initiateReviewUI(Initialise.customers.get(0));
+        ReviewUI.initiateReviewUI(Initialise.customers.get(0));
 
         // FOR PAYMENT TESTING
         // CustomerController.getCustomersList().get(0).getCartTickets().add(new
         // Ticket(null, null, null, null, null, new Seat(), 0));
-        // PaymentUI.initiatePaymentUI(CustomerController.getCustomersList().get(0));
+        // PaymentUI.initiatePaymentUI(Initialise.customers.get(0));
 
         // FOR SCREENING TESTING
         //ScreeningUI.initiateScreeningUI();
