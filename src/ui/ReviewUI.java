@@ -21,7 +21,7 @@ public class ReviewUI {
             System.out.println("(4) Back");
             System.out.println("========================================");
             choice = sc.nextInt();
-
+            
             // try{
             //     choice = sc.nextInt();
             //     //choice = Integer.parseUnsignedInt(choice); 
@@ -46,7 +46,7 @@ public class ReviewUI {
                     System.out.println("Invalid input!");
                     break;
             } 
-        } while (choice != 4);
+        } while (choice < 4);
         //sc.close();
     }
     
