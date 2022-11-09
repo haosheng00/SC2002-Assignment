@@ -53,7 +53,7 @@ public class ReviewController {
         
         int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
-            sc.close();
+            //sc.close();
             return;
         }
         
@@ -85,7 +85,7 @@ public class ReviewController {
         updateTop5Rating(movie);
 
         System.out.println("Your review has been added.");
-        sc.close();
+        //sc.close();
     }
 
     //iterate thru the reviews to find the particular username
@@ -129,7 +129,7 @@ public class ReviewController {
         //get movie index 
         int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
-            sc.close();
+            //sc.close();
             return;
 
         }
