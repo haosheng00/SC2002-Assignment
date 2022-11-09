@@ -2,8 +2,10 @@ package controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import java.time.temporal.*;
+import java.text.ParseException;
 import java.time.DayOfWeek;  
 
 import classes.*;
@@ -65,21 +67,21 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
+                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < adultTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
+                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             LayoutPrinterOrdinary.printLayout(screeningChosen);
             for (int j = 0; j < seniorTicketNo; j++) {
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen,cineplexChosen,actualTicketPrice);
+                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
             return;
@@ -87,7 +89,7 @@ public class TicketController {
 
 
 
-        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen) {
+        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
             //PH ARRAYLIST TO INITIALISE
@@ -97,9 +99,9 @@ public class TicketController {
             double ticketPrice = 0;
 
             //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
-            for (int i=0; i<holidays.size(); i++){
-                LocalDate actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
-                if ((TicketController.isWeekend(actualDate) == true) || (screeningChosen.getShowDate()) == (holidays.get(i).getPublicHolidayDate())){
+            // for (int i=0; i<holidays.size(); i++){
+                Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+                if ((TicketController.isWeekend(actualDate) == true) || (screeningChosen.getShowDate()).equals((holidays.get(0).getPublicHolidayDate()))){
                     if (movieChosen.getIs3D() == true){
                         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
                     }
@@ -126,14 +128,14 @@ public class TicketController {
                         ticketPrice = Enum.TicketType.SENIORCITIZEN.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
                     }
 
-                }
+                // }
 
             }
             return ticketPrice;
         }
 
-        public static Boolean isWeekend(LocalDate date){
-            DayOfWeek day = DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK));
+        public static Boolean isWeekend(Date date){
+            DayOfWeek day = DayOfWeek.of(((TemporalAccessor) date).get(ChronoField.DAY_OF_WEEK));
             return (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY);
         }
 

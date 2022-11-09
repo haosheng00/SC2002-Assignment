@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.time.temporal.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class DateTime {
@@ -30,9 +33,10 @@ public class DateTime {
         return formattedDate;
     }
 
-    public static LocalDate stringToDate(String stringdate){
+    public static Date stringToDate(String stringdate) throws ParseException{
 
-        LocalDate stringToDate = LocalDate.parse(stringdate, DateTimeFormatter.ofPattern("YYYYMMDD"));
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMDD");
+        Date stringToDate = sdf.parse(stringdate);
         return stringToDate;
         // TODO: convert string format to date format
     }
