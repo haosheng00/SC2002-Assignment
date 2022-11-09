@@ -3,10 +3,12 @@ package controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.time.temporal.*;
 import java.text.ParseException;
 import java.time.DayOfWeek;  
+import java.util.Calendar;
 
 import classes.*;
 import classes.Enum;
@@ -135,8 +137,14 @@ public class TicketController {
         }
 
         public static Boolean isWeekend(Date date){
-            DayOfWeek day = DayOfWeek.of(((TemporalAccessor) date).get(ChronoField.DAY_OF_WEEK));
-            return (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY);
+            Calendar calendar = new GregorianCalendar();
+            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+            if ((dayOfWeek == 7) || (dayOfWeek == 1)){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
 
         public static void updateTicketPriceByAge(){
