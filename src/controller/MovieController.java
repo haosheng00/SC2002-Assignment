@@ -125,8 +125,13 @@ public class MovieController implements Serializable{
             System.out.println("Please enter Movie Synopsis:");
             newMovie.setSynopsis(sc.next());
             System.out.println("Please enter movie duration in mins:");
-            // TODO: CATCH NON-INTEGER INPUTS
-            newMovie.setMovieDuration(sc.nextInt());
+            try{
+                i = sc.nextInt();   
+            }
+            catch (Exception e){
+                System.out.println("Invalid input! Enter integer only!");
+            }
+            newMovie.setMovieDuration(i);
 
             System.out.println("Please set age rating/restriction:");
             System.out.println("(1) G");
