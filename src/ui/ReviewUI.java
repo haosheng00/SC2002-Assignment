@@ -22,6 +22,14 @@ public class ReviewUI {
             System.out.println("========================================");
             choice = sc.nextInt();
 
+            // try{
+            //     choice = sc.nextInt();
+            //     //choice = Integer.parseUnsignedInt(choice); 
+            // }
+            // catch (Exception e) {
+            //     //return;
+            // }
+
             switch(choice) {
                 case 1: 
                     ReviewController.addReview(customer);
@@ -39,7 +47,7 @@ public class ReviewUI {
                     break;
             } 
         } while (choice != 4);
-        sc.close();
+        //sc.close();
     }
     
 }
