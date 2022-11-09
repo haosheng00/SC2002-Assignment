@@ -18,7 +18,7 @@ public class Main {
         // AdminMenuUI.adminMenuOptions();
 
          AccountUI.WelcomePage();
-        // ReviewUI.initiateReviewUI(Initialise.customers.get(1));
+        //ReviewUI.initiateReviewUI(Initialise.customers.get(1));
         // FOR MOVIE TESTING
         // MovieUI.initiateMovieUI();
 

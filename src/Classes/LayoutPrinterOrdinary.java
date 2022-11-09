@@ -29,8 +29,8 @@ public class LayoutPrinterOrdinary extends LayoutPrinter{
             SeatFormatter.printSeat(screening.getSeat(i));
             if (screening.getSeat(i).getSeatType() == Enum.SeatType.COUPLE_SEAT) {
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
-                i++;
-                columnNumber++;
+                i+=1;
+                columnNumber+=1;
             }
             int rightSectionWidth = 2;
             if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < Initialise.Ordinary_Capacity - 1) {

@@ -56,6 +56,12 @@ public class WriteMovieDB {
 					new Screening(cineplexes.get(0).getCinemas().get(4), "20220301", "143000", preMovies.get(1)),
 					new Screening(cineplexes.get(0).getCinemas().get(2), "20220302", "143000", preMovies.get(1))));
 
+	public static ArrayList<Admin> admins = new ArrayList<Admin>(
+			List.of(new Admin("admin1", "admin1"), new Admin("admin2", "admin2")));
+
+	public static ArrayList<Customer> customers = new ArrayList<Customer>(
+			List.of(new Customer("guest", "guest", "123", "123"), new Customer("mary", "mary123", "hh", "123")));
+
 	public static void writeMovieDB() throws Exception {
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
@@ -75,8 +81,8 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
 		SerializeMovieDB.writeSerializedObject("Review.dat", Initialise.reviews);
 		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
-		SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
-		SerializeMovieDB.writeSerializedObject("Admin.dat", Initialise.admins);
+		SerializeMovieDB.writeSerializedObject("Customer.dat", customers);
+		SerializeMovieDB.writeSerializedObject("Admin.dat", admins);
 		SerializeMovieDB.writeSerializedObject("Movie.dat", preMovies);
 		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
