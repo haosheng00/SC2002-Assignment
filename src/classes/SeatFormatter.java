@@ -27,7 +27,7 @@ public class SeatFormatter implements Serializable{
         if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
             for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
-                    if (!screening.getSeat(i).getIsBooked()) {
+                    if (!screening.getSeat(i).getIsBooked()&&!screening.getSeat(i).getIsReserved()) {
                         System.out.println("Adding to cart...");
                         return screening.getSeat(i);
                     }
@@ -36,7 +36,7 @@ public class SeatFormatter implements Serializable{
         } else if (screening.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES) {
             for (int i = 0; i < Initialise.Plat_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
-                    if (!screening.getSeat(i).getIsBooked()) {
+                    if (!screening.getSeat(i).getIsBooked()&&!screening.getSeat(i).getIsReserved()) {
                         System.out.println("Adding to cart...");
                         return screening.getSeat(i);
                     }
