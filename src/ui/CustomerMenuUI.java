@@ -40,6 +40,7 @@ public class CustomerMenuUI{
                         ReviewUI.initiateReviewUI(customer);
                         break;
                     case 5:
+                        //ADD TO SERIALIZER
                         MovieController.getTop5Movies(ListingController.getListingCriteria());
                         break;
                     case 6:
@@ -52,7 +53,6 @@ public class CustomerMenuUI{
             }while (option !=6);
             if(option ==6)
                 AccountUI.WelcomePage();
-            sc.close();
         }
     
 
@@ -85,8 +85,7 @@ public class CustomerMenuUI{
                     break;
             }
         }while(option<5);
-        
-        sc.close();
+    
     }
 
 }

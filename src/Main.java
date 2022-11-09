@@ -17,8 +17,8 @@ public class Main {
         
         // AdminMenuUI.adminMenuOptions();
 
-        // AccountUI.WelcomePage();
-        //ReviewUI.initiateReviewUI(Initialise.customers.get(1));
+         AccountUI.WelcomePage();
+        // ReviewUI.initiateReviewUI(Initialise.customers.get(1));
         // FOR MOVIE TESTING
         // MovieUI.initiateMovieUI();
 
@@ -30,7 +30,7 @@ public class Main {
         // Movie movie = new Movie("Joy");
         // Initialise.movies.get(0).getReviews().add(new Review("amazing",
         // 2.0, null, null, movie));
-        ReviewUI.initiateReviewUI(Initialise.customers.get(0));
+        //ReviewUI.initiateReviewUI(Initialise.customers.get(0));
 
         // FOR PAYMENT TESTING
         // CustomerController.getCustomersList().get(0).getCartTickets().add(new

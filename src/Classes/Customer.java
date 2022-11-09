@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Customer extends Account implements Serializable{
     private ArrayList<Ticket> cartTickets = new ArrayList<Ticket>();
     private ArrayList<Ticket> boughtTickets = new ArrayList<Ticket>();
+    private ArrayList<Review> pastReviews = new ArrayList<Review>();
     private String emailAddress;
     private String mobileNumber;
 
@@ -35,4 +36,14 @@ public class Customer extends Account implements Serializable{
     public ArrayList<Ticket> getBoughtTickets(){
         return boughtTickets;
     }
-}
+
+    public void setBoughtTickets(ArrayList<Ticket> boughtTickets){
+        this.boughtTickets = boughtTickets;
+    }
+
+    public ArrayList<Review> getPastReviews (){
+         return pastReviews;
+    }
+    
+
+    }

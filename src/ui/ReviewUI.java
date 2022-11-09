@@ -18,6 +18,7 @@ public class ReviewUI {
             System.out.println("(1) Add Review ");
             System.out.println("(2) Delete Review ");
             System.out.println("(3) Edit Review ");
+            System.out.println("(4) View your review(s) ");
             System.out.println("(4) Back");
             System.out.println("========================================");
             choice = sc.nextInt();
@@ -40,6 +41,9 @@ public class ReviewUI {
                 case 3:
                     ReviewController.updateReview(customer);
                     break;
+                // case 4:
+                //     ReviewController.printCustomerReviews(customer);
+                //     break;
                 case 4:
                     break;
                 default:
@@ -47,7 +51,6 @@ public class ReviewUI {
                     break;
             } 
         } while (choice < 4);
-        //sc.close();
     }
     
 }

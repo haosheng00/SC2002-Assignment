@@ -219,9 +219,10 @@ public class PaymentController {
         int size = cartTickets.size(); 
         for (int i=0; i<size; i++) {
             cus.getBoughtTickets().add(cartTickets.get(i));
+            //cus.setBoughtTickets(cus.getBoughtTickets());
+            SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
         }
-
-        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+        //SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
     }
 
 }

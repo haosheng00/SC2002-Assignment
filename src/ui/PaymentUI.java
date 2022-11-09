@@ -16,7 +16,6 @@ public class PaymentUI {
             System.out.println("Hi! Please select an option:");
             System.out.println("(1) View Tickets in Cart");
             System.out.println("(2) Checkout and Make Payment");
-            //System.out.println("(3) View Ticket History");
             System.out.println("(3) Go Back To Main Menu");
             System.out.println("========================================");
             choice = sc.nextInt();
@@ -35,6 +34,5 @@ public class PaymentUI {
                     break;
             }
         }
-        sc.close();
     }
 }

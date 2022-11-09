@@ -40,6 +40,6 @@ public class AdminMenuUI{
                     break;
             }
         }while (option != 5);
-        scanner.close();
+        
     }
 }

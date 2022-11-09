@@ -128,6 +128,7 @@ public class MovieController implements Serializable{
             try{
                 i = sc.nextInt();   
             }
+            // TODO: FIX CATCH 
             catch (Exception e){
                 System.out.println("Invalid input! Enter integer only!");
             }
@@ -293,8 +294,9 @@ public class MovieController implements Serializable{
                 choice = sc.nextInt();
             }
             if (choice == 1) {
-                ReviewController.printReview(Initialise.movies.get(index));
-            } else
+                ReviewController.printMovieReviews(Initialise.movies.get(index));
+            } else 
+            //TODO: Check if is admin, if not, go back to customer menu
                 MovieUI.initiateMovieUI();
                 
         }
@@ -313,7 +315,7 @@ public class MovieController implements Serializable{
 
     public static void getTop5Movies(int criteria) {
 
-        int choice = sc.nextInt();
+        int choice = 0;
 
         if (criteria == 3) {
             System.out.println("Sort by:");
@@ -354,7 +356,6 @@ public class MovieController implements Serializable{
             }
         }
     }
-
     public static class MyTimeTask extends TimerTask {
         // update the moviestatus
 

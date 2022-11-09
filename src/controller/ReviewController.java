@@ -227,8 +227,17 @@ public class ReviewController {
         }   
     }
 
+    //print review of customers
+    // public static void printCustomerReviews(Customer customer) {
+
+        
+
+
+
+    // }
+
     //print all reviews of movie -- sort by dateTime 
-    public static void printReview(Movie movie) {
+    public static void printMovieReviews(Movie movie) {
         
         int lastIndex = movie.getReviews().size()-1;
 
