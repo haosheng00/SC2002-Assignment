@@ -2,7 +2,7 @@ package classes;
 
 import initialiser.Initialise;
 
-public class LayoutPrinterOrdinary extends LayoutPrinter{
+public class LayoutPrinterOrdinary implements LayoutPrinter {
     public static void printLayout(Screening screening) {
         System.out.printf("%50s", "Screen");
         System.out.println();
@@ -38,7 +38,7 @@ public class LayoutPrinterOrdinary extends LayoutPrinter{
                 columnNumber = 1;
             }
         }
-        printLegend();
+        LayoutPrinter.printLegend();
         System.out.println();
     }
 }
