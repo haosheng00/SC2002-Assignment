@@ -18,6 +18,7 @@ public class LayoutPrinter {
         }
 
         public static void printLegend(){
+            System.out.println();
             System.out.println("---: reserved by you   xxx: booked");
         }
 }

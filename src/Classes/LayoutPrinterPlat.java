@@ -4,7 +4,7 @@ import initialiser.Initialise;
 
 public class LayoutPrinterPlat extends LayoutPrinter{
         public static void printLayout(Screening screening) {
-            System.out.printf("%17s", "Screen");
+            System.out.printf("%20s", "Screen");
             System.out.println();
             int columnNumber = 1;
             char rowNumber = LayoutPrinter.setNewRow('@');
