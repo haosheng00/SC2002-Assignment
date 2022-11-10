@@ -2,9 +2,9 @@ package classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class Customer extends Account implements Serializable{
-    private ArrayList<Ticket> cartTickets = new ArrayList<Ticket>();
-    private ArrayList<Ticket> boughtTickets = new ArrayList<Ticket>();
-    private ArrayList<Review> pastReviews = new ArrayList<Review>();
+    private ArrayList<Ticket> cartTickets;
+    private ArrayList<Ticket> boughtTickets;
+    private ArrayList<Review> pastReviews;
     private String emailAddress;
     private String mobileNumber;
 
@@ -12,6 +12,9 @@ public class Customer extends Account implements Serializable{
         super(username, password, false);
         this.emailAddress = email;
         this.mobileNumber = mobileno;
+        this.cartTickets = new ArrayList<>();
+        this.boughtTickets = new ArrayList<>();
+        this.pastReviews = new ArrayList<>();
     }
 
     public void setEmailAddress(String email){

@@ -96,7 +96,6 @@ public class PaymentController {
         System.out.println("Thank you for your purchase. We hope you enjoy your movie!");
 
         CustomerMenuUI.customerMenuOptions(customer);
-       sc.close();
     }
 
     //made payment and add payment to the Payment list
@@ -220,9 +219,7 @@ public class PaymentController {
         for (int i=0; i<size; i++) {
             cus.getBoughtTickets().add(cartTickets.get(i));
             //cus.setBoughtTickets(cus.getBoughtTickets());
-            SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
         }
-        //SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
     }
-
 }
