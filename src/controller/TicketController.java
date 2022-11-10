@@ -242,7 +242,7 @@ public class TicketController {
                 for (Enum.CinemaType groupType: Enum.CinemaType.values()) {
                       System.out.println("(" + (i+1) + ")" + groupType);
                       i++;
-                }
+                } 
                 option = sc.nextInt();
                 if (option <= 0 || option > i) {
                     System.out.println("Invalid Input! Try again!");
@@ -380,7 +380,7 @@ public class TicketController {
             cartTickets.add(ticket);
         }
 
-        
+
         public static void printTicket(Ticket ticket){
             //FOR PRINTRECEIPT
 
