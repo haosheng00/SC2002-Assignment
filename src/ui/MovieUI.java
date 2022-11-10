@@ -5,7 +5,11 @@ import java.util.Scanner;
 import classes.DropDownMenu;
 import controller.MovieController;
 import initialiser.Initialise;
-
+ 
+/**
+ * Prints the methods that admin can call to make changes/view the movies array list
+ * @throws Exception
+ */
 public class MovieUI {
 
     public static void initiateMovieUI() throws Exception {
