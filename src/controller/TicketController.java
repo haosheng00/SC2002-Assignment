@@ -73,7 +73,7 @@ public class TicketController {
                 }
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
-                actualTicketPrice =0; //TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
+                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
                 TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             for (int j = 0; j < adultTicketNo; j++) {
@@ -82,7 +82,7 @@ public class TicketController {
                 }
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
-                actualTicketPrice = 0;//TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen);
+                actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen);
                 TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             for (int j = 0; j < seniorTicketNo; j++) {
@@ -112,16 +112,16 @@ public class TicketController {
             //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
             // for (int i=0; i<holidays.size(); i++){
                 Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
-                // if ((TicketController.isWeekend(actualDate)) || (screeningChosen.getShowDate()).equals((holidays.get(0).getPublicHolidayDate()))){
-                //     if (movieChosen.getIs3D() == true){
-                //         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
-                //     }
-                //     else{
-                //         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
-                //     }
-                //     ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
-                // }// screeningchoice.showDate
-                // else{
+                if ((TicketController.isWeekend(actualDate)) || (screeningChosen.getShowDate()).equals((holidays.get(0).getPublicHolidayDate()))){
+                    if (movieChosen.getIs3D() == true){
+                        ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
+                    }
+                    else{
+                        ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
+                    }
+                    ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
+                }// screeningchoice.showDate
+                else{
                     //RETURN STUDENT PRICE
                     if (student == 1){
                         // TODO: NEED TO CHECK CINEMATYPE (and showtype!!)
@@ -139,9 +139,8 @@ public class TicketController {
                         ticketPrice = Enum.TicketType.SENIORCITIZEN.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
                     }
 
-                // }
-
-            // }
+                }
+    
             return ticketPrice;
         }
 
@@ -165,7 +164,7 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("Select Age Group: ");
                 for (Enum.TicketType groupType: Enum.TicketType.values()) {
-                    System.out.println("(" + i + 1 + ")" + groupType);
+                    System.out.println("(" + (i+1) + ")" + groupType);
                     i++;
                 }
                 option = sc.nextInt();
@@ -241,7 +240,7 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("Select Cinema Type: ");
                 for (Enum.CinemaType groupType: Enum.CinemaType.values()) {
-                      System.out.println("(" + i + 1 + ")" + groupType);
+                      System.out.println("(" + (i+1) + ")" + groupType);
                       i++;
                 }
                 option = sc.nextInt();
@@ -381,6 +380,7 @@ public class TicketController {
             cartTickets.add(ticket);
         }
 
+        
         public static void printTicket(Ticket ticket){
             //FOR PRINTRECEIPT
 
@@ -391,7 +391,6 @@ public class TicketController {
             System.out.println("Show Time: " + ticket.getShowTime());
             System.out.println("Seat: " + ticket.getSeat().getSeatId());
             System.out.println("Price: " + ticket.getTicketPrice());
-
         }
 
 
