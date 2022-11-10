@@ -16,4 +16,8 @@ public class LayoutPrinter {
             columnNumber++;
             return columnNumber;
         }
+
+        public static void printLegend(){
+            System.out.println("---: reserved by you   xxx: booked");
+        }
 }
