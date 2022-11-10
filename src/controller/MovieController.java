@@ -12,12 +12,22 @@ import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
 
+/**
+ * Contains the methods related to the movies available:
+ * searchMovie(), addMovie(), deleteMovie(), updateMovie(), printMovie(),
+ * getMovieList(), getTop5ByRatings(), getTop5BySales(), getTop5Movies(), MyTimeTask()
+ */
 public class MovieController implements Serializable{
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Movie> top5BySales = Initialise.top5BySales;
     static ArrayList<Movie> top5ByRatings = Initialise.top5ByRatings;
     //static ArrayList<Movie> movies = new ArrayList <Movie>(); 
 
+    /**
+     * Loop through the movies array list to check on the existence of the searched movie
+     * @param movieTitle the title of the movie that user wants to search
+     * @return index of the movie if it exists; -1 if it does not exists
+     */
     public static int searchMovie(String movieTitle) {
         movieTitle = movieTitle.toUpperCase();
         for (int i = 0; i < Initialise.movies.size(); i++) {
@@ -28,6 +38,10 @@ public class MovieController implements Serializable{
         return -1;
     }
 
+    /**
+    * Add a new movie to the movies list and specified cineplexes
+    * @throws Exception
+    */
     public static void addMovie() throws Exception {
         String movieTitle;
         ArrayList<String> casts = new ArrayList<>();
@@ -207,6 +221,11 @@ public class MovieController implements Serializable{
         }
     }
 
+    /**
+     * Remove a movie from the existing movies array list
+     * @return int 1 if movie is deleted/removed successfully
+     * @throws Exception
+     */
     public static int deleteMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
         //Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
@@ -216,6 +235,11 @@ public class MovieController implements Serializable{
         return 1;
     }
 
+    /**
+     * Allows user to update the following attributes of an existing movie in the movies array list:
+     * Movie Title, Movie Status, Start Date of Screening & End Date of Screening
+     * @return int 1 if update is successful
+     */
     public static int updateMovie() {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
         int choice = 0;
@@ -266,9 +290,14 @@ public class MovieController implements Serializable{
             case 5:
                 break;
         }
-        return 0;
+        return 1;
     }
 
+    /**
+     * print out the details of the movie by the index of the movie in the movies array list
+     * @param index the index of the movie in the movies array list
+     * @throws Exception
+     */
     public static void printMovie(int index) throws Exception {
             System.out.println("Movie Title: " + Initialise.movies.get(index).getMovieTitle());
             System.out.println("Movie Status: " + Initialise.movies.get(index).getMovieStatus());
@@ -301,18 +330,34 @@ public class MovieController implements Serializable{
                 
         }
 
+    /**
+     * Returns the movies array list
+     * @return movies array list stored in database
+     */
     public static ArrayList<Movie> getMovieList() {
         return Initialise.movies;
     }
 
+    /**
+     * Returns the top 5 movies sorted according to the overall rating of the movie
+     * @return movies array list with the top 5 rated movies
+     */
     public static ArrayList<Movie> getTop5ByRatings() {
         return top5ByRatings;
     }
 
+    /**
+     * Returns the top 5 movies sorted according to the overall sales of the movie
+     * @return movies array list with the top 5 movies with highest sales amount
+     */
     public static ArrayList<Movie> getTop5BySales() {
         return top5BySales;
     }
 
+    /**
+     * Prints out the top 5 movies in the movies array list sorted according to either overall rating or sales set by the admin
+     * @param criteria 1: By overall rating; 2: By sales; 3: Provides a choice to pick from overall rating or sales
+     */
     public static void getTop5Movies(int criteria) {
 
         int choice = 0;
@@ -356,6 +401,10 @@ public class MovieController implements Serializable{
             }
         }
     }
+
+    /**
+     * Function to automatically update the movie status to "Now Showing" and "End of Showing" when current date passes "Start of Screening Date" and "End of Screening Date" respectively
+     */
     public static class MyTimeTask extends TimerTask {
         // update the moviestatus
 
