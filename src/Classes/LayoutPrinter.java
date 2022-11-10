@@ -1,5 +1,5 @@
 package classes;
-public class LayoutPrinter {
+public interface LayoutPrinter {
         public static void printLayout(Screening screening){}
         public static char setNewRow(char rowNumber){
             rowNumber++;
@@ -19,6 +19,6 @@ public class LayoutPrinter {
 
         public static void printLegend(){
             System.out.println();
-            System.out.println("---: reserved by you   xxx: booked");
+            System.out.println("---: Reserved by you   xxx: Booked   [   ||   ]: Couple Seat");
         }
 }
