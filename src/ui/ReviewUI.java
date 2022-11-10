@@ -41,10 +41,10 @@ public class ReviewUI {
                 case 3:
                     ReviewController.updateReview(customer);
                     break;
-                // case 4:
-                //     ReviewController.printCustomerReviews(customer);
-                //     break;
                 case 4:
+                    ReviewController.printCustomerReviews(customer);
+                    break;
+                case 5:
                     break;
                 default:
                     System.out.println("Invalid input!");
