@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.util.*;
 
+import javax.xml.transform.Source;
+
 import classes.*;
 import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
@@ -72,6 +74,11 @@ public class ReviewController {
         Movie movie = Initialise.movies.get(movieIndex);
         movie.getReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
 
+         //update the customer past reviews array
+         customer.getPastReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
+         //write to customer 
+         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+
         //add review to all reviews array - NEED???
         //Reviews.add(new Review(review,rating,userName,dateTime,movie));
 
@@ -80,6 +87,7 @@ public class ReviewController {
         movie.setOverallRating(updatedRating);
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
+        
 
         //update top5Rating
         updateTop5Rating(movie);
@@ -90,6 +98,9 @@ public class ReviewController {
 
     //iterate thru the reviews to find the particular username
     public static void deleteReview(Customer customer) throws IOException {
+        
+        int i = 0;
+        
         int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
             return;
@@ -100,13 +111,24 @@ public class ReviewController {
         int size = movie.getReviews().size();
         double oldRating = 0;
         //iterate thru the reviews of each movie to find the particular username
-        for (int i=0; i<size; i++) {
+        for (i=0; i<size; i++) {
             if (r.get(i).getUserName() == customer.getUserName()) {
                 oldRating = r.get(i).getRating();
                 r.remove(i);
                 break;
             }
         }
+
+        ArrayList <Review> reviews = customer.getPastReviews();
+        //iterate thru the customers' past reviews array to find review to be deleted (check movie name)
+        for (i=0; i<reviews.size(); i++) {
+            if (reviews.get(i).getMovie().getMovieTitle() == movie.getMovieTitle()) {
+                reviews.remove(i);
+                break;
+            }
+        }
+
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
         //NEED TO REMOVE FROM OVERALL REVIEWS LIST???
 
@@ -126,6 +148,8 @@ public class ReviewController {
 
         Scanner sc = new Scanner(System.in);
 
+        int i = 0;
+
         //get movie index 
         int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
@@ -143,14 +167,13 @@ public class ReviewController {
         int size = reviews.size();
 
         //search whether his rating exists
-        for (int i=0; i<size; i++) {
+        for (i=0; i<size; i++) {
             if (reviews.get(i).getUserName() == customer.getUserName()) {
                 ratingExist = 1;
                 reviewIndex = i;
                 oldRating = reviews.get(i).getRating();
                 break;
             }
-        sc.close();
         }
 
         //if rating doesn't exists
@@ -172,7 +195,24 @@ public class ReviewController {
         reviews.remove(reviewIndex);
         //add review to the end of Reviews array -- ensure that review array is updated by time
         reviews.add(new Review(review, rating, customer.getUserName(), dateTime, movie));
+
+
+
+        ArrayList <Review> cusReviews = customer.getPastReviews();
+        //update customer array 
+        //iterate thru the customers' past reviews array to find review to be deleted (check movie name)
+        for (i=0; i<cusReviews.size(); i++) {
+            if (cusReviews.get(i).getMovie().getMovieTitle() == movie.getMovieTitle()) {
+                cusReviews.remove(i);
+                break;
+            }
+        }
+
+        cusReviews.add(new Review(review, rating, customer.getUserName(), dateTime, movie));
         
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+
+
         // //Update reviews array for movie
         // reviews.get(reviewIndex).setDescription(review);
         // reviews.get(reviewIndex).setRating(rating);
@@ -228,13 +268,15 @@ public class ReviewController {
     }
 
     //print review of customers
-    // public static void printCustomerReviews(Customer customer) {
-
-        
-
-
-
-    // }
+    public static void printCustomerReviews(Customer customer) {
+        ArrayList <Review> reviews = customer.getPastReviews();
+        System.out.println("Reviews of " + customer.getUserName());
+        for (int i=0; i<reviews.size(); i++) {
+            System.out.println("Time of Review: " + reviews.get(i).getDateTime());
+            System.out.println("Rating: " + reviews.get(i).getRating());
+            System.out.println("Review: " + reviews.get(i).getDescription());
+        }
+    }
 
     //print all reviews of movie -- sort by dateTime 
     public static void printMovieReviews(Movie movie) {
