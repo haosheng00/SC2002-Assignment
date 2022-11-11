@@ -36,8 +36,8 @@ public class DateTime {
     public static Date stringToDate(String stringdate) throws ParseException{
 
         String year = stringdate.substring(0,4);
-        String month = stringdate.substring(4, 7);
-        String day = stringdate.substring(7, 8);
+        String month = stringdate.substring(4, 6);
+        String day = stringdate.substring(6, 8);
         String newstringdate = day + '-' + month + '-' + year;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date stringToDate = dateFormat.parse(newstringdate);

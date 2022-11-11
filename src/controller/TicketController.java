@@ -1,14 +1,9 @@
 package controller;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
-import java.time.temporal.*;
-import java.io.IOException;
 import java.text.ParseException;
-import java.time.DayOfWeek;  
 import java.util.Calendar;
 
 import classes.*;
@@ -22,8 +17,6 @@ import ui.*;
  * Represents the controller that can configure ticket prices, create new bookings and match correct ticket price based on given conditions
  */
 public class TicketController {
-
-    static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
     static Customer current; 
     // private static double basePrice;
@@ -101,22 +94,23 @@ public class TicketController {
             double ticketPrice = 0;
 
             //CHECK AGE
-            if (student == 1){
-                ticketPrice = Initialise.priceByAge.get(0);
-            }
 
-            if (adult == 1){
-                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
-                    ticketPrice = Initialise.priceByAge.get(1) *2;
+            if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                ticketPrice = Initialise.priceByAge.get(1) *2;
+            }
+            else{
+                
+                if (student == 1){
+                    ticketPrice = Initialise.priceByAge.get(0);
                 }
-                else{
-                    ticketPrice = Initialise.priceByAge.get(1);
-                }   
-            }
-   
-
-            if (senior == 1){
-                ticketPrice = Initialise.priceByAge.get(2);
+    
+                if (adult == 1){
+                        ticketPrice = Initialise.priceByAge.get(1);
+                    }   
+                
+                if (senior == 1){
+                    ticketPrice = Initialise.priceByAge.get(2);
+                }
             }
 
 
@@ -152,7 +146,7 @@ public class TicketController {
 
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
-            System.out.println(cal);
+            // System.out.println(cal.getTime());
 
             return (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7);
         }

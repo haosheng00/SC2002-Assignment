@@ -5,6 +5,9 @@ import java.util.Scanner;
 import classes.*;
 import controller.*;
 
+/**
+ * Contains the initiation of UI related to customer's reviews
+ */
 public class ReviewUI {
 
     public static void initiateReviewUI(Customer customer) throws Exception {
@@ -13,14 +16,14 @@ public class ReviewUI {
         int choice = 0;
 
         do {
-        System.out.println("========================================");
-        System.out.println("Please select an option:");
-        System.out.println("(1) Add Review ");
-        System.out.println("(2) Delete Review ");
-        System.out.println("(3) Edit Review ");
-        System.out.println("(4) View your review(s) ");
-        System.out.println("(5) Back");
-        System.out.println("========================================");
+            System.out.println("========================================");
+            System.out.println("Please select an option:");
+            System.out.println("(1) Add Review ");
+            System.out.println("(2) Delete Review ");
+            System.out.println("(3) Edit Review ");
+            System.out.println("(4) View your review(s) ");
+            System.out.println("(5) Back");
+            System.out.println("========================================");
             try {
                 choice = sc.nextInt();            
                 switch(choice) {
