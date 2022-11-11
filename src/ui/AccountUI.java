@@ -38,7 +38,6 @@ public class AccountUI {
     public static void initiateLoginUI(int x) throws Exception{
         Scanner sc = new Scanner(System.in);
         int choice=0;
-        do{
             System.out.println("========================================");
             System.out.println("Please select an option");
             System.out.println("(1) Login to an existing account");
@@ -46,7 +45,7 @@ public class AccountUI {
             System.out.println("(3) Delete account");
             System.out.println("(4) Change Password");
             System.out.println("(5) Back");
-            
+        do{
             try{
                 choice = sc.nextInt();
 

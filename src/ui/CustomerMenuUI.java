@@ -13,7 +13,6 @@ public class CustomerMenuUI{
     public static void customerMenuOptions(Customer customer) throws Exception{
         Scanner sc = new Scanner(System.in);
         int option = -1;
-        do{
                 System.out.println("========================================");
                 System.out.println("Please select an option.");
                 System.out.println("(1) - Search Movie");
@@ -22,6 +21,7 @@ public class CustomerMenuUI{
                 System.out.println("(4) - Your Reviews");
                 System.out.println("(5) - See Top 5 Movies");
                 System.out.println("(6) - Log Out");
+            do{
                 try {
                     option = sc.nextInt();
                     switch (option) {
@@ -48,7 +48,6 @@ public class CustomerMenuUI{
                             MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                             break;
                         case 6:
-                            AccountUI.WelcomePage();
                             break;
                         default:
                             System.out.println("Invalid Input");
@@ -60,8 +59,7 @@ public class CustomerMenuUI{
                 sc.next();
             }
             }while (option !=6);
-            if(option ==6)
-                AccountUI.WelcomePage();
+            AccountUI.WelcomePage();
         }
     
 
@@ -69,13 +67,13 @@ public class CustomerMenuUI{
 
         Scanner sc = new Scanner(System.in);
         int option = 0;
-        do{
             System.out.println("========================================");
             System.out.println("Please select an option.");
             System.out.println("(1) - Search Movie");
             System.out.println("(2) - Book Tickets");
             System.out.println("(3) - See Top 5 Movies");
             System.out.println("(4) - Back");
+        do{
             try {
                 option = sc.nextInt();
                 switch (option) {
@@ -94,8 +92,9 @@ public class CustomerMenuUI{
                         MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                         break;
                     case 4:
-                        AccountUI.WelcomePage();
+                        break;
                     default:
+                        System.out.println("Invalid Input");
                         break;
                 }
             }
@@ -103,7 +102,7 @@ public class CustomerMenuUI{
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-        }while(option<5);
+        }while(option!=4);
     
     }
 

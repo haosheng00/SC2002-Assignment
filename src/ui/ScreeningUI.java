@@ -11,14 +11,13 @@ public class ScreeningUI {
     public static void initiateScreeningUI() throws IOException {
         int option = 0;
         Scanner sc = new Scanner(System.in);
-        do {
             System.out.println("========================================");
             System.out.println("Please select an option:");
             System.out.println("(1) Add Screening");
             System.out.println("(2) Delete Screening");
             System.out.println("(3) Show Screening");
-            System.out.println("(4) Go Back To Previous Page");
-            System.out.println("========================================");
+            System.out.println("(4) Back");
+        do {
             try {
                 option = sc.nextInt();
             switch (option) {

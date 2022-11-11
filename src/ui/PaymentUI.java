@@ -15,8 +15,7 @@ public class PaymentUI {
         System.out.println("Please select an option:");
         System.out.println("(1) View Tickets in Cart");
         System.out.println("(2) Checkout and Make Payment");
-        System.out.println("(3) Go Back To Main Menu");
-        System.out.println("========================================");
+        System.out.println("(3) Back");
         
         do {
             try {
@@ -29,8 +28,7 @@ public class PaymentUI {
                     PaymentController.checkoutUI(customer);
                     break;
                 case 3:
-                    CustomerMenuUI.customerMenuOptions(customer);
-                    //return;
+                    break;
                 default:
                     System.out.println("Invalid option. Please enter an integer (1-3): ");
                     break;
@@ -40,7 +38,7 @@ public class PaymentUI {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-        } while (true);
+        } while (choice!=3);
     }
         
 }

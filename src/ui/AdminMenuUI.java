@@ -5,7 +5,6 @@ public class AdminMenuUI{
     public static void adminMenuOptions() throws Exception{
         Scanner scanner = new Scanner(System.in);
         int option = 0;
-        do{
             System.out.println("========================================");
             System.out.println("Hello! Please select an option.");
             System.out.println("(1) - Movie Controls");
@@ -13,7 +12,7 @@ public class AdminMenuUI{
             System.out.println("(3) - Ticket Controls");
             System.out.println("(4) - Listing Controls");
             System.out.println("(5) - Log out");
-            System.out.println("========================================");
+        do{
             try {
                 option = scanner.nextInt();
             switch(option){

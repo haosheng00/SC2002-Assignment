@@ -12,7 +12,7 @@ public class ReviewUI {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
 
-        do {
+
             System.out.println("========================================");
             System.out.println("Please select an option:");
             System.out.println("(1) Add Review ");
@@ -20,7 +20,7 @@ public class ReviewUI {
             System.out.println("(3) Edit Review ");
             System.out.println("(4) View your review(s) ");
             System.out.println("(5) Back");
-            System.out.println("========================================");
+        do {
             try {
                 choice = sc.nextInt();
 
@@ -48,7 +48,6 @@ public class ReviewUI {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-        } while (choice < 4);
+        } while (choice!=5);
     }
-    
 }
