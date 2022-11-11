@@ -107,7 +107,7 @@ public class CustomerMenuUI{
                     case 4:
                         break;
                     default:
-                        System.out.println("Invalid Input");
+                        System.out.println("Invalid option. Please enter an integer (1-4):");
                         break;
                 }
             }
