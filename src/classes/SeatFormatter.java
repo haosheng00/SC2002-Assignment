@@ -37,13 +37,12 @@ public class SeatFormatter implements Serializable{
         int columnChoice = 99;
         System.out.println("Enter Row Letter:");
         do {
-            try {
-                rowChoice = Character.toUpperCase(sc.next().charAt(0));
+            rowChoice = sc.next().charAt(0);
+            if ((rowChoice >= 'A' && rowChoice <= 'Z') ||(rowChoice >= 'a' && rowChoice <= 'z')) {
+                rowChoice = Character.toUpperCase(rowChoice);
                 break;
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a Character: ");
-                sc.next();
             }
+            System.out.println("Invalid input. Please enter a Character: ");
         }while (true);
         System.out.println("Enter Column Number:");
         do{
