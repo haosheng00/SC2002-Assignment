@@ -92,20 +92,20 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
 		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
-		SerializeMovieDB.writeSerializedObject("Pricing.dat", Initialise.priceByAge);
+		SerializeMovieDB.writeSerializedArray("PriceByAge.dat", Initialise.priceByAge);
 	}
 
 	public static void preWriteMovieDB() throws Exception{
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
 		SerializeMovieDB.writeSerializedObject("Review.dat", Initialise.reviews);
-		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
+		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 		SerializeMovieDB.writeSerializedObject("Customer.dat", customers);
 		SerializeMovieDB.writeSerializedObject("Admin.dat", admins);
 		SerializeMovieDB.writeSerializedObject("Movie.dat", preMovies);
 		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
-		SerializeMovieDB.writeSerializedObject("Holiday.dat", holidays);
+		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
 	}
 }

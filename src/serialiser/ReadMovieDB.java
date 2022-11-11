@@ -10,6 +10,7 @@ import classes.*;
 public class ReadMovieDB {
 	public static void readMovieDB() throws Exception{
 		List list;
+		double [] arr;
 		// read from serialized file the list of professors
 
 			//listingCriteria = SerializeMovieDB.readSerializedObject(".dat");
@@ -73,6 +74,11 @@ public class ReadMovieDB {
 			for (int i = 0 ; i < list.size() ; i++) {
 				PublicHoliday publicHoliday = (PublicHoliday) list.get(i);
 				Initialise.holidays.add(publicHoliday);
+			}
+
+			arr = (double [])SerializeMovieDB.readSerializedArray("PriceByAge.dat");
+			for (int i = 0 ; i < arr.length ; i++) {
+				// double [] priceByAge = (double []) arr.get(i);
 			}
 
 	}
