@@ -32,13 +32,15 @@ public class TicketUI {
             System.out.println("========================================");
 
             option  = 0;
-            try{
-                option = sc.nextInt();   
-            }
-            catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
-            }
+            do {
+                try {
+                    option = sc.nextInt();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Invalid input. Please enter an integer: ");
+                    sc.next();
+                }
+            }while(true);
 
             switch(option){
 
@@ -80,26 +82,20 @@ public class TicketUI {
                 option = sc.nextInt();
 
                 switch (option) {
-
                     case 1:
                         TicketController.updateTicketPriceByAge();
                         break;
-
                     case 2:
                         TicketController.updateTicketPriceByCinemaType();
                         break;
-
                     case 3:
                         TicketController.updateTicketPriceByDayOfWeek();
                         break;
-
                     case 4:
                         break;
-
                     default:
                         System.out.println("Invalid Input!");
                         break;
-
                 }
         }
             catch(Exception e){
