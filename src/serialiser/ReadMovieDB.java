@@ -105,11 +105,5 @@ public class ReadMovieDB {
 				Double priceByDay = (Double) list.get(i);
 				Initialise.priceByDay.add(priceByDay);
 			}
-			
-			// arr = (double [])SerializeMovieDB.readSerializedArray("PriceByAge.dat");
-			// for (int i = 0 ; i < arr.length ; i++) {
-			// 	double priceByAge =  Array.getDouble(arr, i);
-			// }
-
 	}
 }

@@ -19,10 +19,6 @@ import ui.*;
  */
 public class TicketController {
     /**
-     * Represents all the cineplexes
-     */
-    static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
-    /**
      * Represents all the public holidays 
      */
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
