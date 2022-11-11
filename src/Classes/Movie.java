@@ -75,12 +75,29 @@ public class Movie implements Serializable{
     /** Represents the movie with the specific movie title initialised with an empty review list and 0 sales amount
      * @param movieTitle title of the movie
      */
-    public Movie(String movieTitle){
+    // public Movie(String movieTitle){
+    //     this.movieTitle = movieTitle;
+    //     this.reviews = new ArrayList<>();
+    //     this.sales = 0;
+    // }
+
+    //TODO: remove this
+    public Movie(String movieTitle, Enum.MovieStatus movieStatus, String synopsis, String director, int movieDuration, double sales, Enum.AgeRestriction ageRestriction, boolean is3D, double overallRating, String i, String j){
         this.movieTitle = movieTitle;
         this.reviews = new ArrayList<>();
         this.sales = 0;
+        this.movieStatus = movieStatus;
+        this.movieGenres = new ArrayList<>();
+        this.synopsis = synopsis;
+        this.director = director;
+        this.casts = new ArrayList<>();
+        this.movieDuration = movieDuration;
+        this.ageRestriction = ageRestriction;
+        this.is3D = is3D;
+        this.overallRating = overallRating;
+        this.expiryDate = i;
+        this.startDate = j;
     }
-
     /**
      * Set the status of the movie from the enumeration options
      * @param movieStatus

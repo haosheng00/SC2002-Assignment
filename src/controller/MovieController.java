@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import classes.*;
+import classes.Enum;
 import classes.Enum.*;
 import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
@@ -64,7 +65,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle.toUpperCase());
+            Movie newMovie = new Movie(movieTitle.toUpperCase(),MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233");
             do{
                 try{
                     System.out.println("Please select movie status:");

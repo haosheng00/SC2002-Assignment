@@ -64,9 +64,18 @@ public class Seat implements Serializable{
     }
 
 
+    /**
+     * return the row letter of the specified seat
+     * @return row letter
+     */
     public char getRow() {
         return row;
     }
+
+    /**
+     * update the row letter of the specified seat
+     * @param a
+     */
     public void setRow(char a) {
         row = a;
     }
