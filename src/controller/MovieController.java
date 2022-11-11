@@ -346,18 +346,23 @@ public class MovieController implements Serializable{
             System.out.println();
             if (!Initialise.movies.get(index).getReviews().isEmpty()) System.out.println("(1) - See Reviews");
             System.out.println("(0) - Back");
-            int choice = sc.nextInt();
-            
-            while (choice != 1 && choice != 0){
-                System.out.println("Invalid option, try again:");
-                if (!Initialise.movies.get(index).getReviews().isEmpty()) System.out.println("(1) - See Reviews");
-                System.out.println("(0) - Back");
-                choice = sc.nextInt();
+            try {
+                int choice = sc.nextInt();
+                while (choice != 1 && choice != 0){
+                    System.out.println("Invalid option. Please enter 0 or 1:");
+                    if (!Initialise.movies.get(index).getReviews().isEmpty()) System.out.println("(1) - See Reviews");
+                    System.out.println("(0) - Back");
+                    choice = sc.nextInt();
+                }
+                if (choice == 1) {
+                    ReviewController.printMovieReviews(Initialise.movies.get(index));
+                    System.out.println("(0) - Back");
+                    choice = sc.nextInt();
+                } else return;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer:");
+                sc.next();
             }
-            if (choice == 1) {
-                ReviewController.printMovieReviews(Initialise.movies.get(index));
-            } else return;
-                
         }
 
     /**

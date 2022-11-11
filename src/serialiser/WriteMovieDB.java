@@ -49,12 +49,12 @@ public class WriteMovieDB {
 	 * Represents the movies pre-initialised in the movie database
 	 */
 	public static ArrayList<Movie> preMovies = new ArrayList<Movie>(
-			List.of(new Movie("Joy",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","113233"), 
-					new Movie("Sad",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","112233"), 
-					new Movie("Fear",MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","113233"),
-					new Movie("Four",MovieStatus.COMING_SOON, "Des","fdg",122,40,Enum.AgeRestriction.PG,true,0,"112233","112233"),
-					new Movie("NJN",MovieStatus.COMING_SOON, "Des","fdg",122,50,Enum.AgeRestriction.PG,true,0,"112533","112243"),
-					new Movie("jdfdn",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","115233")));
+			List.of(new Movie("Rise of the Teenage Mutant Ninja Turtles",MovieStatus.NOW_SHOWING, "Rise of the Teenage Mutant Ninja Turtles: The Movie is a 2022 American animated superhero film based on the Teenage Mutant Ninja Turtles characters created by Kevin Eastman and Peter Laird.","Andy Suriano",82,20000,Enum.AgeRestriction.PG,false,0,"20220822","20221222"), 
+					new Movie("Black Panther",MovieStatus.NOW_SHOWING, "Black Panther is a 2018 American superhero film based on the Marvel Comics character of the same name. Produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures, it is the 18th film in the Marvel Cinematic Universe (MCU).","Ryan Coogler",134,100000,Enum.AgeRestriction.PG13,true,0,"20221111","20221222"), 
+					new Movie("Inside Out",MovieStatus.END_OF_SHOWING, "Inside Out is a 2015 American computer-animated film directed by Pete Docter from a screenplay he co-wrote with Meg LeFauve and Josh Cooley.","Pete Docter",95,20000000,Enum.AgeRestriction.PG,false,0,"20220801","20220809"),
+					new Movie("Your Name",MovieStatus.COMING_SOON, "Your Name (Japanese: 君の名は。, Hepburn: Kimi no Na wa) is a 2016 Japanese animated romantic fantasy film produced by CoMix Wave Films.","Makoto Shinkai",107,0,Enum.AgeRestriction.PG13,false,0,"20221212","20221231"),
+					new Movie("Kungfu Panda",MovieStatus.NOW_SHOWING, "Kung Fu Panda is an American media franchise that originally started in 2008 with the release of the animated feature film of the same name, produced by DreamWorks Animation.","Ethan Reiff",122,500,Enum.AgeRestriction.PG13,true,0,"20221113","20221213"),
+					new Movie("My Love",MovieStatus.NOW_SHOWING, "My Love is a 2021 Chinese romantic comedy film directed and co-written by Han Tian. It is a remake of the 2018 South Korean film On Your Wedding Day.","Han Tian",115,200000,Enum.AgeRestriction.NC16,false,0,"20221111","20221211")));
 
 	/**
 	 * Represents the Cineplexes that the Group Athay currently operates
