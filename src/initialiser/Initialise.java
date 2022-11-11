@@ -16,6 +16,11 @@ public class Initialise {
 
     public static DateTime dt = new DateTime();
 
+    public static double [] priceByAge = new double [] {}; 
+    public static double [] priceByMovieType = new double [] {};
+    public static double [] priceByCinemaType = new double [] {};
+    public static double [] priceByDay = new double [] {}; 
+
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
     public static ArrayList<Review> reviews = new ArrayList<Review>();
