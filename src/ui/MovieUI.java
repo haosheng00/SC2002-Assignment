@@ -18,13 +18,13 @@ public class MovieUI {
     public static void initiateMovieUI() throws Exception {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
+        do {
             System.out.println("Please select an option");
             System.out.println("(1) Add Movie");
             System.out.println("(2) Delete Movie");
             System.out.println("(3) Update Movie");
             System.out.println("(4) Search Movie");
             System.out.println("(5) Back");
-            do {
             try {
                 choice = sc.nextInt();
                 switch (choice) {
@@ -47,12 +47,12 @@ public class MovieUI {
                     case 5:
                         break;
                     default:
-                        System.out.println("Invalid Input");
+                        System.out.println("Invalid option. Please enter an integer (1-5):");
                         break;
                 }
             }
             catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
+                System.out.println("Invalid input. Please enter an integer:");
                 sc.next();
             }
         } while (choice!=5);
