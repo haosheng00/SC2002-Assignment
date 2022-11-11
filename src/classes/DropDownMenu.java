@@ -184,7 +184,7 @@ public class DropDownMenu {
                         counter++;
                     } else {
                         optionNo++;
-                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i + counter).getMovieTitle());
+                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i).getMovieTitle());
                         Choice.add(counter+optionNo-1);
                     }
                 }
@@ -213,7 +213,7 @@ public class DropDownMenu {
                         counter++;
                     } else {
                         optionNo++;
-                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i + counter).getMovieTitle());
+                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i).getMovieTitle());
                         Choice.add(counter+optionNo-1);
                     }
                 }
@@ -249,7 +249,8 @@ public class DropDownMenu {
                         counter++;
                     } else {
                         optionNo++;
-                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i + counter).getMovieTitle());
+                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i).getMovieTitle());
+                        Choice.add(optionNo-1+counter);
                     }
                 }
                 System.out.println("(" + (optionNo+1) + ") Back");
@@ -277,7 +278,7 @@ public class DropDownMenu {
                         counter++;
                     } else {
                         optionNo++;
-                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i + counter).getMovieTitle());
+                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i).getMovieTitle());
                         Choice.add(optionNo-1+counter);
                     }
                 }

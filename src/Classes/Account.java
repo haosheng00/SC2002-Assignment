@@ -7,23 +7,23 @@ import java.io.Serializable;
  */
 public class Account implements Serializable{
     /**
-     * The username of this account
+     * Represents the username of this account
      */
     private String userName;
     /**
-     * The password of this account
+     * Represents the password of this account
      */
     private String password;
     /**
-     * Represents the account type (Customer/Admin) 
+     * Represents the account type (Customer/Admin), 
      * check whether this account is a customer account or admin account
      */
     private boolean isAdmin;
 
     /**
-     * Constructs an account object with the given username or password
-     * Customer account - isAdmin is false 
-     * Addmin account - isAdmin will be true
+     * Constructs an account object with the given username or password <p>
+     * Customer account - isAdmin is false,
+     * Admin account - isAdmin will be true
      * @param username username of this account
      * @param password password of this account
      * @param isAdmin what type of account this is(admin/customer)
@@ -34,7 +34,7 @@ public class Account implements Serializable{
         this.isAdmin = isAdmin;
     }
     /**
-     * To get the username of this account
+     * Returns the username of this account
      * @return this account's username
      */
     public String getUserName(){
@@ -42,7 +42,7 @@ public class Account implements Serializable{
     }
 
     /**
-     * To get the password of this account
+     * Returns the password of this account
      * @return this account's password 
      */
     public String getPassword(){
@@ -50,7 +50,7 @@ public class Account implements Serializable{
     }
 
     /**
-     * To get this account's type (Customer or account)
+     * Returns this account's type (Customer or account)
      * @return isAdmin attribute 
      */
 

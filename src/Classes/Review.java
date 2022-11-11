@@ -37,7 +37,7 @@ public class Review implements Serializable{
     public String getDescription() { return description; }
 
     /**
-     * Updates the written review of the movie of the specified review
+     * Sets/Updates the written review of the movie of the specified review
      * @param description written review 
      */
     public void setDescription(String description) { this.description = description;}
@@ -49,7 +49,7 @@ public class Review implements Serializable{
     public double getRating() { return rating; }
 
     /**
-     * Updates the number rating of movie given by reviewer
+     * Sets/Updates the number rating of movie given by reviewer
      * @param rating number rating out of 5
      */
     public void setRating(double rating) { this.rating = rating;}
@@ -61,7 +61,7 @@ public class Review implements Serializable{
     public String getUserName() { return userName; }
 
     /**
-     * Updates the username of customer who gave the review
+     * Sets/Updates the username of customer who gave the review
      * @param userName username of reviewer
      */
     public void setUserName(String userName) { this.userName = userName;}
@@ -73,7 +73,7 @@ public class Review implements Serializable{
     public String getDateTime() { return dateTime; }
 
     /**
-     * Updates the date and time of review creation
+     * Sets/Updates the date and time of review creation
      * @param dateTime date and time of review creation
      */
     public void setDateTime(String dateTime) { this.dateTime = dateTime;}
@@ -85,7 +85,7 @@ public class Review implements Serializable{
     public Movie getMovie() { return movie; }
 
     /**
-     * Updates the movie class of the movie being reviewed
+     * Sets/Updates the movie class of the movie being reviewed
      * @param movie reviewed movie class
      */
     public void setMovie(Movie movie) { this.movie = movie;}

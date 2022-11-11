@@ -14,10 +14,13 @@ import java.util.Calendar;
 import classes.*;
 import classes.Enum;
 import initialiser.Initialise;
-import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
 import ui.*;
 
+
+/**
+ * Represents the controller that can configure ticket prices, create new bookings and match correct ticket price based on given conditions
+ */
 public class TicketController {
 
     static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
@@ -92,30 +95,29 @@ public class TicketController {
         }
     
 
-
-
         public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
             double ticketPrice = 0;
 
             //CHECK AGE
-            if (student == 1){
-                ticketPrice = Initialise.priceByAge.get(0);
-            }
 
-            if (adult == 1){
-                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
-                    ticketPrice = Initialise.priceByAge.get(1) *2;
+            if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                ticketPrice = Initialise.priceByAge.get(1) *2;
+            }
+            else{
+                
+                if (student == 1){
+                    ticketPrice = Initialise.priceByAge.get(0);
                 }
-                else{
-                    ticketPrice = Initialise.priceByAge.get(1);
-                }   
-            }
-   
-
-            if (senior == 1){
-                ticketPrice = Initialise.priceByAge.get(2);
+    
+                if (adult == 1){
+                        ticketPrice = Initialise.priceByAge.get(1);
+                    }   
+                
+                if (senior == 1){
+                    ticketPrice = Initialise.priceByAge.get(2);
+                }
             }
 
 
@@ -146,16 +148,14 @@ public class TicketController {
             return ticketPrice;
         }
     
-
+  
         public static Boolean isWeekend(Date date){
-            Calendar calendar = new GregorianCalendar();
-            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-            if ((dayOfWeek == 7) || (dayOfWeek == 1)){
-                return true;
-            }
-            else{
-                return false;
-            }
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            // System.out.println(cal.getTime());
+
+            return (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7);
         }
 
         public static void updateTicketPriceByAge() throws Exception{
