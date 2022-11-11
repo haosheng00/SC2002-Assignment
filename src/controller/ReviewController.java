@@ -144,7 +144,6 @@ public class ReviewController {
         //get movie index 
         int movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(0);
         if (movieIndex == -1) {
-            //sc.close();
             return;
         }
         
