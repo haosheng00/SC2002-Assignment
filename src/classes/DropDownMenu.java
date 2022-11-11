@@ -33,7 +33,7 @@ public class DropDownMenu {
             if (cineplexChoice == (i + 1)){
                 return -1;
             }
-            if (cineplexChoice < 0 || cineplexChoice > i) {
+            if (cineplexChoice <= 0 || cineplexChoice > (i+1)) {
                 System.out.println("Invalid Input! Try again");
             }
             else{
@@ -97,7 +97,7 @@ public class DropDownMenu {
             if (cinemaChoice == (i + 1)){
                 return -1;
             }
-            if (cinemaChoice < 0 || cinemaChoice > i) {
+            if (cinemaChoice <= 0 || cinemaChoice > (i + 1)) {
                 System.out.println("Invalid Input! Try again");
             }
             else break;
@@ -151,7 +151,7 @@ public class DropDownMenu {
             if (screeningChoice == (optionNo+1)){
                 return -1;
             }
-            if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
+            if (screeningChoice <= 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
             else{
@@ -204,7 +204,7 @@ public class DropDownMenu {
             if (screeningChoice == optionNo+1){
                 return -1;
             }
-            if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
+            if (screeningChoice <= 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
             else{
@@ -255,7 +255,7 @@ public class DropDownMenu {
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
+                if (movieChoice <= 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
                 else{
@@ -292,7 +292,7 @@ public class DropDownMenu {
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
+                if (movieChoice <= 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
                 else{
@@ -341,7 +341,7 @@ public class DropDownMenu {
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
+                if (movieChoice <= 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
                 else{
@@ -378,7 +378,7 @@ public class DropDownMenu {
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
+                if (movieChoice <= 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
                 else{
@@ -416,7 +416,7 @@ public class DropDownMenu {
             if (movieChoice == (i+2)){
                 return -1;
             }
-            if (movieChoice < 0 || movieChoice > (i+2)) {
+            if (movieChoice <= 0 || movieChoice > (i+2)) {
                 System.out.println("Invalid Input! Try again");
             }
             else{
