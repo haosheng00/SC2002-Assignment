@@ -16,11 +16,6 @@ public class AdminMenuUI{
             System.out.println("========================================");
             try {
                 option = scanner.nextInt();
-            }
-            catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
-                scanner.next();
-            }
             switch(option){
                 case 1:
                 //2 separate movieUIs for customer and manager - need to create!!
@@ -41,6 +36,11 @@ public class AdminMenuUI{
                 default:
                     System.out.println("Invalid Input");
                     break;
+            }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                scanner.next();
             }
         }while (option != 5);
         

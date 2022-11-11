@@ -73,7 +73,7 @@ public class TicketUI {
                 option = sc.nextInt();   
             }
             catch (Exception e) {
-                    System.out.println("Invalid input. Please enter an integer: ");
+                    System.out.println("Invalid input. Please enter an integer. ");
                     sc.next();
                 }
 

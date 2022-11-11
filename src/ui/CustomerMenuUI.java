@@ -22,42 +22,43 @@ public class CustomerMenuUI{
                 System.out.println("(4) - Your Reviews");
                 System.out.println("(5) - See Top 5 Movies");
                 System.out.println("(6) - Log Out");
-                try{
-                option = sc.nextInt();}
-                catch (Exception e) {
-                    System.out.println("Invalid input. Please enter an integer: ");
-                    sc.next();
-                }
-                switch(option){
-                    case 1: 
-                        int movieIndex = -1;
-                        movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
-                        if (movieIndex == -1){
+                try {
+                    option = sc.nextInt();
+                    switch (option) {
+                        case 1:
+                            int movieIndex = -1;
+                            movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                            if (movieIndex == -1) {
+                                break;
+                            }
+                            MovieController.printMovie(movieIndex);
                             break;
-                        }
-                        MovieController.printMovie(movieIndex);
-                        break;
-                    case 2:
-                        TicketController.createBooking(Initialise.cineplexes, customer);
-                        break;
-                    case 3:
-                        //Use serialiser here 
-                        CustomerController.viewPastTickets(customer);
-                        break;
-                    case 4: 
-                        ReviewUI.initiateReviewUI(customer);
-                        break;
-                    case 5:
-                        //ADD TO SERIALIZER
-                        MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
-                        break;
-                    case 6:
-                        AccountUI.WelcomePage();
-                        break;
-                    default:
-                        System.out.println("Invalid Input");
-                        break;
+                        case 2:
+                            TicketController.createBooking(Initialise.cineplexes, customer);
+                            break;
+                        case 3:
+                            //Use serialiser here
+                            CustomerController.viewPastTickets(customer);
+                            break;
+                        case 4:
+                            ReviewUI.initiateReviewUI(customer);
+                            break;
+                        case 5:
+                            //ADD TO SERIALIZER
+                            MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
+                            break;
+                        case 6:
+                            AccountUI.WelcomePage();
+                            break;
+                        default:
+                            System.out.println("Invalid Input");
+                            break;
+                    }
                 }
+                catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
             }while (option !=6);
             if(option ==6)
                 AccountUI.WelcomePage();
@@ -65,6 +66,7 @@ public class CustomerMenuUI{
     
 
     public static void guestMenuOptions() throws Exception{
+
         Scanner sc = new Scanner(System.in);
         int option = 0;
         do{
@@ -74,26 +76,32 @@ public class CustomerMenuUI{
             System.out.println("(2) - Book Tickets");
             System.out.println("(3) - See Top 5 Movies");
             System.out.println("(4) - Back");
-            option = sc.nextInt();
-            switch(option){
-                case 1: 
-                    int movieIndex = -1;
-                    movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
-                    if (movieIndex == -1){
+            try {
+                option = sc.nextInt();
+                switch (option) {
+                    case 1:
+                        int movieIndex = -1;
+                        movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                        if (movieIndex == -1) {
+                            break;
+                        }
+                        MovieController.printMovie(movieIndex);
                         break;
-                    }
-                    MovieController.printMovie(movieIndex);
-                    break;
-                case 2:
-                    AccountUI.initiateLoginUI(2);
-                    break;
-                case 3:
-                    MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
-                    break;
-                case 4:
-                    AccountUI.WelcomePage();
-                default:
-                    break;
+                    case 2:
+                        AccountUI.initiateLoginUI(2);
+                        break;
+                    case 3:
+                        MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
+                        break;
+                    case 4:
+                        AccountUI.WelcomePage();
+                    default:
+                        break;
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
             }
         }while(option<5);
     

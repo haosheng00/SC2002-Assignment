@@ -23,13 +23,9 @@ public class ReviewUI {
             System.out.println("========================================");
             try {
                 choice = sc.nextInt();
-            }catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
-            }
 
-            switch(choice) {
-                case 1: 
+            switch (choice) {
+                case 1:
                     ReviewController.addReview(customer);
                     break;
                 case 2:
@@ -46,7 +42,12 @@ public class ReviewUI {
                 default:
                     System.out.println("Invalid input!");
                     break;
-            } 
+            }
+        }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
         } while (choice < 4);
     }
     

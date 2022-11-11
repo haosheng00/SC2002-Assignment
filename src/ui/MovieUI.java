@@ -22,31 +22,32 @@ public class MovieUI {
             System.out.println("(3) Update Movie");
             System.out.println("(4) Search Movie");
             System.out.println("(5) Back");
-            try{
-            choice = sc.nextInt();}
+            try {
+                choice = sc.nextInt();
+                switch (choice) {
+                    case 1:
+                        MovieController.addMovie();
+                        break;
+                    case 2:
+                        MovieController.deleteMovie();
+                        break;
+                    case 3:
+                        MovieController.updateMovie();
+                        break;
+                    case 4:
+                        int movieChoice = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
+                        if (movieChoice == -1) {
+                            break;
+                        }
+                        MovieController.printMovie(movieChoice);
+                        break;
+                    default:
+                        break;
+                }
+            }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
-            }
-            switch (choice) {
-                case 1:
-                    MovieController.addMovie();
-                    break;
-                case 2:
-                    MovieController.deleteMovie();
-                    break;
-                case 3:
-                    MovieController.updateMovie();
-                    break;
-                case 4:
-                    int movieChoice = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
-                    if (movieChoice == -1){
-                        break;
-                    }
-                    MovieController.printMovie(movieChoice);
-                    break;
-                default:
-                    break;
             }
         } while (choice < 5);
         AdminMenuUI.adminMenuOptions();

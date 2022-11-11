@@ -21,11 +21,6 @@ public class ScreeningUI {
             System.out.println("========================================");
             try {
                 option = sc.nextInt();
-            }
-            catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
-            }
             switch (option) {
                 case 1:
                     ScreeningController.addScreening(Initialise.cineplexes);
@@ -41,6 +36,11 @@ public class ScreeningUI {
                 default:
                     System.out.println("Invalid Input");
                     break;
+            }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer. ");
+                sc.next();
             }
     }while (option != 4);
     }
