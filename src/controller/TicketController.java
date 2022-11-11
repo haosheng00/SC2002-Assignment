@@ -3,6 +3,9 @@ package controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
+import javax.sound.midi.Soundbank;
+
 import java.text.ParseException; 
 import java.util.Calendar;
 
@@ -218,10 +221,17 @@ public class TicketController {
             //FOR ADMIN
             
             //LIST AGE GROUP
-            int i = 0, option;
+            ArrayList <Double> priceByAge = Initialise.priceByAge;
+            int i = 0, option, j = 0;
             do {
                 System.out.println("========================================");
-                System.out.println("Select Age Group: ");
+                System.out.println("The current ticket base prices by age are:");
+                for (Enum.TicketType groupType: Enum.TicketType.values()) {
+                    System.out.println("(" + (j+1) + ")" + groupType + " = $" + priceByAge.get(j));
+                    j++;
+                }
+                System.out.println(" ");
+                System.out.println("Select Age Group to update: ");
                 for (Enum.TicketType groupType: Enum.TicketType.values()) {
                     System.out.println("(" + (i+1) + ")" + groupType);
                     i++;
@@ -300,9 +310,17 @@ public class TicketController {
             //FOR ADMIN
             
             //LIST CINEMA TYPE
-            int i = 0, option;
+            ArrayList <Double> priceByCinemaType = Initialise.priceByCinemaType;
+            int i = 0, option, j = 0;
             do {
                 System.out.println("========================================");
+                System.out.println("The current ticket add-on prices by cinema type are:");
+                for (Enum.CinemaType groupType: Enum.CinemaType.values()) {
+                    System.out.println("(" + (j+1) + ")" + groupType + " = $" + priceByCinemaType.get(j));
+                    j++;
+                }
+
+                System.out.println(" ");
                 System.out.println("Select Cinema Type: ");
                 for (Enum.CinemaType groupType: Enum.CinemaType.values()) {
                       System.out.println("(" + (i+1) + ")" + groupType);
@@ -365,9 +383,17 @@ public class TicketController {
             //FOR ADMIN
             
             //CHOOSE DAY OF WEEK
+            ArrayList <Double> priceByDay = Initialise.priceByDay;
             int option;
             do {
                 System.out.println("========================================");
+                System.out.println("The current ticket add-on prices by day of week are:");
+                System.out.println("(1) Weekdays (Monday to Friday) = $" + priceByDay.get(0));
+                System.out.println("(2) Weekdays (Saturday and Sunday) = $" + priceByDay.get(1));
+                System.out.println("(3) Public Holiday = $" + priceByDay.get(2));
+      
+
+                System.out.println(" ");
                 System.out.println("Select Day of Week: ");
                 System.out.println("(1) Weekdays (Monday to Friday)");
                 System.out.println("(2) Weekends (Saturday and Sunday)");
