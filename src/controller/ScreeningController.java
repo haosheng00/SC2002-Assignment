@@ -9,10 +9,18 @@ import java.util.Scanner;
 
 import classes.*;
 
+/**
+ * Represents the controller that can configure screenings
+ */
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
 
-    public ScreeningController(){};
+    /**
+     * Asks you to select a cineplex, a cinema, a movie, a screening date and time
+     * and adds the screening to movie DB
+     * @param cineplexes
+     * @throws IOException
+     */
     public static void addScreening(ArrayList<Cineplex> cineplexes) throws IOException{
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         if (cineplexChoice == -1){
@@ -38,6 +46,12 @@ public class ScreeningController {
         System.out.println("Screening added successfully");
     }
 
+    /**
+     * Asks you to select a cineplex, a movie, and a screening
+     * then deletes the screening from movie DB
+     * @param cineplexes
+     * @throws IOException
+     */
     public static void deleteScreening(ArrayList<Cineplex> cineplexes) throws IOException{
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         if (cineplexChoice == -1){
@@ -54,6 +68,11 @@ public class ScreeningController {
         System.out.println("Screening deleted successfully");
     }
 
+    /**
+     * Asks you to select a cineplex, a movie and a screening
+     * and prints our the selected screening cinema, screening date and time
+     * @param cineplexes
+     */
     public static void showScreening(ArrayList<Cineplex> cineplexes){
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         if (cineplexChoice == -1){
@@ -68,7 +87,7 @@ public class ScreeningController {
         if (screeningChoice == -1){
             return;
         }
-        System.out.println("Printing screening information for Movie... " + movieChosen.getMovieTitle());
+        System.out.println("Printing screening information for Movie: " + movieChosen.getMovieTitle() + " ...");
         System.out.println("Cinema: " + Initialise.screenings.get(screeningChoice).getCinema().getCinemaName());
         System.out.println("Show Date: " +Initialise.screenings.get(screeningChoice).getShowDate());
         System.out.println("Show Time: " + Initialise.screenings.get(screeningChoice).getShowTime());

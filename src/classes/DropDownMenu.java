@@ -96,6 +96,41 @@ public class DropDownMenu {
         return counter + screeningChoice - 1;
     }
 
+    public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie, Cineplex cineplex) {
+        int i, screeningChoice;
+        int counter = 0;
+        int optionNo = 0;
+        String movieTitle = movie.getMovieTitle();
+        do {
+            System.out.println("========================================");
+            System.out.println("Select Screening: ");
+            for (i = 0; i < screenings.size(); i++) {
+
+                if (movieTitle.equals(screenings.get(i).getMovie().getMovieTitle())) {
+                    if (cineplex.getCineplexName().equals(screenings.get(i).getCinema().getCineplexName())) {
+                        optionNo++;
+                        System.out.println("(" + optionNo + ") Date: " + screenings.get(i).getShowDate() + " Time: "
+                                + screenings.get(i).getShowTime() + " Movie: " + movie.getMovieTitle());
+                    }
+                    else{
+                        counter++;
+                    }
+                } else {
+                    counter++;
+                }
+            }
+            System.out.println("(" + (optionNo+1) + ") Back");
+            screeningChoice = sc.nextInt();
+            if (screeningChoice == optionNo+1){
+                return -1;
+            }
+            if (screeningChoice < 0 || screeningChoice > i - counter) {
+                System.out.println("Invalid Input! Try again");
+            }
+        } while (screeningChoice < 0 || screeningChoice > i - counter);
+        return counter + screeningChoice - 1;
+    }
+
     public static int initiateMovieChoice(Cineplex cineplex, int haveComingSoon) {
         int i, optionNo = 0;
         int movieChoice = 1, counter = 0, maxCounter = 0;

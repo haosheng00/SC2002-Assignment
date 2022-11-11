@@ -1,6 +1,10 @@
 package classes;
-public interface LayoutPrinter {
-        public static void printLayout(Screening screening){}
+
+/**
+ * Represents a LayoutPrinter class that can print layouts
+ */
+public class LayoutPrinter {
+        public void printLayout(){}
         public static char setNewRow(char rowNumber){
             rowNumber++;
             System.out.println();
