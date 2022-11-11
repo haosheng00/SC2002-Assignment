@@ -2,6 +2,9 @@ package classes;
 
 import java.io.Serializable;
 
+/**
+ * Represents a review class of movie
+ */
 public class Review implements Serializable{
     private String description;
     private double rating;
@@ -10,6 +13,14 @@ public class Review implements Serializable{
     private Movie movie;
 
     //constructor
+    /**
+     * Represents the review of movie with the following details:
+     * @param description written description of review
+     * @param rating number rating of movie given by reviewer
+     * @param userName username of customer who gave the review
+     * @param dateTime date and time of review creation
+     * @param movie name of movie reviewed
+     */
     public Review(String description, double rating, String userName, String dateTime, Movie movie) {
         this.description = description;
         this.rating = rating;
@@ -19,18 +30,63 @@ public class Review implements Serializable{
     }
 
     //get & set variables
+    /**
+     * Returns the written review of the movie of the specified review
+     * @return written review 
+     */
     public String getDescription() { return description; }
+
+    /**
+     * Updates the written review of the movie of the specified review
+     * @param description written review 
+     */
     public void setDescription(String description) { this.description = description;}
 
+    /**
+     * Returns the number rating of movie given by reviewer
+     * @return number rating out of 5
+     */
     public double getRating() { return rating; }
+
+    /**
+     * Updates the number rating of movie given by reviewer
+     * @param rating number rating out of 5
+     */
     public void setRating(double rating) { this.rating = rating;}
 
+    /**
+     * Returns the username of customer who gave the review
+     * @return username of reviewer
+     */
     public String getUserName() { return userName; }
+
+    /**
+     * Updates the username of customer who gave the review
+     * @param userName username of reviewer
+     */
     public void setUserName(String userName) { this.userName = userName;}
 
+    /**
+     * Returns the date and time of review creation
+     * @return date and time of review creation
+     */
     public String getDateTime() { return dateTime; }
+
+    /**
+     * Updates the date and time of review creation
+     * @param dateTime date and time of review creation
+     */
     public void setDateTime(String dateTime) { this.dateTime = dateTime;}
 
+    /**
+     * Returns the movie class of the movie being reviewed
+     * @return reviewed movie class
+     */
     public Movie getMovie() { return movie; }
+
+    /**
+     * Updates the movie class of the movie being reviewed
+     * @param movie reviewed movie class
+     */
     public void setMovie(Movie movie) { this.movie = movie;}
 }
