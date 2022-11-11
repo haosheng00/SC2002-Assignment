@@ -40,19 +40,19 @@ public class DropDownMenu {
     }
 
     //
-    public static void initiateCineplexAddition(ArrayList<Cineplex> cineplexes, Movie movie) {
-        int cineplexChoice, counter = 0;
-        ArrayList<Cineplex> cineplextemp = cineplexes;
+    public static void initiateCineplexAddition(Movie movie) {
+        int cineplexChoice;
+        ArrayList<Cineplex> cineplexTemp = (ArrayList<Cineplex>) Initialise.cineplexes.clone();
         Cineplex cineplexChosen;
         do {
-            cineplexChoice = initiateCineplexChoice(cineplextemp);
+            cineplexChoice = initiateCineplexChoice(cineplexTemp);
             if (cineplexChoice == -1){
                 return;
             }
-            cineplexChosen = cineplextemp.get(cineplexChoice);
-            cineplexChosen.getMovies().add(movie);
-            cineplextemp.remove(cineplexChosen);
-        }while(cineplextemp.size()!=0);
+            cineplexChosen = cineplexTemp.get(cineplexChoice);
+            Initialise.cineplexes.get(cineplexChoice).getMovies().add(movie);
+            cineplexTemp.remove(cineplexChosen);
+        }while(cineplexTemp.size()!=0);
     }
 
     /**
@@ -245,9 +245,9 @@ public class DropDownMenu {
     }
 
     /**
-     * Prints out the list of moviechoices (either
+     * Prints out the list of moviechoices (either with END_OF_SHOWING or END_OF_SHOWING & COMINGSOON) and returns the index of the movie in the DB
      * @param haveComingSoon
-     * @return
+     * @return index of the movie
      */
     public static int initiateMovieChoice_CustomerMenu(int haveComingSoon) {
         int i, optionNo = 0;
