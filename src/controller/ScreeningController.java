@@ -52,7 +52,7 @@ public class ScreeningController {
      * @throws IOException
      */
     public static void deleteScreening() throws IOException{
-        int movieChoice = DropDownMenu.initiateMovieChoice(Initialise.movies);
+        int movieChoice = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
         if (movieChoice == -1){
             return;
         }
@@ -78,7 +78,7 @@ public class ScreeningController {
             return;
         }
         Movie movieChosen = cineplexes.get(cineplexChoice).getMovies().get(movieChoice);
-        int screeningChoice = DropDownMenu.initiateScreeningMovieChoice(Initialise.screenings, movieChosen, cineplexes.get(cineplexChoice));
+        int screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen, cineplexes.get(cineplexChoice));
         if (screeningChoice == -1){
             return;
         }
