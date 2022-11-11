@@ -103,9 +103,9 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Customer.dat", customers);
 		SerializeMovieDB.writeSerializedObject("Admin.dat", admins);
 		SerializeMovieDB.writeSerializedObject("Movie.dat", preMovies);
-		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
+		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
-		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
+		SerializeMovieDB.writeSerializedObject("Holiday.dat", holidays);
 	}
 }

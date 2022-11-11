@@ -11,8 +11,11 @@ public class ReadMovieDB {
 	public static void readMovieDB() throws Exception{
 		List list;
 		// read from serialized file the list of professors
-		list = (ArrayList)SerializeMovieDB.readSerializedObject("Cineplex.dat");
-		for (int i = 0 ; i < list.size() ; i++) {
+
+			//listingCriteria = SerializeMovieDB.readSerializedObject(".dat");
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("Cineplex.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
 				Cineplex cineplex = (Cineplex)list.get(i);
 				Initialise.cineplexes.add(cineplex);
 			}
@@ -71,5 +74,6 @@ public class ReadMovieDB {
 				PublicHoliday publicHoliday = (PublicHoliday) list.get(i);
 				Initialise.holidays.add(publicHoliday);
 			}
+
 	}
 }
