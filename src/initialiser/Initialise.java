@@ -16,18 +16,18 @@ public class Initialise {
 
     public static DateTime dt = new DateTime();
 
+    public static int listingCriteria;
+
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
     public static ArrayList<Review> reviews = new ArrayList<Review>();
     public static ArrayList<Customer> customers = new ArrayList<Customer>();
     public static ArrayList<Admin> admins = new ArrayList<Admin>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
-     public static ArrayList<Screening> screenings = new ArrayList<Screening>();
+    public static ArrayList<Screening> screenings = new ArrayList<Screening>();
     public static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();
-
-    //public static int listingCriteria; //Need to serialize
 
 
     public static void initialiseMOBLIMA() throws Exception {
