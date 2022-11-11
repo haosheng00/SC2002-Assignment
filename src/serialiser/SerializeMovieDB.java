@@ -36,18 +36,18 @@ public class SerializeMovieDB {
 		out.close();
     }
 
-	// public static double [] readSerializedArray(String filename) throws IOException, ClassNotFoundException{
-	// 	FileInputStream fis = new FileInputStream(filename);
-	// 	ObjectInputStream in = new ObjectInputStream(fis);
-	// 	double [] pDetails = (double []) in.readObject();
-	// 	in.close();
-	// 	return pDetails;
-	// }
+	public static double [] readSerializedArray(String filename) throws IOException, ClassNotFoundException{
+		FileInputStream fis = new FileInputStream(filename);
+		ObjectInputStream in = new ObjectInputStream(fis);
+		double [] pDetails = (double []) in.readObject();
+		in.close();
+		return pDetails;
+	}
 
-	// public static void writeSerializedArray(String filename, double [] arr) throws IOException{
-	// 	FileOutputStream fos = new FileOutputStream(filename);
-	// 	ObjectOutputStream out = new ObjectOutputStream(fos);
-	// 	out.writeObject(arr);
-	// 	out.close();
-    // }
+	public static void writeSerializedArray(String filename, double [] arr) throws IOException{
+		FileOutputStream fos = new FileOutputStream(filename);
+		ObjectOutputStream out = new ObjectOutputStream(fos);
+		out.writeObject(arr);
+		out.close();
+    }
 }

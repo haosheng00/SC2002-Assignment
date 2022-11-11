@@ -2,7 +2,7 @@ package serialiser;
 
 import classes.*;
 import classes.Enum;
-
+import classes.Enum.MovieStatus;
 import initialiser.Initialise;
 
 import java.util.ArrayList;
@@ -34,7 +34,12 @@ public class WriteMovieDB {
 					new Cinema("Orchard Screen 6", "ORF", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard")));
 
 	public static ArrayList<Movie> preMovies = new ArrayList<Movie>(
-			List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
+			List.of(new Movie("Joy",MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","113233"), 
+					new Movie("Sad",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233"), 
+					new Movie("Fear",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,4.5,"112233","113233"),
+					new Movie("Four",MovieStatus.COMING_SOON, "Des","fdg",122,40,Enum.AgeRestriction.PG,true,3,"112233","112233"),
+					new Movie("NJN",MovieStatus.COMING_SOON, "Des","fdg",122,50,Enum.AgeRestriction.PG,true,3,"112533","112243"),
+					new Movie("jdfdn",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,4,"112233","115233")));
 
 	public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
 			List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, (ArrayList)preMovies.clone()),
@@ -106,7 +111,7 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
 		SerializeMovieDB.writeSerializedObject("Review.dat", Initialise.reviews);
-		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
+		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 		SerializeMovieDB.writeSerializedObject("Customer.dat", customers);
 		SerializeMovieDB.writeSerializedObject("Admin.dat", admins);
 		SerializeMovieDB.writeSerializedObject("Movie.dat", preMovies);

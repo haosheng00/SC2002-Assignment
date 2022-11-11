@@ -95,6 +95,7 @@ public class TicketController {
                 TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
+            return;
         }
 
 
@@ -110,39 +111,39 @@ public class TicketController {
             double ticketPrice = 0;
 
             //CHECK AGE
-  
             if (student == 1){
                 ticketPrice = Initialise.priceByAge.get(0);
             }
 
             if (adult == 1){
-                ticketPrice = Initialise.priceByAge.get(1);
+                ticketPrice = Initialise.priceByAge[1];
             }
 
             if (senior == 1){
-                ticketPrice = Initialise.priceByAge.get(2);
+                ticketPrice = Initialise.priceByAge[2];
             }
 
             //CHECK MOVIE TYPE
             if (movieChosen.getIs3D() == true){
-                ticketPrice += Initialise.priceByMovieType.get(1);
+                ticketPrice += Initialise.priceByMovieType[1];
             }
 
             //CHECK CINEMA TYPE
             if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
-                ticketPrice += Initialise.priceByCinemaType.get(1);
+                ticketPrice += Initialise.priceByCinemaType[1];
             }
 
             //CHECK WEEKDAY/WEEKEND/PH
             Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
             for (int i=0; i<holidays.size(); i++){
                 if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
-                    ticketPrice += Initialise.priceByCinemaType.get(2);
+                    ticketPrice += Initialise.priceByDay[2];
                 }
                 else if(TicketController.isWeekend(actualDate)){
-                    ticketPrice += Initialise.priceByCinemaType.get(1);
+                    ticketPrice += Initialise.priceByDay[1];
                 }
             }
+
             return ticketPrice;
         }
 
