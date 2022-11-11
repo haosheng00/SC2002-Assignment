@@ -47,7 +47,6 @@ public class DropDownMenu {
         int cineplexChoice;
         Cineplex cineplexChosen;
         boolean chosen = false;
-        int counter = 0;
         do {
             cineplexChoice = initiateCineplexChoice(Initialise.cineplexes);
             if (cineplexChoice == -1){
@@ -55,14 +54,17 @@ public class DropDownMenu {
             }
             cineplexChosen = Initialise.cineplexes.get(cineplexChoice);
             for (int i = 0; i < cineplexChosen.getMovies().size(); i++){
+                System.out.println(cineplexChosen.getMovies().get(i).getMovieTitle());
                 if (cineplexChosen.getMovies().get(i) == movie){
                     chosen = true;
                     System.out.println("Already Chosen");
                 }
             }
-            if (chosen == false){
-                Initialise.cineplexes.get(cineplexChoice+counter).getMovies().add(movie);
+            if (!chosen){
+                Initialise.cineplexes.get(cineplexChoice).getMovies().add(movie);
+                System.out.println("Added to " + Initialise.cineplexes.get(cineplexChoice).getCineplexName());
             }
+            chosen = false;
         }while(true);
     }
 
