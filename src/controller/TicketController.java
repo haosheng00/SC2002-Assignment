@@ -14,10 +14,13 @@ import java.util.Calendar;
 import classes.*;
 import classes.Enum;
 import initialiser.Initialise;
-import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
 import ui.*;
 
+
+/**
+ * Represents the controller that can configure ticket prices, create new bookings and match correct ticket price based on given conditions
+ */
 public class TicketController {
 
     static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
@@ -92,8 +95,6 @@ public class TicketController {
         }
     
 
-
-
         public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
@@ -146,16 +147,14 @@ public class TicketController {
             return ticketPrice;
         }
     
-
+  
         public static Boolean isWeekend(Date date){
-            Calendar calendar = new GregorianCalendar();
-            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-            if ((dayOfWeek == 7) || (dayOfWeek == 1)){
-                return true;
-            }
-            else{
-                return false;
-            }
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            System.out.println(cal);
+
+            return (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7);
         }
 
         public static void updateTicketPriceByAge() throws Exception{
