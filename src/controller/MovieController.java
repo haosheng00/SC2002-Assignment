@@ -345,8 +345,14 @@ public class MovieController implements Serializable{
             System.out.println("End Screening Date: " + Initialise.movies.get(index).getExpiryDate());
             System.out.println();
 
-            if (!Initialise.movies.get(index).getReviews().isEmpty()) System.out.println("(1) - See Reviews");
-            System.out.println("(0) - Back");
+            if (!Initialise.movies.get(index).getReviews().isEmpty()) {
+                System.out.println("(1) - See Reviews");
+                System.out.println("(0) - Back");
+            }
+            else{
+                System.out.println("No reviews yet");
+                return;
+            }
 
             int choice = 0;
             
@@ -362,7 +368,7 @@ public class MovieController implements Serializable{
                     }
                     else if (choice == 1) {
                         ReviewController.printMovieReviews(Initialise.movies.get(index));
-                        System.out.println("(0) - Back");
+                        return;
                     } 
                     else return;
                 } 

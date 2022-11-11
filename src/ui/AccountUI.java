@@ -19,11 +19,11 @@ public class AccountUI {
     public static void WelcomePage() throws Exception{
         System.out.println("========================================");
         System.out.println("Welcome to MOBLIMA");
-        System.out.println("========================================");
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         do{
             try {
+                System.out.println("========================================");
                 System.out.println("(1) Login");
                 System.out.println("(2) Continue as guest");
                 choice = sc.nextInt();
@@ -38,7 +38,7 @@ public class AccountUI {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        }while(choice<3);
+        }while(true);
     }
 
     /**
