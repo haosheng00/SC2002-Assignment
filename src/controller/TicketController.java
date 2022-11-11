@@ -118,7 +118,7 @@ public class TicketController {
          * @param movieChosen movie selected by customer
          * @param screeningChosen screening selected by customer
          * @param seatChosen seat selected by customer
-         * @return
+         * @return final ticket price
          * @throws ParseException
          */
         public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
@@ -175,7 +175,7 @@ public class TicketController {
         /**
          * Checks if the input date is a weekend
          * @param date date of screening
-         * @return
+         * @return true if weekend, false if weekday
          */
         public static Boolean isWeekend(Date date){
 
