@@ -55,7 +55,7 @@ public class TicketController {
             return;
         }
         Movie movieChosen = cineplexChosen.getMovies().get(movieChoice);
-        screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen, cineplexChosen);
+        screeningChoice = DropDownMenu.initiateScreeningMovieChoice(Initialise.screenings, movieChosen, cineplexChosen);
         if (screeningChoice == -1){
             return;
         }
@@ -95,7 +95,6 @@ public class TicketController {
                 TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
-            return;
         }
 
 
