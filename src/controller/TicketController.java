@@ -113,71 +113,38 @@ public class TicketController {
             //CHECK AGE
   
             if (student == 1){
-                ticketPrice = Initialise.priceByAge[0];
+                ticketPrice = Initialise.priceByAge.get(0);
             }
 
-            // if (adult == 1){
-            //     ticketPrice = Initialise.priceByAge[1];
-            // }
+            if (adult == 1){
+                ticketPrice = Initialise.priceByAge.get(1);
+            }
 
-            // if (senior == 1){
-            //     ticketPrice = Initialise.priceByAge[2];
-            // }
+            if (senior == 1){
+                ticketPrice = Initialise.priceByAge.get(2);
+            }
 
-            // //CHECK MOVIE TYPE
-            // if (movieChosen.getIs3D() == true){
-            //     ticketPrice += Initialise.priceByMovieType[1];
-            // }
+            //CHECK MOVIE TYPE
+            if (movieChosen.getIs3D() == true){
+                ticketPrice += Initialise.priceByMovieType.get(1);
+            }
 
-            // //CHECK CINEMA TYPE
-            // if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
-            //     ticketPrice += Initialise.priceByCinemaType[1];
-            // }
+            //CHECK CINEMA TYPE
+            if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
+                ticketPrice += Initialise.priceByCinemaType.get(1);
+            }
 
-            // //CHECK WEEKDAY/WEEKEND/PH
-            // Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
-            // for (int i=0; i<holidays.size(); i++){
-            //     if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
-            //         ticketPrice += Initialise.priceByDay[2];
-            //     }
-            //     else if(TicketController.isWeekend(actualDate)){
-            //         ticketPrice += Initialise.priceByDay[1];
-            //     }
-            // }
-
+            //CHECK WEEKDAY/WEEKEND/PH
+            Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+            for (int i=0; i<holidays.size(); i++){
+                if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
+                    ticketPrice += Initialise.priceByCinemaType.get(2);
+                }
+                else if(TicketController.isWeekend(actualDate)){
+                    ticketPrice += Initialise.priceByCinemaType.get(1);
+                }
+            }
             return ticketPrice;
-            //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
-            // for (int i=0; i<holidays.size(); i++){
-                // Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
-                // if ((TicketController.isWeekend(actualDate)) || (screeningChosen.getShowDate()).equals((holidays.get(0).getPublicHolidayDate()))){
-                //     if (movieChosen.getIs3D() == true){
-                //         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
-                //     }
-                //     else{
-                //         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
-                //     }
-                //     ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
-                // }// screeningchoice.showDate
-                // else{
-                //     //RETURN STUDENT PRICE
-                //     if (student == 1){
-                //         // TODO: NEED TO CHECK CINEMATYPE (and showtype!!)
-                //         //cineplex cinema cinematype
-                //         ticketPrice = Enum.TicketType.STUDENT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
-                //     }
-
-                //     //RETURN ADULT PRICE
-                //     else if (adult == 1){
-                //         ticketPrice = Enum.TicketType.ADULT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
-                //     }
-
-                //     //RETURN SENIOR PRICE
-                //     else if (senior == 1){
-                //         ticketPrice = Enum.TicketType.SENIORCITIZEN.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
-                //     }
-
-                // }
-    
         }
 
         public static Boolean isWeekend(Date date){
@@ -191,7 +158,7 @@ public class TicketController {
             }
         }
 
-        public static void updateTicketPriceByAge(){
+        public static void updateTicketPriceByAge() throws Exception{
             //FOR ADMIN
             
             //LIST AGE GROUP
@@ -217,8 +184,8 @@ public class TicketController {
                 do{
                     System.out.println("Input new ticket price: ");
                     newstudtp = sc.nextInt();
-                    Initialise.priceByAge[0] = newstudtp;
-                    // Enum.TicketType.STUDENT.setTicketPrice(newstudtp);
+                    Initialise.priceByAge.set(0,newstudtp);
+                    WriteMovieDB.writeMovieDB();
 
                     if (newstudtp <0){
                         System.out.println("Invalid Input! Try again!");
@@ -234,7 +201,8 @@ public class TicketController {
                 do{
                     System.out.println("Input new ticket price: ");
                     newadutp = sc.nextInt();
-                    Enum.TicketType.STUDENT.setTicketPrice(newadutp);
+                    Initialise.priceByAge.set(1, newadutp);
+                    WriteMovieDB.writeMovieDB(); 
 
                     if (newadutp <0){
                         System.out.println("Invalid Input! Try again!");
@@ -250,7 +218,8 @@ public class TicketController {
                 do{
                     System.out.println("Input new ticket price: ");
                     newsnrtp = sc.nextInt();
-                    Enum.TicketType.STUDENT.setTicketPrice(newsnrtp);
+                    Initialise.priceByAge.set(2, newsnrtp);
+                    WriteMovieDB.writeMovieDB(); 
 
                     if (newsnrtp <0){
                         System.out.println("Invalid Input! Try again!");
@@ -268,7 +237,7 @@ public class TicketController {
         }
 
 
-        public static void updateTicketPriceByCinemaType(){
+        public static void updateTicketPriceByCinemaType() throws Exception{
             //FOR ADMIN
             
             //LIST CINEMA TYPE
@@ -294,7 +263,8 @@ public class TicketController {
                   do{
                       System.out.println("Input new ticket price: ");
                       newpmstp = sc.nextInt();
-                      Enum.CinemaType.PLATINUMMOVIESUITES.setTicketPrice(newpmstp);
+                      Initialise.priceByAge.set(1, newpmstp);
+                      WriteMovieDB.writeMovieDB(); 
   
                       if (newpmstp <0){
                           System.out.println("Invalid Input! Try again!");
@@ -310,7 +280,8 @@ public class TicketController {
                   do{
                       System.out.println("Input new ticket price: ");
                       newordtp = sc.nextInt();
-                      Enum.CinemaType.ORDINARY.setTicketPrice(newordtp);
+                      Initialise.priceByAge.set(0, newordtp);
+                      WriteMovieDB.writeMovieDB(); 
   
                       if (newordtp <0){
                           System.out.println("Invalid Input! Try again!");
@@ -328,7 +299,7 @@ public class TicketController {
         }
 
 
-        public static void updateTicketPriceByDayOfWeek(){
+        public static void updateTicketPriceByDayOfWeek() throws Exception{
             //FOR ADMIN
             
             //CHOOSE DAY OF WEEK
@@ -338,6 +309,7 @@ public class TicketController {
                 System.out.println("Select Day of Week: ");
                 System.out.println("(1) Weekdays (Monday to Friday)");
                 System.out.println("(2) Weekends (Saturday and Sunday)");
+                System.out.println("(3) Public Holiday");
 
                 option = sc.nextInt();
                 if (option <= 0 || option > 2) {
@@ -353,11 +325,8 @@ public class TicketController {
                   do{
                       System.out.println("Input new ticket price: ");
                       newdaytp = sc.nextInt();
-                      Enum.DayOfWeek.MONDAY.setTicketPrice(newdaytp);
-                      Enum.DayOfWeek.TUESDAY.setTicketPrice(newdaytp);
-                      Enum.DayOfWeek.WEDNESDAY.setTicketPrice(newdaytp);
-                      Enum.DayOfWeek.THURSDAY.setTicketPrice(newdaytp);
-                      Enum.DayOfWeek.FRIDAY.setTicketPrice(newdaytp);
+                      Initialise.priceByAge.set(0, newdaytp);
+                      WriteMovieDB.writeMovieDB(); 
   
                       if (newdaytp <0){
                           System.out.println("Invalid Input! Try again!");
@@ -373,8 +342,8 @@ public class TicketController {
                   do{
                       System.out.println("Input new ticket price: ");
                       newendtp = sc.nextInt();
-                      Enum.DayOfWeek.SATURDAY.setTicketPrice(newendtp);
-                      Enum.DayOfWeek.SUNDAY.setTicketPrice(newendtp);
+                      Initialise.priceByAge.set(1, newendtp);
+                      WriteMovieDB.writeMovieDB(); 
   
                       if (newendtp <0){
                           System.out.println("Invalid Input! Try again!");
@@ -382,6 +351,23 @@ public class TicketController {
                   } while (newendtp <0);
   
                   System.out.println("Ticket Price (Weekends) has been updated successfully!");
+  
+                  break;
+
+                  case 3:
+                  double newholtp;
+                  do{
+                      System.out.println("Input new ticket price: ");
+                      newholtp = sc.nextInt();
+                      Initialise.priceByAge.set(2, newholtp);
+                      WriteMovieDB.writeMovieDB(); 
+
+                      if (newholtp <0){
+                          System.out.println("Invalid Input! Try again!");
+                      }
+                  } while (newholtp <0);
+  
+                  System.out.println("Ticket Price (Public Holiday) has been updated successfully!");
   
                   break;
   
@@ -429,21 +415,5 @@ public class TicketController {
             System.out.println("Seat: " + ticket.getSeat().getSeatId());
             System.out.println("Price: " + ticket.getTicketPrice());
         }
-
-
-
-        // public Boolean searchTicket(ArrayList<Ticket> tickets) {
-        //     for (int i = 0; i < tickets.size(); i++) {
-        //         if (tickets.contains(tickets.get(i).getTicket())) {
-        //             return true;
-        //         }
-        //     }
-        //     return false;
-        // }
-
-        // public static void cancelBooking() {
-
-        // }
-
     }
 
