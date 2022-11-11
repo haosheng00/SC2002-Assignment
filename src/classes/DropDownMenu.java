@@ -5,11 +5,18 @@ import initialiser.Initialise;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//The DropDownMenu will return the index of the chosen item
-//-1 shall be back option
+/**
+ * Represents the Class that prints out a dropdown menu of an object and returns the index of the chosen item,
+ * returns -1 if back option is chosen
+ */
 public class DropDownMenu {
     static Scanner sc = new Scanner(System.in);
 
+    /**
+     * Prints out a dropdown menu of cineplexes in the cineplex array list and asks user to select one
+     * @param cineplexes, cineplexes in operation
+     * @return index of the cineplex chosen
+     */
     public static int initiateCineplexChoice(ArrayList<Cineplex> cineplexes) {
         int i = 0, cineplexChoice = 0;
         do {
@@ -27,18 +34,21 @@ public class DropDownMenu {
             if (cineplexChoice < 0 || cineplexChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (cineplexChoice < 0 || cineplexChoice > i);
+        } while (true);
         return cineplexChoice - 1;
     }
 
     /**
-     * Prints out the cineplex that can be added to the cineplex
-     * @param movie
+     * Prints out the cineplexes currently operating and asks admin to choose which cineplex he wants to add the movie to
+     * @param movie, movie to be added
      */
     public static void initiateCineplexAddition(Movie movie) {
         int cineplexChoice;
@@ -64,6 +74,11 @@ public class DropDownMenu {
         }while(true);
     }
 
+    /**
+     * Prints out the cinemas under a cineplex, and asks user to choose one of the cinema
+     * @param cinemas, operating under a cineplex
+     * @return index of the cinema
+     */
     public static int initiateCinemaChoice(ArrayList<Cinema> cinemas) {
         int i = 0, cinemaChoice = 0;
         do {
@@ -81,15 +96,22 @@ public class DropDownMenu {
             if (cinemaChoice < 0 || cinemaChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }
+            else break;
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (cinemaChoice < 0 || cinemaChoice > i);
+        } while (true);
         return cinemaChoice - 1;
     }
 
+    /**
+     * Prints out the screenings that screens a certain movie
+     * @param screenings, all the screenings in the cineplexes
+     * @param movie, chosen movie to filter screening choices
+     * @return index of the screening
+     */
     public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie) {
         int i = 0, screeningChoice = 0;
         int counter = 0;
@@ -119,15 +141,25 @@ public class DropDownMenu {
             if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (screeningChoice < 0 || screeningChoice > (optionNo+1));
+        } while (true);
         return Choice.get(screeningChoice-1);
     }
 
+    /**
+     * Prints out the screening choices after filtering through a given movie and cineplex
+     * @param screenings, the screenings in the cineplexes
+     * @param movie, chosen movie to filter the screening choices
+     * @param cineplex, chosen cineplex to filter the screening choices
+     * @return index of the screening
+     */
     public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie, Cineplex cineplex) {
         int i = 0, screeningChoice = 0;
         int counter = 0;
@@ -162,14 +194,25 @@ public class DropDownMenu {
             if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (screeningChoice < 0 || screeningChoice > (optionNo+1));
+        } while (true);
         return (Choice.get(screeningChoice-1));
     }
+
+    /**
+     * Prints out the movie choices in a certain cineplex, and can choose to filter out either End of showing movie
+     * or End of showing & Coming soon movie
+     * @param cineplex, certain cineplex
+     * @param haveComingSoon, choose whether to filter out coming soon movie or not
+     * @return index of the movie
+     */
 
     public static int initiateMovieChoice(Cineplex cineplex, int haveComingSoon) {
         int i, optionNo = 0;
@@ -197,12 +240,15 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
                 catch (Exception e) {
                     System.out.println("Invalid input. Please enter an integer: ");
                     sc.next();
                 }
-            } while (movieChoice < 0 || movieChoice > (optionNo+1));
+            } while (true);
         } else {
             do {
                 System.out.println("========================================");
@@ -226,16 +272,24 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-            } while (movieChoice < 0 || movieChoice > (optionNo+1));
+            } while (true);
         }
         return (Choice.get(movieChoice-1));
     }
 
+    /**
+     * Prints out all the movie, either excluding End of showing movie or excluding End of showing & Coming soon movies
+     * @param haveComingSoon, to choose whether to include coming soon movies
+     * @return index of the movie
+     */
     public static int initiateMovieChoice_CustomerMenu(int haveComingSoon) {
         int i, optionNo = 0;
         int movieChoice = 1, counter = 0;
@@ -262,12 +316,15 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-            } while (movieChoice < 0 || movieChoice > optionNo+1);
+            } while (true);
         } else {
             do {
                 System.out.println("========================================");
@@ -291,17 +348,25 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-            } while (movieChoice < 0 || movieChoice > (optionNo+1));
+            } while (true);
         }
         return (Choice.get(movieChoice-1));
 
     }
 
+    /**
+     * Prints out all the movies and allows the admin to choose the movie
+     * @param movies, all the movies in the cineplex
+     * @return the index of the movie
+     */
     public static int initiateAdminMovieChoice(ArrayList<Movie> movies) {
         int i = 0, movieChoice = 0;
         do {
@@ -319,12 +384,15 @@ public class DropDownMenu {
             if (movieChoice < 0 || movieChoice > (i+2)) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (movieChoice < 0 || movieChoice > (i+2));
+        } while (true);
         return movieChoice-1;
     }
 }

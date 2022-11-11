@@ -40,7 +40,15 @@ public class LayoutPrinterPlat extends LayoutPrinter {
                     columnNumber = 1;
                 }
             }
-            LayoutPrinter.printLegend();
+            printLegend();
             System.out.println();
         }
+
+    /**
+     * Prints out the legend of the seating layout
+     */
+    public static void printLegend(){
+        System.out.println();
+        System.out.println("---: Reserved by you   xxx: Booked");
+    }
     }

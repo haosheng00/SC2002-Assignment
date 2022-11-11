@@ -8,12 +8,6 @@ import initialiser.Initialise;
  */
 public class AdminController {
     static Scanner sc = new Scanner(System.in);
-    //private static ArrayList<Admin> admins = Initialise.admins;
-
-//    public static ArrayList<Admin> getAdminsList(){
-//        return admins;
-//    }
-
 /**
  * Transverse through the admins array list check if entered username below to an existing admin
  * @param username username entered by user

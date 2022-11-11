@@ -8,7 +8,7 @@ import controller.*;
 import initialiser.Initialise;
 
 /**
- * Contains the initialiation of UI for admin to make changes to price system of tickets
+ * Contains the initialisation of UI for admin to make changes to price system of tickets
  */
 public class TicketUI {
     
