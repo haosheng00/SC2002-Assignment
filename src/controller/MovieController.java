@@ -49,6 +49,7 @@ public class MovieController implements Serializable{
         String s = null;
 
         int exists = -2;
+        int i;
         System.out.println("Please enter new Movie Title:");
         movieTitle = sc.next();
         exists = searchMovie(movieTitle);
@@ -65,11 +66,20 @@ public class MovieController implements Serializable{
         }
         while (exists == -1) {
             Movie newMovie = new Movie(movieTitle.toUpperCase());
-            System.out.println("Please select movie status:");
-            System.out.println("(1) Coming soon");
-            System.out.println("(2) Preview");
-            System.out.println("(3) Now showing");
-            int i = sc.nextInt();
+            do{
+                try{
+                    System.out.println("Please select movie status:");
+                    System.out.println("(1) Coming soon");
+                    System.out.println("(2) Preview");
+                    System.out.println("(3) Now showing");
+                    i = sc.nextInt();
+                    break;  
+                }
+                catch (Exception e){
+                    System.out.println("Invalid input! Enter integer only!");
+                    sc.next();         
+                }
+                } while(true);
             switch (i) {
             case 1:
             newMovie.setMovieStatus(MovieStatus.COMING_SOON);
@@ -147,6 +157,7 @@ public class MovieController implements Serializable{
             }
             catch (Exception e){
                 System.out.println("Invalid input! Enter integer only!");
+                sc.next();         
             }
             } while(true);
 
