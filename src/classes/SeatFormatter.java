@@ -5,8 +5,18 @@ import java.util.Scanner;
 
 import initialiser.Initialise;
 
+/**
+ * Represents the seat formatter class that will help edit the seats
+ */
 public class SeatFormatter implements Serializable{
     static Scanner sc = new Scanner(System.in);
+
+    /**
+     * Formats the seatID of the seat given row letter and column number
+     * @param rowChoice, the row letter of the seat
+     * @param columnChoice, the column number of the seat
+     * @return the seatID of the seat
+     */
     public static String seatIdFormat(char rowChoice, int columnChoice) {
         String seatID;
         if (columnChoice < 10) {
@@ -17,6 +27,11 @@ public class SeatFormatter implements Serializable{
         return seatID;
     }
 
+    /**
+     * Asks the user to select a particular seat in the screening and checks if the seat is valid
+     * @param screening, which has the seats to be checked
+     * @return the valid seat object chosen
+     */
     public static Seat checkIfValidSeat(Screening screening) {
         char rowChoice = 'Z';
         int columnChoice = 99;
@@ -66,6 +81,10 @@ public class SeatFormatter implements Serializable{
         return null;
     }
 
+    /**
+     * Prints out the seat after checking if the seat type, booking and reservation status
+     * @param seat, the seat object to be printed
+     */
     public static void printSeat(Seat seat) {
         if (seat.getIsBooked()) {
             if (seat.getSeatType() == Enum.SeatType.COUPLE_SEAT) {
@@ -99,6 +118,10 @@ public class SeatFormatter implements Serializable{
         }
     }
 
+    /**
+     * Choose which layout printer to use by checking the cinema type of the screening
+     * @param screeningChosen, screening which you want to print the layout of
+     */
     public static void seatDisplay(Screening screeningChosen){
         if (screeningChosen.getCinema().getCinemaType().equals(Enum.CinemaType.PLATINUMMOVIESUITES)){
             LayoutPrinterPlat.printPlatLayout(screeningChosen);
