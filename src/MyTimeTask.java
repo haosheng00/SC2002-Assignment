@@ -5,6 +5,9 @@ import classes.Enum.MovieStatus;
 import java.util.*;
 import controller.*;
 
+/**
+ * Automatically updates the movie status to "Now Showing" and "End of Showing" when current date passes "Start of Screening Date" and "End of Screening Date" respectively
+ */
 public class MyTimeTask extends TimerTask {
     
     //update the moviestatus 

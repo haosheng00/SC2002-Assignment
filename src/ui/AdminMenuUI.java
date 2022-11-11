@@ -1,7 +1,16 @@
 package ui;
 
 import java.util.Scanner;
+
+/**
+ * Contains the methods related to admin's main menu
+ */
 public class AdminMenuUI{
+
+    /**
+     * Prints the available options for admin to manage the movie booking system and call the respective controls
+     * @throws Exception
+     */
     public static void adminMenuOptions() throws Exception{
         Scanner scanner = new Scanner(System.in);
         int option = 0;

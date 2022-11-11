@@ -2,14 +2,20 @@ package ui;
 
 import java.util.Scanner;
 
-import classes.*;
 import controller.*;
 import initialiser.Initialise;
+/**
+ * Prints the "homepage" of the application, containing login and other methods related to admin/customer account
+ */
 public class AccountUI {
     public static int index;
     //static AdminController adminPrac = new AdminController();
     //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
+    /**
+     * Prints options to allow user to choose between logging in and continuing as guest
+     * @throws Exception
+     */
     public static void WelcomePage() throws Exception{
         System.out.println("========================================");
         System.out.println("Welcome to MOBLIMA");
@@ -35,6 +41,11 @@ public class AccountUI {
         }while(choice<3);
     }
 
+    /**
+     * Prints options for user to login or make changes to account details
+     * @param x choice
+     * @throws Exception
+     */
     public static void initiateLoginUI(int x) throws Exception{
         Scanner sc = new Scanner(System.in);
         int choice=0;
@@ -76,6 +87,12 @@ public class AccountUI {
             }
         }while(choice!=5);
     }
+
+    /**
+     * Allows user to log in with username and password and brings user to the respective UI according to account type of user
+     * @param x choice
+     * @throws Exception
+     */
     public static void LoginUI(int x) throws Exception{
         Scanner sc = new Scanner(System.in);
         String username;
@@ -88,10 +105,8 @@ public class AccountUI {
             username = sc.next();
             System.out.println("Please enter password");
             password = sc.next();
-            //System.out.println(username + password + "atLoginUI");
 
             success = Login(username, password);
-            //System.out.println("Success value is "+ success);
             switch (success){
                 case 0:
                     System.out.println("Username or password incorrect");
@@ -104,7 +119,6 @@ public class AccountUI {
                     AdminMenuUI.adminMenuOptions();
                     break;
                 case 2:
-                    //int index = CustomerController.searchCustomer(username);
                     if (x == 2){
                         TicketController.createBooking(Initialise.cineplexes, Initialise.customers.get(index));
                     }
@@ -126,16 +140,22 @@ public class AccountUI {
             AccountUI.initiateLoginUI(0);
     }
 
+    /**
+     * Checks if the user is an admin, if not check if user is customer, else user is guest. 
+     * Proceeds to validate if password matches that of the username.
+     * @param username entered username
+     * @param password entered password
+     * @return 0 if password is wrong, 1 if log in successfully as admin, 
+     * 2 if log in successfully as customer, 3 if user is guest, and 4 if username is not found
+     */
     private static int Login(String username, String password){
         System.out.println("Entered Login");
-        //System.out.println(username + password + "at Login");
         int isAdmin = -2;
         isAdmin = AdminController.searchAdmin(username);
         int isCustomer = -2;
 
         if(isAdmin == -1){
             isCustomer = CustomerController.searchCustomer(username);
-            //isCustomer = CustomerController.searchCustomer(username);
         }
 
         int isGuest=0;

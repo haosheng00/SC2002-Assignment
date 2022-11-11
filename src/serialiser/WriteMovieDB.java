@@ -34,12 +34,12 @@ public class WriteMovieDB {
 					new Cinema("Orchard Screen 6", "ORF", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard")));
 
 	public static ArrayList<Movie> preMovies = new ArrayList<Movie>(
-			List.of(new Movie("Joy",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","113233"), 
-					new Movie("Sad",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233"), 
-					new Movie("Fear",MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,4.5,"112233","113233"),
-					new Movie("Four",MovieStatus.COMING_SOON, "Des","fdg",122,40,Enum.AgeRestriction.PG,true,3,"112233","112233"),
-					new Movie("NJN",MovieStatus.COMING_SOON, "Des","fdg",122,50,Enum.AgeRestriction.PG,true,3,"112533","112243"),
-					new Movie("jdfdn",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,4,"112233","115233")));
+			List.of(new Movie("Joy",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","113233"), 
+					new Movie("Sad",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","112233"), 
+					new Movie("Fear",MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","113233"),
+					new Movie("Four",MovieStatus.COMING_SOON, "Des","fdg",122,40,Enum.AgeRestriction.PG,true,0,"112233","112233"),
+					new Movie("NJN",MovieStatus.COMING_SOON, "Des","fdg",122,50,Enum.AgeRestriction.PG,true,0,"112533","112243"),
+					new Movie("jdfdn",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","115233")));
 
 	public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
 			List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, (ArrayList)preMovies.clone()),
@@ -118,8 +118,8 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", listingCriteria);
 		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
 		SerializeMovieDB.writeSerializedObject("PriceByAge.dat", priceByAge);
-		SerializeMovieDB.writeSerializedObject("PriceByMovieType.dat", Initialise.priceByMovieType);
-		SerializeMovieDB.writeSerializedObject("PriceByCinemaType.dat", Initialise.priceByCinemaType);
-		SerializeMovieDB.writeSerializedObject("PriceByDay.dat", Initialise.priceByDay);
+		SerializeMovieDB.writeSerializedObject("PriceByMovieType.dat", priceByMovieType);
+		SerializeMovieDB.writeSerializedObject("PriceByCinemaType.dat", priceByCinemaType);
+		SerializeMovieDB.writeSerializedObject("PriceByDay.dat", priceByDay);
 	}
 }

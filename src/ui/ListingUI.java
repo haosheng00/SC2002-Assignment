@@ -6,8 +6,15 @@ import java.util.*;
 import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
 
+/**
+ * Contains the initiation method for listing control UI
+ */
 public class ListingUI {
 
+    /**
+     * Prints the movie sorting controls available to admin
+     * @throws IOException
+     */
     public static void initiateListingUI() throws IOException {
         
         Scanner sc = new Scanner(System.in);

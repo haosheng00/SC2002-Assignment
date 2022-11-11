@@ -6,8 +6,16 @@ import initialiser.Initialise;
 import java.io.IOException;
 import java.util.Scanner;
 
-//import classes.Cineplex;
+
+/**
+ * Contains the initiation of the UI for admin to manage screenings of movies
+ */
 public class ScreeningUI {
+
+    /**
+     * Prints available options for admin to manage screenings and calls the respective function
+     * @throws IOException
+     */
     public static void initiateScreeningUI() throws IOException {
         int option = 0;
         Scanner sc = new Scanner(System.in);

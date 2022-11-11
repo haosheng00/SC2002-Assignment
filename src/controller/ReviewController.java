@@ -15,38 +15,6 @@ public class ReviewController {
         ReviewController.reviews = Reviews;
     }
 
-    // //returns the index of the movie in the Movie array 
-    // public static int searchMovie() {
-
-    //     Scanner sc = new Scanner(System.in);
-    //     String movieTitle;
-    //     int exist;
-    //     int choice;
-
-    //     //TODO: DO DROPDOWN OF MOVIES
-    //     int movieChoice = DropDownMenu.initiateMovieChoice(MovieController.getMovieList());
-    //     //get movie name 
-    //     System.out.println("Please enter the title of the movie:");
-    //     movieTitle = sc.next();
-    //     //search movie to see if it exists 
-    //     //static method 
-    //     exist = MovieController.searchMovie(movieTitle);
-    //     //non-static method 
-    //     //exist = Initialise.mc.searchMovie(movieTitle);
-    //     while (exist == 0) {
-    //         System.out.println("The movie does not exist!");
-    //         System.out.println("Would you like to enter the movie title again? (Click 0 for No and 1 for Yes)");
-    //         choice = sc.nextInt();
-    //         if (choice == 0) {
-    //             System.out.println("Returning...");
-    //             return -1;
-    //         }
-    //         System.out.println("Please enter the title of the movie:");
-    //         movieTitle = sc.next();
-    //         exist = MovieController.searchMovie(movieTitle);
-    //     }
-    //     return exist;
-    // }    
     public static void addReview(Customer customer) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -57,9 +25,17 @@ public class ReviewController {
             return;
         }
         
+        Movie movie = Initialise.movies.get(movieIndex);
+        //check if user alr input review 
+        for (int i=0; i<movie.getReviews().size(); i++) {
+            if (movie.getReviews().get(i).getUserName() == customer.getUserName()) {
+                System.out.println("You have previously added a rating for this movie.");
+                return;
+            }
+        }
         String review;
         Double rating;
-        System.out.println("Please enter your rating: ");
+        System.out.println("Please enter your rating (out of 5): ");
         rating = sc.nextDouble();
         System.out.println("Please enter your review: ");
         review = sc.next();
@@ -69,7 +45,6 @@ public class ReviewController {
 
         //add review to the review array of each movie!!
         //get particular movie --> get review array --> add review 
-        Movie movie = Initialise.movies.get(movieIndex);
         movie.getReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
 
          //update the customer past reviews array
@@ -106,13 +81,21 @@ public class ReviewController {
         ArrayList <Review> r = movie.getReviews();
         int size = movie.getReviews().size();
         double oldRating = 0;
+        int exist = 0;
+
         //iterate thru the reviews of each movie to find the particular username
         for (i=0; i<size; i++) {
             if (r.get(i).getUserName() == customer.getUserName()) {
                 oldRating = r.get(i).getRating();
                 r.remove(i);
+                exist = 1;
                 break;
             }
+        }
+
+        if (exist == 0) {
+            System.out.println("You have not entered a review for this movie before");
+            return;
         }
 
         ArrayList <Review> reviews = customer.getPastReviews();
@@ -125,8 +108,6 @@ public class ReviewController {
         }
 
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
-
-        //NEED TO REMOVE FROM OVERALL REVIEWS LIST???
 
         //update ratings 
         double updatedRating = (movie.getOverallRating()-oldRating)/(movie.getReviews().size());
@@ -151,12 +132,12 @@ public class ReviewController {
         if (movieIndex == -1) {
             //sc.close();
             return;
-
         }
         
         int ratingExist = 0;
         int reviewIndex = 0;
         double oldRating = 0;
+        String oldReview;
 
         Movie movie = Initialise.movies.get(movieIndex);
         ArrayList <Review> reviews = movie.getReviews();
@@ -174,14 +155,21 @@ public class ReviewController {
 
         //if rating doesn't exists
         if (ratingExist == 0) {
-            System.out.println("You have not entered a rating for this movie before.");
+            System.out.println("You have not entered a review for this movie before.");
             return;
         }
 
         //if rating exists
+
+        System.out.println("Old Review: ");
+        System.out.println();
+        System.out.println("Time of Review: " + reviews.get(i).getDateTime());
+        System.out.println("Rating: " + reviews.get(i).getRating());
+        System.out.println("Review: " + reviews.get(i).getDescription());
+        System.out.println();
         String review;
         Double rating;
-        System.out.println("Please enter your new rating: ");
+        System.out.println("Please enter your new rating (out of 5): ");
         rating = sc.nextDouble();
         System.out.println("Please enter your new review: ");
         review = sc.next();
@@ -191,8 +179,6 @@ public class ReviewController {
         reviews.remove(reviewIndex);
         //add review to the end of Reviews array -- ensure that review array is updated by time
         reviews.add(new Review(review, rating, customer.getUserName(), dateTime, movie));
-
-
 
         ArrayList <Review> cusReviews = customer.getPastReviews();
         //update customer array 
@@ -206,18 +192,10 @@ public class ReviewController {
 
         cusReviews.add(new Review(review, rating, customer.getUserName(), dateTime, movie));
         
-        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
-
-
-        // //Update reviews array for movie
-        // reviews.get(reviewIndex).setDescription(review);
-        // reviews.get(reviewIndex).setRating(rating);
-        // reviews.get(reviewIndex).setDateTime(dateTime);
-
-        //NEED TO UPDATE FOR OVERALL REVIEWS ARRAY???
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);       
                 
         //update overallRating 
-        double updatedRating = (movie.getOverallRating()-oldRating+rating)/(reviews.size());
+        double updatedRating = (movie.getOverallRating()-oldRating+rating)/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
@@ -232,18 +210,22 @@ public class ReviewController {
 
         int exist = 0;
 
+
         //update top5 sales array 
         ArrayList <Movie> top5Ratings = Initialise.top5ByRatings;
         //check if movie is alr in the top5ratings 
         for (int i=0; i< top5Ratings.size(); i++) {
             if (movie.getMovieTitle() == top5Ratings.get(i).getMovieTitle()) {
                 exist = 1;
+                //if movie's reviews size is 0, remove from top 5 ratings
+                if (movie.getReviews().size() == 0) {
+                    top5Ratings.remove(i);
+                }
                 break;
             }
         }
         //add movie into the top5ratings array (if it isn't alr in the top5array)
         if (exist == 0) {
-            //TO DO(MC) NEED NEW MOVIE CONSTRUCTOR --> TO put in movie with the new ratings value 
             top5Ratings.add(movie);
         }
         //sort the array 
@@ -269,6 +251,7 @@ public class ReviewController {
         System.out.println("Reviews of " + customer.getUserName());
         for (int i=0; i<reviews.size(); i++) {
             System.out.println("Time of Review: " + reviews.get(i).getDateTime());
+            System.out.println("Movie: " + reviews.get(i).getMovie().getMovieTitle());
             System.out.println("Rating: " + reviews.get(i).getRating());
             System.out.println("Review: " + reviews.get(i).getDescription());
         }
