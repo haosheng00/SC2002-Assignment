@@ -8,7 +8,13 @@ import initialiser.Initialise;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a class that write objects from their array list to their respective byte file in the database
+ */
 public class WriteMovieDB {
+	/**
+	 * Represents the cinemas in AMK Hub Cineplex
+	 */
 	public static ArrayList<Cinema> cinemasAMK = new ArrayList<>(
 			List.of(new Cinema("AMK Hub Screen 1", "AMA", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
 					new Cinema("AMK Hub Screen 2", "AMB", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
@@ -17,6 +23,9 @@ public class WriteMovieDB {
 					new Cinema("AMK Hub Screen 5", "AME", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
 					new Cinema("AMK Hub Screen 6", "AMF", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub")));
 
+	/**
+	 * Represents the cinemas in JEM Cineplex
+	 */
 	public static ArrayList<Cinema> cinemasJEM = new ArrayList<>(
 			List.of(new Cinema("JEM Screen 1", "JEA", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
 					new Cinema("JEM Screen 2", "JEB", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
@@ -25,6 +34,9 @@ public class WriteMovieDB {
 					new Cinema("JEM Screen 5", "JEE", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
 					new Cinema("JEM Screen 6", "JEF", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineplex JEM")));
 
+	/**
+	 * Represents the cinemas in Cineleisure Orchard Cineplex
+	 */
 	public static ArrayList<Cinema> cinemasOrchard = new ArrayList<>(
 			List.of(new Cinema("Orchard Screen 1", "ORA", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
 					new Cinema("Orchard Screen 2", "ORB", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
@@ -33,6 +45,9 @@ public class WriteMovieDB {
 					new Cinema("Orchard Screen 5", "ORE", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
 					new Cinema("Orchard Screen 6", "ORF", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard")));
 
+	/**
+	 * Represents the movies pre-initialised in the movie database
+	 */
 	public static ArrayList<Movie> preMovies = new ArrayList<Movie>(
 			List.of(new Movie("Joy",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","113233"), 
 					new Movie("Sad",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","112233"), 
@@ -41,11 +56,17 @@ public class WriteMovieDB {
 					new Movie("NJN",MovieStatus.COMING_SOON, "Des","fdg",122,50,Enum.AgeRestriction.PG,true,0,"112533","112243"),
 					new Movie("jdfdn",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,0,"112233","115233")));
 
+	/**
+	 * Represents the Cineplexes that the Group Athay currently operates
+	 */
 	public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
 			List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, (ArrayList)preMovies.clone()),
 					new Cineplex("Athay Cineplex JEM", cinemasJEM, (ArrayList)preMovies.clone()),
 					new Cineplex("Athay Cineleisure Orchard", cinemasOrchard, (ArrayList)preMovies.clone())));
 
+	/**
+	 * Represents the screenings pre-initialised in the movie database
+	 */
 	public static ArrayList<Screening> screenings = new ArrayList<>(
 			List.of(new Screening(cineplexes.get(0).getCinemas().get(0), "20220220", "143000", preMovies.get(0)),
 					new Screening(cineplexes.get(0).getCinemas().get(2), "20220221", "143000", preMovies.get(1)),
@@ -61,12 +82,21 @@ public class WriteMovieDB {
 					new Screening(cineplexes.get(0).getCinemas().get(4), "20220301", "143000", preMovies.get(1)),
 					new Screening(cineplexes.get(0).getCinemas().get(2), "20220302", "143000", preMovies.get(1))));
 
+	/**
+	 * Represents the admin accounts pre-initialised in the movie database
+	 */
 	public static ArrayList<Admin> admins = new ArrayList<Admin>(
 			List.of(new Admin("admin1", "admin1"), new Admin("admin2", "admin2")));
 
+	/**
+	 * Represents the customer accounts pre-initialised in the movie database
+	 */
 	public static ArrayList<Customer> customers = new ArrayList<Customer>(
 			List.of(new Customer("guest", "guest", "123", "123"), new Customer("mary", "mary123", "hh", "123")));
 
+	/**
+	 * Represents the public holidays recognized by Athay
+	 */
 	public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>(
 		List.of(new PublicHoliday("NEW YEARS DAY", "20220101"), 
 				new PublicHoliday("CHINESE NEW YEAR", "20220201"),
@@ -86,6 +116,10 @@ public class WriteMovieDB {
 	public static ArrayList<Double> priceByDay = new ArrayList<Double>(List.of(0.0, 3.0, 5.0)); //weekday, weekend, holiday
 	public static ArrayList<Integer> listingCriteria = new ArrayList<Integer>(List.of(3));
 
+	/**
+	 * Clears all the arrays in the database
+	 * @throws Exception
+	 */
 	public static void writeMovieDB() throws Exception {
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
@@ -105,6 +139,10 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("PriceByDay.dat", Initialise.priceByDay);
 	}
 
+	/**
+	 * Pre-initialised some objects into the movie database
+	 * @throws Exception
+	 */
 	public static void preWriteMovieDB() throws Exception{
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);

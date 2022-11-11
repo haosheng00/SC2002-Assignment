@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import java.text.ParseException;
+import java.text.ParseException; 
 import java.util.Calendar;
 
 import classes.*;
@@ -14,18 +14,31 @@ import ui.*;
 
 
 /**
- * Represents the controller that can configure ticket prices, create new bookings and match correct ticket price based on given conditions
+ * Represents the controller that can configure ticket prices, create new bookings 
+ * and match correct ticket price based on given conditions
  */
 public class TicketController {
+    /**
+     * Represents all the public holidays 
+     */
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
+    /**
+     * Represents the customer who is currently booking 
+     */
     static Customer current; 
-    // private static double basePrice;
 
     static Scanner sc = new Scanner(System.in);
 
+
+    /**
+     * Creates booking for customer when customer selects choice of cineplex, movie, screening and seat
+     * @param cineplexes arraylist of cineplexes
+     * @param customer customer who is booking
+     * @throws Exception
+     */
     public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) throws Exception {
 
-        int i, childTicketNo, adultTicketNo, seniorTicketNo = 0;
+        int childTicketNo, adultTicketNo, seniorTicketNo = 0;
         int cineplexChoice, movieChoice, screeningChoice;
         double actualTicketPrice;
         Seat seatChosen = null;
@@ -53,6 +66,7 @@ public class TicketController {
         adultTicketNo = sc.nextInt();
         System.out.println("Number of Senior Citizen Tickets: ");
         seniorTicketNo = sc.nextInt();
+            
             for (int j = 0; j < childTicketNo; j++) {
                 if (j == 0){
                     SeatFormatter.seatDisplay(screeningChosen);
@@ -63,6 +77,7 @@ public class TicketController {
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
+
             for (int j = 0; j < adultTicketNo; j++) {
                 if (j == 0){
                     SeatFormatter.seatDisplay(screeningChosen);
@@ -73,6 +88,7 @@ public class TicketController {
                 actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen,seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
+
             for (int j = 0; j < seniorTicketNo; j++) {
                 if (j == 0){
                     SeatFormatter.seatDisplay(screeningChosen);
@@ -83,18 +99,34 @@ public class TicketController {
                 actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
+
             PaymentUI.initiatePaymentUI(customer);
             return;
         }
     
-
+        /**
+         * Determines the ticket price based on certain conditions such as: 
+         * Age Group (Base Price)             Student: 7.0, Adult: 8.5, Senior: 4.0
+         * Seat Type (Base Price)             Couple Seat: 17.0
+         * Movie Type (Add-on Price)          3D: 2.0
+         * Cinema Type (Add-on Price)         Platinum Movie Suites: 5.0
+         * Day of Week (Add-on Price)         Weekend: 3.0, Holiday: 5.0
+         * @param student checks if ticket bought is a student ticket
+         * @param adult checks if ticket bought is a adult ticket
+         * @param senior checks if ticket bought is a senior ticket
+         * @param cineplexChosen cineplex selected by customer
+         * @param movieChosen movie selected by customer
+         * @param screeningChosen screening selected by customer
+         * @param seatChosen seat selected by customer
+         * @return final ticket price
+         * @throws ParseException
+         */
         public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
             double ticketPrice = 0;
 
             //CHECK AGE
-
             if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
                 ticketPrice = Initialise.priceByAge.get(1) *2;
             }
@@ -112,7 +144,6 @@ public class TicketController {
                     ticketPrice = Initialise.priceByAge.get(2);
                 }
             }
-
 
             //CHECK MOVIE TYPE
             if (movieChosen.getIs3D() == true){
@@ -141,7 +172,11 @@ public class TicketController {
             return ticketPrice;
         }
     
-  
+        /**
+         * Checks if the input date is a weekend
+         * @param date date of screening
+         * @return true if weekend, false if weekday
+         */
         public static Boolean isWeekend(Date date){
 
             Calendar cal = Calendar.getInstance();
@@ -151,6 +186,10 @@ public class TicketController {
             return (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7);
         }
 
+        /**
+         * Allows user to update the base price of the ticket based on Age Group 
+         * @throws Exception
+         */
         public static void updateTicketPriceByAge() throws Exception{
             //FOR ADMIN
             
@@ -229,7 +268,10 @@ public class TicketController {
             }
         }
 
-
+        /**
+         * Allows user to update the add-on price of the ticket based on Cinema Type
+         * @throws Exception
+         */
         public static void updateTicketPriceByCinemaType() throws Exception{
             //FOR ADMIN
             
@@ -288,10 +330,13 @@ public class TicketController {
                   default:
                   System.out.println("Invalid Input!");
   
-              }
+            }
         }
 
-
+        /**
+         * Allows user to update the add-on price of the ticket based on Day of Week or Public Holiday
+         * @throws Exception
+         */
         public static void updateTicketPriceByDayOfWeek() throws Exception{
             //FOR ADMIN
             
@@ -367,10 +412,14 @@ public class TicketController {
                   default:
                   System.out.println("Invalid Input!");
   
-              }
+            }
         }
 
-
+        /**
+         * Adds a new public holiday to the existing ArrayList of public holidays
+         * @param holidays arraylist of public holidays
+         * @throws Exception
+         */
         public static void addHolidays(ArrayList<PublicHoliday> holidays) throws Exception{
             //FOR ADMIN
 
@@ -386,6 +435,15 @@ public class TicketController {
 
         }
 
+        /**
+         * Add tickets to the cart for the customer
+         * @param cartTickets arraylist of cart tickets
+         * @param movieChosen movie selected by customer
+         * @param cineplexChosen cineplex selected by customer
+         * @param screeningChosen screening selected by customer
+         * @param seatChosen seat selected by customer
+         * @param actualTicketPrice final ticket price
+         */
         public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen, Seat seatChosen, double actualTicketPrice){
             // FOR CREATEBOOKING
 
@@ -393,7 +451,10 @@ public class TicketController {
             cartTickets.add(ticket);
         }
 
-
+        /**
+         * Prints the attributes of the ticket
+         * @param ticket ticket of customer
+         */
         public static void printTicket(Ticket ticket){
             //FOR PRINTRECEIPT
 
