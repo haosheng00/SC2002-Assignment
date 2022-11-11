@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 
 import classes.*;
 import classes.Enum.*;
-import ui.MovieUI;
 import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
@@ -252,6 +251,9 @@ public class MovieController implements Serializable{
      */
     public static int deleteMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
+        if (index == -1){
+            return -1;
+        }
         //Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
         Initialise.movies.remove(Initialise.movies.get(index));
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);

@@ -35,6 +35,9 @@ public class MovieUI {
                     break;
                 case 4:
                     int movieChoice = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
+                    if (movieChoice == -1){
+                        break;
+                    }
                     MovieController.printMovie(movieChoice);
                     break;
                 default:
