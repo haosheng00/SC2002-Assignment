@@ -59,7 +59,7 @@ public class MovieController implements Serializable{
             System.out.println("Or press 0 to go back");
             String input = sc.next();
             if (input == "0")
-                MovieUI.initiateMovieUI();
+                return;
             else
                 movieTitle = input;
             exists = searchMovie(movieTitle);
@@ -99,7 +99,6 @@ public class MovieController implements Serializable{
             newMovie.setExpiryDate(sc.next());
 
             System.out.println("Please select movie genre: ");
-            do {
             System.out.println("(1) Action");
             System.out.println("(2) Horror");
             System.out.println("(3) Thriller");
@@ -111,39 +110,51 @@ public class MovieController implements Serializable{
             System.out.println("(9) True Story");
             System.out.println("(10) Others");
             System.out.println("(0) Go to Next Section");
-            i = sc.nextInt();
-            switch (i) {
-            case 1:
-            movieGenres.add(MovieGenre.ACTION);
-            break;
-            case 2:
-            movieGenres.add(MovieGenre.HORROR);
-            break;
-            case 3:
-            movieGenres.add(MovieGenre.THRILLER);
-            break;
-            case 4:
-            movieGenres.add(MovieGenre.ADVENTURE);
-            break;
-            case 5:
-            movieGenres.add(MovieGenre.COMEDY);
-            break;
-            case 6:
-            movieGenres.add(MovieGenre.ANIME);
-            break;
-            case 7:
-            movieGenres.add(MovieGenre.ROMANCE);
-            break;
-            case 8:
-            movieGenres.add(MovieGenre.DRAMA);
-            break;
-            case 9:
-            movieGenres.add(MovieGenre.TRUE_STORY);
-            break;
-            case 10:
-            movieGenres.add(MovieGenre.OTHERS);
-            break;
-            }
+            do {
+                try {
+                    i = sc.nextInt();
+                    switch (i) {
+                    case 1:
+                    movieGenres.add(MovieGenre.ACTION);
+                    break;
+                    case 2:
+                    movieGenres.add(MovieGenre.HORROR);
+                    break;
+                    case 3:
+                    movieGenres.add(MovieGenre.THRILLER);
+                    break;
+                    case 4:
+                    movieGenres.add(MovieGenre.ADVENTURE);
+                    break;
+                    case 5:
+                    movieGenres.add(MovieGenre.COMEDY);
+                    break;
+                    case 6:
+                    movieGenres.add(MovieGenre.ANIME);
+                    break;
+                    case 7:
+                    movieGenres.add(MovieGenre.ROMANCE);
+                    break;
+                    case 8:
+                    movieGenres.add(MovieGenre.DRAMA);
+                    break;
+                    case 9:
+                    movieGenres.add(MovieGenre.TRUE_STORY);
+                    break;
+                    case 10:
+                    movieGenres.add(MovieGenre.OTHERS);
+                    break;
+                    case 0:
+                    break;
+                    default:
+                    System.out.println("Invalid input! Enter 1 to 10 only!");
+                    sc.next();
+                    continue;    
+                    }
+                } catch (Exception e){
+                    System.out.println("Invalid input! Enter integer only!");
+                    sc.next();         
+                }
             } while (i != 0);
             newMovie.setMovieGenres(movieGenres);
             System.out.println("Please enter Movie Synopsis:");
@@ -207,7 +218,7 @@ public class MovieController implements Serializable{
             do {
                 casts.add(s);
                 System.out.println("Please enter name of next cast or press 0 to go to next section");
-                s = sc.next();
+                s = sc.next().toUpperCase();
             } while (!s.equals("0"));
             newMovie.setCasts(casts);
             while ((!s.equals("Y") && !s.equals("N"))) {
@@ -325,13 +336,13 @@ public class MovieController implements Serializable{
             System.out.println("Start Screening Date: " + Initialise.movies.get(index).getStartDate());
             System.out.println("End Screening Date: " + Initialise.movies.get(index).getExpiryDate());
             System.out.println();
-            if (Initialise.movies.get(index).getReviews() != null) System.out.println("(1) - See Reviews");
+            if (!Initialise.movies.get(index).getReviews().isEmpty()) System.out.println("(1) - See Reviews");
             System.out.println("(0) - Back");
             int choice = sc.nextInt();
             
             while (choice != 1 && choice != 0){
                 System.out.println("Invalid option, try again:");
-                if (Initialise.movies.get(index).getReviews() != null) System.out.println("(1) - See Reviews");
+                if (!Initialise.movies.get(index).getReviews().isEmpty()) System.out.println("(1) - See Reviews");
                 System.out.println("(0) - Back");
                 choice = sc.nextInt();
             }
