@@ -7,11 +7,18 @@ import classes.*;
 import controller.*;
 import initialiser.Initialise;
 
+/**
+ * Contains the initialiation of UI for admin to make changes to price system of tickets
+ */
 public class TicketUI {
     
     private static Scanner sc = new Scanner(System.in);
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
 
+    /**
+     * Prints the available options to admin to update ticket price/holidays for price adjustment
+     * @throws Exception
+     */
     public static void initiateAdminTicketUI() throws Exception{
 
         int option;
@@ -28,10 +35,10 @@ public class TicketUI {
             try{
                 option = sc.nextInt();   
             }
-            catch (Exception e){
-
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
             }
-            sc.nextLine();
 
             switch(option){
 
@@ -54,52 +61,54 @@ public class TicketUI {
         while (option != 2);
     }
 
-
+    /**
+     * Prints the available customisable options for admin to make changes to price system and call the respective function
+     * @throws Exception
+     */
     public static void updateTicketUI() throws Exception{
 
-        int option;
+        int option = 0;
 
-        do{
+
             System.out.println("========================================");
             System.out.println("Which Pricing Category would you like to update?:");
             System.out.println("(1) Age Group");
             System.out.println("(2) Cinema Type");
             System.out.println("(3) Day of Week");
-            System.out.println("(4) Go Back To Main Menu");
-            System.out.println("========================================");
+            System.out.println("(4) Back");
 
-            option  = 0;
-            try{
-                option = sc.nextInt();   
-            }
-            catch (Exception e){
+            do{
+            try {
+                option = sc.nextInt();
 
-            }
-            sc.nextLine();
+                switch (option) {
 
-            switch(option){
+                    case 1:
+                        TicketController.updateTicketPriceByAge();
+                        break;
 
-                case 1:
-                TicketController.updateTicketPriceByAge();
-                break;
+                    case 2:
+                        TicketController.updateTicketPriceByCinemaType();
+                        break;
 
-                case 2:
-                TicketController.updateTicketPriceByCinemaType();
-                break;
+                    case 3:
+                        TicketController.updateTicketPriceByDayOfWeek();
+                        break;
 
-                case 3:
-                TicketController.updateTicketPriceByDayOfWeek();
-                break;
+                    case 4:
+                        break;
 
-                case 4:
-                TicketUI.initiateAdminTicketUI();
+                    default:
+                        System.out.println("Invalid Input!");
+                        break;
 
-                default:
-                System.out.println("Invalid Input!");
-
-            }
+                }
         }
-        while (option != 3);
+            catch(Exception e){
+            System.out.println("Invalid input. Please enter an integer. ");
+            sc.next();
+        }
+    }while (option != 4);
     }
 
 }

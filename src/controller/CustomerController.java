@@ -11,7 +11,7 @@ import ui.CustomerMenuUI;
 import serialiser.SerializeMovieDB;
 
 /**
- * Includes the methods related the the customer database and the past tickets they purchased
+ * Contains the methods related the the customer database and the past tickets they purchased
  */
 public class CustomerController {
     static Scanner sc = new Scanner(System.in);
