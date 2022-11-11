@@ -84,6 +84,7 @@ public class CustomerMenuUI{
             System.out.println("(2) - Book Tickets");
             System.out.println("(3) - See Top 5 Movies");
             System.out.println("(4) - Back");
+            System.out.println("========================================");
         do{
             try {
                 option = sc.nextInt();

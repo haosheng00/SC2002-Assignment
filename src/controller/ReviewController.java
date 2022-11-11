@@ -36,7 +36,21 @@ public class ReviewController {
         String review;
         Double rating;
         System.out.println("Please enter your rating (out of 5): ");
-        rating = sc.nextDouble();
+        do {
+            try {
+                rating = sc.nextDouble();
+                if (rating < 0 || rating > 5) {
+                    System.out.println("Please enter a positive rating which is less than 5:");
+                }
+                else {
+                    break;
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter a number: ");
+                sc.next();
+            }
+        } while (true);
         System.out.println("Please enter your review: ");
         review = sc.next();
 
@@ -169,8 +183,23 @@ public class ReviewController {
         System.out.println();
         String review;
         Double rating;
+
         System.out.println("Please enter your new rating (out of 5): ");
-        rating = sc.nextDouble();
+        do {
+            try {
+                rating = sc.nextDouble();
+                if (rating < 0 || rating > 5) {
+                    System.out.println("Please enter a positive rating which is less than 5:");
+                }
+                else {
+                    break;
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter a number: ");
+                sc.next();
+            }
+        } while (true);
         System.out.println("Please enter your new review: ");
         review = sc.next();
         String dateTime = Initialise.dt.reviewDateTime();
