@@ -287,7 +287,7 @@ public class DropDownMenu {
                         counter++;
                     } else {
                         optionNo++;
-                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i).getMovieTitle());
+                        System.out.println("(" + optionNo + ") " + Initialise.movies.get(i).getMovieTitle());
                         Choice.add(optionNo-1+counter);
                     }
                 }
@@ -316,7 +316,7 @@ public class DropDownMenu {
                         counter++;
                     } else {
                         optionNo++;
-                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i).getMovieTitle());
+                        System.out.println("(" + optionNo + ") " + Initialise.movies.get(i).getMovieTitle());
                         Choice.add(optionNo-1+counter);
                     }
                 }

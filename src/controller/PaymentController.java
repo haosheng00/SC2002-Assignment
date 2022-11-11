@@ -46,7 +46,7 @@ public class PaymentController {
         String cvc;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Cart: ");
+       // System.out.println("Cart: ");
 
         // //initialise customer array 
         // ArrayList <Customer> cus = Initialise.customers;
@@ -76,7 +76,7 @@ public class PaymentController {
         name = sc.next();
         System.out.println("Card Number: ");
         cardNumber = sc.next();
-        System.out.println("Expiration Date:");
+        System.out.println("Expiration Date (mm/YY):");
         cardExpirationDate = sc.next();
         System.out.println("Billing Address: ");
         billingAddress = sc.next();
@@ -187,7 +187,7 @@ public class PaymentController {
      */
     public static void showTickets(ArrayList<Ticket> Tickets) {
         int size = Tickets.size();
-        System.out.println("Here are the details of your tickets:");
+        System.out.println("Tickets in cart:");
         System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
