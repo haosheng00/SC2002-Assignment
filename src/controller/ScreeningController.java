@@ -49,19 +49,14 @@ public class ScreeningController {
     /**
      * Asks you to select a cineplex, a movie, and a screening
      * then deletes the screening from movie DB
-     * @param cineplexes
      * @throws IOException
      */
-    public static void deleteScreening(ArrayList<Cineplex> cineplexes) throws IOException{
-        int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
-        if (cineplexChoice == -1){
-            return;
-        }
-        int movieChoice = DropDownMenu.initiateMovieChoice(cineplexes.get(cineplexChoice), 1);
+    public static void deleteScreening() throws IOException{
+        int movieChoice = DropDownMenu.initiateMovieChoice(Initialise.movies);
         if (movieChoice == -1){
             return;
         }
-        Movie movieChosen = cineplexes.get(cineplexChoice).getMovies().get(movieChoice);
+        Movie movieChosen = Initialise.movies.get(movieChoice);
         int screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen);
         Initialise.screenings.remove(screeningChoice);
         SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
@@ -83,7 +78,7 @@ public class ScreeningController {
             return;
         }
         Movie movieChosen = cineplexes.get(cineplexChoice).getMovies().get(movieChoice);
-        int screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen);
+        int screeningChoice = DropDownMenu.initiateScreeningMovieChoice(Initialise.screenings, movieChosen, cineplexes.get(cineplexChoice));
         if (screeningChoice == -1){
             return;
         }
