@@ -34,12 +34,15 @@ public class DropDownMenu {
             if (cineplexChoice < 0 || cineplexChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (cineplexChoice < 0 || cineplexChoice > i);
+        } while (true);
         return cineplexChoice - 1;
     }
 
@@ -93,12 +96,13 @@ public class DropDownMenu {
             if (cinemaChoice < 0 || cinemaChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }
+            else break;
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (cinemaChoice < 0 || cinemaChoice > i);
+        } while (true);
         return cinemaChoice - 1;
     }
 
@@ -137,12 +141,15 @@ public class DropDownMenu {
             if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (screeningChoice < 0 || screeningChoice > (optionNo+1));
+        } while (true);
         return Choice.get(screeningChoice-1);
     }
 
@@ -187,12 +194,15 @@ public class DropDownMenu {
             if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (screeningChoice < 0 || screeningChoice > (optionNo+1));
+        } while (true);
         return (Choice.get(screeningChoice-1));
     }
 
@@ -230,12 +240,15 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
                 catch (Exception e) {
                     System.out.println("Invalid input. Please enter an integer: ");
                     sc.next();
                 }
-            } while (movieChoice < 0 || movieChoice > (optionNo+1));
+            } while (true);
         } else {
             do {
                 System.out.println("========================================");
@@ -259,12 +272,15 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-            } while (movieChoice < 0 || movieChoice > (optionNo+1));
+            } while (true);
         }
         return (Choice.get(movieChoice-1));
     }
@@ -300,12 +316,15 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-            } while (movieChoice < 0 || movieChoice > optionNo+1);
+            } while (true);
         } else {
             do {
                 System.out.println("========================================");
@@ -329,12 +348,15 @@ public class DropDownMenu {
                 if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
+                else{
+                    break;
+                }
             }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
-            } while (movieChoice < 0 || movieChoice > (optionNo+1));
+            } while (true);
         }
         return (Choice.get(movieChoice-1));
 
@@ -362,12 +384,15 @@ public class DropDownMenu {
             if (movieChoice < 0 || movieChoice > (i+2)) {
                 System.out.println("Invalid Input! Try again");
             }
+            else{
+                break;
+            }
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
-        } while (movieChoice < 0 || movieChoice > (i+2));
+        } while (true);
         return movieChoice-1;
     }
 }
