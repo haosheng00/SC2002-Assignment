@@ -11,7 +11,8 @@ public class ListingController {
     }
 
     public static int getListingCriteria() {
-        return listingCriteria;
+        return 3;
+        //return listingCriteria;
     }
 
     public static void initiateListingUI() {
