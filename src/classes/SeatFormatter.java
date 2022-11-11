@@ -81,10 +81,10 @@ public class SeatFormatter implements Serializable{
     }
 
     public static void seatDisplay(Screening screeningChosen){
-        if (screeningChosen.getCinema().getCinemaType() ==Enum.CinemaType.PLATINUMMOVIESUITES){
+        if (screeningChosen.getCinema().getCinemaType().equals(Enum.CinemaType.PLATINUMMOVIESUITES)){
             LayoutPrinterPlat.printPlatLayout(screeningChosen);
         }
-        else if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
+        else if (screeningChosen.getCinema().getCinemaType().equals(Enum.CinemaType.ORDINARY)) {
             LayoutPrinterOrdinary.printLayout(screeningChosen);
         }
     }

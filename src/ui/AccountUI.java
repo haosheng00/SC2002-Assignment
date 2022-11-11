@@ -157,94 +157,9 @@ public class AccountUI {
         return 4;
     
     }
+}
 
      
     
 
-    /*public static void initiateAdminUI(){
-        int choice;
-        Scanner sc = new Scanner(System.in);
-        do{
-            System.out.println("Please select an option");
-            System.out.println("(1) Login to an existing account");
-            System.out.println("(2) back");
-            
-            choice = sc.nextInt();
-            switch(choice){
-                case 1:
-                    logInAdmin();
-                    //TODO: if logInAdmin == true, bring them to MainMenuUI for customer
-                    break;
-                default:
-                    break;
-            }
-        }while(choice<2);
-    }
-
-    public static boolean logInCustomer(){
-        Scanner sc = new Scanner(System.in);
-        String username;
-        String password;
-        int i;
-        ArrayList<Customer> arr = CustomerController.getCustomerList();
-        int quit = 0;
-        do{
-            System.out.println("Enter username: ");
-            username = sc.next();
-            System.out.println("Enter password: ");
-            password = sc.next();
-            i = Initialise.cc.searchCustomer(username);
-            if(i==-1){
-                System.out.println("username not found");
-                System.out.println("If you would like to quit enter 0 else enter 1");
-                quit = sc.nextInt();
-            }
-            else {
-                    if(arr.get(i).getPassword() == password){
-                    System.out.println("Login Successful");
-                    return true;
-                    }
-                    else{
-                        System.out.println("Wrong password. Try again");
-                        System.out.println("If you would like to quit enter 0 else enter 1");
-                        quit = sc.nextInt();
-                    }
-                }
-        }while(quit!=1);
-        return false;
-    }
-
-    public static boolean logInAdmin(){
-        Scanner sc = new Scanner(System.in);
-        String username;
-        String password;
-        int i;
-        ArrayList<Admin> arr = Initialise.ac.getAdminsList();
-        int quit = 0;
-        do{
-            System.out.println("Enter username: ");
-            username = sc.next();
-            System.out.println("Enter password: ");
-            password = sc.next();
-            i = Initialise.ac.searchAdmin(username);
-            if(i==-1){
-                System.out.println("Username not found");
-                System.out.println("If you would like to quit enter 0 else enter 1");
-                quit = sc.nextInt();
-            }
-            else {
-                    if(arr.get(i).getPassword() == password){
-                    System.out.println("Login Successful");
-                    return true;
-                    }
-                    else{
-                        System.out.println("Wrong password. Try again");
-                        System.out.println("If you would like to quit enter 0 else enter 1");
-                        quit = sc.nextInt();
-                    }
-                }
-        }while(quit!=1);
-        return false;
-    }*/
-}
-
+    

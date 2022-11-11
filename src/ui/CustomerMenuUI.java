@@ -27,6 +27,9 @@ public class CustomerMenuUI{
                     case 1: 
                         int movieIndex = -1;
                         movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                        if (movieIndex == -1){
+                            break;
+                        }
                         MovieController.printMovie(movieIndex);
                         break;
                     case 2:
@@ -71,6 +74,9 @@ public class CustomerMenuUI{
                 case 1: 
                     int movieIndex = -1;
                     movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                    if (movieIndex == -1){
+                        break;
+                    }
                     MovieController.printMovie(movieIndex);
                     break;
                 case 2:
