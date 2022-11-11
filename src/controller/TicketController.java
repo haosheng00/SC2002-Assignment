@@ -101,25 +101,26 @@ public class TicketController {
             double ticketPrice = 0;
 
             //CHECK AGE
-            if (student == 1){
-                ticketPrice = Initialise.priceByAge.get(0);
-            }
 
-            if (adult == 1){
-                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
-                    ticketPrice = Initialise.priceByAge.get(1) *2;
+            if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                ticketPrice = Initialise.priceByAge.get(1) *2;
+            }
+            else{
+                
+                if (student == 1){
+                    ticketPrice = Initialise.priceByAge.get(0);
                 }
-                else{
-                    ticketPrice = Initialise.priceByAge.get(1);
-                }   
+    
+                if (adult == 1){
+                        ticketPrice = Initialise.priceByAge.get(1);
+                    }   
+                
+                if (senior == 1){
+                    ticketPrice = Initialise.priceByAge.get(2);
+                }
             }
-   
 
-            if (senior == 1){
-                ticketPrice = Initialise.priceByAge.get(2);
-            }
-
-
+            
             //CHECK MOVIE TYPE
             if (movieChosen.getIs3D() == true){
                 ticketPrice += Initialise.priceByMovieType.get(1);
@@ -152,7 +153,7 @@ public class TicketController {
 
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
-            System.out.println(cal);
+            // System.out.println(cal);
 
             return (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7);
         }
