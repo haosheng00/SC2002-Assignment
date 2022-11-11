@@ -62,6 +62,19 @@ public class WriteMovieDB {
 	public static ArrayList<Customer> customers = new ArrayList<Customer>(
 			List.of(new Customer("guest", "guest", "123", "123"), new Customer("mary", "mary123", "hh", "123")));
 
+	public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>(
+		List.of(new PublicHoliday("NEW YEARS DAY", "20220101"), 
+				new PublicHoliday("CHINESE NEW YEAR", "20220201"),
+				new PublicHoliday("CHINESE NEW YEAR", "20220202"),
+				new PublicHoliday("GOOD FRIDAY", "20220415"),
+				new PublicHoliday("LABOUR DAY", "20220501"),
+				new PublicHoliday("HARI RAYA PUASA", "20220503"),
+				new PublicHoliday("VESAK DAY", "20220515"),
+				new PublicHoliday("HARI RAYA HAJI", "20220710"),
+				new PublicHoliday("NATIONAL DAY", "20220809"),
+				new PublicHoliday("DEEPAVALI", "20221024"),
+				new PublicHoliday("CHRISTMAS", "20221225")));
+
 	public static void writeMovieDB() throws Exception {
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
