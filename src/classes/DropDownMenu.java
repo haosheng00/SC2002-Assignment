@@ -39,20 +39,31 @@ public class DropDownMenu {
         return cineplexChoice - 1;
     }
 
-    //
+    /**
+     * Prints out the cineplex that can be added to the cineplex
+     * @param movie
+     */
     public static void initiateCineplexAddition(Movie movie) {
         int cineplexChoice;
-        ArrayList<Cineplex> cineplexTemp = (ArrayList<Cineplex>) Initialise.cineplexes.clone();
         Cineplex cineplexChosen;
+        boolean chosen = false;
+        int counter = 0;
         do {
-            cineplexChoice = initiateCineplexChoice(cineplexTemp);
+            cineplexChoice = initiateCineplexChoice(Initialise.cineplexes);
             if (cineplexChoice == -1){
                 return;
             }
-            cineplexChosen = cineplexTemp.get(cineplexChoice);
-            Initialise.cineplexes.get(cineplexChoice).getMovies().add(movie);
-            cineplexTemp.remove(cineplexChosen);
-        }while(cineplexTemp.size()!=0);
+            cineplexChosen = Initialise.cineplexes.get(cineplexChoice);
+            for (int i = 0; i < cineplexChosen.getMovies().size(); i++){
+                if (cineplexChosen.getMovies().get(i) == movie){
+                    chosen = true;
+                    System.out.println("Already Chosen");
+                }
+            }
+            if (chosen == false){
+                Initialise.cineplexes.get(cineplexChoice+counter).getMovies().add(movie);
+            }
+        }while(true);
     }
 
     /**
