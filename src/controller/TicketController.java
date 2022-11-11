@@ -120,7 +120,7 @@ public class TicketController {
                 }
             }
 
-            
+
             //CHECK MOVIE TYPE
             if (movieChosen.getIs3D() == true){
                 ticketPrice += Initialise.priceByMovieType.get(1);
@@ -153,7 +153,7 @@ public class TicketController {
 
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
-            // System.out.println(cal);
+            // System.out.println(cal.getTime());
 
             return (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7);
         }
