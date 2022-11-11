@@ -10,6 +10,12 @@ import controller.*;
  */
 public class ReviewUI {
 
+    /**
+     * Initiate Review UI which allows customers to add, delete, edit or view the reviews 
+     * @param customer customer object 
+     * @throws Exception
+     */
+
     public static void initiateReviewUI(Customer customer) throws Exception {
 
         Scanner sc = new Scanner(System.in);

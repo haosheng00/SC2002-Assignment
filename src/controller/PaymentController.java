@@ -14,16 +14,11 @@ import serialiser.*;
  */
 public class PaymentController {
 
-    //static and initialise all the arrays 
-
-    //list of all payments made in the cinema
-    //private static ArrayList<Payment> Payments;
     private static ArrayList<Payment> Payments = Initialise.payments;
 
-    //constructor of PaymentController
     /**
      * Represents the payment controller with the payments array list
-     * @param Payments payments array list
+     * @param Payments array of payment objects
      */
     public PaymentController(ArrayList<Payment> Payments) {
         PaymentController.Payments = Payments;
@@ -46,14 +41,6 @@ public class PaymentController {
         String cvc;
         Scanner sc = new Scanner(System.in);
 
-       // System.out.println("Cart: ");
-
-        // //initialise customer array 
-        // ArrayList <Customer> cus = Initialise.customers;
-        // //get index of customer by searching their username 
-        // //DONT NEED ACCOUNT FOR IF THEIR USERNAME DOESNT EXIST - MUST EXIST SINCE CAN LOG IN 
-        // int customerIndex = CustomerController.searchCustomer(username);
-        //get the cartTickets of the target customer 
         ArrayList <Ticket> cartTickets = customer.getCartTickets();
 
         //get cart tickets from customer class
@@ -63,7 +50,6 @@ public class PaymentController {
         //if cancel checkout
         if (choice == 0) {
             System.out.println("Cancelling check out...");
-            //TODO: undo isReserved --> Don't you undo isReserved before they make payment (after they select the seats)?
             customer.getCartTickets().clear();
             return;
         }
@@ -72,6 +58,7 @@ public class PaymentController {
         System.out.printf("The total amount is: %.2f\n", totalCharges);
         System.out.println();
         System.out.println("Please enter your credit card details:");
+        System.out.println();
         System.out.println("Full Name: ");
         name = sc.next();
         System.out.println("Card Number: ");
@@ -123,7 +110,6 @@ public class PaymentController {
      * @param billingCardNumber card number of credit card used
      * @throws IOException
      */
-    //made payment and add payment to the Payment list
     public static void madePayment(String TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) throws IOException {
         Payments.add(new Payment(TID,totalCharges,CreditCardName,CardExpirationDate,billingAddress,billingCardNumber));
         SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
@@ -177,8 +163,8 @@ public class PaymentController {
             System.out.println("Ticket " + (i+1));
             System.out.println();
             TicketController.printTicket(cartTickets.get(i));
-            System.out.println("Total Payment: " + calcPayment(cartTickets));
-        }    
+        }
+        System.out.println("Total Payment: " + calcPayment(cartTickets));    
     }
 
     /**
