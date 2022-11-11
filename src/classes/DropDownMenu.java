@@ -142,8 +142,12 @@ public class DropDownMenu {
                 }
             }
             System.out.println("(" + (optionNo+1) + ") Back");
-            try{
-            screeningChoice = sc.nextInt();
+        try{
+            screeningChoice = sc.nextInt();}
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
             if (screeningChoice == (optionNo+1)){
                 return -1;
             }
@@ -153,11 +157,6 @@ public class DropDownMenu {
             else{
                 break;
             }
-        }
-        catch (Exception e) {
-            System.out.println("Invalid input. Please enter an integer: ");
-            sc.next();
-        }
         } while (true);
         return Choice.get(screeningChoice-1);
     }

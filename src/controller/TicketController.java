@@ -61,11 +61,35 @@ public class TicketController {
         Screening screeningChosen = Initialise.screenings.get(screeningChoice);
         
         System.out.println("Number of Child Tickets: ");
-        childTicketNo = sc.nextInt();
+        do {
+            try {
+                childTicketNo = sc.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
+        }while(true);
         System.out.println("Number of Adult Tickets: ");
-        adultTicketNo = sc.nextInt();
+        do {
+            try {
+                adultTicketNo = sc.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
+        }while(true);
         System.out.println("Number of Senior Citizen Tickets: ");
-        seniorTicketNo = sc.nextInt();
+        do {
+            try {
+                seniorTicketNo = sc.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
+        }while(true);
             
             for (int j = 0; j < childTicketNo; j++) {
                 if (j == 0){

@@ -35,32 +35,34 @@ public class SeatFormatter implements Serializable{
     public static Seat checkIfValidSeat(Screening screening) {
         char rowChoice = 'Z';
         int columnChoice = 99;
+        do{
         System.out.println("Enter Row Letter:");
         do {
             rowChoice = sc.next().charAt(0);
-            if ((rowChoice >= 'A' && rowChoice <= 'Z') ||(rowChoice >= 'a' && rowChoice <= 'z')) {
+            if ((rowChoice >= 'A' && rowChoice <= 'Z') || (rowChoice >= 'a' && rowChoice <= 'z')) {
                 rowChoice = Character.toUpperCase(rowChoice);
                 break;
             }
             System.out.println("Invalid input. Please enter a Character: ");
-        }while (true);
+        } while (true);
         System.out.println("Enter Column Number:");
-        do{
-        try{
-            columnChoice = sc.nextInt();
-            break;
-        }
-        catch (Exception e) {
-            System.out.println("Invalid input. Please enter an integer: ");
-            sc.next();
-        }
-        }while(true);
+        do {
+            try {
+                columnChoice = sc.nextInt();
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
+        } while (true);
 
         String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
+        System.out.println(seatIdChoice);
         if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
             for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
-                    if (!screening.getSeat(i).getIsBooked()&&!screening.getSeat(i).getIsReserved()) {
+                    if (!screening.getSeat(i).getIsBooked() && !screening.getSeat(i).getIsReserved()) {
+                        screening.getSeat(i).setIsReserved(true);
                         System.out.println("Adding to cart...");
                         return screening.getSeat(i);
                     }
@@ -69,7 +71,8 @@ public class SeatFormatter implements Serializable{
         } else if (screening.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES) {
             for (int i = 0; i < Initialise.Plat_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
-                    if (!screening.getSeat(i).getIsBooked()&&!screening.getSeat(i).getIsReserved()) {
+                    if (!screening.getSeat(i).getIsBooked() && !screening.getSeat(i).getIsReserved()) {
+                        screening.getSeat(i).setIsReserved(true);
                         System.out.println("Adding to cart...");
                         return screening.getSeat(i);
                     }
@@ -77,7 +80,7 @@ public class SeatFormatter implements Serializable{
             }
         }
         System.out.println("Unsuccessful...");
-        return null;
+    }while(true);
     }
 
     /**
