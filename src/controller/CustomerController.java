@@ -9,12 +9,19 @@ import initialiser.Initialise;
 import ui.CustomerMenuUI;
 
 import serialiser.SerializeMovieDB;
-import serialiser.WriteMovieDB;
 
+/**
+ * Includes the methods related the the customer database and the past tickets they purchased
+ */
 public class CustomerController {
     static Scanner sc = new Scanner(System.in);
     private static ArrayList<Customer> customers = Initialise.customers;
 
+    /**
+     * Transverse through the customers array list check if entered username below to an existing customer
+     * @param username username entered by user
+     * @return index of customer in array list if username is a customer; -1 if username not found in customers array list
+     */
     public static int searchCustomer(String username) {
         for (int i = 0; i < Initialise.customers.size(); i++) {
             // System.out.println("iterating through for loop. Username: " +
@@ -28,6 +35,10 @@ public class CustomerController {
 
     }
 
+    /**
+     * Adds a new customer to the customers array list
+     * @throws Exception
+     */
     public static void addCustomer() throws Exception {
         String username, password, email, phno;
         username = null;
@@ -69,6 +80,9 @@ public class CustomerController {
 
     }
 
+    /**
+     * Sorts the customers array list alphabetically
+     */
     public static void sortCustomersList() {
         int min;
         Customer temp;
@@ -84,6 +98,10 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Deletes/Removes the customer with the inserted username from the customers array list
+     * @throws Exception
+     */
     public static void deleteCustomer() throws Exception {
         int exit = -1;
         do {
@@ -112,6 +130,10 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Allows the customer to update the password of their login account after validating username and current password
+     * @throws Exception
+     */
     public static void updateCustomerPassword() throws Exception {
         String username;
         int exit = -1;
@@ -151,6 +173,10 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Prints the customer details (username, email and mobile number) of the specified username
+     * @param username username of customer
+     */
     public static void printCustomer(String username) {
         int index = searchCustomer(username);
         if (index != -1) {
@@ -160,17 +186,11 @@ public class CustomerController {
         }
     }
 
-    // public static void viewPastTickets(String username){
-    // int index = searchCustomer(username);
-    // System.out.println("Tickets you purchased in the past: ");
-    // ArrayList<Ticket> arr;
-    // arr=customers.get(index).getBoughtTickets();
-    // for(int x=0;x<arr.size();x++){
-    // TicketController.printTicket(arr.get(x));
-    // }
-    // }
-
-    // TODO: Too many searches, past in Customer object instead?
+    /**
+     * Prints the details of the tickets bought by the customer in the past
+     * @param customer customer object from customers array list
+     * @throws Exception
+     */
     public static void viewPastTickets(Customer customer) throws Exception {
         System.out.println("Tickets you purchased in the past: ");
         ArrayList<Ticket> arr = customer.getBoughtTickets();
@@ -183,11 +203,10 @@ public class CustomerController {
             CustomerMenuUI.customerMenuOptions(customer);
     }
 
-    // public static void clearCart(String username){
-    // int index = searchCustomer(username);
-    // customers.get(index).getCartTickets().clear();
-    // }
-
+    /**
+     * Returns the customers array list
+     * @return customers array list
+     */
     public static ArrayList<Customer> getCustomersList() {
         return customers;
     }

@@ -76,5 +76,40 @@ public class ReadMovieDB {
 				Initialise.holidays.add(publicHoliday);
 			}
 
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("ListingCriteria.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Integer listingCriteria = (Integer) list.get(i);
+				Initialise.listingCriteria.add(listingCriteria);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("PriceByAge.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Double priceByAge = (Double) list.get(i);
+				Initialise.priceByAge.add(priceByAge);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("PriceByMovieType.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Double priceByMovieType = (Double) list.get(i);
+				Initialise.priceByMovieType .add(priceByMovieType );
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("PriceByCinemaType.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Double priceByCinemaType = (Double) list.get(i);
+				Initialise.priceByCinemaType.add(priceByCinemaType);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("PriceByDay.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Double priceByDay = (Double) list.get(i);
+				Initialise.priceByDay.add(priceByDay);
+			}
+			
+			// arr = (double [])SerializeMovieDB.readSerializedArray("PriceByAge.dat");
+			// for (int i = 0 ; i < arr.length ; i++) {
+			// 	double priceByAge =  Array.getDouble(arr, i);
+			// }
+
 	}
 }

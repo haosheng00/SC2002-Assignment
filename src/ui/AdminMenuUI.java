@@ -1,6 +1,5 @@
 package ui;
 
-import controller.ListingController;
 //import initialiser.Initialise;
 
 import java.util.Scanner;
@@ -30,7 +29,7 @@ public class AdminMenuUI{
                     TicketUI.initiateAdminTicketUI();
                     break;
                 case 4: 
-                    ListingController.initiateListingUI();
+                    ListingUI.initiateListingUI();
                     break;
                 case 5:
                     AccountUI.initiateLoginUI(0);

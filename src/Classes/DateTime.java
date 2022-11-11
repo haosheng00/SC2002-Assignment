@@ -2,8 +2,10 @@ package classes;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.Date;
 
 
@@ -33,10 +35,14 @@ public class DateTime {
 
     public static Date stringToDate(String stringdate) throws ParseException{
 
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMDD");
-        Date stringToDate = sdf.parse(stringdate);
+        String year = stringdate.substring(0,4);
+        String month = stringdate.substring(4, 7);
+        String day = stringdate.substring(7, 8);
+        String newstringdate = day + '-' + month + '-' + year;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date stringToDate = dateFormat.parse(newstringdate);
+
         return stringToDate;
-        // TODO: convert string format to date format
     }
     
 }

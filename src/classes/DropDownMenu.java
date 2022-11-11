@@ -11,7 +11,7 @@ public class DropDownMenu {
     static Scanner sc = new Scanner(System.in);
 
     public static int initiateCineplexChoice(ArrayList<Cineplex> cineplexes) {
-        int i, cineplexChoice;
+        int i = 0, cineplexChoice = 0;
         do {
             System.out.println("========================================");
             System.out.println("Select Cineplex: ");
@@ -19,6 +19,7 @@ public class DropDownMenu {
                 System.out.println("(" + (i + 1) + ") " + cineplexes.get(i).getCineplexName());
             }
             System.out.println("(" + (i + 1) + ") Back");
+            try{
             cineplexChoice = sc.nextInt();
             if (cineplexChoice == (i + 1)){
                 return -1;
@@ -26,6 +27,11 @@ public class DropDownMenu {
             if (cineplexChoice < 0 || cineplexChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter an integer: ");
+            sc.next();
+        }
         } while (cineplexChoice < 0 || cineplexChoice > i);
         return cineplexChoice - 1;
     }
@@ -38,7 +44,6 @@ public class DropDownMenu {
         int cineplexChoice;
         Cineplex cineplexChosen;
         boolean chosen = false;
-        int counter = 0;
         do {
             cineplexChoice = initiateCineplexChoice(Initialise.cineplexes);
             if (cineplexChoice == -1){
@@ -51,14 +56,16 @@ public class DropDownMenu {
                     System.out.println("Already Chosen");
                 }
             }
-            if (chosen == false){
-                Initialise.cineplexes.get(cineplexChoice+counter).getMovies().add(movie);
+            if (!chosen){
+                Initialise.cineplexes.get(cineplexChoice).getMovies().add(movie);
+                System.out.println("Added to " + Initialise.cineplexes.get(cineplexChoice).getCineplexName());
             }
+            chosen = false;
         }while(true);
     }
 
     public static int initiateCinemaChoice(ArrayList<Cinema> cinemas) {
-        int i, cinemaChoice;
+        int i = 0, cinemaChoice = 0;
         do {
             System.out.println("========================================");
             System.out.println("Select Cinema: ");
@@ -66,6 +73,7 @@ public class DropDownMenu {
                 System.out.println("(" + (i + 1) + ") " + cinemas.get(i).getCinemaName());
             }
             System.out.println("(" + (i + 1) + ") Back");
+            try{
             cinemaChoice = sc.nextInt();
             if (cinemaChoice == (i + 1)){
                 return -1;
@@ -73,14 +81,20 @@ public class DropDownMenu {
             if (cinemaChoice < 0 || cinemaChoice > i) {
                 System.out.println("Invalid Input! Try again");
             }
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter an integer: ");
+            sc.next();
+        }
         } while (cinemaChoice < 0 || cinemaChoice > i);
         return cinemaChoice - 1;
     }
 
     public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie) {
-        int i, screeningChoice;
+        int i = 0, screeningChoice = 0;
         int counter = 0;
         int optionNo = 0;
+        ArrayList<Integer> Choice = new ArrayList<>();
         String movieTitle = movie.getMovieTitle();
         do {
             System.out.println("========================================");
@@ -91,26 +105,34 @@ public class DropDownMenu {
                     optionNo++;
                     System.out.println("(" + optionNo + ") Date: " + screenings.get(i).getShowDate() + " Time: "
                             + screenings.get(i).getShowTime() + " Movie: " +movie.getMovieTitle());
+                    Choice.add(optionNo-1+counter);
                 } else {
                     counter++;
                 }
             }
             System.out.println("(" + (optionNo+1) + ") Back");
+            try{
             screeningChoice = sc.nextInt();
-            if (screeningChoice == optionNo+1){
+            if (screeningChoice == (optionNo+1)){
                 return -1;
             }
-            if (screeningChoice < 0 || screeningChoice > i - counter) {
+            if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
-        } while (screeningChoice < 0 || screeningChoice > i - counter);
-        return counter + screeningChoice - 1;
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter an integer: ");
+            sc.next();
+        }
+        } while (screeningChoice < 0 || screeningChoice > (optionNo+1));
+        return Choice.get(screeningChoice-1);
     }
 
     public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie, Cineplex cineplex) {
-        int i, screeningChoice;
+        int i = 0, screeningChoice = 0;
         int counter = 0;
         int optionNo = 0;
+        ArrayList<Integer> Choice = new ArrayList<>();
         String movieTitle = movie.getMovieTitle();
         do {
             System.out.println("========================================");
@@ -122,6 +144,7 @@ public class DropDownMenu {
                         optionNo++;
                         System.out.println("(" + optionNo + ") Date: " + screenings.get(i).getShowDate() + " Time: "
                                 + screenings.get(i).getShowTime() + " Movie: " + movie.getMovieTitle());
+                        Choice.add(optionNo-1+counter);
                     }
                     else{
                         counter++;
@@ -131,20 +154,27 @@ public class DropDownMenu {
                 }
             }
             System.out.println("(" + (optionNo+1) + ") Back");
+            try{
             screeningChoice = sc.nextInt();
             if (screeningChoice == optionNo+1){
                 return -1;
             }
-            if (screeningChoice < 0 || screeningChoice > i - counter) {
+            if (screeningChoice < 0 || screeningChoice > (optionNo+1)) {
                 System.out.println("Invalid Input! Try again");
             }
-        } while (screeningChoice < 0 || screeningChoice > i - counter);
-        return counter + screeningChoice - 1;
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter an integer: ");
+            sc.next();
+        }
+        } while (screeningChoice < 0 || screeningChoice > (optionNo+1));
+        return (Choice.get(screeningChoice-1));
     }
 
     public static int initiateMovieChoice(Cineplex cineplex, int haveComingSoon) {
         int i, optionNo = 0;
-        int movieChoice = 1, counter = 0, maxCounter = 0;
+        int movieChoice = 1, counter = 0;
+        ArrayList<Integer> Choice = new ArrayList<>();
         if (haveComingSoon == 1) {
             do {
                 System.out.println("========================================");
@@ -153,20 +183,26 @@ public class DropDownMenu {
                     if (cineplex.getMovies().get(i).getMovieStatus() == Enum.MovieStatus.END_OF_SHOWING) {
                         counter++;
                     } else {
-                        optionNo = i + 1 - counter;
-                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i + counter).getMovieTitle());
-                        maxCounter++;
+                        optionNo++;
+                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i).getMovieTitle());
+                        Choice.add(counter+optionNo-1);
                     }
                 }
-                System.out.println("(" + (optionNo+1) + ") Go to next section");
+                System.out.println("(" + (optionNo+1) + ") Back");
+                try{
                 movieChoice = sc.nextInt();
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > maxCounter) {
+                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
-            } while (movieChoice < 0 || movieChoice > maxCounter);
+            }
+                catch (Exception e) {
+                    System.out.println("Invalid input. Please enter an integer: ");
+                    sc.next();
+                }
+            } while (movieChoice < 0 || movieChoice > (optionNo+1));
         } else {
             do {
                 System.out.println("========================================");
@@ -176,27 +212,34 @@ public class DropDownMenu {
                             || cineplex.getMovies().get(i).getMovieStatus() == Enum.MovieStatus.COMING_SOON) {
                         counter++;
                     } else {
-                        optionNo = i + 1 - counter;
-                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i + counter).getMovieTitle());
-                        maxCounter++;
+                        optionNo++;
+                        System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i).getMovieTitle());
+                        Choice.add(counter+optionNo-1);
                     }
                 }
                 System.out.println("(" + (optionNo+1) + ") Back");
+                try{
                 movieChoice = sc.nextInt();
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > maxCounter) {
+                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
-            } while (movieChoice < 0 || movieChoice > maxCounter);
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
+            } while (movieChoice < 0 || movieChoice > (optionNo+1));
         }
-        return movieChoice + counter - 1;
+        return (Choice.get(movieChoice-1));
     }
 
     public static int initiateMovieChoice_CustomerMenu(int haveComingSoon) {
         int i, optionNo = 0;
-        int movieChoice = 1, counter = 0, maxCounter = 0;
+        int movieChoice = 1, counter = 0;
+        ArrayList<Integer> Choice = new ArrayList<>();
         if (haveComingSoon == 1) {
             do {
                 System.out.println("========================================");
@@ -205,20 +248,26 @@ public class DropDownMenu {
                     if (Initialise.movies.get(i).getMovieStatus() == Enum.MovieStatus.END_OF_SHOWING) {
                         counter++;
                     } else {
-                        optionNo = i + 1 - counter;
-                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i + counter).getMovieTitle());
-                        maxCounter++;
+                        optionNo++;
+                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i).getMovieTitle());
+                        Choice.add(optionNo-1+counter);
                     }
                 }
                 System.out.println("(" + (optionNo+1) + ") Back");
+                try{
                 movieChoice = sc.nextInt();
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > maxCounter) {
+                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
-            } while (movieChoice < 0 || movieChoice > maxCounter);
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
+            } while (movieChoice < 0 || movieChoice > optionNo+1);
         } else {
             do {
                 System.out.println("========================================");
@@ -228,42 +277,54 @@ public class DropDownMenu {
                             || Initialise.movies.get(i).getMovieStatus() == Enum.MovieStatus.COMING_SOON) {
                         counter++;
                     } else {
-                        optionNo = i + 1 - counter;
-                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i + counter).getMovieTitle());
-                        maxCounter++;
+                        optionNo++;
+                        System.out.println("(" + optionNo + ")" + Initialise.movies.get(i).getMovieTitle());
+                        Choice.add(optionNo-1+counter);
                     }
                 }
                 System.out.println("(" + (optionNo+1) + ") Back");
+                try{
                 movieChoice = sc.nextInt();
                 if (movieChoice == (optionNo+1)){
                     return -1;
                 }
-                if (movieChoice < 0 || movieChoice > maxCounter) {
+                if (movieChoice < 0 || movieChoice > (optionNo+1)) {
                     System.out.println("Invalid Input! Try again");
                 }
-            } while (movieChoice < 0 || movieChoice > maxCounter);
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
+            } while (movieChoice < 0 || movieChoice > (optionNo+1));
         }
-        return movieChoice + counter - 1;
+        return (Choice.get(movieChoice-1));
 
     }
 
     public static int initiateAdminMovieChoice(ArrayList<Movie> movies) {
-        int i, movieChoice;
+        int i = 0, movieChoice = 0;
         do {
             System.out.println("========================================");
             System.out.println("Select Movie: ");
             for (i = 0; i < movies.size(); i++) {
                 System.out.println("(" + (i + 1) + ")" + movies.get(i).getMovieTitle());
             }
-            System.out.println("(" + (i+2) + ") Done");
+            System.out.println("(" + (i+2) + ") Back");
+            try{
             movieChoice = sc.nextInt();
             if (movieChoice == (i+2)){
                 return -1;
             }
-            if (movieChoice < 0 || movieChoice > i+2) {
+            if (movieChoice < 0 || movieChoice > (i+2)) {
                 System.out.println("Invalid Input! Try again");
             }
-        } while (movieChoice < 0 || movieChoice > i+2);
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter an integer: ");
+            sc.next();
+        }
+        } while (movieChoice < 0 || movieChoice > (i+2));
         return movieChoice-1;
     }
 }
