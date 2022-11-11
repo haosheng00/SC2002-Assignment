@@ -20,6 +20,8 @@ public class DropDownMenu {
     public static int initiateCineplexChoice(ArrayList<Cineplex> cineplexes) {
         int i = 0, cineplexChoice = 0;
         do {
+            i = 0;
+            cineplexChoice = 0;
             System.out.println("========================================");
             System.out.println("Select Cineplex: ");
             for (i = 0; i < cineplexes.size(); i++) {
@@ -82,6 +84,8 @@ public class DropDownMenu {
     public static int initiateCinemaChoice(ArrayList<Cinema> cinemas) {
         int i = 0, cinemaChoice = 0;
         do {
+            i = 0;
+            cinemaChoice = 0;
             System.out.println("========================================");
             System.out.println("Select Cinema: ");
             for (i = 0; i < cinemas.size(); i++) {
@@ -119,6 +123,11 @@ public class DropDownMenu {
         ArrayList<Integer> Choice = new ArrayList<>();
         String movieTitle = movie.getMovieTitle();
         do {
+            i = 0;
+            screeningChoice = 0;
+            counter = 0;
+            optionNo = 0;
+            Choice = new ArrayList<>();
             System.out.println("========================================");
             System.out.println("Select Screening: ");
             for (i = 0; i < screenings.size(); i++) {
@@ -167,6 +176,11 @@ public class DropDownMenu {
         ArrayList<Integer> Choice = new ArrayList<>();
         String movieTitle = movie.getMovieTitle();
         do {
+            i = 0;
+            screeningChoice = 0;
+            counter = 0;
+            optionNo = 0;
+            Choice = new ArrayList<>();
             System.out.println("========================================");
             System.out.println("Select Screening: ");
             for (i = 0; i < screenings.size(); i++) {
@@ -220,6 +234,11 @@ public class DropDownMenu {
         ArrayList<Integer> Choice = new ArrayList<>();
         if (haveComingSoon == 1) {
             do {
+                i = 0;
+                movieChoice = 0;
+                counter = 0;
+                optionNo = 0;
+                Choice = new ArrayList<>();
                 System.out.println("========================================");
                 System.out.println("Select Movie: ");
                 for (i = 0; i < cineplex.getMovies().size(); i++) {
@@ -251,6 +270,11 @@ public class DropDownMenu {
             } while (true);
         } else {
             do {
+                i = 0;
+                movieChoice = 0;
+                counter = 0;
+                optionNo = 0;
+                Choice = new ArrayList<>();
                 System.out.println("========================================");
                 System.out.println("Select Movie: ");
                 for (i = 0; i < cineplex.getMovies().size(); i++) {
@@ -296,6 +320,11 @@ public class DropDownMenu {
         ArrayList<Integer> Choice = new ArrayList<>();
         if (haveComingSoon == 1) {
             do {
+                i = 0;
+                movieChoice = 0;
+                counter = 0;
+                optionNo = 0;
+                Choice = new ArrayList<>();
                 System.out.println("========================================");
                 System.out.println("Select Movie: ");
                 for (i = 0; i < Initialise.movies.size(); i++) {
@@ -327,6 +356,11 @@ public class DropDownMenu {
             } while (true);
         } else {
             do {
+                i = 0;
+                movieChoice = 0;
+                counter = 0;
+                optionNo = 0;
+                Choice = new ArrayList<>();
                 System.out.println("========================================");
                 System.out.println("Select Movie: ");
                 for (i = 0; i < Initialise.movies.size(); i++) {
@@ -370,6 +404,8 @@ public class DropDownMenu {
     public static int initiateAdminMovieChoice(ArrayList<Movie> movies) {
         int i = 0, movieChoice = 0;
         do {
+            i = 0;
+            movieChoice = 0;
             System.out.println("========================================");
             System.out.println("Select Movie: ");
             for (i = 0; i < movies.size(); i++) {
