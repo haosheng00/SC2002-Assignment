@@ -42,17 +42,17 @@ public class DropDownMenu {
     //
     public static void initiateCineplexAddition(Movie movie) {
         int cineplexChoice;
-        ArrayList<Cineplex> cineplextemp = Initialise.cineplexes;
+        ArrayList<Cineplex> cineplexTemp = (ArrayList<Cineplex>) Initialise.cineplexes.clone();
         Cineplex cineplexChosen;
         do {
-            cineplexChoice = initiateCineplexChoice(cineplextemp);
+            cineplexChoice = initiateCineplexChoice(cineplexTemp);
             if (cineplexChoice == -1){
                 return;
             }
-            cineplexChosen = cineplextemp.get(cineplexChoice);
+            cineplexChosen = cineplexTemp.get(cineplexChoice);
             Initialise.cineplexes.get(cineplexChoice).getMovies().add(movie);
-            cineplextemp.remove(cineplexChosen);
-        }while(cineplextemp.size()!=0);
+            cineplexTemp.remove(cineplexChosen);
+        }while(cineplexTemp.size()!=0);
     }
 
     /**
