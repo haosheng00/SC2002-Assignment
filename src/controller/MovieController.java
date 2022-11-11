@@ -46,10 +46,12 @@ public class MovieController implements Serializable{
 
         int exists = -2;
         int i;
+        System.out.println("========================================");
         System.out.println("Please enter new Movie Title:");
         movieTitle = sc.next();
         exists = searchMovie(movieTitle);
         while (!(exists == -1 || exists == -2)) {
+            System.out.println("========================================");
             System.out.println("The movie already exists.");
             System.out.println("Please enter new Movie Title:");
             System.out.println("Or press 0 to go back");
@@ -62,6 +64,7 @@ public class MovieController implements Serializable{
         }
         while (exists == -1) {
             Movie newMovie = new Movie(movieTitle.toUpperCase(),MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233");
+            System.out.println("========================================");
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
             System.out.println("(2) Preview");
@@ -77,11 +80,13 @@ public class MovieController implements Serializable{
                     switch (i) {
                         case 1:
                             newMovie.setMovieStatus(MovieStatus.COMING_SOON);
+                            System.out.println("========================================");
                             System.out.println("Please enter the start date of the movie screening (YYYYMMDD):");
                             newMovie.setStartDate(sc.next());
                             break;
                         case 2:
                             newMovie.setMovieStatus(MovieStatus.PREVIEW);
+                            System.out.println("========================================");
                             System.out.println("Please enter the start date of the movie screening (YYYYMMDD):");
                             newMovie.setStartDate(sc.next());
                             break;
@@ -96,10 +101,11 @@ public class MovieController implements Serializable{
                     sc.next();         
                 }
                 } while(true);
-            
+            System.out.println("========================================");
             System.out.println("Please enter the date where the movie stops showing (YYYYMMDD): ");
             newMovie.setExpiryDate(sc.next());
 
+            System.out.println("========================================");
             System.out.println("Please select movie genre: ");
             System.out.println("(1) Action");
             System.out.println("(2) Horror");
@@ -159,8 +165,10 @@ public class MovieController implements Serializable{
                 }
             } while (i != 0);
             newMovie.setMovieGenres(movieGenres);
+            System.out.println("========================================");
             System.out.println("Please enter Movie Synopsis:");
             newMovie.setSynopsis(sc.next());
+            System.out.println("========================================");
             System.out.println("Please enter movie duration in mins:");
             do{
                 try{
@@ -174,6 +182,7 @@ public class MovieController implements Serializable{
                 }
             } while(true);
 
+            System.out.println("========================================");
             System.out.println("Please set age rating/restriction:");
             System.out.println("(1) G");
             System.out.println("(2) PG");
@@ -214,8 +223,10 @@ public class MovieController implements Serializable{
                     sc.next();         
                 }
             } while (true);
+            System.out.println("========================================");
             System.out.println("Please enter main movie director: ");
             newMovie.setDirector(sc.next());
+            System.out.println("========================================");
             System.out.println("Please enter name of cast:");
             s = sc.next();
             do {
@@ -225,6 +236,7 @@ public class MovieController implements Serializable{
             } while (!s.equals("0"));
             newMovie.setCasts(casts);
             while ((!s.equals("Y") && !s.equals("N"))) {
+                System.out.println("========================================");
                 System.out.println("Is the movie 3D? (Y/N)");
                 s = sc.next().toUpperCase();
                 switch (s) {
@@ -239,6 +251,7 @@ public class MovieController implements Serializable{
                         break;
                 }
             }
+            System.out.println("========================================");
             System.out.println("Please select the Cineplex(s) to screen the movie");
             DropDownMenu.initiateCineplexAddition(newMovie);
             Initialise.movies.add(newMovie);
@@ -276,6 +289,7 @@ public class MovieController implements Serializable{
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
         int choice = 0;
 
+        System.out.println("========================================");
         System.out.println("Select one option:");
         System.out.println("(1) Update Movie Title");
         System.out.println("(2) Update Movie Status");
@@ -286,10 +300,12 @@ public class MovieController implements Serializable{
         choice = sc.nextInt();
         switch (choice) {
             case 1:
+                System.out.println("========================================");
                 System.out.println("Enter new movie title:");
                 Initialise.movies.get(index).setMovieTitle(sc.next().toUpperCase());
                 break;
             case 2:
+                System.out.println("========================================");
                 System.out.println("Update to:");
                 System.out.println("(1) Coming soon");
                 System.out.println("(2) Preview");
@@ -312,10 +328,12 @@ public class MovieController implements Serializable{
                 }
                 break;
             case 3:
+                System.out.println("========================================");
                 System.out.println("Please update the date where the movie starts showing (YYYYMMDD): ");
                 Initialise.movies.get(index).setStartDate(sc.next());
                 break;
             case 4:
+                System.out.println("========================================");
                 System.out.println("Please update the date where the movie stops showing (YYYYMMDD): ");
                 Initialise.movies.get(index).setExpiryDate(sc.next());
                 break;
@@ -331,6 +349,7 @@ public class MovieController implements Serializable{
      * @throws Exception
      */
     public static void printMovie(int index) throws Exception {
+            System.out.println("========================================");
             System.out.println("Movie Title: " + Initialise.movies.get(index).getMovieTitle());
             System.out.println("Movie Status: " + Initialise.movies.get(index).getMovieStatus());
             System.out.println("Movie Genre(s): " + Initialise.movies.get(index).getMovieGenres());

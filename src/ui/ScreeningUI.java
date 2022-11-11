@@ -19,13 +19,13 @@ public class ScreeningUI {
     public static void initiateScreeningUI() throws IOException {
         int option = 0;
         Scanner sc = new Scanner(System.in);
+        do{
             System.out.println("========================================");
             System.out.println("Please select an option:");
             System.out.println("(1) Add Screening");
             System.out.println("(2) Delete Screening");
             System.out.println("(3) Show Screening");
             System.out.println("(4) Back");
-        do {
             try {
                 option = sc.nextInt();
             switch (option) {
@@ -41,12 +41,12 @@ public class ScreeningUI {
                 case 4:
                     break;
                 default:
-                    System.out.println("Invalid Input");
+                    System.out.println("Invalid Input. Please enter an integer (1-4):");
                     break;
             }
             }
             catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer. ");
+                System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
     }while (option != 4);
