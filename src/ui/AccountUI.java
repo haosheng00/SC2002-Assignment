@@ -21,18 +21,23 @@ public class AccountUI {
         System.out.println("Welcome to MOBLIMA");
         System.out.println("========================================");
         Scanner sc = new Scanner(System.in);
-        int choice;
+        int choice = 0;
         do{
-            System.out.println("(1) Login");
-            System.out.println("(2) Continue as guest");
-            choice = sc.nextInt();
-            if(choice == 1){
-                initiateLoginUI(0);
+            try {
+                System.out.println("(1) Login");
+                System.out.println("(2) Continue as guest");
+                choice = sc.nextInt();
+                if (choice == 1) {
+                    initiateLoginUI(0);
+                } else if (choice == 2) {
+                    Login("guest", "guest");
+                    CustomerMenuUI.guestMenuOptions();
+                }
             }
-            else if(choice == 2){
-                Login("guest","guest");
-                CustomerMenuUI.guestMenuOptions();
-            }  
+            catch (Exception e) {
+            System.out.println("Invalid input. Please enter an integer: ");
+            sc.next();
+        }
         }while(choice<3);
     }
 
@@ -44,7 +49,6 @@ public class AccountUI {
     public static void initiateLoginUI(int x) throws Exception{
         Scanner sc = new Scanner(System.in);
         int choice=0;
-        do{
             System.out.println("========================================");
             System.out.println("Please select an option");
             System.out.println("(1) Login to an existing account");
@@ -52,14 +56,9 @@ public class AccountUI {
             System.out.println("(3) Delete account");
             System.out.println("(4) Change Password");
             System.out.println("(5) Back");
-            
+        do{
             try{
-                choice = sc.nextInt();   
-            }
-            catch (Exception e){
-
-            }
-            sc.nextLine();
+                choice = sc.nextInt();
 
             switch(choice){
                 case 1:
@@ -80,6 +79,11 @@ public class AccountUI {
                 default:
                     System.out.println("Invalid Choice");
                     break;
+            }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
             }
         }while(choice!=5);
     }
