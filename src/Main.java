@@ -1,15 +1,12 @@
 import initialiser.Initialise;
-import ui.ScreeningUI;
-import ui.AccountUI;
-import ui.ReviewUI;
-import ui.MovieUI;
-import ui.PaymentUI;
+import ui.*;
+import classes.*;
+import controller.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
-import classes.*;
-import controller.PaymentController;
+
 
 public class Main {
     public static void main(String[] args) throws Exception {

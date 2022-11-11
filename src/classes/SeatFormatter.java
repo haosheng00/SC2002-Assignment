@@ -20,22 +20,27 @@ public class SeatFormatter implements Serializable{
     public static Seat checkIfValidSeat(Screening screening) {
         char rowChoice = 'Z';
         int columnChoice = 99;
-        try {
-            System.out.println("Enter Row Letter:");
-            rowChoice = Character.toUpperCase(sc.next().charAt(0));
-        }
-        catch (Exception e) {
-            System.out.println("Invalid input. Please enter a Character: ");
-            sc.next();
-        }
+        System.out.println("Enter Row Letter:");
+        do {
+            try {
+                rowChoice = Character.toUpperCase(sc.next().charAt(0));
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a Character: ");
+                sc.next();
+            }
+        }while (true);
+        System.out.println("Enter Column Number:");
+        do{
         try{
-            System.out.println("Enter Column Number:");
             columnChoice = sc.nextInt();
+            break;
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter an integer: ");
             sc.next();
         }
+        }while(true);
 
         String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
         if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
