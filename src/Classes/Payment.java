@@ -64,7 +64,7 @@ public class Payment implements Serializable{
     public String getTID() { return TID; }
 
     /**
-     * Updates the transaction ID of the payment
+     * Sets/Updates the transaction ID of the payment
      * @param TID transaction ID
      */
     public void setTID(String TID) { this.TID = TID;}
@@ -76,7 +76,7 @@ public class Payment implements Serializable{
     public double getTotalCharges() { return totalCharges; }
 
     /**
-     * Updates the total ticket cost to be charged to payment
+     * Sets/Updates the total ticket cost to be charged to payment
      * @param totalCharges total ticket charges
      */
     public void setTotalCharges(double totalCharges) { this.totalCharges = totalCharges;}
@@ -88,7 +88,7 @@ public class Payment implements Serializable{
     public String getCardExpirationDate() { return CardExpirationDate; }
 
     /**
-     * Updates the expiry date of the credit card used for payment
+     * Sets/Updates the expiry date of the credit card used for payment
      * @param CardExpirationDate expiry date of card in format MMYY
      */
     public void setCardExpirationDate(String CardExpirationDate) { this.CardExpirationDate = CardExpirationDate;}
@@ -100,7 +100,7 @@ public class Payment implements Serializable{
     public String getCreditCardName() { return CreditCardName; }
 
     /**
-     * Updates the cardholder's name on the credit card used
+     * Sets/Updates the cardholder's name on the credit card used
      * @param CreditCardName cardholder's name
      */
     public void setCreditCardName(String CreditCardName) { this.CreditCardName = CreditCardName;}
@@ -112,7 +112,7 @@ public class Payment implements Serializable{
     public String getBillingAddress() { return billingAddress; }
 
     /**
-     * Updates the billing address registered to the credit card used
+     * Sets/Updates the billing address registered to the credit card used
      * @param billingAddress billing address
      */
     public void setBillingAddress(String billingAddress) { this.billingAddress = billingAddress;}
@@ -124,7 +124,7 @@ public class Payment implements Serializable{
     public String getBillingCardNumber() { return billingCardNumber; }
 
     /**
-     * Updates the number of the card used for payment
+     * Sets/Updates the number of the card used for payment
      * @param billingCardNumber credit card number
      */
     public void setBillingCardNumber(String billingCardNumber) { this.billingCardNumber = billingCardNumber;}

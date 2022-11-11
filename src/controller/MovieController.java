@@ -13,9 +13,7 @@ import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
 
 /**
- * Contains the methods related to the movies available:
- * searchMovie(), addMovie(), deleteMovie(), updateMovie(), printMovie(),
- * getMovieList(), getTop5ByRatings(), getTop5BySales(), getTop5Movies(), MyTimeTask()
+ * Contains the methods related to the movies available
  */
 public class MovieController implements Serializable{
     static Scanner sc = new Scanner(System.in);
@@ -24,7 +22,7 @@ public class MovieController implements Serializable{
     //static ArrayList<Movie> movies = new ArrayList <Movie>(); 
 
     /**
-     * Loop through the movies array list to check on the existence of the searched movie
+     * Loops through the movies array list to check on the existence of the searched movie
      * @param movieTitle the title of the movie that user wants to search
      * @return index of the movie if it exists; -1 if it does not exists
      */
@@ -39,7 +37,7 @@ public class MovieController implements Serializable{
     }
 
     /**
-    * Add a new movie to the movies list and specified cineplexes
+    * Adds a new movie to the movies list and specified cineplexes
     * @throws Exception
     */
     public static void addMovie() throws Exception {
@@ -246,7 +244,7 @@ public class MovieController implements Serializable{
     }
 
     /**
-     * Remove a movie from the existing movies array list
+     * Removes a movie from the existing movies array list
      * @return int 1 if movie is deleted/removed successfully
      * @throws Exception
      */
@@ -321,7 +319,7 @@ public class MovieController implements Serializable{
     }
 
     /**
-     * print out the details of the movie by the index of the movie in the movies array list
+     * Prints out the details of the movie by the index of the movie in the movies array list
      * @param index the index of the movie in the movies array list
      * @throws Exception
      */
@@ -436,7 +434,7 @@ public class MovieController implements Serializable{
     }
 
     /**
-     * Function to automatically update the movie status to "Now Showing" and "End of Showing" when current date passes "Start of Screening Date" and "End of Screening Date" respectively
+     * Automatically updates the movie status to "Now Showing" and "End of Showing" when current date passes "Start of Screening Date" and "End of Screening Date" respectively
      */
     public static class MyTimeTask extends TimerTask {
         // update the moviestatus
