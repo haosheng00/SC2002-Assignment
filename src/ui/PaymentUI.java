@@ -4,9 +4,16 @@ import java.util.Scanner;
 
 import classes.*;
 import controller.*;
-//import initialiser.Initialise;
 
+/**
+ * Contains the initiation of UI for customer trying to make payment
+ */
 public class PaymentUI {
+    /**
+     * Prints the available options customer can choose from while trying to checkout
+     * @param customer
+     * @throws Exception
+     */
     public static void initiatePaymentUI(Customer customer) throws Exception {
         Scanner sc = new Scanner(System.in);
         int choice = 0;

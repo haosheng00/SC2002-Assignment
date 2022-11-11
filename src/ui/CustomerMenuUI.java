@@ -6,10 +6,17 @@ import controller.*;
 import initialiser.Initialise;
 import classes.DropDownMenu;
 
+/**
+ * Contains the methods related to customer's main menu
+ */
 public class CustomerMenuUI{
 
     //private static final String Syst = null;
 
+    /**
+     * Prints the available options for customer to navigate/view in the movie booking system and calls the respective methods
+     * @throws Exception
+     */
     public static void customerMenuOptions(Customer customer) throws Exception{
         Scanner sc = new Scanner(System.in);
         int option = -1;
@@ -43,7 +50,6 @@ public class CustomerMenuUI{
                         ReviewUI.initiateReviewUI(customer);
                         break;
                     case 5:
-                        //ADD TO SERIALIZER
                         MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                         break;
                     case 6:
@@ -59,6 +65,10 @@ public class CustomerMenuUI{
         }
     
 
+    /**
+     * Prints the available options for guest to navigate/view in the movie booking system and calls the respective methods
+     * @throws Exception
+     */
     public static void guestMenuOptions() throws Exception{
         Scanner sc = new Scanner(System.in);
         int option = 0;

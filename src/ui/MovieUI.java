@@ -7,11 +7,14 @@ import controller.MovieController;
 import initialiser.Initialise;
  
 /**
- * Prints the methods that admin can call to make changes/view the movies array list
- * @throws Exception
+ * Contains the initiation of UI for admin to manage movies available
  */
 public class MovieUI {
 
+    /**
+     * Prints the methods that admin can call to make changes/view the movies array list
+     * @throws Exception
+     */
     public static void initiateMovieUI() throws Exception {
         Scanner sc = new Scanner(System.in);
         int choice;

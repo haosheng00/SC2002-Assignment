@@ -5,6 +5,9 @@ import java.util.Scanner;
 import classes.*;
 import controller.*;
 
+/**
+ * Contains the initiation of UI related to customer's reviews
+ */
 public class ReviewUI {
 
     public static void initiateReviewUI(Customer customer) throws Exception {
@@ -22,14 +25,6 @@ public class ReviewUI {
             System.out.println("(5) Back");
             System.out.println("========================================");
             choice = sc.nextInt();
-            
-            // try{
-            //     choice = sc.nextInt();
-            //     //choice = Integer.parseUnsignedInt(choice); 
-            // }
-            // catch (Exception e) {
-            //     //return;
-            // }
 
             switch(choice) {
                 case 1: 

@@ -7,11 +7,18 @@ import classes.*;
 import controller.*;
 import initialiser.Initialise;
 
+/**
+ * Contains the initialiation of UI for admin to make changes to price system of tickets
+ */
 public class TicketUI {
     
     private static Scanner sc = new Scanner(System.in);
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
 
+    /**
+     * Prints the available options to admin to update ticket price/holidays for price adjustment
+     * @throws Exception
+     */
     public static void initiateAdminTicketUI() throws Exception{
 
         int option;
@@ -54,7 +61,10 @@ public class TicketUI {
         while (option != 2);
     }
 
-
+    /**
+     * Prints the available customisable options for admin to make changes to price system and call the respective function
+     * @throws Exception
+     */
     public static void updateTicketUI() throws Exception{
 
         int option;
