@@ -23,15 +23,21 @@ public class ListingUI {
             try {
                 ArrayList <Integer> listingCriteria = Initialise.listingCriteria;
                 int choice = sc.nextInt();
-                listingCriteria.set(0, choice);
-                SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", Initialise.listingCriteria);
-                System.out.println("Listing controls have been updated.");
-                break;
+                if (choice <= 0 || choice >= 4) {
+                    System.out.println("Invalid option. Please enter an integer (1-3): ");
+                }
+                else {
+                    listingCriteria.set(0, choice);
+                    SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", Initialise.listingCriteria);
+                    break;
+                }
             }
             catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
                 sc.next();
             }
         } while(true);
+
+        System.out.println("Listing controls have been updated.");
     }
 }    
