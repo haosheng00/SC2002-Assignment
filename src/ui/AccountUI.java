@@ -87,7 +87,7 @@ public class AccountUI {
             // System.out.println(username+ password+ "atLoginUI");
 
             success = Login(username, password);
-            System.out.println("Success value is "+ success);
+            //System.out.println("Success value is "+ success);
             switch (success){
                 case 0:
                     System.out.println("Username or password incorrect");
@@ -124,7 +124,7 @@ public class AccountUI {
 
     private static int Login(String username, String password){
         System.out.println("Entered Login");
-        System.out.println(username + password + "at Login");
+        //System.out.println(username + password + "at Login");
         int isAdmin = -2;
         isAdmin = AdminController.searchAdmin(username);
         int isCustomer = -2;
@@ -156,7 +156,7 @@ public class AccountUI {
         System.out.println("Username does not exist");
         return 4;
     }
-    
+
     }
 
      

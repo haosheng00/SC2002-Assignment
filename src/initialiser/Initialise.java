@@ -16,10 +16,6 @@ public class Initialise {
 
     public static DateTime dt = new DateTime();
 
-    public static double [] priceByAge = new double [] {}; 
-    public static double [] priceByMovieType = new double [] {};
-    public static double [] priceByCinemaType = new double [] {};
-    public static double [] priceByDay = new double [] {}; 
     public static int listingCriteria;
 
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
@@ -32,6 +28,11 @@ public class Initialise {
     public static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();
+
+    public static double [] priceByAge = new double [] {}; //student, adult, senior
+	public static double [] priceByMovieType = new double [] {}; //2d, 3d
+	public static double [] priceByCinemaType = new double [] {}; //ordinary, premium
+	public static double [] priceByDay = new double [] {}; //weekday, weekend, holiday
 
 
     public static void initialiseMOBLIMA() throws Exception {

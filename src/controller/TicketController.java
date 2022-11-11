@@ -55,7 +55,7 @@ public class TicketController {
             return;
         }
         Movie movieChosen = cineplexChosen.getMovies().get(movieChoice);
-        screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen, cineplexChosen);
+        screeningChoice = DropDownMenu.initiateScreeningMovieChoice(Initialise.screenings, movieChosen, cineplexChosen);
         if (screeningChoice == -1){
             return;
         }
@@ -95,7 +95,6 @@ public class TicketController {
                 TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
-            return;
         }
 
 
@@ -111,38 +110,39 @@ public class TicketController {
             double ticketPrice = 0;
 
             //CHECK AGE
+  
             if (student == 1){
                 ticketPrice = Initialise.priceByAge[0];
             }
 
-            if (adult == 1){
-                ticketPrice = Initialise.priceByAge[1];
-            }
+            // if (adult == 1){
+            //     ticketPrice = Initialise.priceByAge[1];
+            // }
 
-            if (senior == 1){
-                ticketPrice = Initialise.priceByAge[2];
-            }
+            // if (senior == 1){
+            //     ticketPrice = Initialise.priceByAge[2];
+            // }
 
-            //CHECK MOVIE TYPE
-            if (movieChosen.getIs3D() == true){
-                ticketPrice += Initialise.priceByMovieType[1];
-            }
+            // //CHECK MOVIE TYPE
+            // if (movieChosen.getIs3D() == true){
+            //     ticketPrice += Initialise.priceByMovieType[1];
+            // }
 
-            //CHECK CINEMA TYPE
-            if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
-                ticketPrice += Initialise.priceByCinemaType[1];
-            }
+            // //CHECK CINEMA TYPE
+            // if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
+            //     ticketPrice += Initialise.priceByCinemaType[1];
+            // }
 
-            //CHECK WEEKDAY/WEEKEND/PH
-            Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
-            for (int i=0; i<holidays.size(); i++){
-                if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
-                    ticketPrice += Initialise.priceByDay[2];
-                }
-                else if(TicketController.isWeekend(actualDate)){
-                    ticketPrice += Initialise.priceByDay[1];
-                }
-            }
+            // //CHECK WEEKDAY/WEEKEND/PH
+            // Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+            // for (int i=0; i<holidays.size(); i++){
+            //     if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
+            //         ticketPrice += Initialise.priceByDay[2];
+            //     }
+            //     else if(TicketController.isWeekend(actualDate)){
+            //         ticketPrice += Initialise.priceByDay[1];
+            //     }
+            // }
 
             return ticketPrice;
             //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
