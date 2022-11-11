@@ -436,30 +436,41 @@ public class MovieController implements Serializable{
             System.out.println("Sort by:");
             System.out.println("(1) - By Overall Rating");
             System.out.println("(2) - By Sales");
-            choice = sc.nextInt();
-
-            while (choice != 1 && choice != 2) {
-                System.out.println("Invalid option, try again: ");
-                choice = sc.nextInt();
-            }
-            if (choice == 1) {
-                System.out.println("Movies by Overall Rating: ");
-                for (int i = 0; i < top5ByRatings.size(); i++) {
-                    System.out.println("Movie " + (i + 1) + ":");
-                    System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
-                    System.out.println("Movie Rating: " + top5ByRatings.get(i).getOverallRating());
-                    System.out.println();
+            do {
+                try {
+                    choice = sc.nextInt();
+    
+                    if (choice != 1 && choice != 2) {
+                        System.out.println("Invalid option. Please enter 1 or 2: ");
+                    }
+                    else if (choice == 1) {
+                        System.out.println("Movies by Overall Rating: ");
+                        for (int i = 0; i < top5ByRatings.size(); i++) {
+                            System.out.println("Movie " + (i + 1) + ":");
+                            System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
+                            System.out.println("Movie Rating: " + top5ByRatings.get(i).getOverallRating());
+                            System.out.println();
+                        }
+                        break;
+                    } else {
+                        System.out.println("Movies by Sales: ");
+                        for (int i = 0; i < top5BySales.size(); i++) {
+                            System.out.println("Movie " + (i + 1) + ":");
+                            System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
+                            System.out.println("Movie Sales: " + top5BySales.get(i).getSales());
+                            System.out.println();
+                        }
+                        break;
+                    }
                 }
-            } else {
-                System.out.println("Movies by Sales: ");
-                for (int i = 0; i < top5BySales.size(); i++) {
-                    System.out.println("Movie " + (i + 1) + ":");
-                    System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
-                    System.out.println("Movie Sales: " + top5BySales.get(i).getSales());
-                    System.out.println();
+                catch (Exception e) {
+                    System.out.println("Invalid input. Please enter an integer: ");
+                    sc.next();
                 }
-            }
-        } else if (criteria == 1) {
+            } while (true);
+        } 
+        
+        else if (criteria == 1) {
             System.out.println("Movies by Overall Rating: ");
             for (int i = 0; i < top5ByRatings.size(); i++) {
                 System.out.println("Movie " + (i + 1) + ":");
