@@ -46,13 +46,28 @@ public class PaymentController {
         //get cart tickets from customer class
         showTickets(cartTickets);
         System.out.println("Would you like to proceed to check out your cart? (Enter 1 for yes, 0 to cancel check out)");
-        choice = sc.nextInt();
-        //if cancel checkout
-        if (choice == 0) {
-            System.out.println("Cancelling check out...");
-            customer.getCartTickets().clear();
-            return;
-        }
+        
+        do {
+            try {
+                choice = sc.nextInt();
+                if (choice != 0 && choice != 1) {
+                    System.out.println("Invalid option. Please enter 0 or 1:");
+                }
+                //if cancel checkout
+                else if (choice == 0) {
+                    System.out.println("Cancelling check out...");
+                    customer.getCartTickets().clear();
+                    SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+                    return;
+                }
+                else break;
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer:");
+                sc.next();
+            }
+        } while (true);
+    
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
         System.out.printf("The total amount is: %.2f\n", totalCharges);
