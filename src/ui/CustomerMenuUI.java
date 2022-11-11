@@ -58,13 +58,13 @@ public class CustomerMenuUI{
                         case 6:
                             break;
                         default:
-                            System.out.println("Invalid Input");
+                            System.out.println("Invalid option. Please enter an integer (1-6):");
                             break;
                     }
                 }
                 catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
+                    System.out.println("Invalid input. Please enter an integer: ");
+                    sc.next();
                 }
         }while (option !=6);
             AccountUI.WelcomePage();
