@@ -52,12 +52,13 @@ public class PaymentController {
         if (choice == 0) {
             System.out.println("Cancelling check out...");
             //TODO: undo isReserved --> Don't you undo isReserved before they make payment (after they select the seats)?
-            sc.close();
+            customer.getCartTickets().clear();
             return;
         }
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
         System.out.printf("The total amount is: %.2f\n", totalCharges);
+        System.out.println();
         System.out.println("Please enter your credit card details:");
         System.out.println("Full Name: ");
         name = sc.next();
@@ -91,7 +92,9 @@ public class PaymentController {
         updateTicketHistory(customer);
 
         //clear cart tickets  - can remove func in customer class?
-        cartTickets.clear();
+        customer.getCartTickets().clear();
+
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
         System.out.println("Thank you for your purchase. We hope you enjoy your movie!");
 
@@ -132,9 +135,11 @@ public class PaymentController {
     public static void printReceipt(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
         System.out.println("Receipt:");
+        System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
+            System.out.println();
             TicketController.printTicket(cartTickets.get(i));
             // System.out.println("Movie: " + cartTickets.get(i).getMovie());
             // System.out.println("Showtime: "+ cartTickets.get(i).getShowDate() + " " + cartTickets.get(i).getShowTime());
@@ -148,9 +153,11 @@ public class PaymentController {
     public static void showTickets(ArrayList<Ticket> Tickets) {
         int size = Tickets.size();
         System.out.println("Here are the details of your tickets:");
+        System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
+            System.out.println();
             TicketController.printTicket(Tickets.get(i));
             System.out.println("\n");
             // System.out.println("Movie: " + Tickets.get(i).getMovie());
@@ -166,7 +173,8 @@ public class PaymentController {
 
         int size = cartTickets.size();
         //iterate thru Tickets --> find movie and add ticketprice to sales 
-        //all tickets in cart have the same movie 
+        //all tickets in cart have the same movie
+
         Movie movie = cartTickets.get(0).getMovie();
 
         for (int i=0; i<size; i++) {
@@ -179,7 +187,7 @@ public class PaymentController {
         int exist = 0;
         //movie sales updated
         //update top5 sales array 
-        ArrayList <Movie> top5Sales = MovieController.getTop5BySales();
+        ArrayList <Movie> top5Sales = Initialise.top5BySales;
         //check if movie is alr in the top5sales
         for (int i=0; i< top5Sales.size(); i++) {
             if (movie.getMovieTitle() == top5Sales.get(i).getMovieTitle()) {
@@ -191,10 +199,11 @@ public class PaymentController {
         if (exist == 0) {
             //TO DO(MC) NEED NEW MOVIE CONSTRUCTOR --> TO put in movie with the new sales value 
             top5Sales.add(movie);
-
         }
+
         //sort the array 
         Collections.sort(top5Sales, new CompareBySales());
+        
         //remove last index if (size > 5)
         if (top5Sales.size() > 5) {
             //remove the sixth movie 
@@ -202,12 +211,11 @@ public class PaymentController {
         }
 
         SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
-
     }
 
     static class CompareBySales implements Comparator<Movie> {
         public int compare(Movie a, Movie b) {
-                    return (int)(a.getSales() - b.getSales());
+                    return (int)(b.getSales() - a.getSales());
         }   
     }
  

@@ -6,8 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import classes.*;
+import classes.Enum;
 import classes.Enum.*;
-import ui.MovieUI;
 import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
@@ -65,7 +65,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle.toUpperCase());
+            Movie newMovie = new Movie(movieTitle.toUpperCase(),MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233");
             do{
                 try{
                     System.out.println("Please select movie status:");
@@ -252,6 +252,9 @@ public class MovieController implements Serializable{
      */
     public static int deleteMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
+        if (index == -1){
+            return -1;
+        }
         //Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
         Initialise.movies.remove(Initialise.movies.get(index));
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
@@ -383,43 +386,51 @@ public class MovieController implements Serializable{
     public static void getTop5Movies(int criteria) {
 
         int choice = 0;
+        ArrayList <Movie> top5ByRatings = Initialise.top5ByRatings;
+        ArrayList <Movie> top5BySales = Initialise.top5BySales;
 
         if (criteria == 3) {
             System.out.println("Sort by:");
             System.out.println("(1) - By Overall Rating");
             System.out.println("(2) - By Sales");
+            choice = sc.nextInt();
 
-            while (choice != 1 || choice != 2) {
+            while (choice != 1 && choice != 2) {
                 System.out.println("Invalid option, try again: ");
                 choice = sc.nextInt();
             }
             if (choice == 1) {
+                System.out.println("Movies by Overall Rating: ");
                 for (int i = 0; i < top5ByRatings.size(); i++) {
-                    System.out.println(i + 1 + ":");
-                    System.out.println(top5ByRatings.get(i).getMovieTitle());
-                    System.out.println(top5ByRatings.get(i).getOverallRating());
-
+                    System.out.println("Movie " + (i + 1) + ":");
+                    System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
+                    System.out.println("Movie Rating: " + top5ByRatings.get(i).getOverallRating());
+                    System.out.println();
                 }
             } else {
+                System.out.println("Movies by Sales: ");
                 for (int i = 0; i < top5BySales.size(); i++) {
-                    System.out.println(i + 1 + ":");
-                    System.out.println(top5ByRatings.get(i).getMovieTitle());
-                    System.out.println(top5ByRatings.get(i).getSales());
+                    System.out.println("Movie " + (i + 1) + ":");
+                    System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
+                    System.out.println("Movie Sales: " + top5BySales.get(i).getSales());
+                    System.out.println();
                 }
             }
         } else if (criteria == 1) {
             System.out.println("Movies by Overall Rating: ");
             for (int i = 0; i < top5ByRatings.size(); i++) {
-                System.out.println(i + 1 + ":");
-                System.out.println(top5ByRatings.get(i).getMovieTitle());
-                System.out.println(top5ByRatings.get(i).getOverallRating());
+                System.out.println("Movie " + (i + 1) + ":");
+                System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
+                System.out.println("Movie Rating: " + top5ByRatings.get(i).getOverallRating());
+                System.out.println();
             }
         } else if (criteria == 2) {
             System.out.println("Movies by Sales: ");
             for (int i = 0; i < top5BySales.size(); i++) {
-                System.out.println(i + 1 + ":");
-                System.out.println(top5ByRatings.get(i).getMovieTitle());
-                System.out.println(top5ByRatings.get(i).getSales());
+                System.out.println("Movie " + (i + 1) + ":");
+                System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
+                System.out.println("Movie Sales: " + top5BySales.get(i).getSales());
+                System.out.println();
             }
         }
     }

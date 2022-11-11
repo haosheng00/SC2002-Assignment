@@ -27,6 +27,9 @@ public class CustomerMenuUI{
                     case 1: 
                         int movieIndex = -1;
                         movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                        if (movieIndex == -1){
+                            break;
+                        }
                         MovieController.printMovie(movieIndex);
                         break;
                     case 2:
@@ -41,7 +44,7 @@ public class CustomerMenuUI{
                         break;
                     case 5:
                         //ADD TO SERIALIZER
-                        MovieController.getTop5Movies(ListingController.getListingCriteria());
+                        MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                         break;
                     case 6:
                         AccountUI.WelcomePage();
@@ -71,13 +74,16 @@ public class CustomerMenuUI{
                 case 1: 
                     int movieIndex = -1;
                     movieIndex = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
+                    if (movieIndex == -1){
+                        break;
+                    }
                     MovieController.printMovie(movieIndex);
                     break;
                 case 2:
                     AccountUI.initiateLoginUI(2);
                     break;
                 case 3:
-                    MovieController.getTop5Movies(ListingController.getListingCriteria());
+                    MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                     break;
                 case 4:
                     AccountUI.WelcomePage();

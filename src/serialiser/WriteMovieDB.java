@@ -2,7 +2,7 @@ package serialiser;
 
 import classes.*;
 import classes.Enum;
-
+import classes.Enum.MovieStatus;
 import initialiser.Initialise;
 
 import java.util.ArrayList;
@@ -34,12 +34,17 @@ public class WriteMovieDB {
 					new Cinema("Orchard Screen 6", "ORF", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard")));
 
 	public static ArrayList<Movie> preMovies = new ArrayList<Movie>(
-			List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
+			List.of(new Movie("Joy",MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","113233"), 
+					new Movie("Sad",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233"), 
+					new Movie("Fear",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,4.5,"112233","113233"),
+					new Movie("Four",MovieStatus.COMING_SOON, "Des","fdg",122,40,Enum.AgeRestriction.PG,true,3,"112233","112233"),
+					new Movie("NJN",MovieStatus.COMING_SOON, "Des","fdg",122,50,Enum.AgeRestriction.PG,true,3,"112533","112243"),
+					new Movie("jdfdn",MovieStatus.NOW_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,4,"112233","115233")));
 
 	public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
-			List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, preMovies),
-					new Cineplex("Athay Cineplex JEM", cinemasJEM, preMovies),
-					new Cineplex("Athay Cineleisure Orchard", cinemasOrchard, preMovies)));
+			List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, (ArrayList)preMovies.clone()),
+					new Cineplex("Athay Cineplex JEM", cinemasJEM, (ArrayList)preMovies.clone()),
+					new Cineplex("Athay Cineleisure Orchard", cinemasOrchard, (ArrayList)preMovies.clone())));
 
 	public static ArrayList<Screening> screenings = new ArrayList<>(
 			List.of(new Screening(cineplexes.get(0).getCinemas().get(0), "20220220", "143000", preMovies.get(0)),
@@ -75,11 +80,11 @@ public class WriteMovieDB {
 				new PublicHoliday("DEEPAVALI", "20221024"),
 				new PublicHoliday("CHRISTMAS", "20221225")));
 
-	public static ArrayList<Double> priceByAge = new ArrayList<Double>(List.of(7.0, 8.5, 4.0));
-	public static ArrayList<Double> priceByMovieType = new ArrayList<Double>(List.of(0.0, 2.0));
-	public static ArrayList<Double> priceByCinemaType = new ArrayList<Double>(List.of(0.0, 5.0));
-	public static ArrayList<Double> priceByDay = new ArrayList<Double>(List.of(0.0, 3.0, 5.0));
-
+	public static double [] priceByAge = new double [] {7.0, 8.5, 4.0}; //student, adult, senior
+	public static double [] priceByMovieType = new double [] {0.0, 2.0}; //2d, 3d
+	public static double [] priceByCinemaType = new double [] {0.0, 5.0}; //ordinary, premium
+	public static double [] priceByDay = new double [] {0.0, 3.0, 5.0}; //weekday, weekend, holiday
+	public static ArrayList<Integer> listingCriteria = new ArrayList<Integer>(List.of(3));
 
 	public static void writeMovieDB() throws Exception {
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
@@ -92,28 +97,23 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
+		SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", Initialise.listingCriteria);
 		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
-		SerializeMovieDB.writeSerializedObject("PriceByAge.dat", Initialise.priceByAge);
-		SerializeMovieDB.writeSerializedObject("PriceByMovieType.dat", Initialise.priceByMovieType);
-		SerializeMovieDB.writeSerializedObject("PriceByCinemaType.dat", Initialise.priceByCinemaType);
-		SerializeMovieDB.writeSerializedObject("PriceByDay.dat", Initialise.priceByDay);
-
+		//SerializeMovieDB.writeSerializedArray("PriceByAge.dat", Initialise.priceByAge);
 	}
 
 	public static void preWriteMovieDB() throws Exception{
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
 		SerializeMovieDB.writeSerializedObject("Review.dat", Initialise.reviews);
-		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
+		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 		SerializeMovieDB.writeSerializedObject("Customer.dat", customers);
 		SerializeMovieDB.writeSerializedObject("Admin.dat", admins);
 		SerializeMovieDB.writeSerializedObject("Movie.dat", preMovies);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
+		SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", listingCriteria);
 		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
-		SerializeMovieDB.writeSerializedObject("PriceByAge.dat", priceByAge);
-		SerializeMovieDB.writeSerializedObject("PriceByMovieType.dat", priceByMovieType);
-		SerializeMovieDB.writeSerializedObject("PriceByCinemaType.dat", priceByCinemaType);
-		SerializeMovieDB.writeSerializedObject("PriceByDay.dat", priceByDay);
+		SerializeMovieDB.writeSerializedArray("PriceByAge.dat", Initialise.priceByAge);
 	}
 }

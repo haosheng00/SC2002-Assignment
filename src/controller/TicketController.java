@@ -88,6 +88,7 @@ public class TicketController {
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
+            return;
         }
     
 
@@ -103,7 +104,6 @@ public class TicketController {
             double ticketPrice = 0;
 
             //CHECK AGE
-  
             if (student == 1){
                 ticketPrice = Initialise.priceByAge.get(0);
             }
@@ -113,24 +113,24 @@ public class TicketController {
                     ticketPrice = Initialise.priceByAge.get(1) *2;
                 }
                 else{
-                    ticketPrice = Initialise.priceByAge.get(1);
+                    ticketPrice = Initialise.priceByAge[1];
                 }   
             }
    
 
             if (senior == 1){
-                ticketPrice = Initialise.priceByAge.get(2);
+                ticketPrice = Initialise.priceByAge[2];
             }
 
 
             //CHECK MOVIE TYPE
             if (movieChosen.getIs3D() == true){
-                ticketPrice += Initialise.priceByMovieType.get(1);
+                ticketPrice += Initialise.priceByMovieType[1];
             }
 
             //CHECK CINEMA TYPE
             if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
-                ticketPrice += Initialise.priceByCinemaType.get(1);
+                ticketPrice += Initialise.priceByCinemaType[1];
             }
 
             //CHECK WEEKDAY/WEEKEND/PH
@@ -146,6 +146,7 @@ public class TicketController {
                     break;
                 }
             }
+
             return ticketPrice;
         }
     

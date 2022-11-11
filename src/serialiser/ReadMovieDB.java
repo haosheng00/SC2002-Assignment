@@ -11,7 +11,6 @@ import classes.*;
 public class ReadMovieDB {
 	public static void readMovieDB() throws Exception{
 		List list;
-		double [] arr;
 		// read from serialized file the list of professors
 
 			//listingCriteria = SerializeMovieDB.readSerializedObject(".dat");
@@ -75,6 +74,12 @@ public class ReadMovieDB {
 			for (int i = 0 ; i < list.size() ; i++) {
 				PublicHoliday publicHoliday = (PublicHoliday) list.get(i);
 				Initialise.holidays.add(publicHoliday);
+			}
+
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("ListingCriteria.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Integer listingCriteria = (Integer) list.get(i);
+				Initialise.listingCriteria.add(listingCriteria);
 			}
 
 			list = (ArrayList)SerializeMovieDB.readSerializedObject("PriceByAge.dat");
