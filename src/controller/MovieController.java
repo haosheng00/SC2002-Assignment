@@ -324,9 +324,7 @@ public class MovieController implements Serializable{
             }
             if (choice == 1) {
                 ReviewController.printMovieReviews(Initialise.movies.get(index));
-            } else 
-            //TODO: Check if is admin, if not, go back to customer menu
-                MovieUI.initiateMovieUI();
+            } else return;
                 
         }
 
