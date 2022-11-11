@@ -315,9 +315,9 @@ public class ReviewController {
         
         int lastIndex = movie.getReviews().size()-1;
 
-        System.out.println(movie.getMovieTitle() + " Reviews");
+        System.out.println(movie.getMovieTitle() + " Reviews:");
 
-        for (int i=lastIndex; i>=0; i++) {
+        for (int i=lastIndex; i>=0; i--) {
             Review r = movie.getReviews().get(i);
             System.out.println("Time of Review: " + r.getDateTime());
             System.out.println("Username: " + r.getUserName());
