@@ -155,6 +155,7 @@ public class AccountUI {
         }
         System.out.println("Username does not exist");
         return 4;
+    }
     
     }
 
