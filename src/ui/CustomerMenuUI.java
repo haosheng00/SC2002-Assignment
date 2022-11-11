@@ -44,7 +44,7 @@ public class CustomerMenuUI{
                         break;
                     case 5:
                         //ADD TO SERIALIZER
-                        MovieController.getTop5Movies(ListingController.getListingCriteria());
+                        MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                         break;
                     case 6:
                         AccountUI.WelcomePage();
@@ -83,7 +83,7 @@ public class CustomerMenuUI{
                     AccountUI.initiateLoginUI(2);
                     break;
                 case 3:
-                    MovieController.getTop5Movies(ListingController.getListingCriteria());
+                    MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                     break;
                 case 4:
                     AccountUI.WelcomePage();
