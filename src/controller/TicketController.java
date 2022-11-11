@@ -27,16 +27,6 @@ public class TicketController {
 
     static Scanner sc = new Scanner(System.in);
 
-    public static void addToCart(Screening screeningChosen, Movie movieChosen, Cineplex cineplexChosen, double actualTicketPrice){
-        Seat seatChosen;
-        do {
-            seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
-        }while (seatChosen == null);
-        seatChosen.setIsReserved(true);
-        TicketController.addCartTicket(current.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
-        seatChosen = null;
-        }
-
     public static void createBooking(ArrayList<Cineplex> cineplexes, Customer customer) throws Exception {
 
         int i, childTicketNo, adultTicketNo, seniorTicketNo = 0;
@@ -55,7 +45,7 @@ public class TicketController {
             return;
         }
         Movie movieChosen = cineplexChosen.getMovies().get(movieChoice);
-        screeningChoice = DropDownMenu.initiateScreeningMovieChoice(Initialise.screenings, movieChosen, cineplexChosen);
+        screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen, cineplexChosen);
         if (screeningChoice == -1){
             return;
         }
@@ -73,8 +63,9 @@ public class TicketController {
                 }
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
-                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
+                seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
             for (int j = 0; j < adultTicketNo; j++) {
                 if (j == 0){
@@ -82,8 +73,9 @@ public class TicketController {
                 }
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
-                actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
+                seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen,seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
             for (int j = 0; j < seniorTicketNo; j++) {
                 if (j == 0){
@@ -91,23 +83,20 @@ public class TicketController {
                 }
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
-                actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen);
-                TicketController.addToCart(screeningChosen, movieChosen, cineplexChosen, actualTicketPrice);
+                seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
             PaymentUI.initiatePaymentUI(customer);
             return;
         }
+    
 
 
 
-
-        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen) throws ParseException {
+        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
-            //PH ARRAYLIST TO INITIALISE
-            //PUBLIC HOLIDAYS OF SG (YYYYMMDD) - NEW YEARS DAY (20220101), CHINESE NEW YEAR(20220201, 20220202), GOOD FRIDAY (20220415), LABOUR DAY (20220501), HARI RAYA PUASA (20220503),
-            //VESAK DAY (20220515), HARI RAYA HAJI (20220710), NATIONAL DAY (20220809), DEEPAVALI (20221024), CHRISTMAS (20221225)
-           
             double ticketPrice = 0;
 
             //CHECK AGE
@@ -116,36 +105,47 @@ public class TicketController {
             }
 
             if (adult == 1){
-                ticketPrice = Initialise.priceByAge[1];
+                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                    ticketPrice = Initialise.priceByAge.get(1) *2;
+                }
+                else{
+                    ticketPrice = Initialise.priceByAge.get(1);
+                }   
             }
+   
 
             if (senior == 1){
-                ticketPrice = Initialise.priceByAge[2];
+                ticketPrice = Initialise.priceByAge.get(2);
             }
+
 
             //CHECK MOVIE TYPE
             if (movieChosen.getIs3D() == true){
-                ticketPrice += Initialise.priceByMovieType[1];
+                ticketPrice += Initialise.priceByMovieType.get(1);
             }
 
             //CHECK CINEMA TYPE
             if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
-                ticketPrice += Initialise.priceByCinemaType[1];
+                ticketPrice += Initialise.priceByCinemaType.get(1);
             }
 
             //CHECK WEEKDAY/WEEKEND/PH
             Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+
             for (int i=0; i<holidays.size(); i++){
                 if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
-                    ticketPrice += Initialise.priceByDay[2];
+                    ticketPrice += Initialise.priceByDay.get(2);
+                    break;
                 }
                 else if(TicketController.isWeekend(actualDate)){
-                    ticketPrice += Initialise.priceByDay[1];
+                    ticketPrice += Initialise.priceByDay.get(1);
+                    break;
                 }
             }
 
             return ticketPrice;
         }
+    
 
         public static Boolean isWeekend(Date date){
             Calendar calendar = new GregorianCalendar();
@@ -395,9 +395,6 @@ public class TicketController {
 
         public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen, Seat seatChosen, double actualTicketPrice){
             // FOR CREATEBOOKING
-
-            int i;
-            int cineplexChoice, movieChoice, screeningChoice;
 
             Ticket ticket = new Ticket(movieChosen, cineplexChosen, screeningChosen.getCinema(), screeningChosen.getShowDate(), screeningChosen.getShowTime(), seatChosen, actualTicketPrice);
             cartTickets.add(ticket);
