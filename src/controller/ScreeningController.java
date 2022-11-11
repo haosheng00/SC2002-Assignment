@@ -58,6 +58,9 @@ public class ScreeningController {
         }
         Movie movieChosen = Initialise.movies.get(movieChoice);
         int screeningChoice = DropDownMenu.initiateScreeningChoice(Initialise.screenings, movieChosen);
+        if (screeningChoice == -1){
+            return;
+        }
         Initialise.screenings.remove(screeningChoice);
         SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
         System.out.println("Screening deleted successfully");

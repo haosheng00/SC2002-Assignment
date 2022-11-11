@@ -5,6 +5,9 @@ import java.util.Scanner;
 import classes.*;
 import controller.*;
 
+/**
+ * Contains the initiation of UI related to customer's reviews
+ */
 public class ReviewUI {
 
     public static void initiateReviewUI(Customer customer) throws Exception {
@@ -21,36 +24,32 @@ public class ReviewUI {
             System.out.println("(4) View your review(s) ");
             System.out.println("(5) Back");
             System.out.println("========================================");
-            choice = sc.nextInt();
-            
-            // try{
-            //     choice = sc.nextInt();
-            //     //choice = Integer.parseUnsignedInt(choice); 
-            // }
-            // catch (Exception e) {
-            //     //return;
-            // }
-
-            switch(choice) {
-                case 1: 
-                    ReviewController.addReview(customer);
-                    break;
-                case 2:
-                    ReviewController.deleteReview(customer);
-                    break;
-                case 3:
-                    ReviewController.updateReview(customer);
-                    break;
-                case 4:
-                    ReviewController.printCustomerReviews(customer);
-                    break;
-                case 5:
-                    break;
-                default:
-                    System.out.println("Invalid input!");
-                    break;
-            } 
-        } while (choice < 4);
+            try {
+                choice = sc.nextInt();            
+                switch(choice) {
+                    case 1: 
+                        ReviewController.addReview(customer);
+                        break;
+                    case 2:
+                        ReviewController.deleteReview(customer);
+                        break;
+                    case 3:
+                        ReviewController.updateReview(customer);
+                        break;
+                    case 4:
+                        ReviewController.printCustomerReviews(customer);
+                        break;
+                    case 5:
+                        return;
+                    default:
+                        System.out.println("Invalid option. Please enter an integer (1-5):");
+                        break;
+                } 
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer:");
+                sc.next();
+            }
+        } while (choice != 5);
     }
-    
 }

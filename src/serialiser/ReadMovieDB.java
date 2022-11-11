@@ -8,7 +8,14 @@ import java.util.List;
 
 import classes.*;
 
+/**
+ * Represents a class that can read the byte file (DB) and store them in their array lists
+ */
 public class ReadMovieDB {
+	/**
+	 * Reads the byte file and stores object into the respective array lists
+	 * @throws Exception
+	 */
 	public static void readMovieDB() throws Exception{
 		List list;
 		// read from serialized file the list of professors
@@ -32,8 +39,7 @@ public class ReadMovieDB {
 				Review review = (Review)list.get(i);
 				Initialise.reviews.add(review);
 			}
-			
-			//TODO: customer -> account
+
 			list = (ArrayList)SerializeMovieDB.readSerializedObject("Customer.dat");
 			for (int i = 0 ; i < list.size() ; i++) {
 				Customer customer = (Customer)list.get(i);
@@ -105,11 +111,5 @@ public class ReadMovieDB {
 				Double priceByDay = (Double) list.get(i);
 				Initialise.priceByDay.add(priceByDay);
 			}
-			
-			// arr = (double [])SerializeMovieDB.readSerializedArray("PriceByAge.dat");
-			// for (int i = 0 ; i < arr.length ; i++) {
-			// 	double priceByAge =  Array.getDouble(arr, i);
-			// }
-
 	}
 }

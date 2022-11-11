@@ -18,10 +18,29 @@ public class SeatFormatter implements Serializable{
     }
 
     public static Seat checkIfValidSeat(Screening screening) {
+        char rowChoice = 'Z';
+        int columnChoice = 99;
         System.out.println("Enter Row Letter:");
-        char rowChoice = Character.toUpperCase(sc.next().charAt(0));
+        do {
+            try {
+                rowChoice = Character.toUpperCase(sc.next().charAt(0));
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a Character: ");
+                sc.next();
+            }
+        }while (true);
         System.out.println("Enter Column Number:");
-        int columnChoice = sc.nextInt();
+        do{
+        try{
+            columnChoice = sc.nextInt();
+            break;
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter an integer: ");
+            sc.next();
+        }
+        }while(true);
 
         String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
         if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {

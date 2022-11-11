@@ -1,13 +1,19 @@
 package ui;
 
-//import initialiser.Initialise;
-
 import java.util.Scanner;
+
+/**
+ * Contains the methods related to admin's main menu
+ */
 public class AdminMenuUI{
+
+    /**
+     * Prints the available options for admin to manage the movie booking system and call the respective controls
+     * @throws Exception
+     */
     public static void adminMenuOptions() throws Exception{
         Scanner scanner = new Scanner(System.in);
         int option = 0;
-        do{
             System.out.println("========================================");
             System.out.println("Hello! Please select an option.");
             System.out.println("(1) - Movie Controls");
@@ -15,8 +21,9 @@ public class AdminMenuUI{
             System.out.println("(3) - Ticket Controls");
             System.out.println("(4) - Listing Controls");
             System.out.println("(5) - Log out");
-            System.out.println("========================================");
-            option = scanner.nextInt();
+        do{
+            try {
+                option = scanner.nextInt();
             switch(option){
                 case 1:
                 //2 separate movieUIs for customer and manager - need to create!!
@@ -37,6 +44,11 @@ public class AdminMenuUI{
                 default:
                     System.out.println("Invalid Input");
                     break;
+            }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                scanner.next();
             }
         }while (option != 5);
         
