@@ -226,7 +226,7 @@ public class MovieController implements Serializable{
                 }
             }
             System.out.println("Please select the Cineplex(s) to screen the movie");
-            DropDownMenu.initiateCineplexAddition(Initialise.cineplexes, newMovie);
+            DropDownMenu.initiateCineplexAddition(newMovie);
             Initialise.movies.add(newMovie);
             System.out.println("Movie added!");
             WriteMovieDB.writeMovieDB();
