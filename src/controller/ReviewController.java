@@ -7,14 +7,22 @@ import classes.*;
 import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
 
+/**
+ * Represents the controller that can make changes to the reviews of the movies
+ */
 public class ReviewController {
-    
-    private static ArrayList<Review> reviews = Initialise.reviews;
 
-    public ReviewController (ArrayList <Review> Reviews) {
-        ReviewController.reviews = Reviews;
+    /*
+     * Constructor of Review Controller
+     */
+    public ReviewController () {
     }
 
+    /**
+     * Add review for a movie 
+     * @param customer customer object 
+     * @throws Exception
+     */
     public static void addReview(Customer customer) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -66,9 +74,6 @@ public class ReviewController {
          //write to customer 
          SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
-        //add review to all reviews array - NEED???
-        //Reviews.add(new Review(review,rating,userName,dateTime,movie));
-
         //update overallRating 
         double updatedRating = (rating+movie.getOverallRating())/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
@@ -81,7 +86,11 @@ public class ReviewController {
         System.out.println("Your review has been added.");
     }
 
-    //iterate thru the reviews to find the particular username
+    /**
+     * Delete review of customer from a movie 
+     * @param customer customer object 
+     * @throws IOException
+     */
     public static void deleteReview(Customer customer) throws IOException {
         
         int i = 0;
@@ -135,6 +144,11 @@ public class ReviewController {
         System.out.println("Your review has been deleted.");
     }
 
+    /**
+     * Updates the review of a customer
+     * @param customer customer object
+     * @throws IOException
+     */
     public static void updateReview(Customer customer) throws IOException {
 
         Scanner sc = new Scanner(System.in);
@@ -173,7 +187,6 @@ public class ReviewController {
         }
 
         //if rating exists
-
         System.out.println("Old Review: ");
         System.out.println();
         System.out.println("Time of Review: " + reviews.get(i).getDateTime());
@@ -234,6 +247,12 @@ public class ReviewController {
         System.out.println("Your review has been updated.");
     }
 
+    /**
+     * Updates the array which contains the movies with the top 5 ratings 
+     * @param movie movie object
+     * @throws IOException
+     */
+
     public static void updateTop5Rating(Movie movie) throws IOException {
 
         int exist = 0;
@@ -273,7 +292,10 @@ public class ReviewController {
         }   
     }
 
-    //print review of customers
+    /**
+     * Prints the reviews of a customer 
+     * @param customer customer object 
+     */
     public static void printCustomerReviews(Customer customer) {
         ArrayList <Review> reviews = customer.getPastReviews();
         System.out.println("Reviews of " + customer.getUserName());
@@ -285,7 +307,10 @@ public class ReviewController {
         }
     }
 
-    //print all reviews of movie -- sort by dateTime 
+    /**
+     * Prints all the reviews of a movie 
+     * @param movie movie object 
+     */
     public static void printMovieReviews(Movie movie) {
         
         int lastIndex = movie.getReviews().size()-1;

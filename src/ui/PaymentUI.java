@@ -24,6 +24,7 @@ public class PaymentUI {
             System.out.println("(1) View Tickets in Cart");
             System.out.println("(2) Checkout and Make Payment");
             System.out.println("(3) Back");
+            System.out.println("========================================");
             try {
                 choice = sc.nextInt();
                 switch(choice) {

@@ -123,7 +123,6 @@ public class WriteMovieDB {
 	public static void writeMovieDB() throws Exception {
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
-		SerializeMovieDB.writeSerializedObject("Review.dat", Initialise.reviews);
 		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 		SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 		SerializeMovieDB.writeSerializedObject("Admin.dat", Initialise.admins);
@@ -146,7 +145,6 @@ public class WriteMovieDB {
 	public static void preWriteMovieDB() throws Exception{
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", cineplexes);
 		SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
-		SerializeMovieDB.writeSerializedObject("Review.dat", Initialise.reviews);
 		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
 		SerializeMovieDB.writeSerializedObject("Customer.dat", customers);
 		SerializeMovieDB.writeSerializedObject("Admin.dat", admins);

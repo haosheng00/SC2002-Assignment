@@ -33,12 +33,6 @@ public class ReadMovieDB {
 				Payment payment = (Payment)list.get(i);
 				Initialise.payments.add(payment);
 			}
-			
-			list = (ArrayList)SerializeMovieDB.readSerializedObject("Review.dat");
-			for (int i = 0 ; i < list.size() ; i++) {
-				Review review = (Review)list.get(i);
-				Initialise.reviews.add(review);
-			}
 
 			list = (ArrayList)SerializeMovieDB.readSerializedObject("Customer.dat");
 			for (int i = 0 ; i < list.size() ; i++) {

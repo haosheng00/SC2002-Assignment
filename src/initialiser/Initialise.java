@@ -16,7 +16,6 @@ public class Initialise {
 
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
-    public static ArrayList<Review> reviews = new ArrayList<Review>();
     public static ArrayList<Customer> customers = new ArrayList<Customer>();
     public static ArrayList<Admin> admins = new ArrayList<Admin>();
     public static ArrayList<Movie> movies = new ArrayList<Movie>();
