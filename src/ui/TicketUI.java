@@ -69,15 +69,13 @@ public class TicketUI {
 
         int option = 0;
 
-
+        do{
             System.out.println("========================================");
             System.out.println("Which Pricing Category would you like to update?:");
             System.out.println("(1) Age Group");
             System.out.println("(2) Cinema Type");
             System.out.println("(3) Day of Week");
             System.out.println("(4) Back");
-
-            do{
             try {
                 option = sc.nextInt();
 

@@ -19,12 +19,14 @@ public class MovieUI {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         do {
+            System.out.println("========================================");
             System.out.println("Please select an option");
             System.out.println("(1) Add Movie");
             System.out.println("(2) Delete Movie");
             System.out.println("(3) Update Movie");
             System.out.println("(4) Search Movie");
             System.out.println("(5) Back");
+            System.out.println("========================================");
             try {
                 choice = sc.nextInt();
                 switch (choice) {
