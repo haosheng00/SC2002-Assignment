@@ -88,12 +88,10 @@ public class ReviewController {
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
         
-
         //update top5Rating
         updateTop5Rating(movie);
 
         System.out.println("Your review has been added.");
-        //sc.close();
     }
 
     //iterate thru the reviews to find the particular username
@@ -237,7 +235,7 @@ public class ReviewController {
         int exist = 0;
 
         //update top5 sales array 
-        ArrayList <Movie> top5Ratings = MovieController.getTop5ByRatings();
+        ArrayList <Movie> top5Ratings = Initialise.top5ByRatings;
         //check if movie is alr in the top5ratings 
         for (int i=0; i< top5Ratings.size(); i++) {
             if (movie.getMovieTitle() == top5Ratings.get(i).getMovieTitle()) {
@@ -263,7 +261,7 @@ public class ReviewController {
 
     static class CompareByRating implements Comparator<Movie> {
         public int compare(Movie a, Movie b) {
-                    return (int)(a.getOverallRating() - b.getOverallRating());
+                    return (int)(b.getOverallRating() - a.getOverallRating());
         }   
     }
 

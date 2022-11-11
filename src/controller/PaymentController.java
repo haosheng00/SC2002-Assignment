@@ -52,7 +52,7 @@ public class PaymentController {
         if (choice == 0) {
             System.out.println("Cancelling check out...");
             //TODO: undo isReserved --> Don't you undo isReserved before they make payment (after they select the seats)?
-            sc.close();
+            customer.getCartTickets().clear();
             return;
         }
         //proceed with the checkout
@@ -91,7 +91,9 @@ public class PaymentController {
         updateTicketHistory(customer);
 
         //clear cart tickets  - can remove func in customer class?
-        cartTickets.clear();
+        customer.getCartTickets().clear();
+
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
         System.out.println("Thank you for your purchase. We hope you enjoy your movie!");
 
@@ -167,6 +169,9 @@ public class PaymentController {
         int size = cartTickets.size();
         //iterate thru Tickets --> find movie and add ticketprice to sales 
         //all tickets in cart have the same movie 
+
+        System.out.println("Print CartTickets first index: " + cartTickets.get(0).getMovie().getMovieTitle());
+
         Movie movie = cartTickets.get(0).getMovie();
 
         for (int i=0; i<size; i++) {
@@ -179,7 +184,7 @@ public class PaymentController {
         int exist = 0;
         //movie sales updated
         //update top5 sales array 
-        ArrayList <Movie> top5Sales = MovieController.getTop5BySales();
+        ArrayList <Movie> top5Sales = Initialise.top5BySales;
         //check if movie is alr in the top5sales
         for (int i=0; i< top5Sales.size(); i++) {
             if (movie.getMovieTitle() == top5Sales.get(i).getMovieTitle()) {
@@ -191,10 +196,23 @@ public class PaymentController {
         if (exist == 0) {
             //TO DO(MC) NEED NEW MOVIE CONSTRUCTOR --> TO put in movie with the new sales value 
             top5Sales.add(movie);
-
         }
+
+        System.out.println("Before sort");
+        for (int i=0; i<top5Sales.size(); i++) {
+                System.out.println("Movie " + i + ":");
+                System.out.println("Movie Title: " + Initialise.top5BySales.get(i).getMovieTitle());
+                System.out.println("Movie Sales: " + Initialise.top5BySales.get(i).getSales());
+            }
         //sort the array 
         Collections.sort(top5Sales, new CompareBySales());
+        System.out.println("After sort"); 
+        for (int i=0; i<top5Sales.size(); i++) {
+            System.out.println("Movie " + i + ":");
+            System.out.println("Movie Title: " + Initialise.top5BySales.get(i).getMovieTitle());
+            System.out.println("Movie Sales: " + Initialise.top5BySales.get(i).getSales());
+        }
+
         //remove last index if (size > 5)
         if (top5Sales.size() > 5) {
             //remove the sixth movie 
@@ -202,12 +220,11 @@ public class PaymentController {
         }
 
         SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
-
     }
 
     static class CompareBySales implements Comparator<Movie> {
         public int compare(Movie a, Movie b) {
-                    return (int)(a.getSales() - b.getSales());
+                    return (int)(b.getSales() - a.getSales());
         }   
     }
  
