@@ -1,7 +1,5 @@
 package ui;
 
-//import initialiser.Initialise;
-
 import java.util.Scanner;
 public class AdminMenuUI{
     public static void adminMenuOptions() throws Exception{
@@ -16,7 +14,13 @@ public class AdminMenuUI{
             System.out.println("(4) - Listing Controls");
             System.out.println("(5) - Log out");
             System.out.println("========================================");
-            option = scanner.nextInt();
+            try {
+                option = scanner.nextInt();
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                scanner.next();
+            }
             switch(option){
                 case 1:
                 //2 separate movieUIs for customer and manager - need to create!!

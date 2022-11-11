@@ -22,7 +22,12 @@ public class CustomerMenuUI{
                 System.out.println("(4) - Your Reviews");
                 System.out.println("(5) - See Top 5 Movies");
                 System.out.println("(6) - Log Out");
-                option = sc.nextInt();
+                try{
+                option = sc.nextInt();}
+                catch (Exception e) {
+                    System.out.println("Invalid input. Please enter an integer: ");
+                    sc.next();
+                }
                 switch(option){
                     case 1: 
                         int movieIndex = -1;

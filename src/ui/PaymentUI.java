@@ -19,8 +19,13 @@ public class PaymentUI {
         System.out.println("========================================");
         
         do {
-            choice = sc.nextInt();
             try {
+                choice = sc.nextInt();
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
                 switch(choice) {
                     case 1:
                         PaymentController.showTickets(customer.getCartTickets());
@@ -34,12 +39,7 @@ public class PaymentUI {
                     default:
                         System.out.println("Invalid option. Please enter an integer (1-3): ");
                         break;
-                    }    
-            }
-            catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
-            }
+                    }
         } while (true);
     }
         

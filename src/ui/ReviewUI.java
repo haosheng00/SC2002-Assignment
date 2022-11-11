@@ -21,15 +21,12 @@ public class ReviewUI {
             System.out.println("(4) View your review(s) ");
             System.out.println("(5) Back");
             System.out.println("========================================");
-            choice = sc.nextInt();
-            
-            // try{
-            //     choice = sc.nextInt();
-            //     //choice = Integer.parseUnsignedInt(choice); 
-            // }
-            // catch (Exception e) {
-            //     //return;
-            // }
+            try {
+                choice = sc.nextInt();
+            }catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
 
             switch(choice) {
                 case 1: 

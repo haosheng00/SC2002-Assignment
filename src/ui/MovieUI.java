@@ -14,7 +14,7 @@ public class MovieUI {
 
     public static void initiateMovieUI() throws Exception {
         Scanner sc = new Scanner(System.in);
-        int choice;
+        int choice = 0;
         do {
             System.out.println("Please select an option");
             System.out.println("(1) Add Movie");
@@ -22,7 +22,12 @@ public class MovieUI {
             System.out.println("(3) Update Movie");
             System.out.println("(4) Search Movie");
             System.out.println("(5) Back");
-            choice = sc.nextInt();
+            try{
+            choice = sc.nextInt();}
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
+            }
             switch (choice) {
                 case 1:
                     MovieController.addMovie();

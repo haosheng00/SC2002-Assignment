@@ -28,10 +28,10 @@ public class TicketUI {
             try{
                 option = sc.nextInt();   
             }
-            catch (Exception e){
-
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer: ");
+                sc.next();
             }
-            sc.nextLine();
 
             switch(option){
 
@@ -72,10 +72,10 @@ public class TicketUI {
             try{
                 option = sc.nextInt();   
             }
-            catch (Exception e){
-
-            }
-            sc.nextLine();
+            catch (Exception e) {
+                    System.out.println("Invalid input. Please enter an integer: ");
+                    sc.next();
+                }
 
             switch(option){
 

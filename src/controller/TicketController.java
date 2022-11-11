@@ -17,8 +17,6 @@ import ui.*;
  * Represents the controller that can configure ticket prices, create new bookings and match correct ticket price based on given conditions
  */
 public class TicketController {
-
-    static ArrayList<Cineplex> cineplexes = Initialise.cineplexes;
     static ArrayList<PublicHoliday> holidays = Initialise.holidays;
     static Customer current; 
     // private static double basePrice;
