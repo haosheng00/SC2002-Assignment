@@ -37,9 +37,9 @@ public class WriteMovieDB {
 			List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
 
 	public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>(
-			List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, preMovies),
-					new Cineplex("Athay Cineplex JEM", cinemasJEM, preMovies),
-					new Cineplex("Athay Cineleisure Orchard", cinemasOrchard, preMovies)));
+			List.of(new Cineplex("Athay Cineplex AMK Hub", cinemasAMK, (ArrayList)preMovies.clone()),
+					new Cineplex("Athay Cineplex JEM", cinemasJEM, (ArrayList)preMovies.clone()),
+					new Cineplex("Athay Cineleisure Orchard", cinemasOrchard, (ArrayList)preMovies.clone())));
 
 	public static ArrayList<Screening> screenings = new ArrayList<>(
 			List.of(new Screening(cineplexes.get(0).getCinemas().get(0), "20220220", "143000", preMovies.get(0)),
@@ -80,6 +80,7 @@ public class WriteMovieDB {
 	public static ArrayList<Double> priceByCinemaType = new ArrayList<Double>(List.of(0.0, 5.0));
 	public static ArrayList<Double> priceByDay = new ArrayList<Double>(List.of(0.0, 3.0, 5.0));
 
+	public static ArrayList<Integer> listingCriteria = new ArrayList<Integer>(List.of(3));
 
 	public static void writeMovieDB() throws Exception {
 		SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
@@ -92,6 +93,7 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
+		SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", Initialise.listingCriteria);
 		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
 		SerializeMovieDB.writeSerializedObject("PriceByAge.dat", Initialise.priceByAge);
 		SerializeMovieDB.writeSerializedObject("PriceByMovieType.dat", Initialise.priceByMovieType);
@@ -110,6 +112,7 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Movie.dat", preMovies);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
+		SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", listingCriteria);
 		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
 		SerializeMovieDB.writeSerializedObject("PriceByAge.dat", priceByAge);
 		SerializeMovieDB.writeSerializedObject("PriceByMovieType.dat", priceByMovieType);

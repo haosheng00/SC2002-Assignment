@@ -14,8 +14,6 @@ public class Initialise {
 
     public static DateTime dt = new DateTime();
 
-    public static int listingCriteria;
-
     public static ArrayList<Cineplex> cineplexes = new ArrayList<Cineplex>();
     public static ArrayList<Payment> payments = new ArrayList<Payment>();
     public static ArrayList<Review> reviews = new ArrayList<Review>();
@@ -26,6 +24,7 @@ public class Initialise {
     public static ArrayList<Movie> top5BySales = new ArrayList<Movie>();
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();
+    public static ArrayList<Integer> listingCriteria = new ArrayList<Integer>();
 
     public static ArrayList<Double> priceByAge = new ArrayList<Double>();
     public static ArrayList<Double> priceByMovieType = new ArrayList<Double>();

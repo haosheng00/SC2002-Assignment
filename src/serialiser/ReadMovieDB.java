@@ -77,6 +77,12 @@ public class ReadMovieDB {
 				Initialise.holidays.add(publicHoliday);
 			}
 
+			list = (ArrayList)SerializeMovieDB.readSerializedObject("ListingCriteria.dat");
+			for (int i = 0 ; i < list.size() ; i++) {
+				Integer listingCriteria = (Integer) list.get(i);
+				Initialise.listingCriteria.add(listingCriteria);
+			}
+
 			list = (ArrayList)SerializeMovieDB.readSerializedObject("PriceByAge.dat");
 			for (int i = 0 ; i < list.size() ; i++) {
 				Double priceByAge = (Double) list.get(i);

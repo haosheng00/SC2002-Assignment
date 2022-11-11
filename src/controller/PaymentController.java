@@ -58,6 +58,7 @@ public class PaymentController {
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
         System.out.printf("The total amount is: %.2f\n", totalCharges);
+        System.out.println();
         System.out.println("Please enter your credit card details:");
         System.out.println("Full Name: ");
         name = sc.next();
@@ -134,9 +135,11 @@ public class PaymentController {
     public static void printReceipt(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
         System.out.println("Receipt:");
+        System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
+            System.out.println();
             TicketController.printTicket(cartTickets.get(i));
             // System.out.println("Movie: " + cartTickets.get(i).getMovie());
             // System.out.println("Showtime: "+ cartTickets.get(i).getShowDate() + " " + cartTickets.get(i).getShowTime());
@@ -150,9 +153,11 @@ public class PaymentController {
     public static void showTickets(ArrayList<Ticket> Tickets) {
         int size = Tickets.size();
         System.out.println("Here are the details of your tickets:");
+        System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
+            System.out.println();
             TicketController.printTicket(Tickets.get(i));
             System.out.println("\n");
             // System.out.println("Movie: " + Tickets.get(i).getMovie());
@@ -168,9 +173,7 @@ public class PaymentController {
 
         int size = cartTickets.size();
         //iterate thru Tickets --> find movie and add ticketprice to sales 
-        //all tickets in cart have the same movie 
-
-        System.out.println("Print CartTickets first index: " + cartTickets.get(0).getMovie().getMovieTitle());
+        //all tickets in cart have the same movie
 
         Movie movie = cartTickets.get(0).getMovie();
 
@@ -198,21 +201,9 @@ public class PaymentController {
             top5Sales.add(movie);
         }
 
-        System.out.println("Before sort");
-        for (int i=0; i<top5Sales.size(); i++) {
-                System.out.println("Movie " + i + ":");
-                System.out.println("Movie Title: " + Initialise.top5BySales.get(i).getMovieTitle());
-                System.out.println("Movie Sales: " + Initialise.top5BySales.get(i).getSales());
-            }
         //sort the array 
         Collections.sort(top5Sales, new CompareBySales());
-        System.out.println("After sort"); 
-        for (int i=0; i<top5Sales.size(); i++) {
-            System.out.println("Movie " + i + ":");
-            System.out.println("Movie Title: " + Initialise.top5BySales.get(i).getMovieTitle());
-            System.out.println("Movie Sales: " + Initialise.top5BySales.get(i).getSales());
-        }
-
+        
         //remove last index if (size > 5)
         if (top5Sales.size() > 5) {
             //remove the sixth movie 
