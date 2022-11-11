@@ -13,7 +13,7 @@ public class PublicHoliday implements Serializable{
     private String stringdate;
 
     /**
-     * Represents the public holiday initialised with a specific name and date
+     * Constructs a public holiday initialised with a specific name and date
      * @param name n
      * @param stringdate
      */
