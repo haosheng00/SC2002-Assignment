@@ -2,6 +2,7 @@ package serialiser;
 
 import initialiser.Initialise;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +79,7 @@ public class ReadMovieDB {
 
 			arr = (double [])SerializeMovieDB.readSerializedArray("PriceByAge.dat");
 			for (int i = 0 ; i < arr.length ; i++) {
-				// double [] priceByAge = (double []) arr.get(i);
+				double priceByAge =  Array.getDouble(arr, i);
 			}
 
 	}
