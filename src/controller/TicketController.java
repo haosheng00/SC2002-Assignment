@@ -60,6 +60,7 @@ public class TicketController {
             return;
         }
         Screening screeningChosen = Initialise.screenings.get(screeningChoice);
+        Enum.CinemaType cinemaType = screeningChosen.getCinema().getCinemaType();
         
         System.out.println("Number of Child Tickets: ");
         childTicketNo = sc.nextInt();
@@ -69,7 +70,7 @@ public class TicketController {
         seniorTicketNo = sc.nextInt();
             for (int j = 0; j < childTicketNo; j++) {
                 if (j == 0){
-                    LayoutPrinterOrdinary.printLayout(screeningChosen);
+                    SeatFormatter.seatDisplay(cinemaType, screeningChosen);
                 }
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
@@ -78,7 +79,7 @@ public class TicketController {
             }
             for (int j = 0; j < adultTicketNo; j++) {
                 if (j == 0){
-                    LayoutPrinterOrdinary.printLayout(screeningChosen);
+                    SeatFormatter.seatDisplay(cinemaType, screeningChosen);
                 }
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
@@ -87,7 +88,7 @@ public class TicketController {
             }
             for (int j = 0; j < seniorTicketNo; j++) {
                 if (j == 0){
-                    LayoutPrinterOrdinary.printLayout(screeningChosen);
+                    SeatFormatter.seatDisplay(cinemaType, screeningChosen);
                 }
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
