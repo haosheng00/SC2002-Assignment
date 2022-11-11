@@ -2,7 +2,14 @@ package classes;
 
 import initialiser.Initialise;
 
-public class LayoutPrinterOrdinary implements LayoutPrinter {
+/**
+ * Represents the subclass of LayoutPrinter that can print the seating layout of a cinema with cinema type of ORDINARY
+ */
+public class LayoutPrinterOrdinary extends LayoutPrinter {
+    /**
+     * Prints the ORDINARY layout of the specific screening
+     * @param screening
+     */
     public static void printLayout(Screening screening) {
         System.out.printf("%50s", "Screen");
         System.out.println();

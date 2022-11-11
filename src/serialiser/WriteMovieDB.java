@@ -10,28 +10,28 @@ import java.util.List;
 
 public class WriteMovieDB {
 	public static ArrayList<Cinema> cinemasAMK = new ArrayList<>(
-			List.of(new Cinema("AMK Hub Screen 1", "AMA", Enum.CinemaType.ORDINARY),
-					new Cinema("AMK Hub Screen 2", "AMB", Enum.CinemaType.ORDINARY),
-					new Cinema("AMK Hub Screen 3", "AMC", Enum.CinemaType.ORDINARY),
-					new Cinema("AMK Hub Screen 4", "AMD", Enum.CinemaType.ORDINARY),
-					new Cinema("AMK Hub Screen 5", "AME", Enum.CinemaType.ORDINARY),
-					new Cinema("AMK Hub Screen 6", "AMF", Enum.CinemaType.ORDINARY)));
+			List.of(new Cinema("AMK Hub Screen 1", "AMA", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
+					new Cinema("AMK Hub Screen 2", "AMB", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
+					new Cinema("AMK Hub Screen 3", "AMC", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
+					new Cinema("AMK Hub Screen 4", "AMD", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
+					new Cinema("AMK Hub Screen 5", "AME", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub"),
+					new Cinema("AMK Hub Screen 6", "AMF", Enum.CinemaType.ORDINARY, "Athay Cineplex AMK Hub")));
 
 	public static ArrayList<Cinema> cinemasJEM = new ArrayList<>(
-			List.of(new Cinema("JEM Screen 1", "JEA", Enum.CinemaType.ORDINARY),
-					new Cinema("JEM Screen 2", "JEB", Enum.CinemaType.ORDINARY),
-					new Cinema("JEM Screen 3", "JEC", Enum.CinemaType.ORDINARY),
-					new Cinema("JEM Screen 4", "JED", Enum.CinemaType.ORDINARY),
-					new Cinema("JEM Screen 5", "JEE", Enum.CinemaType.ORDINARY),
-					new Cinema("JEM Screen 6", "JEF", Enum.CinemaType.PLATINUMMOVIESUITES)));
+			List.of(new Cinema("JEM Screen 1", "JEA", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
+					new Cinema("JEM Screen 2", "JEB", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
+					new Cinema("JEM Screen 3", "JEC", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
+					new Cinema("JEM Screen 4", "JED", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
+					new Cinema("JEM Screen 5", "JEE", Enum.CinemaType.ORDINARY, "Athay Cineplex JEM"),
+					new Cinema("JEM Screen 6", "JEF", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineplex JEM")));
 
 	public static ArrayList<Cinema> cinemasOrchard = new ArrayList<>(
-			List.of(new Cinema("Orchard Screen 1", "ORA", Enum.CinemaType.ORDINARY),
-					new Cinema("Orchard Screen 2", "ORB", Enum.CinemaType.ORDINARY),
-					new Cinema("Orchard Screen 3", "ORC", Enum.CinemaType.ORDINARY),
-					new Cinema("Orchard Screen 4", "ORD", Enum.CinemaType.PLATINUMMOVIESUITES),
-					new Cinema("Orchard Screen 5", "ORE", Enum.CinemaType.PLATINUMMOVIESUITES),
-					new Cinema("Orchard Screen 6", "ORF", Enum.CinemaType.PLATINUMMOVIESUITES)));
+			List.of(new Cinema("Orchard Screen 1", "ORA", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
+					new Cinema("Orchard Screen 2", "ORB", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
+					new Cinema("Orchard Screen 3", "ORC", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
+					new Cinema("Orchard Screen 4", "ORD", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
+					new Cinema("Orchard Screen 5", "ORE", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard"),
+					new Cinema("Orchard Screen 6", "ORF", Enum.CinemaType.PLATINUMMOVIESUITES, "Athay Cineleisure Orchard")));
 
 	public static ArrayList<Movie> preMovies = new ArrayList<Movie>(
 			List.of(new Movie("Joy"), new Movie("Sad"), new Movie("Fear")));
@@ -48,9 +48,9 @@ public class WriteMovieDB {
 					new Screening(cineplexes.get(1).getCinemas().get(0), "20220223", "143000", preMovies.get(0)),
 					new Screening(cineplexes.get(1).getCinemas().get(2), "20220224", "143000", preMovies.get(1)),
 					new Screening(cineplexes.get(1).getCinemas().get(4), "20220225", "143000", preMovies.get(2)),
-					new Screening(cineplexes.get(2).getCinemas().get(0), "20220226", "143000", preMovies.get(0)),
-					new Screening(cineplexes.get(2).getCinemas().get(2), "20220227", "143000", preMovies.get(1)),
-					new Screening(cineplexes.get(2).getCinemas().get(4), "20220228", "143000", preMovies.get(2)),
+					new Screening(cinemasOrchard.get(0), "20220226", "143000", preMovies.get(0)),
+					new Screening(cinemasOrchard.get(2), "20220227", "143000", preMovies.get(1)),
+					new Screening(cinemasOrchard.get(4), "20220228", "143000", preMovies.get(2)),
 					new Screening(cineplexes.get(0).getCinemas().get(0), "20220229", "143000", preMovies.get(2)),
 					new Screening(cineplexes.get(0).getCinemas().get(2), "20220230", "143000", preMovies.get(0)),
 					new Screening(cineplexes.get(0).getCinemas().get(4), "20220301", "143000", preMovies.get(1)),
@@ -97,7 +97,6 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Customer.dat", customers);
 		SerializeMovieDB.writeSerializedObject("Admin.dat", admins);
 		SerializeMovieDB.writeSerializedObject("Movie.dat", preMovies);
-		SerializeMovieDB.writeSerializedObject("Screening.dat", screenings);
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
 		SerializeMovieDB.writeSerializedObject("Holiday.dat", holidays);

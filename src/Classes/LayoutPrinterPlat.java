@@ -2,8 +2,15 @@ package classes;
 
 import initialiser.Initialise;
 
-public class LayoutPrinterPlat implements LayoutPrinter {
-        public static void printLayout(Screening screening) {
+/**
+ * Represents the subclass of LayoutPrinter that can print the seating layout of a cinema with cinema type of PLATINUMMOVIESUITES
+ */
+public class LayoutPrinterPlat extends LayoutPrinter {
+    /**
+     * Prints the PLATINUMMOVIESUITES layout of a specific screening
+     * @param screening
+     */
+        public static void printPlatLayout(Screening screening) {
             System.out.printf("%20s", "Screen");
             System.out.println();
             int columnNumber = 1;
