@@ -11,6 +11,7 @@ public class PaymentUI {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
 
+        do {
         System.out.println("========================================");
         System.out.println("Please select an option:");
         System.out.println("(1) View Tickets in Cart");
@@ -18,9 +19,8 @@ public class PaymentUI {
         System.out.println("(3) Go Back To Main Menu");
         System.out.println("========================================");
         
-        do {
-            choice = sc.nextInt();
             try {
+                choice = sc.nextInt();
                 switch(choice) {
                     case 1:
                         PaymentController.showTickets(customer.getCartTickets());

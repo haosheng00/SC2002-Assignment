@@ -11,6 +11,7 @@ import classes.Enum.*;
 import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
 import serialiser.WriteMovieDB;
+import ui.ReviewUI;
 
 /**
  * Contains the methods related to the movies available

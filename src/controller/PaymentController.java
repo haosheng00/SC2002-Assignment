@@ -178,6 +178,7 @@ public class PaymentController {
             System.out.println();
             TicketController.printTicket(cartTickets.get(i));
             System.out.println("Total Payment: " + calcPayment(cartTickets));
+        }    
     }
 
     /**
