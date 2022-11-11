@@ -11,7 +11,7 @@ import ui.CustomerMenuUI;
 import serialiser.SerializeMovieDB;
 
 /**
- * Includes the methods related the the customer database and the past tickets they purchased
+ * Includes the methods related to the customer database and the past tickets they purchased
  */
 public class CustomerController {
     static Scanner sc = new Scanner(System.in);
@@ -204,7 +204,7 @@ public class CustomerController {
     }
 
     /**
-     * Returns the customers array list
+     * Returns an array of the customers list
      * @return customers array list
      */
     public static ArrayList<Customer> getCustomersList() {
