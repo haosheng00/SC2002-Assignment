@@ -9,6 +9,9 @@ import initialiser.Initialise;
 import ui.*;
 import serialiser.*;
 
+/**
+ * Contains the methods related to pre-, during, and post-payment of movie tickets
+ */
 public class PaymentController {
 
     //static and initialise all the arrays 
@@ -18,11 +21,20 @@ public class PaymentController {
     private static ArrayList<Payment> Payments = Initialise.payments;
 
     //constructor of PaymentController
+    /**
+     * Represents the payment controller with the payments array list
+     * @param Payments payments array list
+     */
     public PaymentController(ArrayList<Payment> Payments) {
         PaymentController.Payments = Payments;
     }
 
     //checkout all tickets in the cart
+    /**
+     * Allows the customer to check out the tickets added with only credit card purchase option
+     * @param customer customer object
+     * @throws Exception
+     */
     public static void checkoutUI(Customer customer) throws Exception {
         int choice = 0;
         String TID;
@@ -75,7 +87,7 @@ public class PaymentController {
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
 
-        //print Receipt 
+        //Print Receipt 
         printReceipt(cartTickets);
 
         //mark the seats as booked for all tickets in the cart 
@@ -101,12 +113,27 @@ public class PaymentController {
         CustomerMenuUI.customerMenuOptions(customer);
     }
 
+    /**
+     * Adds the payment details of the current checkout to the payments array list
+     * @param TID transaction ID
+     * @param totalCharges total ticket cost
+     * @param CreditCardName cardholder's name of card used for payment
+     * @param CardExpirationDate credit card's expiry date in format MMYY
+     * @param billingAddress billing address registered to card used
+     * @param billingCardNumber card number of credit card used
+     * @throws IOException
+     */
     //made payment and add payment to the Payment list
     public static void madePayment(String TID, double totalCharges, String CreditCardName, String CardExpirationDate, String billingAddress, String billingCardNumber) throws IOException {
         Payments.add(new Payment(TID,totalCharges,CreditCardName,CardExpirationDate,billingAddress,billingCardNumber));
         SerializeMovieDB.writeSerializedObject("Payment.dat", Initialise.payments);
     }
 
+    /**
+     * Creates a transaction ID for the payment made
+     * @param t ticket
+     * @return transaction ID
+     */
     public static String createTID(Ticket t) {
         //Each payment will have a transaction id (TID). 
         //The TID is of the format XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour, m : minutes, XXX:cinemacodeinletters)
@@ -122,6 +149,11 @@ public class PaymentController {
         return StringTID;
     }
 
+    /**
+     * Adds up the total cost of the tickets added and returns the total cost
+     * @param cartTickets array list of tickets added and pending payment
+     * @return total cost of tickets added
+     */
     public static double calcPayment(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
         int sum = 0;
@@ -132,6 +164,10 @@ public class PaymentController {
         return sum;
     }
 
+    /**
+     * Prints the details of the tickets added with the total cost of all the tickets added
+     * @param cartTickets tickets added
+     */
     public static void printReceipt(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
         System.out.println("Receipt:");
@@ -141,15 +177,13 @@ public class PaymentController {
             System.out.println("Ticket " + (i+1));
             System.out.println();
             TicketController.printTicket(cartTickets.get(i));
-            // System.out.println("Movie: " + cartTickets.get(i).getMovie());
-            // System.out.println("Showtime: "+ cartTickets.get(i).getShowDate() + " " + cartTickets.get(i).getShowTime());
-            // System.out.println("Cineplex: " + cartTickets.get(i).getCineplex() + " Cinema " + cartTickets.get(i).getCinema());
-            // System.out.println("Seat Number: " + cartTickets.get(i).getSeat().getSeatId());
-            // System.out.println("Ticket Price: " + cartTickets.get(i).getTicketPrice());
-        }
-        System.out.println("Total Payment: " + calcPayment(cartTickets));
+            System.out.println("Total Payment: " + calcPayment(cartTickets));
     }
 
+    /**
+     * Prints the details of the tickets added/purchased
+     * @param Tickets tickets added/purchased
+     */
     public static void showTickets(ArrayList<Ticket> Tickets) {
         int size = Tickets.size();
         System.out.println("Here are the details of your tickets:");
@@ -160,15 +194,15 @@ public class PaymentController {
             System.out.println();
             TicketController.printTicket(Tickets.get(i));
             System.out.println("\n");
-            // System.out.println("Movie: " + Tickets.get(i).getMovie());
-            // System.out.println("Showtime: "+ Tickets.get(i).getShowDate() + " " + Tickets.get(i).getShowTime());
-            // System.out.println("Cineplex: " + Tickets.get(i).getCineplex() + " Cinema " + Tickets.get(i).getCinema());
-            // System.out.println("Seat Number: " + Tickets.get(i).getSeat().getSeatId());
-            // System.out.println("Ticket Price: " + Tickets.get(i).getTicketPrice());
         }
     }
  
     //update sales of each movie and top5 array 
+    /**
+     * Updates the sales amount of the movie by adding the ticket charges of the movie in current payment to current total sales amount
+     * @param cartTickets tickets added/purchased
+     * @throws IOException
+     */
     public static void updateSales(ArrayList <Ticket> cartTickets) throws IOException {
 
         int size = cartTickets.size();
@@ -213,14 +247,27 @@ public class PaymentController {
         SerializeMovieDB.writeSerializedObject("Top5BySales.dat", Initialise.top5BySales);
     }
 
+    /**
+     * Compares the sales amounts of two specific movies
+     */
     static class CompareBySales implements Comparator<Movie> {
+        /**
+         * Subtracts the sales amount of movie a from sales amount of movie b to get the difference in the sales amounts
+         * @param a movie a
+         * @param b movie b
+         */
         public int compare(Movie a, Movie b) {
-                    return (int)(b.getSales() - a.getSales());
+            return (int)(b.getSales() - a.getSales());
         }   
     }
  
     //update ticket history for each customer
     //add cartTickets to the boughtTix array
+    /**
+     * Updates the ticket history of the customer by adding tickets that was just purchased into bought tickets array list
+     * @param cus customer
+     * @throws IOException
+     */
     public static void updateTicketHistory(Customer cus) throws IOException {
         ArrayList <Ticket> cartTickets = cus.getCartTickets();
         int size = cartTickets.size(); 
