@@ -27,11 +27,10 @@ public class Initialise {
     public static ArrayList<Movie> top5ByRatings = new ArrayList<Movie>();
     public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>();
 
-    public static double [] priceByAge = new double [] {}; //student, adult, senior
-	public static double [] priceByMovieType = new double [] {}; //2d, 3d
-	public static double [] priceByCinemaType = new double [] {}; //ordinary, premium
-	public static double [] priceByDay = new double [] {}; //weekday, weekend, holiday
-
+    public static ArrayList<Double> priceByAge = new ArrayList<Double>();
+    public static ArrayList<Double> priceByMovieType = new ArrayList<Double>();
+    public static ArrayList<Double> priceByCinemaType = new ArrayList<Double>();
+    public static ArrayList<Double> priceByDay = new ArrayList<Double>();
 
     public static void initialiseMOBLIMA() throws Exception {
         //preWriteMovieDB will set values in .dat to the pre-initialised + remove all previously stored
