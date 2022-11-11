@@ -15,38 +15,6 @@ public class ReviewController {
         ReviewController.reviews = Reviews;
     }
 
-    // //returns the index of the movie in the Movie array 
-    // public static int searchMovie() {
-
-    //     Scanner sc = new Scanner(System.in);
-    //     String movieTitle;
-    //     int exist;
-    //     int choice;
-
-    //     //TODO: DO DROPDOWN OF MOVIES
-    //     int movieChoice = DropDownMenu.initiateMovieChoice(MovieController.getMovieList());
-    //     //get movie name 
-    //     System.out.println("Please enter the title of the movie:");
-    //     movieTitle = sc.next();
-    //     //search movie to see if it exists 
-    //     //static method 
-    //     exist = MovieController.searchMovie(movieTitle);
-    //     //non-static method 
-    //     //exist = Initialise.mc.searchMovie(movieTitle);
-    //     while (exist == 0) {
-    //         System.out.println("The movie does not exist!");
-    //         System.out.println("Would you like to enter the movie title again? (Click 0 for No and 1 for Yes)");
-    //         choice = sc.nextInt();
-    //         if (choice == 0) {
-    //             System.out.println("Returning...");
-    //             return -1;
-    //         }
-    //         System.out.println("Please enter the title of the movie:");
-    //         movieTitle = sc.next();
-    //         exist = MovieController.searchMovie(movieTitle);
-    //     }
-    //     return exist;
-    // }    
     public static void addReview(Customer customer) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -164,7 +132,6 @@ public class ReviewController {
         if (movieIndex == -1) {
             //sc.close();
             return;
-
         }
         
         int ratingExist = 0;
@@ -225,15 +192,7 @@ public class ReviewController {
 
         cusReviews.add(new Review(review, rating, customer.getUserName(), dateTime, movie));
         
-        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
-
-
-        // //Update reviews array for movie
-        // reviews.get(reviewIndex).setDescription(review);
-        // reviews.get(reviewIndex).setRating(rating);
-        // reviews.get(reviewIndex).setDateTime(dateTime);
-
-        //NEED TO UPDATE FOR OVERALL REVIEWS ARRAY???
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);       
                 
         //update overallRating 
         double updatedRating = (movie.getOverallRating()-oldRating+rating)/(movie.getReviews().size());
@@ -267,7 +226,6 @@ public class ReviewController {
         }
         //add movie into the top5ratings array (if it isn't alr in the top5array)
         if (exist == 0) {
-            //TO DO(MC) NEED NEW MOVIE CONSTRUCTOR --> TO put in movie with the new ratings value 
             top5Ratings.add(movie);
         }
         //sort the array 
