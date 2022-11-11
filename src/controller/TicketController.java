@@ -101,6 +101,7 @@ public class TicketController {
 
 
 
+
         public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
@@ -110,39 +111,73 @@ public class TicketController {
            
             double ticketPrice = 0;
 
+            //CHECK AGE
+            if (student == 1){
+                ticketPrice = Initialise.priceByAge[0];
+            }
+
+            if (adult == 1){
+                ticketPrice = Initialise.priceByAge[1];
+            }
+
+            if (senior == 1){
+                ticketPrice = Initialise.priceByAge[2];
+            }
+
+            //CHECK MOVIE TYPE
+            if (movieChosen.getIs3D() == true){
+                ticketPrice += Initialise.priceByMovieType[1];
+            }
+
+            //CHECK CINEMA TYPE
+            if (screeningChosen.getCinema().getCinemaType() == Enum.CinemaType.PLATINUMMOVIESUITES){
+                ticketPrice += Initialise.priceByCinemaType[1];
+            }
+
+            //CHECK WEEKDAY/WEEKEND/PH
+            Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+            for (int i=0; i<holidays.size(); i++){
+                if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
+                    ticketPrice += Initialise.priceByDay[2];
+                }
+                else if(TicketController.isWeekend(actualDate)){
+                    ticketPrice += Initialise.priceByDay[1];
+                }
+            }
+
+            return ticketPrice;
             //FIRST CHECK IF WEEKEND OR PUBLIC HOLIDAY
             // for (int i=0; i<holidays.size(); i++){
-                Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
-                if ((TicketController.isWeekend(actualDate)) || (screeningChosen.getShowDate()).equals((holidays.get(0).getPublicHolidayDate()))){
-                    if (movieChosen.getIs3D() == true){
-                        ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
-                    }
-                    else{
-                        ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
-                    }
-                    ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
-                }// screeningchoice.showDate
-                else{
-                    //RETURN STUDENT PRICE
-                    if (student == 1){
-                        // TODO: NEED TO CHECK CINEMATYPE (and showtype!!)
-                        //cineplex cinema cinematype
-                        ticketPrice = Enum.TicketType.STUDENT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
-                    }
+                // Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
+                // if ((TicketController.isWeekend(actualDate)) || (screeningChosen.getShowDate()).equals((holidays.get(0).getPublicHolidayDate()))){
+                //     if (movieChosen.getIs3D() == true){
+                //         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice() + 5;
+                //     }
+                //     else{
+                //         ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
+                //     }
+                //     ticketPrice = Enum.DayOfWeek.SATURDAY.getTicketPrice();
+                // }// screeningchoice.showDate
+                // else{
+                //     //RETURN STUDENT PRICE
+                //     if (student == 1){
+                //         // TODO: NEED TO CHECK CINEMATYPE (and showtype!!)
+                //         //cineplex cinema cinematype
+                //         ticketPrice = Enum.TicketType.STUDENT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
+                //     }
 
-                    //RETURN ADULT PRICE
-                    else if (adult == 1){
-                        ticketPrice = Enum.TicketType.ADULT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
-                    }
+                //     //RETURN ADULT PRICE
+                //     else if (adult == 1){
+                //         ticketPrice = Enum.TicketType.ADULT.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
+                //     }
 
-                    //RETURN SENIOR PRICE
-                    else if (senior == 1){
-                        ticketPrice = Enum.TicketType.SENIORCITIZEN.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
-                    }
+                //     //RETURN SENIOR PRICE
+                //     else if (senior == 1){
+                //         ticketPrice = Enum.TicketType.SENIORCITIZEN.getTicketPrice() + screeningChosen.getCinema().getCinemaType().getTicketPrice();
+                //     }
 
-                }
+                // }
     
-            return ticketPrice;
         }
 
         public static Boolean isWeekend(Date date){
@@ -182,7 +217,8 @@ public class TicketController {
                 do{
                     System.out.println("Input new ticket price: ");
                     newstudtp = sc.nextInt();
-                    Enum.TicketType.STUDENT.setTicketPrice(newstudtp);
+                    Initialise.priceByAge[0] = newstudtp;
+                    // Enum.TicketType.STUDENT.setTicketPrice(newstudtp);
 
                     if (newstudtp <0){
                         System.out.println("Invalid Input! Try again!");
