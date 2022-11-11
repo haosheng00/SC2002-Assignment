@@ -83,8 +83,8 @@ public class DropDownMenu {
     /**
      * Prints out the list of screenings of a given movie, then returns the index of the chosen screening in the screening array list
      * @param screenings
-     * @param movie index of the screening
-     * @return
+     * @param movie
+     * @return index of the screening
      */
     public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie) {
         int i, screeningChoice;
@@ -205,7 +205,7 @@ public class DropDownMenu {
                     } else {
                         optionNo++;
                         System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i + counter).getMovieTitle());
-                        Choice.add(optionNo-1+counter);
+                        Choice.add(counter+optionNo-1);
                     }
                 }
                 System.out.println("(" + (optionNo+1) + ") Back");
@@ -228,6 +228,7 @@ public class DropDownMenu {
                     } else {
                         optionNo++;
                         System.out.println("(" + optionNo + ") " + cineplex.getMovies().get(i + counter).getMovieTitle());
+                        Choice.add(counter+optionNo-1);
                     }
                 }
                 System.out.println("(" + (optionNo+1) + ") Back");
