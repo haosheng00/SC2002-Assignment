@@ -69,7 +69,7 @@ public class TicketController {
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
-                sc.nextInt();
+                sc.next();
             }
         }while(true);
         System.out.println("Number of Adult Tickets: ");
@@ -79,7 +79,7 @@ public class TicketController {
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
-                sc.nextInt();
+                sc.next();
             }
         }while(true);
         System.out.println("Number of Senior Citizen Tickets: ");
@@ -89,7 +89,7 @@ public class TicketController {
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
-                sc.nextInt();
+                sc.next();
             }
         }while(true);
             
@@ -246,7 +246,7 @@ public class TicketController {
                         break;
                     } catch (Exception e) {
                         System.out.println("Invalid input. Please enter an integer: ");
-                        sc.nextInt();
+                        sc.next();
                     }
                 }while(true);
                 if (option <= 0 || option > i) {
@@ -267,7 +267,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                     Initialise.priceByAge.set(0,newstudtp);
@@ -292,7 +292,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                     Initialise.priceByAge.set(1, newadutp);
@@ -317,7 +317,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                     Initialise.priceByAge.set(2, newsnrtp);
@@ -368,7 +368,7 @@ public class TicketController {
                         break;
                     } catch (Exception e) {
                         System.out.println("Invalid input. Please enter an integer: ");
-                        sc.nextInt();
+                        sc.next();
                     }
                 }while(true);
                 if (option <= 0 || option > i) {
@@ -390,7 +390,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                       Initialise.priceByCinemaType.set(0, newordtp);
@@ -416,7 +416,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                       Initialise.priceByCinemaType.set(1, newpmstp);
@@ -466,7 +466,7 @@ public class TicketController {
                         break;
                     } catch (Exception e) {
                         System.out.println("Invalid input. Please enter an integer: ");
-                        sc.nextInt();
+                        sc.next();
                     }
                 }while(true);
   
@@ -490,7 +490,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                       Initialise.priceByDay.set(0, newdaytp);
@@ -516,7 +516,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                       Initialise.priceByDay.set(1, newendtp);
@@ -541,7 +541,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.nextInt();
+                            sc.next();
                         }
                     }while(true);
                       Initialise.priceByDay.set(2, newholtp);
