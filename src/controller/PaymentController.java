@@ -81,12 +81,13 @@ public class PaymentController {
         System.out.println("Please enter your CVC/CVV: ");
         cvc = sc.next();
         System.out.printf("The amount of $%.2f ", totalCharges);
+        System.out.println();
         System.out.println("will be charged to your card, under the name " + name); 
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
 
         //Print Receipt 
-        printReceipt(cartTickets);
+        printReceipt(cartTickets, TID);
 
         //mark the seats as booked for all tickets in the cart 
         for (int i=0; i<cartTickets.size(); i++) {
@@ -106,6 +107,7 @@ public class PaymentController {
 
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
+        System.out.println();
         System.out.println("Thank you for your purchase. We hope you enjoy your movie!");
 
         CustomerMenuUI.customerMenuOptions(customer);
@@ -165,19 +167,19 @@ public class PaymentController {
      * Prints the details of the tickets added with the total cost of all the tickets added
      * @param cartTickets tickets added
      */
-    public static void printReceipt(ArrayList<Ticket> cartTickets) {
+    public static void printReceipt(ArrayList<Ticket> cartTickets, String TID) {
         int size = cartTickets.size();
         System.out.println(" ");
         System.out.println("Receipt:");
         System.out.println();
+        System.out.println("TID: " + TID);
+        System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
             System.out.println("Ticket " + (i+1));
-            System.out.println();
             TicketController.printTicket(cartTickets.get(i));
             System.out.println();
         }
-        System.out.println(" ");
         System.out.println("Total Payment: $" + calcPayment(cartTickets));    
     }
 
@@ -191,10 +193,9 @@ public class PaymentController {
         System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
-            System.out.println();
             System.out.println("Ticket " + (i+1));
             TicketController.printTicket(Tickets.get(i));
-            System.out.println("\n");
+            System.out.println();
         }
     }
  
