@@ -289,7 +289,7 @@ public class MovieController implements Serializable{
 
     /**
      * Allows user to update the following attributes of an existing movie in the movies array list:
-     * Movie Title, Movie Status, Start Date of Screening & End Date of Screening
+     * Movie Title, Movie Status, Start Date of Screening and End Date of Screening
      * @return int 1 if update is successful
      * @throws Exception
      */
