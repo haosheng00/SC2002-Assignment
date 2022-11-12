@@ -15,6 +15,7 @@ public class Main {
         // System.out.println(Initialise.movies.get(0).getMovieTitle());
         // for (int i=0; i<Initialise.movies.get(0).getReviews().size(); i++) {
         //     System.out.println(Initialise.movies.get(0).getReviews().get(i).getUserName());
+        //     System.out.println(Initialise.movies.get(0).getReviews().get(i).getDateTime());
         //     System.out.println(Initialise.movies.get(0).getReviews().get(i).getRating());
         // }
         // System.out.println(Initialise.movies.get(0).getSales());
