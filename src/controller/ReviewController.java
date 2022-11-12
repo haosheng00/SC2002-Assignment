@@ -12,12 +12,6 @@ import serialiser.SerializeMovieDB;
  */
 public class ReviewController {
 
-    /*
-     * Constructor of Review Controller
-     */
-    public ReviewController () {
-    }
-
     /**
      * Adds review for a movie 
      * @param customer customer object 
