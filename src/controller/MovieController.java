@@ -73,7 +73,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle,MovieStatus.END_OF_SHOWING, "Des","fdg",122,0,Enum.AgeRestriction.PG,true,0,"112233","112233");
+            Movie newMovie = new Movie(movieTitle,MovieStatus.END_OF_SHOWING, new ArrayList<MovieGenre>() {{ add(MovieGenre.ACTION); add(MovieGenre.ADVENTURE);}},"Des","fdg",new ArrayList<String>() {{ add("Johnny"); add("Mary Kool"); add("Sarah Aga");}},122,0,Enum.AgeRestriction.PG,true,0,"112233","112233");
             System.out.println("========================================");
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
@@ -370,53 +370,67 @@ public class MovieController implements Serializable{
      * @throws Exception
      */
     public static void printMovie(int index) throws Exception {
-            System.out.println("========================================");
-            System.out.println("Movie Title: " + Initialise.movies.get(index).getMovieTitle());
-            System.out.println("Movie Status: " + Initialise.movies.get(index).getMovieStatus());
-            System.out.println("Movie Genre(s): " + Initialise.movies.get(index).getMovieGenres());
-            System.out.println("Director: " + Initialise.movies.get(index).getDirector());
-            System.out.println("Casts: " + Initialise.movies.get(index).getCasts());
-            System.out.println("Synopsis: " + Initialise.movies.get(index).getSynopsis());
-            System.out.println("Age Rating: " + Initialise.movies.get(index).getAgeRestriction());
-            System.out.println(Initialise.movies.get(index).getIs3D() ? "3D" : "2D");
-            System.out.println("Duration: " + Initialise.movies.get(index).getMovieDuration());
-            System.out.println("Rating: " + Initialise.movies.get(index).getOverallRating());
-            System.out.println("Start Screening Date: " + Initialise.movies.get(index).getStartDate());
-            System.out.println("End Screening Date: " + Initialise.movies.get(index).getExpiryDate());
-            System.out.println();
-
-            if (!Initialise.movies.get(index).getReviews().isEmpty()) {
-                System.out.println("(1) - See Reviews");
-                System.out.println("(0) - Back");
+        int i = 0;
+        System.out.println("========================================");
+        System.out.println("Movie Title: " + Initialise.movies.get(index).getMovieTitle());
+        System.out.println("Movie Status: " + Initialise.movies.get(index).getMovieStatus());
+        System.out.print("Movie Genre(s): ");
+        for (MovieGenre movieGenre : Initialise.movies.get(index).getMovieGenres()){
+            System.out.print(movieGenre);
+            i++;
+            if (i < Initialise.movies.get(index).getMovieGenres().size()) System.out.print(", ");
             }
-            else{
-                System.out.println("No reviews yet");
-                return;
-            }
+        System.out.println();
+        System.out.println("Director: " + Initialise.movies.get(index).getDirector());
+        System.out.print("Casts: ");
+        i = 0;
+        for (String cast : Initialise.movies.get(index).getCasts()){
+            System.out.print(cast);
+            if (i < Initialise.movies.get(index).getMovieGenres().size()) System.out.print(", ");
+            i++;
+        }
+        System.out.println();
+        System.out.println("Synopsis: " + Initialise.movies.get(index).getSynopsis());
+        System.out.println("Age Rating: " + Initialise.movies.get(index).getAgeRestriction());
+        System.out.println(Initialise.movies.get(index).getIs3D() ? "3D" : "2D");
+        System.out.println("Duration: " + Initialise.movies.get(index).getMovieDuration());
+        System.out.println("Rating: " + Initialise.movies.get(index).getOverallRating());
+        System.out.println("Start Screening Date: " + Initialise.movies.get(index).getStartDate());
+        System.out.println("End Screening Date: " + Initialise.movies.get(index).getExpiryDate());
+        System.out.println();
 
-            int choice = 0;
-            
-            do {
-                try {
-                    choice = sc.nextInt();
-                    if (choice != 1 && choice != 0){
-                        System.out.println("Invalid option. Please enter 0 or 1:");
-                        if (!Initialise.movies.get(index).getReviews().isEmpty()) {
-                            System.out.println("(1) - See Reviews");
-                            System.out.println("(0) - Back");
-                        }
+        if (!Initialise.movies.get(index).getReviews().isEmpty()) {
+            System.out.println("(1) - See Reviews");
+            System.out.println("(0) - Back");
+        }
+        else{
+            System.out.println("No reviews yet");
+            return;
+        }
+
+        int choice = 0;
+        
+        do {
+            try {
+                choice = sc.nextInt();
+                if (choice != 1 && choice != 0){
+                    System.out.println("Invalid option. Please enter 0 or 1:");
+                    if (!Initialise.movies.get(index).getReviews().isEmpty()) {
+                        System.out.println("(1) - See Reviews");
+                        System.out.println("(0) - Back");
                     }
-                    else if (choice == 1) {
-                        ReviewController.printMovieReviews(Initialise.movies.get(index));
-                        return;
-                    } 
-                    else return;
-                } 
-                catch (Exception e) {
-                    System.out.println("Invalid input. Please enter an integer:");
-                    sc.next();
                 }
-            } while (choice != 0);
+                else if (choice == 1) {
+                    ReviewController.printMovieReviews(Initialise.movies.get(index));
+                    return;
+                } 
+                else return;
+            } 
+            catch (Exception e) {
+                System.out.println("Invalid input. Please enter an integer:");
+                sc.next();
+            }
+        } while (choice != 0);
 }
 
     /**

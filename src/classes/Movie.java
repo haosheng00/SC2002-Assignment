@@ -82,15 +82,15 @@ public class Movie implements Serializable{
     // }
 
     //TODO: remove this
-    public Movie(String movieTitle, Enum.MovieStatus movieStatus, String synopsis, String director, int movieDuration, double sales, Enum.AgeRestriction ageRestriction, boolean is3D, double overallRating, String i, String j){
+    public Movie(String movieTitle, Enum.MovieStatus movieStatus, ArrayList<MovieGenre> movieGenres, String synopsis, String director, ArrayList<String> casts, int movieDuration, double sales, Enum.AgeRestriction ageRestriction, boolean is3D, double overallRating, String i, String j){
         this.movieTitle = movieTitle;
         this.reviews = new ArrayList<>();
         this.sales = 0;
         this.movieStatus = movieStatus;
-        this.movieGenres = new ArrayList<>();
+        this.movieGenres = movieGenres;
         this.synopsis = synopsis;
         this.director = director;
-        this.casts = new ArrayList<>();
+        this.casts = casts;
         this.movieDuration = movieDuration;
         this.ageRestriction = ageRestriction;
         this.is3D = is3D;
