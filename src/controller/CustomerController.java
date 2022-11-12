@@ -176,10 +176,11 @@ public class CustomerController {
     public static void viewPastTickets(Customer customer) throws Exception {
         System.out.println("========================================");
         System.out.println("Tickets you purchased in the past: ");
+        System.out.println();
         ArrayList<Ticket> arr = customer.getBoughtTickets();
         for (int x = 0; x < arr.size(); x++) {
             TicketController.printTicket(arr.get(x));
-            System.out.println();
+            System.out.println("\n\n");
         }
         if (customer.getUserName() == "guest")
             CustomerMenuUI.guestMenuOptions();

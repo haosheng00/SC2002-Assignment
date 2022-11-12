@@ -395,13 +395,13 @@ public class MovieController implements Serializable{
         System.out.println(Initialise.movies.get(index).getIs3D() ? "3D" : "2D");
         System.out.println("Duration: " + Initialise.movies.get(index).getMovieDuration());
         System.out.println("Rating: " + Initialise.movies.get(index).getOverallRating());
-        System.out.println("Start Screening Date: " + Initialise.movies.get(index).getStartDate());
-        System.out.println("End Screening Date: " + Initialise.movies.get(index).getExpiryDate());
+        System.out.println("Start Screening Date: " + DateTime.dateFormatter(Initialise.movies.get(index).getStartDate()));
+        System.out.println("End Screening Date: " + DateTime.dateFormatter(Initialise.movies.get(index).getExpiryDate()));
         System.out.println();
 
         if (!Initialise.movies.get(index).getReviews().isEmpty()) {
-            System.out.println("(1) - See Reviews");
-            System.out.println("(0) - Back");
+            System.out.println("(1) See Reviews");
+            System.out.println("(0) Back");
         }
         else{
             System.out.println("No reviews yet");
@@ -416,8 +416,8 @@ public class MovieController implements Serializable{
                 if (choice != 1 && choice != 0){
                     System.out.println("Invalid option. Please enter 0 or 1:");
                     if (!Initialise.movies.get(index).getReviews().isEmpty()) {
-                        System.out.println("(1) - See Reviews");
-                        System.out.println("(0) - Back");
+                        System.out.println("(1) See Reviews");
+                        System.out.println("(0) Back");
                     }
                 }
                 else if (choice == 1) {
