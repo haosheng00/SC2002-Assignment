@@ -15,13 +15,6 @@ public class PaymentController {
 
     private static ArrayList<Payment> Payments = Initialise.payments;
 
-    /**
-     * Represents the payment controller with the payments array list
-     * @param Payments array of payment objects
-     */
-    public PaymentController(ArrayList<Payment> Payments) {
-        PaymentController.Payments = Payments;
-    }
 
     /**
      * Allows the customer to check out the tickets added with only credit card purchase option
@@ -160,7 +153,7 @@ public class PaymentController {
      */
     public static double calcPayment(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
-        int sum = 0;
+        double sum = 0;
         for (int i=0; i<size; i++) {
             //change name accordingly
             sum += cartTickets.get(i).getTicketPrice();
