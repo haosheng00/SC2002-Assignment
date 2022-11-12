@@ -102,7 +102,7 @@ public class TicketController {
                     j++;
                 }
                 ageNo = 1;
-                actualTicketPrice = TicketController.TicketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                actualTicketPrice = TicketController.ticketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageNo);
             }
 
@@ -115,7 +115,7 @@ public class TicketController {
                     j++;
                 }
                 ageNo = 2;
-                actualTicketPrice = TicketController.TicketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen,seatChosen);
+                actualTicketPrice = TicketController.ticketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen,seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageNo);
             }
 
@@ -128,7 +128,7 @@ public class TicketController {
                     j++;
                 }
                 ageNo = 3;
-                actualTicketPrice = TicketController.TicketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                actualTicketPrice = TicketController.ticketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageNo);
             }
 
@@ -151,7 +151,7 @@ public class TicketController {
          * @return final ticket price
          * @throws ParseException
          */
-        public static double TicketPrice(int ageNo, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
+        public static double ticketPrice(int ageNo, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
             double ticketPrice = 0;
