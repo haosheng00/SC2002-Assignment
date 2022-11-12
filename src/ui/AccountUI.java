@@ -2,13 +2,15 @@ package ui;
 
 import java.util.Scanner;
 
+import classes.Customer;
 import controller.*;
 import initialiser.Initialise;
 /**
  * Prints the "homepage" of the application, containing login and other methods related to admin/customer account
  */
 public class AccountUI {
-    public static int index;
+    //public static int index;
+    public static Customer customer;
     //static AdminController adminPrac = new AdminController();
     //static CustomerController custPrac = new CustomerController(ArrayList<Customer>);
 
@@ -131,11 +133,11 @@ public class AccountUI {
                     break;
                 case 2:
                     if (x == 2){
-                        TicketController.createBooking(Initialise.cineplexes, Initialise.customers.get(index));
+                        TicketController.createBooking(Initialise.cineplexes, customer);
                     }
                     else{
                         System.out.println("Logged in successfully");
-                        CustomerMenuUI.customerMenuOptions(Initialise.customers.get(index));
+                        CustomerMenuUI.customerMenuOptions(customer);
                     }
                     break;
                 case 3:
@@ -182,7 +184,7 @@ public class AccountUI {
         }
         if(isCustomer >0){
             if(password.equals(Initialise.customers.get(isCustomer).getPassword())){
-                index = isCustomer;
+                customer = Initialise.customers.get(isCustomer);
                 return 2;
             }
             else return 0;
