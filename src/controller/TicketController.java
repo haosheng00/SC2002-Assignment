@@ -41,6 +41,7 @@ public class TicketController {
 
         int childTicketNo, adultTicketNo, seniorTicketNo = 0;
         int cineplexChoice, movieChoice, screeningChoice;
+        int ageno;
         double actualTicketPrice;
         Seat seatChosen = null;
         current = customer;
@@ -100,8 +101,9 @@ public class TicketController {
                 if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
                     j++;
                 }
-                actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen, seatChosen);
-                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
+                ageno = 1;
+                actualTicketPrice = TicketController.TicketPrice(ageno, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageno);
             }
 
             for (int j = 0; j < adultTicketNo; j++) {
@@ -112,8 +114,9 @@ public class TicketController {
                 if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
                     j++;
                 }
-                actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen,seatChosen);
-                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
+                ageno = 2;
+                actualTicketPrice = TicketController.TicketPrice(ageno, cineplexChosen, movieChosen, screeningChosen,seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageno);
             }
 
             for (int j = 0; j < seniorTicketNo; j++) {
@@ -124,8 +127,9 @@ public class TicketController {
                 if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
                     j++;
                 }
-                actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen, seatChosen);
-                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
+                ageno = 3;
+                actualTicketPrice = TicketController.TicketPrice(ageno, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageno);
             }
 
             PaymentUI.initiatePaymentUI(customer);
@@ -149,7 +153,7 @@ public class TicketController {
          * @return final ticket price
          * @throws ParseException
          */
-        public static double TicketPrice(int student, int adult, int senior, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
+        public static double TicketPrice(int ageno, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
             double ticketPrice = 0;
@@ -160,15 +164,15 @@ public class TicketController {
             }
             else{
                 
-                if (student == 1){
+                if (ageno == 1){
                     ticketPrice = Initialise.priceByAge.get(0);
                 }
     
-                if (adult == 1){
+                if (ageno == 2){
                         ticketPrice = Initialise.priceByAge.get(1);
                     }   
                 
-                if (senior == 1){
+                if (ageno == 3){
                     ticketPrice = Initialise.priceByAge.get(2);
                 }
             }
@@ -595,10 +599,10 @@ public class TicketController {
          * @param seatChosen seat selected by customer
          * @param actualTicketPrice final ticket price
          */
-        public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen, Seat seatChosen, double actualTicketPrice){
+        public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen, Seat seatChosen, double actualTicketPrice, int ageno){
             // FOR CREATEBOOKING
 
-            Ticket ticket = new Ticket(movieChosen, cineplexChosen, screeningChosen.getCinema(), screeningChosen.getShowDate(), screeningChosen.getShowTime(), seatChosen, actualTicketPrice);
+            Ticket ticket = new Ticket(movieChosen, cineplexChosen, screeningChosen.getCinema(), screeningChosen.getShowDate(), screeningChosen.getShowTime(), seatChosen, actualTicketPrice, ageno);
             cartTickets.add(ticket);
         }
 
@@ -614,7 +618,7 @@ public class TicketController {
             System.out.println("Show Date: " + ticket.getShowDate());
             System.out.println("Show Time: " + ticket.getShowTime());
             System.out.println("Seat: " + ticket.getSeat().getSeatId());
-            System.out.println("Price: " + ticket.getTicketPrice());
+            System.out.println("Price " + ticket.ageGroup(ticket.getAgeNo()) + ": $" + ticket.getTicketPrice());
         }
     }
 

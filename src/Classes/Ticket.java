@@ -2,6 +2,8 @@ package classes;
 
 import java.io.Serializable;
 
+import javax.lang.model.util.ElementScanner14;
+
 /**
  * Represents a ticket of the movie to be purchased/purchased
  */
@@ -14,7 +16,8 @@ public class Ticket implements Serializable{
     private String showTime;
     private Seat seat;
     private double ticketPrice;
-
+    private int ageno;
+    private Ticket ticket;
 
     /**
      * Represents a purchased ticket movie with its details
@@ -26,7 +29,7 @@ public class Ticket implements Serializable{
      * @param seat seat the ticket was purchased for
      * @param ticketPrice cost of the ticket paid
      */
-    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDate, String showTime, Seat seat, double ticketPrice){
+    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDate, String showTime, Seat seat, double ticketPrice, int ageno){
         this.movie = movie;
         this.cineplex = cineplex;
         this.cinema = cinema;
@@ -34,6 +37,7 @@ public class Ticket implements Serializable{
         this.showTime = showTime;
         this.seat = seat;
         this.ticketPrice = ticketPrice;
+        this.ageno = ageno;
         
     } 
 
@@ -98,7 +102,7 @@ public class Ticket implements Serializable{
      * @return ticket object
      */
     public Object getTicket(){
-        Ticket ticket = new Ticket(movie, cineplex, cinema, showDate, showTime, seat, ticketPrice);
+        Ticket ticket = new Ticket(movie, cineplex, cinema, showDate, showTime, seat, ticketPrice, ageno);
         return ticket;
     }
 
@@ -156,5 +160,25 @@ public class Ticket implements Serializable{
      */
     public double getTicketPrice(){
         return ticketPrice;
+    }
+
+    public int getAgeNo(){
+        return ageno;
+    }
+
+    public String ageGroup(int ageno){
+        if (ageno == 1){
+            return "(Student)";
+
+        }
+        else if (ageno == 2){
+            return "(Adult)";
+
+        }
+        else if (ageno == 3){
+            return "(Senior Citizen)";
+
+        }
+        else return null;
     }
 }
