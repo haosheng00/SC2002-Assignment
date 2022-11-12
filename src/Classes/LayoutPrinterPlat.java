@@ -10,33 +10,34 @@ public class LayoutPrinterPlat extends LayoutPrinter {
      * Prints the PLATINUMMOVIESUITES layout of a specific screening
      * @param screening
      */
-        public static void printPlatLayout(Screening screening) {
+    @Override
+        public void printLayout(Screening screening) {
             System.out.printf("%26s", "Screen");
             System.out.println();
             int columnNumber = 1;
-            char rowNumber = LayoutPrinter.setNewRow('@');
+            char rowNumber = setNewRow('@');
             for (int i = 0; i < Initialise.Plat_Capacity; i++) {
                 int leftSectionWidth = 2;
                 int midSectionWidth = 2;
                 int rightSectionWidth = 2;
 
                 if (rowNumber == 'A') {
-                    rowNumber = LayoutPrinter.setNewRow('A');
+                    rowNumber = setNewRow('A');
                 }
                 if (columnNumber == leftSectionWidth + 1 || columnNumber == leftSectionWidth + midSectionWidth + 1) {
-                    LayoutPrinter.printAisle();
+                    printAisle();
                 }
                 while (Character.getNumericValue(rowNumber) % 3 == 1 && (columnNumber > leftSectionWidth && columnNumber < leftSectionWidth + midSectionWidth + 1)){
-                    columnNumber = LayoutPrinter.printEmptySeats(columnNumber);
+                    columnNumber = printEmptySeats(columnNumber);
                     if (columnNumber == leftSectionWidth + midSectionWidth + 1) {
-                        LayoutPrinter.printAisle();
+                        printAisle();
                     }
                 }
                 screening.getSeat(i).setEverything(rowNumber, columnNumber);
                 columnNumber++;
                 SeatFormatter.printSeat(screening.getSeat(i));
                 if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < Initialise.Plat_Capacity - 1) {
-                    rowNumber = LayoutPrinter.setNewRow(rowNumber);
+                    rowNumber = setNewRow(rowNumber);
                     columnNumber = 1;
                 }
             }
@@ -44,10 +45,12 @@ public class LayoutPrinterPlat extends LayoutPrinter {
             System.out.println();
         }
 
+
     /**
      * Prints out the legend of the seating layout
      */
-    public static void printLegend(){
+    @Override
+    public void printLegend(){
         System.out.println();
         System.out.println("---: Reserved by you   xxx: Booked");
     }
