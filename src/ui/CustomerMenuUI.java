@@ -23,12 +23,12 @@ public class CustomerMenuUI{
             do {
                 System.out.println("========================================");
                 System.out.println("Please select an option.");
-                System.out.println("(1) - Search Movie");
-                System.out.println("(2) - Book Tickets");
-                System.out.println("(3) - View Past Tickets");
-                System.out.println("(4) - Your Reviews");
-                System.out.println("(5) - See Top 5 Movies");
-                System.out.println("(6) - Log Out");
+                System.out.println("(1) Search Movie");
+                System.out.println("(2) Book Tickets");
+                System.out.println("(3) View Past Tickets");
+                System.out.println("(4) Your Reviews");
+                System.out.println("(5) See Top 5 Movies");
+                System.out.println("(6) Log Out");
                 System.out.println("========================================");
                 try {
                     option = sc.nextInt();
@@ -81,10 +81,10 @@ public class CustomerMenuUI{
         int option = 0;
             System.out.println("========================================");
             System.out.println("Please select an option.");
-            System.out.println("(1) - Search Movie");
-            System.out.println("(2) - Book Tickets");
-            System.out.println("(3) - See Top 5 Movies");
-            System.out.println("(4) - Back");
+            System.out.println("(1) Search Movie");
+            System.out.println("(2) Book Tickets");
+            System.out.println("(3) See Top 5 Movies");
+            System.out.println("(4) Back");
             System.out.println("========================================");
         do{
             try {

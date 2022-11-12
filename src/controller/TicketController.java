@@ -93,34 +93,37 @@ public class TicketController {
         }while(true);
             
             for (int j = 0; j < childTicketNo; j++) {
-                if (j == 0){
-                    SeatFormatter.seatDisplay(screeningChosen);
-                }
+                SeatFormatter.seatDisplay(screeningChosen);
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
                 seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                    j++;
+                }
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
 
             for (int j = 0; j < adultTicketNo; j++) {
-                if (j == 0){
-                    SeatFormatter.seatDisplay(screeningChosen);
-                }
+                SeatFormatter.seatDisplay(screeningChosen);
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
                 seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                    j++;
+                }
                 actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen,seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
 
             for (int j = 0; j < seniorTicketNo; j++) {
-                if (j == 0){
-                    SeatFormatter.seatDisplay(screeningChosen);
-                }
+                SeatFormatter.seatDisplay(screeningChosen);
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
                 seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                    j++;
+                }
                 actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
