@@ -160,7 +160,7 @@ public class PaymentController {
      */
     public static double calcPayment(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
-        int sum = 0;
+        double sum = 0;
         for (int i=0; i<size; i++) {
             //change name accordingly
             sum += cartTickets.get(i).getTicketPrice();
