@@ -225,7 +225,7 @@ public class TicketController {
             
             //LIST AGE GROUP
             ArrayList <Double> priceByAge = Initialise.priceByAge;
-            int i = 0, option, j = 0;
+            int i = 0, option, j = 0, k=0;
             do {
                 System.out.println("========================================");
                 System.out.println("The current ticket base prices by age are:");
@@ -240,6 +240,7 @@ public class TicketController {
                     System.out.println("(" + (i+1) + ") " + ticketType.getTicketType(i));
                     i++;
                 }
+                i=0;
                 do {
                     try {
                         option = sc.nextInt();
@@ -362,6 +363,7 @@ public class TicketController {
                       System.out.println("(" + (i+1) + ") " + cinemaType.getCinemaType(i));
                       i++;
                 } 
+                i=0;
                 do {
                     try {
                         option = sc.nextInt();
