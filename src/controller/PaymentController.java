@@ -83,7 +83,7 @@ public class PaymentController {
         cvc = sc.nextLine();
         System.out.printf("The amount of $%.2f ", totalCharges);
         System.out.println("will be charged to your card, under the name " + name); 
-        System.out.println("========================================");
+
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
 
