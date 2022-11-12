@@ -172,7 +172,7 @@ public class WriteMovieDB {
 		SerializeMovieDB.writeSerializedObject("Top5BySales.dat", top5BySales);
 		SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", top5ByRatings);
 		SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", listingCriteria);
-		SerializeMovieDB.writeSerializedObject("Holiday.dat", Initialise.holidays);
+		SerializeMovieDB.writeSerializedObject("Holiday.dat",holidays);
 		SerializeMovieDB.writeSerializedObject("PriceByAge.dat", priceByAge);
 		SerializeMovieDB.writeSerializedObject("PriceByMovieType.dat", priceByMovieType);
 		SerializeMovieDB.writeSerializedObject("PriceByCinemaType.dat", priceByCinemaType);
