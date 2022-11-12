@@ -124,7 +124,7 @@ public class ReviewController {
         ArrayList <Review> reviews = customer.getPastReviews();
         //iterate thru the customers' past reviews array to find review to be deleted (check movie name)
         for (i=0; i<reviews.size(); i++) {
-            if (reviews.get(i).getMovie().getMovieTitle() == movie.getMovieTitle()) {
+            if (reviews.get(i).getMovie().getMovieTitle().equals(movie.getMovieTitle())) {
                 reviews.remove(i);
                 break;
             }
