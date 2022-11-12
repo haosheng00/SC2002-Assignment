@@ -133,8 +133,13 @@ public class ReviewController {
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
         //update ratings 
-        double updatedRating = (movie.getOverallRating()-oldRating)/(movie.getReviews().size());
-        movie.setOverallRating(updatedRating);
+        if (movie.getReviews().size() == 0) {
+            movie.setOverallRating(0);
+        }
+        else {
+            double updatedRating = (movie.getOverallRating()-oldRating)/(movie.getReviews().size());
+            movie.setOverallRating(updatedRating);
+        }
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
 
@@ -252,6 +257,8 @@ public class ReviewController {
      * @throws IOException
      */
     public static void updateTop5Rating(Movie movie) throws IOException {
+
+        //System.out.println("Updated Rating" + movie.getOverallRating());
 
         int exist = 0;
 
