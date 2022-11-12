@@ -42,10 +42,11 @@ public class CustomerMenuUI{
                             MovieController.printMovie(movieIndex);
                             break;
                         case 2:
+                            System.out.println("========================================");
                             TicketController.createBooking(Initialise.cineplexes, customer);
                             break;
                         case 3:
-                            //Use serialiser here
+                            System.out.println("========================================");
                             CustomerController.viewPastTickets(customer);
                             break;
                         case 4:

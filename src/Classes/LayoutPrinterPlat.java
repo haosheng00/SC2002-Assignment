@@ -11,7 +11,7 @@ public class LayoutPrinterPlat extends LayoutPrinter {
      * @param screening
      */
         public static void printPlatLayout(Screening screening) {
-            System.out.printf("%20s", "Screen");
+            System.out.printf("%26s", "Screen");
             System.out.println();
             int columnNumber = 1;
             char rowNumber = LayoutPrinter.setNewRow('@');

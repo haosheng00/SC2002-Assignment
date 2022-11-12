@@ -57,13 +57,13 @@ public class SeatFormatter implements Serializable{
         } while (true);
 
         String seatIdChoice = SeatFormatter.seatIdFormat(rowChoice, columnChoice);
-        System.out.println(seatIdChoice);
+        System.out.print(seatIdChoice);
+        System.out.println(" successfully added to cart");
         if (screening.getCinema().getCinemaType() == Enum.CinemaType.ORDINARY) {
             for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
                     if (!screening.getSeat(i).getIsBooked() && !screening.getSeat(i).getIsReserved()) {
                         screening.getSeat(i).setIsReserved(true);
-                        System.out.println("Adding to cart...");
                         return screening.getSeat(i);
                     }
                 }
@@ -73,7 +73,6 @@ public class SeatFormatter implements Serializable{
                 if (seatIdChoice.equals(screening.getSeat(i).getSeatId())) {
                     if (!screening.getSeat(i).getIsBooked() && !screening.getSeat(i).getIsReserved()) {
                         screening.getSeat(i).setIsReserved(true);
-                        System.out.println("Adding to cart...");
                         return screening.getSeat(i);
                     }
                 }

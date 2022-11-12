@@ -196,6 +196,7 @@ public class CustomerController {
         ArrayList<Ticket> arr = customer.getBoughtTickets();
         for (int x = 0; x < arr.size(); x++) {
             TicketController.printTicket(arr.get(x));
+            System.out.println();
         }
         if (customer.getUserName() == "guest")
             CustomerMenuUI.guestMenuOptions();
