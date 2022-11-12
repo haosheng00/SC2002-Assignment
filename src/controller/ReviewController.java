@@ -304,6 +304,7 @@ public class ReviewController {
             System.out.println("Movie: " + reviews.get(i).getMovie().getMovieTitle());
             System.out.println("Rating: " + reviews.get(i).getRating());
             System.out.println("Review: " + reviews.get(i).getDescription());
+            System.out.println();
         }
     }
 
