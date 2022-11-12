@@ -110,10 +110,10 @@ public class WriteMovieDB {
 				new PublicHoliday("DEEPAVALI", "20221024"),
 				new PublicHoliday("CHRISTMAS", "20221225")));
 
-	public static ArrayList<Double> priceByAge = new ArrayList<Double> (List.of(7.0, 8.5, 4.0)); //student, adult, senior
-	public static ArrayList<Double> priceByMovieType = new ArrayList<Double> (List.of(0.0, 2.0)); //2d, 3d
-	public static ArrayList<Double> priceByCinemaType = new ArrayList<Double> (List.of(0.0, 5.0)); //ordinary, premium
-	public static ArrayList<Double> priceByDay = new ArrayList<Double>(List.of(0.0, 3.0, 5.0)); //weekday, weekend, holiday
+	public static ArrayList<Double> priceByAge = new ArrayList<Double> (List.of(7.00, 8.50, 4.00)); //student, adult, senior
+	public static ArrayList<Double> priceByMovieType = new ArrayList<Double> (List.of(0.00, 2.00)); //2d, 3d
+	public static ArrayList<Double> priceByCinemaType = new ArrayList<Double> (List.of(0.00, 5.00)); //ordinary, premium
+	public static ArrayList<Double> priceByDay = new ArrayList<Double>(List.of(0.00, 3.00, 5.00)); //weekday, weekend, holiday
 	public static ArrayList<Integer> listingCriteria = new ArrayList<Integer>(List.of(3));
 
 	/**
