@@ -15,9 +15,19 @@ import ui.MovieUI;
  * Contains the methods related to the movies available
  */
 public class MovieController implements Serializable{
-    static Scanner sc = new Scanner(System.in);
-    static ArrayList<Movie> top5BySales = Initialise.top5BySales;
-    static ArrayList<Movie> top5ByRatings = Initialise.top5ByRatings;
+    private static Scanner sc = new Scanner(System.in);
+    /**
+     * Represents an arraylist containing the top 5 movies based on sales
+     */
+    private static ArrayList<Movie> top5BySales = Initialise.top5BySales;
+    /**
+     * Represents an arraylist containing the top 5 movies based on ratings
+     */
+    private static ArrayList<Movie> top5ByRatings = Initialise.top5ByRatings;
+    /**
+     * Represents an arraylist containing all the movies in MOBLIMA
+     */
+    private static ArrayList<Movie> movies = Initialise.movies;
 
     /**
      * Loops through the movies array list to check on the existence of the searched movie
@@ -264,15 +274,10 @@ public class MovieController implements Serializable{
 
     /**
      * Removes a movie from the existing movies array list
-     * @return int 1 if movie is deleted/removed successfully
      * @throws Exception
      */
-    public static int deleteMovie() throws Exception {
+    public static void deleteMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
-        if (index == -1){
-            return -1;
-        }
-        //Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
         for (int i = 0; i < Initialise.cineplexes.size(); i++){
             for(int j = 0; j < Initialise.cineplexes.get(i).getMovies().size(); j++){
                 if (Initialise.movies.get(index).getMovieTitle().equals(Initialise.cineplexes.get(i).getMovies().get(i).getMovieTitle())){
@@ -284,16 +289,16 @@ public class MovieController implements Serializable{
         SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
         System.out.println("Movie Deleted!");
-        return 1;
+        return;
     }
 
     /**
      * Allows user to update the following attributes of an existing movie in the movies array list:
-     * Movie Title, Movie Status, Start Date of Screening & End Date of Screening
+     * Movie Title, Movie Status, Start Date of Screening and End Date of Screening
      * @return int 1 if update is successful
      * @throws Exception
      */
-    public static int updateMovie() throws Exception {
+    public static void updateMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
         int choice = 0;
 
@@ -350,7 +355,7 @@ public class MovieController implements Serializable{
                 break;
         }
         System.out.println("Movie updated!");
-        return 1;
+        return;
     }
 
     /**

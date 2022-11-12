@@ -12,12 +12,6 @@ import serialiser.SerializeMovieDB;
  */
 public class ReviewController {
 
-    /*
-     * Constructor of Review Controller
-     */
-    public ReviewController () {
-    }
-
     /**
      * Adds review for a movie 
      * @param customer customer object 
@@ -74,7 +68,7 @@ public class ReviewController {
          //write to customer 
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
-        //update overallRating 
+        //update overallRating
         double updatedRating = (rating+movie.getOverallRating())/(movie.getReviews().size());
         movie.setOverallRating(updatedRating);
 
