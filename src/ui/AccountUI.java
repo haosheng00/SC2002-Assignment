@@ -116,13 +116,18 @@ public class AccountUI {
                     exitChoice = sc.nextInt();
                     break;
                 case 1:
+                    System.out.println("Logged in successfully");
                     AdminMenuUI.adminMenuOptions();
                     break;
                 case 2:
                     if (x == 2){
                         TicketController.createBooking(Initialise.cineplexes, Initialise.customers.get(index));
                     }
-                    CustomerMenuUI.customerMenuOptions(Initialise.customers.get(index));
+                    else{
+                        System.out.println("Logged in successfully");
+                        CustomerMenuUI.customerMenuOptions(Initialise.customers.get(index));
+                    }
+                    
                     break;
                 case 3:
                     CustomerMenuUI.guestMenuOptions();
@@ -149,7 +154,7 @@ public class AccountUI {
      * 2 if log in successfully as customer, 3 if user is guest, and 4 if username is not found
      */
     private static int Login(String username, String password){
-        System.out.println("Entered Login");
+        //System.out.println("Entered Login");
         int isAdmin = -2;
         isAdmin = AdminController.searchAdmin(username);
         int isCustomer = -2;
@@ -177,7 +182,7 @@ public class AccountUI {
        if(isGuest ==1){
             return 3;
         }
-        System.out.println("Username does not exist");
+        System.out.println("Sorry, this username does not exist");
         return 4;
     }
 
