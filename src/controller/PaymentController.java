@@ -73,7 +73,7 @@ public class PaymentController {
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
         System.out.println("========================================");
-        System.out.printf("The total amount is: %.2f\n", totalCharges);
+        System.out.printf("The total amount is: $%.2f\n", totalCharges);
         System.out.println();
         System.out.println("Please enter your credit card details:");
         System.out.println();
@@ -87,7 +87,7 @@ public class PaymentController {
         billingAddress = sc.next();
         System.out.println("Please enter your CVC/CVV: ");
         cvc = sc.next();
-        System.out.printf("The amount of %.2f ", totalCharges);
+        System.out.printf("The amount of $%.2f ", totalCharges);
         System.out.println("will be charged to your card, under the name " + name); 
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
@@ -174,6 +174,7 @@ public class PaymentController {
      */
     public static void printReceipt(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
+        System.out.println(" ");
         System.out.println("Receipt:");
         System.out.println();
         for (int i=0; i<size; i++) {
@@ -182,7 +183,8 @@ public class PaymentController {
             System.out.println();
             TicketController.printTicket(cartTickets.get(i));
         }
-        System.out.println("Total Payment: " + calcPayment(cartTickets));    
+        System.out.println(" ");
+        System.out.println("Total Payment: $" + calcPayment(cartTickets));    
     }
 
     /**
