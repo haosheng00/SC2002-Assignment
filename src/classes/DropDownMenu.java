@@ -278,7 +278,7 @@ public class DropDownMenu {
                 System.out.println("Select Movie: ");
                 for (i = 0; i < cineplex.getMovies().size(); i++) {
                     if (cineplex.getMovies().get(i).getMovieStatus() == Enum.MovieStatus.END_OF_SHOWING
-                            || cineplex.getMovies().get(i).getMovieStatus() == Enum.MovieStatus.COMING_SOON) {
+                            || cineplex.getMovies().get(i).getMovieStatus() == Enum.MovieStatus.COMING_SOON || cineplex.getMovies().get(i) == null) {
                         counter++;
                     } else {
                         optionNo++;
