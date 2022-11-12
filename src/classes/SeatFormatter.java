@@ -126,7 +126,7 @@ public class SeatFormatter implements Serializable{
     public static void seatDisplay(Screening screeningChosen){
         if (screeningChosen.getCinema().getCinemaType().equals(Enum.CinemaType.PLATINUMMOVIESUITES)){
             LayoutPrinterPlat lpPlat = new LayoutPrinterPlat();
-            lpPlat.printPlatLayout(screeningChosen);
+            lpPlat.printLayout(screeningChosen);
         }
         else if (screeningChosen.getCinema().getCinemaType().equals(Enum.CinemaType.ORDINARY)) {
             LayoutPrinterOrdinary lpOrdi = new LayoutPrinterOrdinary();
