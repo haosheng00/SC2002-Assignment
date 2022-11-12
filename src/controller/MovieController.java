@@ -449,8 +449,8 @@ public class MovieController implements Serializable{
 
         if (criteria == 3) {
             System.out.println("Sort by:");
-            System.out.println("(1) - By Overall Rating");
-            System.out.println("(2) - By Sales");
+            System.out.println("(1) By Overall Rating");
+            System.out.println("(2) By Sales");
             do {
                 try {
                     choice = sc.nextInt();
