@@ -27,7 +27,7 @@ public class MovieController implements Serializable{
     public static int searchMovie(String movieTitle) {
         movieTitle = movieTitle.toUpperCase();
         for (int i = 0; i < Initialise.movies.size(); i++) {
-            if (movieTitle.equals(Initialise.movies.get(i).getMovieTitle())) {
+            if (movieTitle.equals(Initialise.movies.get(i).getMovieTitle().toUpperCase())) {
                 return i;
             }
         }
@@ -48,14 +48,14 @@ public class MovieController implements Serializable{
         int i;
         System.out.println("========================================");
         System.out.println("Please enter new Movie Title:");
-        movieTitle = sc.next();
+        movieTitle = sc.nextLine();
         exists = searchMovie(movieTitle);
         while (!(exists == -1 || exists == -2)) {
             System.out.println("========================================");
             System.out.println("The movie already exists.");
             System.out.println("Please enter new Movie Title:");
             System.out.println("Or press 0 to go back");
-            String input = sc.next();
+            String input = sc.nextLine();
             if (input == "0")
                 return;
             else
@@ -63,7 +63,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle.toUpperCase(),MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233");
+            Movie newMovie = new Movie(movieTitle,MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233");
             System.out.println("========================================");
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
@@ -97,7 +97,7 @@ public class MovieController implements Serializable{
                     break;  
                 }
                 catch (Exception e){
-                    System.out.println("Invalid input! Enter integer only!");
+                    System.out.println("Invalid input. Please enter an integer:");
                     sc.next();         
                 }
                 } while(true);
@@ -155,8 +155,7 @@ public class MovieController implements Serializable{
                         case 0:
                             break;  
                         default:
-                            System.out.println("Invalid option. Please enter an integer (1-10):");
-                            sc.next();
+                            System.out.println("Invalid option. Please enter an integer (0-10):");
                             continue;    
                     }
                 } catch (Exception e){
@@ -164,10 +163,11 @@ public class MovieController implements Serializable{
                     sc.next();         
                 }
             } while (i != 0);
+            sc.nextLine();
             newMovie.setMovieGenres(movieGenres);
             System.out.println("========================================");
             System.out.println("Please enter Movie Synopsis:");
-            newMovie.setSynopsis(sc.next());
+            newMovie.setSynopsis(sc.nextLine());
             System.out.println("========================================");
             System.out.println("Please enter movie duration in mins:");
             do{
@@ -223,16 +223,17 @@ public class MovieController implements Serializable{
                     sc.next();         
                 }
             } while (true);
+            sc.nextLine();
             System.out.println("========================================");
             System.out.println("Please enter main movie director: ");
-            newMovie.setDirector(sc.next());
+            newMovie.setDirector(sc.nextLine());
             System.out.println("========================================");
             System.out.println("Please enter name of cast:");
-            s = sc.next();
+            s = sc.nextLine();
             do {
                 casts.add(s);
                 System.out.println("Please enter name of next cast or press 0 to go to next section");
-                s = sc.next().toUpperCase();
+                s = sc.nextLine();
             } while (!s.equals("0"));
             newMovie.setCasts(casts);
             while ((!s.equals("Y") && !s.equals("N"))) {
@@ -302,7 +303,7 @@ public class MovieController implements Serializable{
             case 1:
                 System.out.println("========================================");
                 System.out.println("Enter new movie title:");
-                Initialise.movies.get(index).setMovieTitle(sc.next().toUpperCase());
+                Initialise.movies.get(index).setMovieTitle(sc.nextLine());
                 break;
             case 2:
                 System.out.println("========================================");
@@ -340,6 +341,7 @@ public class MovieController implements Serializable{
             case 5:
                 break;
         }
+        System.out.println("Movie updated!");
         return 1;
     }
 
