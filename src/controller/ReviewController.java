@@ -53,8 +53,10 @@ public class ReviewController {
                 sc.next();
             }
         } while (true);
+
+        String buffer = sc.nextLine();
         System.out.println("Please enter your review: ");
-        review = sc.next();
+        review = sc.nextLine();
 
         //get current time
         String dateTime = Initialise.dt.reviewDateTime();
@@ -210,8 +212,10 @@ public class ReviewController {
                 sc.next();
             }
         } while (true);
+        String buffer = sc.nextLine();
         System.out.println("Please enter your new review: ");
-        review = sc.next();
+        review = sc.nextLine();
+
         String dateTime = Initialise.dt.reviewDateTime();
 
         //delete review from Reviews array 
@@ -300,16 +304,16 @@ public class ReviewController {
      */
     public static void printCustomerReviews(Customer customer) {
         ArrayList <Review> reviews = customer.getPastReviews();
-        System.out.println("Reviews of " + customer.getUserName());
+        System.out.println("Reviews of " + customer.getUserName() + ":");
+        System.out.println(" ");
         for (int i=0; i<reviews.size(); i++) {
             System.out.println("Time of Review: " + reviews.get(i).getDateTime());
             System.out.println("Movie: " + reviews.get(i).getMovie().getMovieTitle());
             System.out.println("Rating: " + reviews.get(i).getRating());
             System.out.println("Review: " + reviews.get(i).getDescription());
-            System.out.println();
+            System.out.println(" ");
         }
     }
-
     /**
      * Prints all the reviews of a movie 
      * @param movie movie object 
@@ -319,13 +323,14 @@ public class ReviewController {
         int lastIndex = movie.getReviews().size()-1;
 
         System.out.println(movie.getMovieTitle() + " Reviews:");
-
+        System.out.println(" ");
         for (int i=lastIndex; i>=0; i--) {
             Review r = movie.getReviews().get(i);
             System.out.println("Time of Review: " + r.getDateTime());
             System.out.println("Username: " + r.getUserName());
             System.out.println("Rating: " + r.getRating());
             System.out.println("Review: " + r.getDescription());
+            System.out.println(" ");
         }
     }
 }
