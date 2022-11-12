@@ -408,15 +408,15 @@ public class DropDownMenu {
             System.out.println("========================================");
             System.out.println("Select Movie: ");
             for (i = 0; i < movies.size(); i++) {
-                System.out.println("(" + (i + 1) + ")" + movies.get(i).getMovieTitle());
+                System.out.println("(" + (i + 1) + ") " + movies.get(i).getMovieTitle());
             }
-            System.out.println("(" + (i+2) + ") Back");
+            System.out.println("(" + (i+1) + ") Back");
             try{
             movieChoice = sc.nextInt();
-            if (movieChoice == (i+2)){
+            if (movieChoice == (i+1)){
                 return -1;
             }
-            if (movieChoice <= 0 || movieChoice > (i+2)) {
+            if (movieChoice <= 0 || movieChoice > (i+1)) {
                 System.out.println("Invalid Input! Try again");
             }
             else{

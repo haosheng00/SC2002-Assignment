@@ -270,7 +270,6 @@ public class MovieController implements Serializable{
     public static int deleteMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
         if (index == -1){
-            MovieUI.initiateMovieUI();
             return -1;
         }
         //Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
@@ -299,6 +298,7 @@ public class MovieController implements Serializable{
         System.out.println("(5) Back to previous menu");
 
         choice = sc.nextInt();
+        sc.nextLine();
         switch (choice) {
             case 1:
                 System.out.println("========================================");
