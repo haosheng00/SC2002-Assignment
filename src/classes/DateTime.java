@@ -45,16 +45,46 @@ public class DateTime {
      * @return date in Date type of format dd-MM-yyyy
      * @throws ParseException
      */
-    public static Date stringToDate(String stringdate) throws ParseException{
+    public static Date stringToDate(String stringDate) throws ParseException{
 
-        String year = stringdate.substring(0,4);
-        String month = stringdate.substring(4, 6);
-        String day = stringdate.substring(6, 8);
+        String year = stringDate.substring(0,4);
+        String month = stringDate.substring(4, 6);
+        String day = stringDate.substring(6, 8);
         String newstringdate = day + '-' + month + '-' + year;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date stringToDate = dateFormat.parse(newstringdate);
 
         return stringToDate;
+    }
+
+    /**
+     * Converts an input date to formatted date in string
+     * @param stringDate date in String type of format YYYYMMDD
+     * @return date in String type of format dd-MM-yyyy
+     */
+    public static String dateFormatter(String stringDate){
+       
+        String year = stringDate.substring(0,4);
+        String month = stringDate.substring(4, 6);
+        String day = stringDate.substring(6, 8);
+        String newstringdate = day + '-' + month + '-' + year;
+        
+        return newstringdate;
+    }
+
+    /**
+     * Converts an input date to formatted date in string
+     * @param stringTime time in String type of format HHmmss
+     * @return time in String type of format HH-mm-ss
+     */
+    public static String timeFormatter(String stringTime){
+
+        String hours = stringTime.substring(0,2);
+        String minutes = stringTime.substring(2, 4);
+        String seconds = stringTime.substring(4, 6);
+        String newstringtime = hours + ':' + minutes + ':' + seconds;
+
+        return newstringtime;
     }
     
 }
