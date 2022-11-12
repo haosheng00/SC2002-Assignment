@@ -44,9 +44,19 @@ public class Enum {
 
     //TicketType
     public enum TicketType{
-        STUDENT,
-        ADULT,
-        SENIORCITIZEN
+        STUDENT ("Student"),
+        ADULT ("Adult"),
+        SENIORCITIZEN ("Senior Citizen");
+
+        private String ticketType;
+
+        TicketType(String ticketType){
+            this.ticketType = ticketType;
+        }
+
+        public String getTicketType(int j){
+            return ticketType;
+        }
     }
 
     //DayOfWeek
@@ -62,8 +72,18 @@ public class Enum {
 
     //CinemaType
     public enum CinemaType {
-        PLATINUMMOVIESUITES,
-        ORDINARY;
+        ORDINARY ("Ordinary"),
+        PLATINUMMOVIESUITES ("Platinum Movie Suites");
+
+        private String cinemaType;
+
+        CinemaType(String cinemaType){
+            this.cinemaType = cinemaType;
+        }
+
+        public String getCinemaType(int j){
+            return cinemaType;
+        }
     }
     
 }

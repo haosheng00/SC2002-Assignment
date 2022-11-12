@@ -220,23 +220,34 @@ public class TicketController {
             
             //LIST AGE GROUP
             ArrayList <Double> priceByAge = Initialise.priceByAge;
-            int i = 0, option, j = 0;
+            int i = 0, option, j = 0, k = 0;
             do {
                 System.out.println("========================================");
                 System.out.println("The current ticket base prices by age are:");
-                for (Enum.TicketType groupType: Enum.TicketType.values()) {
-                    System.out.println("(" + (j+1) + ")" + groupType + " = $" + priceByAge.get(j));
+                for (Enum.TicketType ticketType: Enum.TicketType.values()) {
+                    System.out.println("(" + (j+1) + ") " + ticketType.getTicketType(j) + " = $" + priceByAge.get(j));
                     j++;
                 }
+                j=0;
                 System.out.println(" ");
-                System.out.println("Select Age Group to update: ");
-                for (Enum.TicketType groupType: Enum.TicketType.values()) {
-                    System.out.println("(" + (i+1) + ")" + groupType);
+                System.out.println("Select age group to update: ");
+                for (Enum.TicketType ticketType: Enum.TicketType.values()) {
+                    System.out.println("(" + (i+1) + ") " + ticketType.getTicketType(i));
                     i++;
+                    k++;
                 }
-                option = sc.nextInt();
+                k=0;
+                do {
+                    try {
+                        option = sc.nextInt();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Invalid input. Please enter an integer: ");
+                        sc.next();
+                    }
+                }while(true);
                 if (option <= 0 || option > i) {
-                    System.out.println("Invalid Input! Try again!");
+                    System.out.println("Invalid Input! Please enter an integer: ");
                 }
             } while (option <= 0 || option > i);
 
@@ -247,12 +258,20 @@ public class TicketController {
                 double newstudtp;
                 do{
                     System.out.println("Input new ticket price: ");
-                    newstudtp = sc.nextInt();
+                    do {
+                        try {
+                            newstudtp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
                     Initialise.priceByAge.set(0,newstudtp);
                     WriteMovieDB.writeMovieDB();
 
                     if (newstudtp <0){
-                        System.out.println("Invalid Input! Try again!");
+                        System.out.println("Invalid Input! Please enter an integer: ");
                     }
                 } while (newstudtp <0);
 
@@ -264,12 +283,20 @@ public class TicketController {
                 double newadutp;
                 do{
                     System.out.println("Input new ticket price: ");
-                    newadutp = sc.nextInt();
+                    do {
+                        try {
+                            newadutp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
                     Initialise.priceByAge.set(1, newadutp);
                     WriteMovieDB.writeMovieDB(); 
 
                     if (newadutp <0){
-                        System.out.println("Invalid Input! Try again!");
+                        System.out.println("Invalid Input! Please enter an integer: ");
                     }
                 } while (newadutp <0);
 
@@ -281,12 +308,20 @@ public class TicketController {
                 double newsnrtp;
                 do{
                     System.out.println("Input new ticket price: ");
-                    newsnrtp = sc.nextInt();
+                    do {
+                        try {
+                            newsnrtp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
                     Initialise.priceByAge.set(2, newsnrtp);
                     WriteMovieDB.writeMovieDB(); 
 
                     if (newsnrtp <0){
-                        System.out.println("Invalid Input! Try again!");
+                        System.out.println("Invalid Input! Please enter an integer: ");
                     }
                 } while (newsnrtp <0);
 
@@ -309,24 +344,34 @@ public class TicketController {
             
             //LIST CINEMA TYPE
             ArrayList <Double> priceByCinemaType = Initialise.priceByCinemaType;
-            int i = 0, option, j = 0;
+            int i = 0, option, j = 0, k = 0;
             do {
                 System.out.println("========================================");
                 System.out.println("The current ticket add-on prices by cinema type are:");
-                for (Enum.CinemaType groupType: Enum.CinemaType.values()) {
-                    System.out.println("(" + (j+1) + ")" + groupType + " = $" + priceByCinemaType.get(j));
+                for (Enum.CinemaType cinemaType: Enum.CinemaType.values()) {
+                    System.out.println("(" + (j+1) + ") " + cinemaType.getCinemaType(j) + " = $" + priceByCinemaType.get(j));
                     j++;
                 }
-
+                j=0;
                 System.out.println(" ");
-                System.out.println("Select Cinema Type: ");
-                for (Enum.CinemaType groupType: Enum.CinemaType.values()) {
-                      System.out.println("(" + (i+1) + ")" + groupType);
+                System.out.println("Select Cinema Type to update: ");
+                for (Enum.CinemaType cinemaType: Enum.CinemaType.values()) {
+                      System.out.println("(" + (i+1) + ") " + cinemaType.getCinemaType(i));
                       i++;
+                      k++;
                 } 
-                option = sc.nextInt();
+                k=0;
+                do {
+                    try {
+                        option = sc.nextInt();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Invalid input. Please enter an integer: ");
+                        sc.next();
+                    }
+                }while(true);
                 if (option <= 0 || option > i) {
-                    System.out.println("Invalid Input! Try again!");
+                    System.out.println("Invalid Input! Please enter an integer: ");
                 }
               } while (option <= 0 || option > i);
   
@@ -334,36 +379,54 @@ public class TicketController {
             switch(option){
   
                   case 1:
-                  double newpmstp;
-                  do{
-                      System.out.println("Input new ticket price: ");
-                      newpmstp = sc.nextInt();
-                      Initialise.priceByAge.set(1, newpmstp);
-                      WriteMovieDB.writeMovieDB(); 
-  
-                      if (newpmstp <0){
-                          System.out.println("Invalid Input! Try again!");
-                      }
-                  } while (newpmstp <0);
-  
-                  System.out.println("Ticket Price (Platinum Movie Suites) has been updated successfully!");
-  
-                  break;
-  
-                  case 2:
                   double newordtp;
                   do{
                       System.out.println("Input new ticket price: ");
                       newordtp = sc.nextInt();
-                      Initialise.priceByAge.set(0, newordtp);
+                      do {
+                        try {
+                            newordtp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
+                      Initialise.priceByCinemaType.set(0, newordtp);
                       WriteMovieDB.writeMovieDB(); 
   
                       if (newordtp <0){
-                          System.out.println("Invalid Input! Try again!");
+                          System.out.println("Invalid Input! Please enter an integer: ");
                       }
                   } while (newordtp <0);
   
                   System.out.println("Ticket Price (Ordinary) has been updated successfully!");
+  
+                  break;
+
+
+                  case 2:
+                  double newpmstp;
+                  do{
+                      System.out.println("Input new ticket price: ");
+                      do {
+                        try {
+                            newpmstp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
+                      Initialise.priceByCinemaType.set(1, newpmstp);
+                      WriteMovieDB.writeMovieDB(); 
+  
+                      if (newpmstp <0){
+                          System.out.println("Invalid Input! Please enter an integer: ");
+                      }
+                  } while (newpmstp <0);
+  
+                  System.out.println("Ticket Price (Platinum Movie Suites) has been updated successfully!");
   
                   break;
   
@@ -390,32 +453,50 @@ public class TicketController {
                 System.out.println("(2) Weekdays (Saturday and Sunday) = $" + priceByDay.get(1));
                 System.out.println("(3) Public Holiday = $" + priceByDay.get(2));
       
-
                 System.out.println(" ");
-                System.out.println("Select Day of Week: ");
+                System.out.println("Select day of week to update: ");
                 System.out.println("(1) Weekdays (Monday to Friday)");
                 System.out.println("(2) Weekends (Saturday and Sunday)");
                 System.out.println("(3) Public Holiday");
 
-                option = sc.nextInt();
-                if (option <= 0 || option > 2) {
-                    System.out.println("Invalid Input! Try again!");
+                do {
+                    try {
+                        option = sc.nextInt();
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Invalid input. Please enter an integer: ");
+                        sc.next();
+                    }
+                }while(true);
+  
+                if (option < 0 ) {
+                    System.out.println("Invalid Input! Please enter an integer: ");
+
                 }
-              } while (option <= 0 || option > 2);
+
+              } while (option <= 0 || option > 3);
   
-  
+
             switch(option){
   
                   case 1:
                   double newdaytp;
                   do{
                       System.out.println("Input new ticket price: ");
-                      newdaytp = sc.nextInt();
-                      Initialise.priceByAge.set(0, newdaytp);
+                      do {
+                        try {
+                            newdaytp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
+                      Initialise.priceByDay.set(0, newdaytp);
                       WriteMovieDB.writeMovieDB(); 
   
                       if (newdaytp <0){
-                          System.out.println("Invalid Input! Try again!");
+                          System.out.println("Invalid Input! Please enter an integer: ");
                       }
                   } while (newdaytp <0);
   
@@ -427,12 +508,21 @@ public class TicketController {
                   double newendtp;
                   do{
                       System.out.println("Input new ticket price: ");
-                      newendtp = sc.nextInt();
-                      Initialise.priceByAge.set(1, newendtp);
+
+                      do {
+                        try {
+                            newendtp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
+                      Initialise.priceByDay.set(1, newendtp);
                       WriteMovieDB.writeMovieDB(); 
   
                       if (newendtp <0){
-                          System.out.println("Invalid Input! Try again!");
+                          System.out.println("Invalid Input! Please enter an integer: ");
                       }
                   } while (newendtp <0);
   
@@ -444,12 +534,20 @@ public class TicketController {
                   double newholtp;
                   do{
                       System.out.println("Input new ticket price: ");
-                      newholtp = sc.nextInt();
-                      Initialise.priceByAge.set(2, newholtp);
+                      do {
+                        try {
+                            newholtp = sc.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input. Please enter an integer: ");
+                            sc.next();
+                        }
+                    }while(true);
+                      Initialise.priceByDay.set(2, newholtp);
                       WriteMovieDB.writeMovieDB(); 
 
                       if (newholtp <0){
-                          System.out.println("Invalid Input! Try again!");
+                          System.out.println("Invalid Input! Please enter an integer: ");
                       }
                   } while (newholtp <0);
   
@@ -458,7 +556,7 @@ public class TicketController {
                   break;
   
                   default:
-                  System.out.println("Invalid Input!");
+                  System.out.println("Invalid Input! Please enter an integer: ");
   
             }
         }
@@ -480,6 +578,8 @@ public class TicketController {
             Initialise.holidays.add(publicHoliday);
             System.out.println("New Public Holiday has been added!");
             WriteMovieDB.writeMovieDB();
+
+            TicketUI.initiateAdminTicketUI();
 
         }
 
