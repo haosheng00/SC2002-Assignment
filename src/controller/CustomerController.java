@@ -192,6 +192,7 @@ public class CustomerController {
      * @throws Exception
      */
     public static void viewPastTickets(Customer customer) throws Exception {
+        System.out.println("========================================");
         System.out.println("Tickets you purchased in the past: ");
         ArrayList<Ticket> arr = customer.getBoughtTickets();
         for (int x = 0; x < arr.size(); x++) {

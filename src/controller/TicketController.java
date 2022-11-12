@@ -228,7 +228,7 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("The current ticket base prices by age are:");
                 for (Enum.TicketType groupType: Enum.TicketType.values()) {
-                    System.out.println("(" + (j+1) + ")" + groupType + " = $" + priceByAge.get(j));
+                    System.out.println("(" + (j+1) + ") " + groupType + " = $" + priceByAge.get(j));
                     j++;
                 }
                 System.out.println(" ");
@@ -508,7 +508,6 @@ public class TicketController {
          */
         public static void printTicket(Ticket ticket){
             //FOR PRINTRECEIPT
-
             System.out.println("Movie: " + ticket.getMovie().getMovieTitle());
             System.out.println("Cineplex: " + ticket.getCineplex().getCineplexName());
             System.out.println("Cinema: " + ticket.getCinema().getCinemaName());
