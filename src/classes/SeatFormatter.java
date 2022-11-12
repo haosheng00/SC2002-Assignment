@@ -120,7 +120,7 @@ public class SeatFormatter implements Serializable{
     }
 
     /**
-     * Choose which layout printer to use by checking the cinema type of the screening
+     * Chooses which layout printer to use by checking the cinema type of the screening
      * @param screeningChosen, screening which you want to print the layout of
      */
     public static void seatDisplay(Screening screeningChosen){

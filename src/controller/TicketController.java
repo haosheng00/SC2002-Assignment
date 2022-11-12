@@ -133,12 +133,12 @@ public class TicketController {
         }
     
         /**
-         * Determines the ticket price based on certain conditions such as: 
-         * Age Group (Base Price)             Student: 7.0, Adult: 8.5, Senior: 4.0
-         * Seat Type (Base Price)             Couple Seat: 17.0
-         * Movie Type (Add-on Price)          3D: 2.0
-         * Cinema Type (Add-on Price)         Platinum Movie Suites: 5.0
-         * Day of Week (Add-on Price)         Weekend: 3.0, Holiday: 5.0
+         * Determines the ticket price based on certain conditions such as: <p>
+         * Age Group (Base Price)             Student: 7.0, Adult: 8.5, Senior: 4.0<p>
+         * Seat Type (Base Price)             Couple Seat: 17.0<p>
+         * Movie Type (Add-on Price)          3D: 2.0<p>
+         * Cinema Type (Add-on Price)         Platinum Movie Suites: 5.0<p>
+         * Day of Week (Add-on Price)         Weekend: 3.0, Holiday: 5.0<p>
          * @param student checks if ticket bought is a student ticket
          * @param adult checks if ticket bought is a adult ticket
          * @param senior checks if ticket bought is a senior ticket

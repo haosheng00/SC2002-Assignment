@@ -19,7 +19,7 @@ public class ReviewController {
     }
 
     /**
-     * Add review for a movie 
+     * Adds review for a movie 
      * @param customer customer object 
      * @throws Exception
      */
@@ -87,7 +87,7 @@ public class ReviewController {
     }
 
     /**
-     * Delete review of customer from a movie 
+     * Deletes review of customer from a movie 
      * @param customer customer object 
      * @throws IOException
      */
@@ -164,7 +164,6 @@ public class ReviewController {
         int ratingExist = 0;
         int reviewIndex = 0;
         double oldRating = 0;
-        String oldReview;
 
         Movie movie = Initialise.movies.get(movieIndex);
         ArrayList <Review> reviews = movie.getReviews();
@@ -252,7 +251,6 @@ public class ReviewController {
      * @param movie movie object
      * @throws IOException
      */
-
     public static void updateTop5Rating(Movie movie) throws IOException {
 
         int exist = 0;
@@ -286,6 +284,9 @@ public class ReviewController {
         SerializeMovieDB.writeSerializedObject("Top5ByRatings.dat", Initialise.top5ByRatings);
     }
 
+    /**
+     * Compares two movies by their overall ratings
+     */
     static class CompareByRating implements Comparator<Movie> {
         public int compare(Movie a, Movie b) {
                     return (int)(b.getOverallRating() - a.getOverallRating());

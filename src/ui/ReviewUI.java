@@ -11,7 +11,7 @@ import controller.*;
 public class ReviewUI {
 
     /**
-     * Initiate Review UI which allows customers to add, delete, edit or view the reviews 
+     * Initiates Review UI which allows customers to add, delete, edit or view the reviews 
      * @param customer customer object 
      * @throws Exception
      */
