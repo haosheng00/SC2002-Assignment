@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class SerializeMovieDB {
 	/**
 	 * Reads the information from our movie DB given a specific byte file
-	 * @param filename, byte file
+	 * @param filename byte file
 	 * @return the arrayList of objects read from the byte file
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -25,8 +25,8 @@ public class SerializeMovieDB {
 
 	/**
 	 * Writes the information from an arrayList and stores it in a byte file
-	 * @param filename, a byte file
-	 * @param list, containing object list to be stored
+	 * @param filename a byte file
+	 * @param list containing object list to be stored
 	 * @throws IOException
 	 */
 	public static void writeSerializedObject(String filename, List list) throws IOException{

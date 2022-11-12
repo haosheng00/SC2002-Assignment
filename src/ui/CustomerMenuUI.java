@@ -51,7 +51,6 @@ public class CustomerMenuUI{
                             ReviewUI.initiateReviewUI(customer);
                             break;
                         case 5:
-                            //ADD TO SERIALIZER
                             MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                             break;
                         case 6:

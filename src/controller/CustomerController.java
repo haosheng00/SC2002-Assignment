@@ -80,24 +80,7 @@ public class CustomerController {
 
     }
 
-    /**
-     * Sorts the customers array list alphabetically
-     */
-    public static void sortCustomersList() {
-        int min;
-        Customer temp;
-        for (int index = 0; index < customers.size() - 1; index++) {
-            min = index;
-            for (int scan = index + 1; scan < customers.size(); scan++)
-                if (customers.get(scan).getUserName().compareTo(customers.get(min).getUserName()) < 0)
-                    min = scan;
-            // Swap the values
-            temp = customers.get(min);
-            customers.set(min, customers.get(index));
-            customers.set(index, temp);
-        }
-    }
-
+    
     /**
      * Deletes/Removes the customer with the inserted username from the customers array list
      * @throws Exception
@@ -113,7 +96,6 @@ public class CustomerController {
                 Initialise.customers.remove(exists);
                 SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
                 System.out.println("Removed customer");
-                sortCustomersList();
                 //exit = 2;
                 break;
                 // to access in a static way --> CustomerController.sortCustomersList();
