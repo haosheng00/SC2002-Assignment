@@ -77,8 +77,10 @@ public class CustomerMenuUI{
      */
     public static void guestMenuOptions() throws Exception{
 
-        Scanner sc = new Scanner(System.in);
         int option = 0;
+        
+        do{
+        Scanner sc = new Scanner(System.in);
             System.out.println("========================================");
             System.out.println("Please select an option.");
             System.out.println("(1) - Search Movie");
@@ -86,7 +88,7 @@ public class CustomerMenuUI{
             System.out.println("(3) - See Top 5 Movies");
             System.out.println("(4) - Back");
             System.out.println("========================================");
-        do{
+        
             try {
                 option = sc.nextInt();
                 switch (option) {
