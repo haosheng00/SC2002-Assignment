@@ -73,7 +73,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle,MovieStatus.END_OF_SHOWING, new ArrayList<MovieGenre>() {{ add(MovieGenre.ACTION); add(MovieGenre.ADVENTURE);}},"Des","fdg",new ArrayList<String>() {{ add("Johnny"); add("Mary Kool"); add("Sarah Aga");}},122,0,Enum.AgeRestriction.PG,true,0,"112233","112233");
+            Movie newMovie = new Movie(movieTitle,MovieStatus.COMING_SOON, movieGenres,"Des","fdg",new ArrayList<String>() {{ add("Johnny"); add("Mary Kool"); add("Sarah Aga");}},122,0,Enum.AgeRestriction.PG,true,0,"112233","112233");
             System.out.println("========================================");
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
@@ -91,13 +91,13 @@ public class MovieController implements Serializable{
                         case 1:
                             newMovie.setMovieStatus(MovieStatus.COMING_SOON);
                             System.out.println("========================================");
-                            System.out.println("Please enter the start date of the movie screening (YYYYMMDD):");
+                            System.out.println("Please enter the start date of the movie screening (YYYY-MM-DD):");
                             newMovie.setStartDate(sc.next());
                             break;
                         case 2:
                             newMovie.setMovieStatus(MovieStatus.PREVIEW);
                             System.out.println("========================================");
-                            System.out.println("Please enter the start date of the movie screening (YYYYMMDD):");
+                            System.out.println("Please enter the start date of the movie screening (YYYY-MM-DD):");
                             newMovie.setStartDate(sc.next());
                             break;
                         case 3:
@@ -112,7 +112,7 @@ public class MovieController implements Serializable{
                 }
                 } while(true);
             System.out.println("========================================");
-            System.out.println("Please enter the date where the movie stops showing (YYYYMMDD): ");
+            System.out.println("Please enter the date where the movie stops showing (YYYY-MM-DD): ");
             newMovie.setExpiryDate(sc.next());
 
             System.out.println("========================================");
@@ -344,12 +344,12 @@ public class MovieController implements Serializable{
                     break;
                 case 2:
                     System.out.println("========================================");
-                    System.out.println("Please update the date where the movie starts showing (YYYYMMDD): ");
+                    System.out.println("Please update the date where the movie starts showing (YYYY-MM-DD): ");
                     Initialise.movies.get(index).setStartDate(sc.next());
                     break;
                 case 3:
                     System.out.println("========================================");
-                    System.out.println("Please update the date where the movie stops showing (YYYYMMDD): ");
+                    System.out.println("Please update the date where the movie stops showing (YYYY-MM-DD): ");
                     Initialise.movies.get(index).setExpiryDate(sc.next());
                     break;
                 case 4:
@@ -393,7 +393,7 @@ public class MovieController implements Serializable{
         System.out.println("Synopsis: " + Initialise.movies.get(index).getSynopsis());
         System.out.println("Age Rating: " + Initialise.movies.get(index).getAgeRestriction());
         System.out.println(Initialise.movies.get(index).getIs3D() ? "3D" : "2D");
-        System.out.println("Duration: " + Initialise.movies.get(index).getMovieDuration());
+        System.out.println("Duration: " + Initialise.movies.get(index).getMovieDuration() + " minutes");
         System.out.println("Rating: " + Initialise.movies.get(index).getOverallRating());
         System.out.println("Start Screening Date: " + Initialise.movies.get(index).getStartDate());
         System.out.println("End Screening Date: " + Initialise.movies.get(index).getExpiryDate());
