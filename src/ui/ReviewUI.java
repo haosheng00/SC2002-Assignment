@@ -27,7 +27,7 @@ public class ReviewUI {
             System.out.println("(1) Add Review ");
             System.out.println("(2) Delete Review ");
             System.out.println("(3) Edit Review ");
-            System.out.println("(4) View your review(s) ");
+            System.out.println("(4) View your Review(s) ");
             System.out.println("(5) Back");
             System.out.println("========================================");
             try {

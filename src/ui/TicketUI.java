@@ -78,6 +78,7 @@ public class TicketUI {
             System.out.println("(2) Cinema Type");
             System.out.println("(3) Day of Week");
             System.out.println("(4) Back");
+            System.out.println("========================================");
             try {
                 option = sc.nextInt();
 

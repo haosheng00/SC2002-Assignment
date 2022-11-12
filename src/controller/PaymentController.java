@@ -45,6 +45,7 @@ public class PaymentController {
 
         //get cart tickets from customer class
         showTickets(cartTickets);
+        System.out.println("========================================");
         System.out.println("Would you like to proceed to check out your cart? (Enter 1 for yes, 0 to cancel check out)");
         
         do {
@@ -56,6 +57,9 @@ public class PaymentController {
                 //if cancel checkout
                 else if (choice == 0) {
                     System.out.println("Cancelling check out...");
+                    for (int i = 0; i < customer.getCartTickets().size(); i++){
+                        customer.getCartTickets().get(i).getSeat().setIsReserved(false);
+                    }
                     customer.getCartTickets().clear();
                     SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
                     return;
@@ -70,6 +74,7 @@ public class PaymentController {
     
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
+        System.out.println("========================================");
         System.out.printf("The total amount is: %.2f\n", totalCharges);
         System.out.println();
         System.out.println("Please enter your credit card details:");
@@ -192,8 +197,8 @@ public class PaymentController {
         System.out.println();
         for (int i=0; i<size; i++) {
             //ticket number
-            System.out.println("Ticket " + (i+1));
             System.out.println();
+            System.out.println("Ticket " + (i+1));
             TicketController.printTicket(Tickets.get(i));
             System.out.println("\n");
         }

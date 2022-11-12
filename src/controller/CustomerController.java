@@ -138,19 +138,19 @@ public class CustomerController {
         String username;
         int exit = -1;
         do {
-            System.out.println("Enter username: ");
+            System.out.println("Please enter username: ");
             username = sc.next();
             int index = searchCustomer(username);
             String match;
             String newpass;
             if (index != -1) {
-                System.out.println("Enter current Password: ");
+                System.out.println("Please enter current Password: ");
                 match = sc.next();
                 if (match.equals(customers.get(index).getPassword())) {
-                    System.out.println("Enter new Password: ");
+                    System.out.println("Please enter new Password: ");
                     newpass = sc.next();
                     customers.get(index).setPassword(newpass);
-                    System.out.println("Password successfully changed");
+                    System.out.println("Password successfully changed!");
                     SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
                     exit = 2;
                 } else {
@@ -196,6 +196,7 @@ public class CustomerController {
         ArrayList<Ticket> arr = customer.getBoughtTickets();
         for (int x = 0; x < arr.size(); x++) {
             TicketController.printTicket(arr.get(x));
+            System.out.println();
         }
         if (customer.getUserName() == "guest")
             CustomerMenuUI.guestMenuOptions();
