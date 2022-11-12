@@ -63,7 +63,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle,MovieStatus.END_OF_SHOWING, "Des","fdg",122,20,Enum.AgeRestriction.PG,true,5,"112233","112233");
+            Movie newMovie = new Movie(movieTitle,MovieStatus.END_OF_SHOWING, "Des","fdg",122,0,Enum.AgeRestriction.PG,true,0,"112233","112233");
             System.out.println("========================================");
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
@@ -455,6 +455,7 @@ public class MovieController implements Serializable{
                     }
                     else if (choice == 1) {
                         System.out.println("Movies by Overall Rating: ");
+                        System.out.println();
                         if (top5ByRatings.isEmpty()) System.out.println("Sorry, no movies with rating at the moment");
                         for (int i = 0; i < top5ByRatings.size(); i++) {
                             System.out.println("Movie " + (i + 1) + ":");
@@ -465,7 +466,7 @@ public class MovieController implements Serializable{
                         break;
                     } else {
                         System.out.println("Movies by Sales: ");
-                        if (top5BySales.isEmpty()) System.out.println("Sorry, no movies with sales at the moment");
+                        System.out.println();
                         for (int i = 0; i < top5BySales.size(); i++) {
                             System.out.println("Movie " + (i + 1) + ":");
                             System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
@@ -484,7 +485,7 @@ public class MovieController implements Serializable{
         
         else if (criteria == 1) {
             System.out.println("Movies by Overall Rating: ");
-            if (top5ByRatings.isEmpty()) System.out.println("Sorry, no movies with rating at the moment");
+            System.out.println();
             for (int i = 0; i < top5ByRatings.size(); i++) {
                 System.out.println("Movie " + (i + 1) + ":");
                 System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
@@ -493,7 +494,7 @@ public class MovieController implements Serializable{
             }
         } else if (criteria == 2) {
             System.out.println("Movies by Sales: ");
-            if (top5BySales.isEmpty()) System.out.println("Sorry, no movies with sales at the moment");
+            System.out.println();
             for (int i = 0; i < top5BySales.size(); i++) {
                 System.out.println("Movie " + (i + 1) + ":");
                 System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());

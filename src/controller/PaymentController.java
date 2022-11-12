@@ -73,7 +73,7 @@ public class PaymentController {
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
         System.out.println("========================================");
-        System.out.printf("The total amount is: %.2f\n", totalCharges);
+        System.out.printf("The total amount is: $%.2f\n", totalCharges);
         System.out.println();
         System.out.println("Please enter your credit card details:");
         System.out.println();
@@ -87,7 +87,7 @@ public class PaymentController {
         billingAddress = sc.next();
         System.out.println("Please enter your CVC/CVV: ");
         cvc = sc.next();
-        System.out.printf("The amount of %.2f ", totalCharges);
+        System.out.printf("The amount of $%.2f ", totalCharges);
         System.out.println("will be charged to your card, under the name " + name); 
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
@@ -174,6 +174,7 @@ public class PaymentController {
      */
     public static void printReceipt(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
+        System.out.println(" ");
         System.out.println("Receipt:");
         System.out.println();
         for (int i=0; i<size; i++) {
@@ -181,8 +182,10 @@ public class PaymentController {
             System.out.println("Ticket " + (i+1));
             System.out.println();
             TicketController.printTicket(cartTickets.get(i));
+            System.out.println();
         }
-        System.out.println("Total Payment: " + calcPayment(cartTickets));    
+        System.out.println(" ");
+        System.out.println("Total Payment: $" + calcPayment(cartTickets));    
     }
 
     /**
@@ -209,16 +212,30 @@ public class PaymentController {
      */
     public static void updateSales(ArrayList <Ticket> cartTickets) throws IOException {
 
+        int i = 0;
+        
         int size = cartTickets.size();
+        int movieIndex = 0;
         //iterate thru Tickets --> find movie and add ticketprice to sales 
         //all tickets in cart have the same movie
-
         Movie movie = cartTickets.get(0).getMovie();
-
-        for (int i=0; i<size; i++) {
-            //update sales for each ticket 
-            movie.setSales(movie.getSales() + cartTickets.get(i).getTicketPrice());
+        ArrayList <Movie> movies = Initialise.movies;
+        //get index of movie
+        for (i=0; i<movies.size(); i++) {
+            if (movie.getMovieTitle().equals(movies.get(i).getMovieTitle())) {
+                movieIndex = i;
+                break;
+            }
         }
+        Movie targetMovie = Initialise.movies.get(movieIndex);
+        //System.out.println("Before: " + targetMovie.getSales());
+
+        for (i=0; i<size; i++) {
+            //update sales for each ticket 
+            //System.out.println("Ticket Price: " + cartTickets.get(i).getTicketPrice());
+            targetMovie.setSales(targetMovie.getSales() + cartTickets.get(i).getTicketPrice());
+        }
+        //System.out.println("After: " + targetMovie.getSales());
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
 
@@ -227,16 +244,18 @@ public class PaymentController {
         //update top5 sales array 
         ArrayList <Movie> top5Sales = Initialise.top5BySales;
         //check if movie is alr in the top5sales
-        for (int i=0; i< top5Sales.size(); i++) {
-            if (movie.getMovieTitle() == top5Sales.get(i).getMovieTitle()) {
+        for (i=0; i< top5Sales.size(); i++) {
+            if (movie.getMovieTitle().equals(top5Sales.get(i).getMovieTitle())) {
+                //System.out.println("Hello");
                 exist = 1;
+                //if exists, replace with movie with updated sales 
+                top5Sales.set(i,targetMovie);
                 break;
             }
         }
         //add movie with updated sales into the top5sales array (if it isn't alr in the top5array)
         if (exist == 0) {
-            //TO DO(MC) NEED NEW MOVIE CONSTRUCTOR --> TO put in movie with the new sales value 
-            top5Sales.add(movie);
+            top5Sales.add(targetMovie);
         }
 
         //sort the array 
