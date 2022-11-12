@@ -53,7 +53,7 @@ public class PaymentController {
                     }
                     customer.getCartTickets().clear();
                     SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
-                    return;
+                    CustomerMenuUI.customerMenuOptions(customer);
                 }
                 else break;
             }
