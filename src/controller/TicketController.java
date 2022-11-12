@@ -41,7 +41,7 @@ public class TicketController {
 
         int childTicketNo, adultTicketNo, seniorTicketNo = 0;
         int cineplexChoice, movieChoice, screeningChoice;
-        int ageno;
+        int ageNo;
         double actualTicketPrice;
         Seat seatChosen = null;
         current = customer;
@@ -69,7 +69,7 @@ public class TicketController {
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
+                sc.nextInt();
             }
         }while(true);
         System.out.println("Number of Adult Tickets: ");
@@ -79,7 +79,7 @@ public class TicketController {
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
+                sc.nextInt();
             }
         }while(true);
         System.out.println("Number of Senior Citizen Tickets: ");
@@ -89,7 +89,7 @@ public class TicketController {
                 break;
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter an integer: ");
-                sc.next();
+                sc.nextInt();
             }
         }while(true);
             
@@ -101,9 +101,9 @@ public class TicketController {
                 if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
                     j++;
                 }
-                ageno = 1;
-                actualTicketPrice = TicketController.TicketPrice(ageno, cineplexChosen, movieChosen, screeningChosen, seatChosen);
-                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageno);
+                ageNo = 1;
+                actualTicketPrice = TicketController.TicketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageNo);
             }
 
             for (int j = 0; j < adultTicketNo; j++) {
@@ -114,9 +114,9 @@ public class TicketController {
                 if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
                     j++;
                 }
-                ageno = 2;
-                actualTicketPrice = TicketController.TicketPrice(ageno, cineplexChosen, movieChosen, screeningChosen,seatChosen);
-                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageno);
+                ageNo = 2;
+                actualTicketPrice = TicketController.TicketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen,seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageNo);
             }
 
             for (int j = 0; j < seniorTicketNo; j++) {
@@ -127,9 +127,9 @@ public class TicketController {
                 if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
                     j++;
                 }
-                ageno = 3;
-                actualTicketPrice = TicketController.TicketPrice(ageno, cineplexChosen, movieChosen, screeningChosen, seatChosen);
-                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageno);
+                ageNo = 3;
+                actualTicketPrice = TicketController.TicketPrice(ageNo, cineplexChosen, movieChosen, screeningChosen, seatChosen);
+                TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice, ageNo);
             }
 
             PaymentUI.initiatePaymentUI(customer);
@@ -143,9 +143,7 @@ public class TicketController {
          * Movie Type (Add-on Price)          3D: 2.0<p>
          * Cinema Type (Add-on Price)         Platinum Movie Suites: 5.0<p>
          * Day of Week (Add-on Price)         Weekend: 3.0, Holiday: 5.0<p>
-         * @param student checks if ticket bought is a student ticket
-         * @param adult checks if ticket bought is a adult ticket
-         * @param senior checks if ticket bought is a senior ticket
+         * @param ageNo represents the different age groups of customers, 1 for student, 2 for adult, 3 for senior
          * @param cineplexChosen cineplex selected by customer
          * @param movieChosen movie selected by customer
          * @param screeningChosen screening selected by customer
@@ -153,7 +151,7 @@ public class TicketController {
          * @return final ticket price
          * @throws ParseException
          */
-        public static double TicketPrice(int ageno, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
+        public static double TicketPrice(int ageNo, Cineplex cineplexChosen, Movie movieChosen, Screening screeningChosen, Seat seatChosen) throws ParseException {
             // FOR CREATEBOOKING    
 
             double ticketPrice = 0;
@@ -164,15 +162,15 @@ public class TicketController {
             }
             else{
                 
-                if (ageno == 1){
+                if (ageNo == 1){
                     ticketPrice = Initialise.priceByAge.get(0);
                 }
     
-                if (ageno == 2){
-                        ticketPrice = Initialise.priceByAge.get(1);
-                    }   
+                if (ageNo == 2){
+                    ticketPrice = Initialise.priceByAge.get(1);
+                }   
                 
-                if (ageno == 3){
+                if (ageNo == 3){
                     ticketPrice = Initialise.priceByAge.get(2);
                 }
             }
@@ -227,7 +225,7 @@ public class TicketController {
             
             //LIST AGE GROUP
             ArrayList <Double> priceByAge = Initialise.priceByAge;
-            int i = 0, option, j = 0, k = 0;
+            int i = 0, option, j = 0;
             do {
                 System.out.println("========================================");
                 System.out.println("The current ticket base prices by age are:");
@@ -241,16 +239,14 @@ public class TicketController {
                 for (Enum.TicketType ticketType: Enum.TicketType.values()) {
                     System.out.println("(" + (i+1) + ") " + ticketType.getTicketType(i));
                     i++;
-                    k++;
                 }
-                k=0;
                 do {
                     try {
                         option = sc.nextInt();
                         break;
                     } catch (Exception e) {
                         System.out.println("Invalid input. Please enter an integer: ");
-                        sc.next();
+                        sc.nextInt();
                     }
                 }while(true);
                 if (option <= 0 || option > i) {
@@ -271,7 +267,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                     Initialise.priceByAge.set(0,newstudtp);
@@ -296,7 +292,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                     Initialise.priceByAge.set(1, newadutp);
@@ -321,7 +317,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                     Initialise.priceByAge.set(2, newsnrtp);
@@ -351,7 +347,7 @@ public class TicketController {
             
             //LIST CINEMA TYPE
             ArrayList <Double> priceByCinemaType = Initialise.priceByCinemaType;
-            int i = 0, option, j = 0, k = 0;
+            int i = 0, option, j = 0;
             do {
                 System.out.println("========================================");
                 System.out.println("The current ticket add-on prices by cinema type are:");
@@ -365,16 +361,14 @@ public class TicketController {
                 for (Enum.CinemaType cinemaType: Enum.CinemaType.values()) {
                       System.out.println("(" + (i+1) + ") " + cinemaType.getCinemaType(i));
                       i++;
-                      k++;
                 } 
-                k=0;
                 do {
                     try {
                         option = sc.nextInt();
                         break;
                     } catch (Exception e) {
                         System.out.println("Invalid input. Please enter an integer: ");
-                        sc.next();
+                        sc.nextInt();
                     }
                 }while(true);
                 if (option <= 0 || option > i) {
@@ -396,7 +390,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                       Initialise.priceByCinemaType.set(0, newordtp);
@@ -422,7 +416,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                       Initialise.priceByCinemaType.set(1, newpmstp);
@@ -472,7 +466,7 @@ public class TicketController {
                         break;
                     } catch (Exception e) {
                         System.out.println("Invalid input. Please enter an integer: ");
-                        sc.next();
+                        sc.nextInt();
                     }
                 }while(true);
   
@@ -496,7 +490,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                       Initialise.priceByDay.set(0, newdaytp);
@@ -522,7 +516,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                       Initialise.priceByDay.set(1, newendtp);
@@ -547,7 +541,7 @@ public class TicketController {
                             break;
                         } catch (Exception e) {
                             System.out.println("Invalid input. Please enter an integer: ");
-                            sc.next();
+                            sc.nextInt();
                         }
                     }while(true);
                       Initialise.priceByDay.set(2, newholtp);
@@ -598,11 +592,12 @@ public class TicketController {
          * @param screeningChosen screening selected by customer
          * @param seatChosen seat selected by customer
          * @param actualTicketPrice final ticket price
+         * @param ageNo represents the different age group number of customer, 1 for student, 2 for adult, 3 for senior
          */
-        public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen, Seat seatChosen, double actualTicketPrice, int ageno){
+        public static void addCartTicket(ArrayList<Ticket> cartTickets, Movie movieChosen, Cineplex cineplexChosen, Screening screeningChosen, Seat seatChosen, double actualTicketPrice, int ageNo){
             // FOR CREATEBOOKING
 
-            Ticket ticket = new Ticket(movieChosen, cineplexChosen, screeningChosen.getCinema(), screeningChosen.getShowDate(), screeningChosen.getShowTime(), seatChosen, actualTicketPrice, ageno);
+            Ticket ticket = new Ticket(movieChosen, cineplexChosen, screeningChosen.getCinema(), screeningChosen.getShowDate(), screeningChosen.getShowTime(), seatChosen, actualTicketPrice, ageNo);
             cartTickets.add(ticket);
         }
 
@@ -618,7 +613,7 @@ public class TicketController {
             System.out.println("Show Date: " + ticket.getShowDate());
             System.out.println("Show Time: " + ticket.getShowTime());
             System.out.println("Seat: " + ticket.getSeat().getSeatId());
-            System.out.println("Price " + ticket.ageGroup(ticket.getAgeNo()) + ": $" + ticket.getTicketPrice());
+            System.out.println("Price " + ticket.getAgeGroup(ticket.getAgeNo()) + ": $" + ticket.getTicketPrice());
         }
     }
 

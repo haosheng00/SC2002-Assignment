@@ -2,22 +2,42 @@ package classes;
 
 import java.io.Serializable;
 
-import javax.lang.model.util.ElementScanner14;
-
 /**
  * Represents a ticket of the movie to be purchased/purchased
  */
 public class Ticket implements Serializable{
-
+    /*
+     * Represents movie which customer booked
+     */
     private Movie movie;
+    /*
+     * Represents cineplex which customer booked
+     */
     private Cineplex cineplex;
+    /*
+     * Represents cinema which customer booked
+     */
     private Cinema cinema;
+    /*
+     * Represents show date of movie which customer booked
+     */
     private String showDate;
+    /*
+     * Represents show time of movie which customer booked
+     */
     private String showTime;
+    /*
+     * Represents seat which customer booked
+     */
     private Seat seat;
+    /*
+     * Represents ticket price which customer booked
+     */
     private double ticketPrice;
-    private int ageno;
-    private Ticket ticket;
+    /*
+     * Represents age group number of customer who booked
+     */
+    private int ageNo;
 
     /**
      * Represents a purchased ticket movie with its details
@@ -28,8 +48,9 @@ public class Ticket implements Serializable{
      * @param showTime show time of the movie the ticket was purchased for
      * @param seat seat the ticket was purchased for
      * @param ticketPrice cost of the ticket paid
+     * @param ageNo age group number of customer 
      */
-    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDate, String showTime, Seat seat, double ticketPrice, int ageno){
+    public Ticket(Movie movie, Cineplex cineplex, Cinema cinema, String showDate, String showTime, Seat seat, double ticketPrice, int ageNo){
         this.movie = movie;
         this.cineplex = cineplex;
         this.cinema = cinema;
@@ -37,7 +58,7 @@ public class Ticket implements Serializable{
         this.showTime = showTime;
         this.seat = seat;
         this.ticketPrice = ticketPrice;
-        this.ageno = ageno;
+        this.ageNo = ageNo;
         
     } 
 
@@ -102,7 +123,7 @@ public class Ticket implements Serializable{
      * @return ticket object
      */
     public Object getTicket(){
-        Ticket ticket = new Ticket(movie, cineplex, cinema, showDate, showTime, seat, ticketPrice, ageno);
+        Ticket ticket = new Ticket(movie, cineplex, cinema, showDate, showTime, seat, ticketPrice, ageNo);
         return ticket;
     }
 
@@ -162,20 +183,27 @@ public class Ticket implements Serializable{
         return ticketPrice;
     }
 
+    /**
+     * Returns age group number of customer, 1 for student, 2 for adult, 3 for senior
+     * @return age group number of customer 
+     */
     public int getAgeNo(){
-        return ageno;
+        return ageNo;
     }
 
-    public String ageGroup(int ageno){
-        if (ageno == 1){
+    /*
+     * Returns age group number of customer
+     */
+    public String getAgeGroup(int ageNo){
+        if (ageNo == 1){
             return "(Student)";
 
         }
-        else if (ageno == 2){
+        else if (ageNo == 2){
             return "(Adult)";
 
         }
-        else if (ageno == 3){
+        else if (ageNo == 3){
             return "(Senior Citizen)";
 
         }
