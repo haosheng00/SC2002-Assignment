@@ -4,6 +4,7 @@ import initialiser.Initialise;
 import serialiser.SerializeMovieDB;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -50,7 +51,7 @@ public class ScreeningController {
      * then deletes the screening from movie DB
      * @throws IOException
      */
-    public static void deleteScreening() throws IOException{
+    public static void deleteScreening() throws IOException, ParseException {
         int movieChoice = DropDownMenu.initiateMovieChoice_CustomerMenu(1);
         if (movieChoice == -1){
             return;
@@ -69,8 +70,9 @@ public class ScreeningController {
      * Asks you to select a cineplex, a movie and a screening
      * and prints our the selected screening cinema, screening date and time
      * @param cineplexes cineplexes pre-initialised
+     * @throws ParseException
      */
-    public static void showScreening(ArrayList<Cineplex> cineplexes){
+    public static void showScreening(ArrayList<Cineplex> cineplexes) throws ParseException {
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
         if (cineplexChoice == -1){
             return;
