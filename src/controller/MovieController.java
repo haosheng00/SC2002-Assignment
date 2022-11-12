@@ -301,61 +301,67 @@ public class MovieController implements Serializable{
     public static void updateMovie() throws Exception {
         int index = DropDownMenu.initiateAdminMovieChoice(Initialise.movies);
         int choice = 0;
+        do {
 
-        System.out.println("========================================");
-        System.out.println("Select one option:");
-        System.out.println("(1) Update Movie Title");
-        System.out.println("(2) Update Movie Status");
-        System.out.println("(3) Update Start Date of Screening");
-        System.out.println("(4) Update End Date of Screening");
-        System.out.println("(5) Back to previous menu");
+            System.out.println("========================================");
+            System.out.println("Select one option:");
+            System.out.println("(1) Update Movie Status");
+            System.out.println("(2) Update Start Date of Screening");
+            System.out.println("(3) Update End Date of Screening");
+            System.out.println("(4) Back to previous menu");
 
-        choice = sc.nextInt();
-        sc.nextLine();
-        switch (choice) {
-            case 1:
-                System.out.println("========================================");
-                System.out.println("Enter new movie title:");
-                Initialise.movies.get(index).setMovieTitle(sc.nextLine());
-                break;
-            case 2:
-                System.out.println("========================================");
-                System.out.println("Update to:");
-                System.out.println("(1) Coming soon");
-                System.out.println("(2) Preview");
-                System.out.println("(3) End of showing");
-                System.out.println("(4) Now showing");
-                int i = sc.nextInt();
-                switch (i) {
-                    case 1:
-                        Initialise.movies.get(index).setMovieStatus(MovieStatus.COMING_SOON);
-                        break;
-                    case 2:
-                        Initialise.movies.get(index).setMovieStatus(MovieStatus.PREVIEW);
-                        break;
-                    case 3:
-                        Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
-                        break;
-                    case 4:
-                        Initialise.movies.get(index).setMovieStatus(MovieStatus.NOW_SHOWING);
-                        break;
-                }
-                break;
-            case 3:
-                System.out.println("========================================");
-                System.out.println("Please update the date where the movie starts showing (YYYYMMDD): ");
-                Initialise.movies.get(index).setStartDate(sc.next());
-                break;
-            case 4:
-                System.out.println("========================================");
-                System.out.println("Please update the date where the movie stops showing (YYYYMMDD): ");
-                Initialise.movies.get(index).setExpiryDate(sc.next());
-                break;
-            case 5:
-                break;
-        }
+            choice = sc.nextInt();
+            sc.nextLine();
+            switch (choice) {
+                case 1:
+                    System.out.println("========================================");
+                    System.out.println("Update to:");
+                    System.out.println("(1) Coming soon");
+                    System.out.println("(2) Preview");
+                    System.out.println("(3) End of showing");
+                    System.out.println("(4) Now showing");
+                    int i = sc.nextInt();
+                    switch (i) {
+                        case 1:
+                            Initialise.movies.get(index).setMovieStatus(MovieStatus.COMING_SOON);
+                            updateCineplexMovieStatus(MovieStatus.COMING_SOON, Initialise.movies.get(index));
+                            break;
+                        case 2:
+                            Initialise.movies.get(index).setMovieStatus(MovieStatus.PREVIEW);
+                            updateCineplexMovieStatus(MovieStatus.PREVIEW, Initialise.movies.get(index));
+                            break;
+                        case 3:
+                            Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
+                            updateCineplexMovieStatus(MovieStatus.END_OF_SHOWING, Initialise.movies.get(index));
+                            break;
+                        case 4:
+                            Initialise.movies.get(index).setMovieStatus(MovieStatus.NOW_SHOWING);
+                            updateCineplexMovieStatus(MovieStatus.NOW_SHOWING, Initialise.movies.get(index));
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 2:
+                    System.out.println("========================================");
+                    System.out.println("Please update the date where the movie starts showing (YYYYMMDD): ");
+                    Initialise.movies.get(index).setStartDate(sc.next());
+                    break;
+                case 3:
+                    System.out.println("========================================");
+                    System.out.println("Please update the date where the movie stops showing (YYYYMMDD): ");
+                    Initialise.movies.get(index).setExpiryDate(sc.next());
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Invalid option. Please enter an integer (1-4):");
+                    break;
+            }
+        }while(choice!=4);
+        SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
+        SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
         System.out.println("Movie updated!");
-        return;
     }
 
     /**
@@ -506,6 +512,21 @@ public class MovieController implements Serializable{
                 System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
                 System.out.println("Movie Sales: " + top5BySales.get(i).getSales());
                 System.out.println();
+            }
+        }
+    }
+
+    /**
+     * Update movie status of the movie in the movie array list of cineplexes
+     * @param movieStatus status of movie
+     * @param movie movie object to compare
+     */
+    public static void updateCineplexMovieStatus(Enum.MovieStatus movieStatus, Movie movie){
+        for (int k = 0; k < Initialise.cineplexes.size(); k++){
+            for (int j = 0; j < Initialise.cineplexes.get(k).getMovies().size(); j++){
+                if (Initialise.cineplexes.get(k).getMovies().get(j).getMovieTitle().equals(movie.getMovieTitle())){
+                    Initialise.cineplexes.get(k).getMovies().get(j).setMovieStatus(movieStatus);
+                }
             }
         }
     }
