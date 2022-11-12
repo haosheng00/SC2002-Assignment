@@ -36,7 +36,7 @@ public class ReviewController {
         Movie movie = Initialise.movies.get(movieIndex);
         //check if user alr input review 
         for (int i=0; i<movie.getReviews().size(); i++) {
-            if (movie.getReviews().get(i).getUserName() == customer.getUserName()) {
+            if (movie.getReviews().get(i).getUserName().equals(customer.getUserName())) {
                 System.out.println("You have previously added a rating for this movie.");
                 return;
             }
@@ -70,9 +70,9 @@ public class ReviewController {
         movie.getReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
 
          //update the customer past reviews array
-         customer.getPastReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
+        customer.getPastReviews().add(new Review(review,rating,customer.getUserName(),dateTime,movie));
          //write to customer 
-         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+        SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
         //update overallRating 
         double updatedRating = (rating+movie.getOverallRating())/(movie.getReviews().size());
@@ -108,7 +108,7 @@ public class ReviewController {
 
         //iterate thru the reviews of each movie to find the particular username
         for (i=0; i<size; i++) {
-            if (r.get(i).getUserName() == customer.getUserName()) {
+            if (r.get(i).getUserName().equals(customer.getUserName())) {
                 oldRating = r.get(i).getRating();
                 r.remove(i);
                 exist = 1;
@@ -172,7 +172,7 @@ public class ReviewController {
 
         //search whether his rating exists
         for (i=0; i<size; i++) {
-            if (reviews.get(i).getUserName() == customer.getUserName()) {
+            if (reviews.get(i).getUserName().equals(customer.getUserName())) {
                 ratingExist = 1;
                 reviewIndex = i;
                 oldRating = reviews.get(i).getRating();
@@ -257,13 +257,13 @@ public class ReviewController {
 
         int exist = 0;
 
-
         //update top5 sales array 
         ArrayList <Movie> top5Ratings = Initialise.top5ByRatings;
         //check if movie is alr in the top5ratings 
         for (int i=0; i< top5Ratings.size(); i++) {
-            if (movie.getMovieTitle() == top5Ratings.get(i).getMovieTitle()) {
+            if (movie.getMovieTitle().equals(top5Ratings.get(i).getMovieTitle())) {
                 exist = 1;
+                top5Ratings.set(i,movie);
                 //if movie's reviews size is 0, remove from top 5 ratings
                 if (movie.getReviews().size() == 0) {
                     top5Ratings.remove(i);

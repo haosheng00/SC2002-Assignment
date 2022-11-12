@@ -22,9 +22,9 @@ public class ListingUI {
         
         System.out.println("========================================");
         System.out.println("Please select listing control");
-        System.out.println("(1) Sales");
-        System.out.println("(2) Rating");
-        System.out.println("(3) Sales & Rating");
+        System.out.println("(1) Rating");
+        System.out.println("(2) Sales");
+        System.out.println("(3) Rating & Sales");
         System.out.println("(4) Back");
         System.out.println("========================================");
 
