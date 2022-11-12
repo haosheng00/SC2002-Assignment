@@ -13,8 +13,8 @@ public class SeatFormatter implements Serializable{
 
     /**
      * Formats the seatID of the seat given row letter and column number
-     * @param rowChoice, the row letter of the seat
-     * @param columnChoice, the column number of the seat
+     * @param rowChoice the row letter of the seat
+     * @param columnChoice the column number of the seat
      * @return the seatID of the seat
      */
     public static String seatIdFormat(char rowChoice, int columnChoice) {
@@ -29,7 +29,7 @@ public class SeatFormatter implements Serializable{
 
     /**
      * Asks the user to select a particular seat in the screening and checks if the seat is valid
-     * @param screening, which has the seats to be checked
+     * @param screening which has the seats to be checked
      * @return the valid seat object chosen
      */
     public static Seat checkIfValidSeat(Screening screening) {
@@ -84,7 +84,7 @@ public class SeatFormatter implements Serializable{
 
     /**
      * Prints out the seat after checking if the seat type, booking and reservation status
-     * @param seat, the seat object to be printed
+     * @param seat the seat object to be printed
      */
     public static void printSeat(Seat seat) {
         if (seat.getIsBooked()) {
@@ -121,7 +121,7 @@ public class SeatFormatter implements Serializable{
 
     /**
      * Chooses which layout printer to use by checking the cinema type of the screening
-     * @param screeningChosen, screening which you want to print the layout of
+     * @param screeningChosen screening which you want to print the layout of
      */
     public static void seatDisplay(Screening screeningChosen){
         if (screeningChosen.getCinema().getCinemaType().equals(Enum.CinemaType.PLATINUMMOVIESUITES)){

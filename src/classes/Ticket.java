@@ -6,13 +6,33 @@ import java.io.Serializable;
  * Represents a ticket of the movie to be purchased/purchased
  */
 public class Ticket implements Serializable{
-
+    /**
+     * Represents the movie object that the ticket is eligible for
+     */
     private Movie movie;
+    /**
+     * Represents the cineplex object that the ticket is eligible for
+     */
     private Cineplex cineplex;
+    /**
+     * Represents the cinema object that the ticket is eligible for
+     */
     private Cinema cinema;
+    /**
+     * Represents the show date that the ticket is eligible for
+     */
     private String showDate;
+    /**
+     * Represents the show time that the ticket is eligible for
+     */
     private String showTime;
+    /**
+     * Represents the seat object that the ticket is eligible for
+     */
     private Seat seat;
+    /**
+     * Represents the ticket price
+     */
     private double ticketPrice;
 
 
