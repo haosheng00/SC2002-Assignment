@@ -460,8 +460,9 @@ public class MovieController implements Serializable{
                         for (int i = 0; i < top5ByRatings.size(); i++) {
                             System.out.println("Movie " + (i + 1) + ":");
                             System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
-                            System.out.println("Movie Rating: " + top5ByRatings.get(i).getOverallRating());
+                            System.out.printf("Movie Rating: %.2f", top5ByRatings.get(i).getOverallRating());
                             System.out.println();
+
                         }
                         break;
                     } else {
@@ -489,7 +490,7 @@ public class MovieController implements Serializable{
             for (int i = 0; i < top5ByRatings.size(); i++) {
                 System.out.println("Movie " + (i + 1) + ":");
                 System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
-                System.out.println("Movie Rating: " + top5ByRatings.get(i).getOverallRating());
+                System.out.printf("Movie Rating: %.2f", top5ByRatings.get(i).getOverallRating());
                 System.out.println();
             }
         } else if (criteria == 2) {
