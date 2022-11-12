@@ -18,7 +18,7 @@ public class AccountUI {
      */
     public static void WelcomePage() throws Exception{
         System.out.println("========================================");
-        System.out.println("Welcome to MOBLIMA");
+        System.out.println("Welcome to MOBLIMA Athay");
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         do{
@@ -36,6 +36,7 @@ public class AccountUI {
                     CustomerMenuUI.guestMenuOptions();
                 }
                 else if (choice == 3){
+                    System.out.println("Thank you for using MOBLIMA Athay");
                     System.exit(0);
                 }
                 else{
