@@ -8,7 +8,7 @@ import initialiser.Initialise;
 public class LayoutPrinterPlat extends LayoutPrinter {
     /**
      * Prints the PLATINUMMOVIESUITES layout of a specific screening
-     * @param screening
+     * @param screening the screening which layout is to be printed
      */
     @Override
         public void printLayout(Screening screening) {

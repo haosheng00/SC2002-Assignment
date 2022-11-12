@@ -8,7 +8,7 @@ import initialiser.Initialise;
 public class LayoutPrinterOrdinary extends LayoutPrinter {
     /**
      * Prints the ORDINARY layout of the specific screening
-     * @param screening
+     * @param screening the screening which layout is to be printed
      */
     @Override
     public void printLayout(Screening screening) {
