@@ -100,7 +100,7 @@ public class Movie implements Serializable{
     }
     /**
      * Sets the status of the movie from the enumeration options
-     * @param movieStatus
+     * @param movieStatus status of movie
      */
     public void setMovieStatus(Enum.MovieStatus movieStatus) {
         this.movieStatus = movieStatus;
@@ -108,7 +108,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the title of the movie to the specified movieTitle
-     * @param movieTitle
+     * @param movieTitle title of the movie
      */
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
@@ -116,7 +116,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the movie genres list
-     * @param movieGenres
+     * @param movieGenres the list of genres of the movie
      */
     public void setMovieGenres(ArrayList<MovieGenre> movieGenres) {
         this.movieGenres = movieGenres;
@@ -124,7 +124,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the synopsis of the movie
-     * @param synopsis
+     * @param synopsis the synopsis of the movie
      */
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
@@ -132,7 +132,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the main director of the movie
-     * @param director
+     * @param director the director of the movie
      */
     public void setDirector(String director) {
         this.director = director;
@@ -140,7 +140,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the list of casts featured in the movie
-     * @param casts
+     * @param casts the array list of casts featured in the movie
      */
     public void setCasts(ArrayList<String> casts) {
         this.casts = casts;
@@ -148,7 +148,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the duration of the movie in minutes
-     * @param movieDuration
+     * @param movieDuration the duration of the movie
      */
     public void setMovieDuration(int movieDuration) {
         this.movieDuration = movieDuration;
@@ -156,7 +156,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the movie age rating/restriction from the enumeration options
-     * @param ageRestriction
+     * @param ageRestriction the age restriction of the movie
      */
     public void setAgeRestriction(Enum.AgeRestriction ageRestriction) {
         this.ageRestriction = ageRestriction;
@@ -164,7 +164,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets whether the movie is 3D or not (i.e. 3D or 2D)
-     * @param is3D
+     * @param is3D whether the movie is 3D
      */
     public void setIs3D(boolean is3D) {
         this.is3D = is3D;
@@ -172,7 +172,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the overall rating of the movie
-     * @param overallRating
+     * @param overallRating the overall rating of the movie
      */
     public void setOverallRating(double overallRating) {
         this.overallRating = overallRating;
@@ -180,7 +180,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the sales amount (total cost of tickets sold) of the movie
-     * @param sales
+     * @param sales the total amount of sales done by the movie
      */
     public void setSales(double sales) {
         this.sales = sales;
@@ -188,7 +188,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the end of screening date of the movie
-     * @param expiryDate
+     * @param expiryDate the end screening date of the movie
      */
     public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
@@ -196,7 +196,7 @@ public class Movie implements Serializable{
 
     /**
      * Sets the start of screening date of the movie
-     * @param startDate
+     * @param startDate the start screening date of the movie
      */
     public void setStartDate(String startDate) {
         this.startDate = startDate;

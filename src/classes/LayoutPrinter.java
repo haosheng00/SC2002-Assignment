@@ -6,14 +6,14 @@ package classes;
 public abstract class LayoutPrinter {
     /**
      * Prints layout of the particular screening
-     * @param screening, the screening to show the layout
+     * @param screening the screening to show the layout
      */
 
     abstract public void printLayout(Screening screening);
 
     /**
      * Prints out the next row with the next row letter
-     * @param rowNumber, row letter of the current row
+     * @param rowNumber row letter of the current row
      * @return row letter of the next row
      */
     public char setNewRow(char rowNumber){
@@ -32,7 +32,7 @@ public abstract class LayoutPrinter {
 
     /**
      * Prints out a blank when there should not be seats
-     * @param columnNumber, current column number
+     * @param columnNumber current column number
      * @return the next column number
      */
     public int printEmptySeats(int columnNumber){
