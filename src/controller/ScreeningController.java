@@ -89,7 +89,7 @@ public class ScreeningController {
         System.out.println("Printing screening information for Movie: " + movieChosen.getMovieTitle() + " ...");
         System.out.println("Cinema: " + Initialise.screenings.get(screeningChoice).getCinema().getCinemaName());
         System.out.println("Show Date: " + DateTime.dateFormatter(Initialise.screenings.get(screeningChoice).getShowDate()));
-        System.out.println("Show Time: " + DateTime.dateFormatter(Initialise.screenings.get(screeningChoice).getShowTime()));
+        System.out.println("Show Time: " + DateTime.timeFormatter(Initialise.screenings.get(screeningChoice).getShowTime()));
         System.out.println();
     }
 }

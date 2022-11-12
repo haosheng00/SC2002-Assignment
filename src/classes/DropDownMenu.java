@@ -190,8 +190,8 @@ public class DropDownMenu {
                 if (movieTitle.equals(screenings.get(i).getMovie().getMovieTitle())) {
                     if (cineplex.getCineplexName().equals(screenings.get(i).getCinema().getCineplexName())) {
                         optionNo++;
-                        System.out.println("(" + optionNo + ") Date: " + DateTime.dateFormatter(screenings.get(i).getShowDate()) + " Time: "
-                                + DateTime.timeFormatter(screenings.get(i).getShowTime()) + " Movie: " + movie.getMovieTitle());
+                        System.out.println("(" + optionNo + ") Date: " + DateTime.dateFormatter(screenings.get(i).getShowDate()) + "  Time: "
+                                + DateTime.timeFormatter(screenings.get(i).getShowTime()) + "  Movie: " + movie.getMovieTitle());
                         Choice.add(optionNo-1+counter);
                     }
                     else{
