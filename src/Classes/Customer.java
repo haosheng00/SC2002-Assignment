@@ -44,21 +44,21 @@ public class Customer extends Account implements Serializable{
         this.pastReviews = new ArrayList<>();
     }
 /**
- * To set a new email address for this customer 
+ * Sets a new email address for this customer 
  * @param email this customer's email
  */
     public void setEmailAddress(String email){
         this.emailAddress = email;
     }
 /**
- * To set a new mobile number for this customer
+ * Sets a new mobile number for this customer
  * @param phno this customer's mobile number
  */
     public void setMobileNumber(String phno){
         this.mobileNumber = phno;
     }
 /**
- * To set a new email address for this customer
+ * Sets a new email address for this customer
  * @return this customer's email address
  */
     public String getEmailAddress(){
@@ -86,7 +86,7 @@ public class Customer extends Account implements Serializable{
         return boughtTickets;
     }
 /**
- * To set the purchase history of this customer 
+ * Sets the purchase history of this customer 
  * @param boughtTickets an array of customer's past ticket purchases 
  */
     public void setBoughtTickets(ArrayList<Ticket> boughtTickets){
@@ -99,6 +99,4 @@ public class Customer extends Account implements Serializable{
     public ArrayList<Review> getPastReviews (){
          return pastReviews;
     }
-    
-
-    }
+}

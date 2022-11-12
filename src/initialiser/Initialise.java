@@ -6,6 +6,9 @@ import serialiser.WriteMovieDB;
 
 import java.util.ArrayList;
 
+/**
+ * Initialise the different attributes and array lists required for the whole booking system
+ */
 public class Initialise {
 
     // attributes
@@ -30,6 +33,10 @@ public class Initialise {
     public static ArrayList<Double> priceByCinemaType = new ArrayList<Double>();
     public static ArrayList<Double> priceByDay = new ArrayList<Double>();
 
+    /**
+     * Initialise the movie booking system with the pre-loaded data
+     * @throws Exception
+     */
     public static void initialiseMOBLIMA() throws Exception {
         //preWriteMovieDB will set values in .dat to the pre-initialised + remove all previously stored
         WriteMovieDB.preWriteMovieDB();

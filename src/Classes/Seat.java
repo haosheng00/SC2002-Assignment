@@ -128,7 +128,7 @@ public class Seat implements Serializable{
     }
 
     /**
-     * updates the booking status of the specified seat (booked or not booked)
+     * Updates the booking status of the specified seat (booked or not booked)
      * @param status booking status of the specified seat
      */
     public void setIsBooked(boolean status) {

@@ -59,7 +59,7 @@ public class Account implements Serializable{
     }
 
     /**
-     * To set a new username for this account 
+     * Sets a new username for this account 
      * @param s represents the new username of this acount
      */
     public void setUserName(String s){
@@ -67,14 +67,14 @@ public class Account implements Serializable{
     } 
 
     /**
-     * To set a new password of this account
+     * Sets a new password of this account
      * @param p represents the new password of this account 
      */
     public void setPassword(String p){
         this.password = p;
     }
     /**
-     * To set the account type of this account(Customer/Admin)
+     * Sets the account type of this account(Customer/Admin)
      * @param isAdmin represents the account type of this account
      */
     public void setIsAdmin(boolean isAdmin){

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.*;
 
 import classes.*;
-//import controller.*;
 import initialiser.Initialise;
 import ui.*;
 import serialiser.*;
@@ -24,7 +23,6 @@ public class PaymentController {
         PaymentController.Payments = Payments;
     }
 
-    //checkout all tickets in the cart
     /**
      * Allows the customer to check out the tickets added with only credit card purchase option
      * @param customer customer object
@@ -204,7 +202,6 @@ public class PaymentController {
         }
     }
  
-    //update sales of each movie and top5 array 
     /**
      * Updates the sales amount of the movie by adding the ticket charges of the movie in current payment to current total sales amount
      * @param cartTickets tickets added/purchased
@@ -268,8 +265,6 @@ public class PaymentController {
         }   
     }
  
-    //update ticket history for each customer
-    //add cartTickets to the boughtTix array
     /**
      * Updates the ticket history of the customer by adding tickets that was just purchased into bought tickets array list
      * @param cus customer

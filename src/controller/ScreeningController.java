@@ -12,10 +12,6 @@ import classes.*;
 /**
  * Represents the controller that can configure screenings
  */
-
-/**
- * Represents the screening controller class
- */
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
 

@@ -18,7 +18,7 @@ public class CustomerController {
     private static ArrayList<Customer> customers = Initialise.customers;
 
     /**
-     * Transverse through the customers array list check if entered username below to an existing customer
+     * Transverses through the customers array list check if entered username below to an existing customer
      * @param username username entered by user
      * @return index of customer in array list if username is a customer; -1 if username not found in customers array list
      */
@@ -192,6 +192,7 @@ public class CustomerController {
      * @throws Exception
      */
     public static void viewPastTickets(Customer customer) throws Exception {
+        System.out.println("========================================");
         System.out.println("Tickets you purchased in the past: ");
         ArrayList<Ticket> arr = customer.getBoughtTickets();
         for (int x = 0; x < arr.size(); x++) {
