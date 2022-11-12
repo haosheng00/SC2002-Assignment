@@ -2,6 +2,7 @@ package classes;
 
 import initialiser.Initialise;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -115,8 +116,9 @@ public class DropDownMenu {
      * @param screenings all the screenings in the cineplexes
      * @param movie chosen movie to filter screening choices
      * @return index of the screening
+     * @throws ParseException
      */
-    public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie) {
+    public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie) throws ParseException {
         int i = 0, screeningChoice = 0;
         int counter = 0;
         int optionNo = 0;
@@ -134,7 +136,7 @@ public class DropDownMenu {
 
                 if (movieTitle.equals(screenings.get(i).getMovie().getMovieTitle())) {
                     optionNo++;
-                    System.out.println("(" + optionNo + ") Date: " + screenings.get(i).getShowDate() + " Time: "
+                    System.out.println("(" + optionNo + ") Date: " + DateTime.stringToDate(screenings.get(i).getShowDate()) + " Time: "
                             + screenings.get(i).getShowTime() + " Movie: " +movie.getMovieTitle());
                     Choice.add(optionNo-1+counter);
                 } else {
@@ -167,8 +169,9 @@ public class DropDownMenu {
      * @param movie chosen movie to filter the screening choices
      * @param cineplex chosen cineplex to filter the screening choices
      * @return index of the screening
+     * * @throws ParseException
      */
-    public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie, Cineplex cineplex) {
+    public static int initiateScreeningChoice(ArrayList<Screening> screenings, Movie movie, Cineplex cineplex) throws ParseException {
         int i = 0, screeningChoice = 0;
         int counter = 0;
         int optionNo = 0;
@@ -187,7 +190,7 @@ public class DropDownMenu {
                 if (movieTitle.equals(screenings.get(i).getMovie().getMovieTitle())) {
                     if (cineplex.getCineplexName().equals(screenings.get(i).getCinema().getCineplexName())) {
                         optionNo++;
-                        System.out.println("(" + optionNo + ") Date: " + screenings.get(i).getShowDate() + " Time: "
+                        System.out.println("(" + optionNo + ") Date: " + DateTime.stringToDate(screenings.get(i).getShowDate()) + " Time: "
                                 + screenings.get(i).getShowTime() + " Movie: " + movie.getMovieTitle());
                         Choice.add(optionNo-1+counter);
                     }

@@ -480,24 +480,23 @@ public class MovieController implements Serializable{
                     }
                     else if (choice == 1) {
                         System.out.println("Movies by Overall Rating: ");
-                        System.out.println();
+                        System.out.println(" ");
                         if (top5ByRatings.isEmpty()) System.out.println("Sorry, no movies with rating at the moment");
                         for (int i = 0; i < top5ByRatings.size(); i++) {
                             System.out.println("Movie " + (i + 1) + ":");
                             System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
                             System.out.printf("Movie Rating: %.2f", top5ByRatings.get(i).getOverallRating());
-                            System.out.println();
-
+                            System.out.println("\n");
                         }
                         break;
                     } else {
                         System.out.println("Movies by Sales: ");
-                        System.out.println();
+                        System.out.println(" ");
                         for (int i = 0; i < top5BySales.size(); i++) {
                             System.out.println("Movie " + (i + 1) + ":");
                             System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
                             System.out.println("Movie Sales: " + top5BySales.get(i).getSales());
-                            System.out.println();
+                            System.out.println(" ");
                         }
                         break;
                     }
@@ -516,7 +515,7 @@ public class MovieController implements Serializable{
                 System.out.println("Movie " + (i + 1) + ":");
                 System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
                 System.out.printf("Movie Rating: %.2f", top5ByRatings.get(i).getOverallRating());
-                System.out.println();
+                System.out.println("\n");
             }
         } else if (criteria == 2) {
             System.out.println("Movies by Sales: ");
@@ -525,7 +524,7 @@ public class MovieController implements Serializable{
                 System.out.println("Movie " + (i + 1) + ":");
                 System.out.println("Movie Title: " + top5BySales.get(i).getMovieTitle());
                 System.out.println("Movie Sales: " + top5BySales.get(i).getSales());
-                System.out.println();
+                System.out.println(" ");
             }
         }
     }

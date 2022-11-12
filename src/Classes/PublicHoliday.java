@@ -2,6 +2,9 @@ package classes;
 
 import java.io.Serializable;
 
+/**
+ * Represents the public holiday class that is recognized by MOBLIMA Athay
+ */
 public class PublicHoliday implements Serializable{
     /**
      * Represents the name of public holiday
@@ -14,8 +17,8 @@ public class PublicHoliday implements Serializable{
 
     /**
      * Constructs a public holiday initialised with a specific name and date
-     * @param name n
-     * @param stringdate
+     * @param name name of public holiday
+     * @param stringdate date of public holiday
      */
     public PublicHoliday(String name, String stringdate){
         this.name = name;
@@ -24,15 +27,15 @@ public class PublicHoliday implements Serializable{
 
     /**
      * Returns name of public holiday
-     * @return name 
+     * @return name of the public holiday
      */
     public String getPublicHolidayName(){
         return name;
     }
 
     /**
-     * Returns name of date of public holiday
-     * @return date 
+     * Returns date of public holiday
+     * @return date of the public holiday
      */
     public String getPublicHolidayDate(){
         return stringdate;
