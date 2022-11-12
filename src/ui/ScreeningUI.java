@@ -26,11 +26,12 @@ public class ScreeningUI {
             System.out.println("(2) Delete Screening");
             System.out.println("(3) Show Screening");
             System.out.println("(4) Back");
+            System.out.println("========================================");
             try {
                 option = sc.nextInt();
             switch (option) {
                 case 1:
-                    ScreeningController.addScreening(Initialise.cineplexes);
+                    ScreeningController.addScreening();
                     break;
                 case 2:
                     ScreeningController.deleteScreening();

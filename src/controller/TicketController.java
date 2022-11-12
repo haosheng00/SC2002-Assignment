@@ -93,34 +93,37 @@ public class TicketController {
         }while(true);
             
             for (int j = 0; j < childTicketNo; j++) {
-                if (j == 0){
-                    SeatFormatter.seatDisplay(screeningChosen);
-                }
+                SeatFormatter.seatDisplay(screeningChosen);
                 System.out.println("========================================");
                 System.out.println("Select Child Seat (" + (j + 1) +"/"+childTicketNo+ ") : ");
                 seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                    j++;
+                }
                 actualTicketPrice = TicketController.TicketPrice(1, 0, 0, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
 
             for (int j = 0; j < adultTicketNo; j++) {
-                if (j == 0){
-                    SeatFormatter.seatDisplay(screeningChosen);
-                }
+                SeatFormatter.seatDisplay(screeningChosen);
                 System.out.println("========================================");
                 System.out.println("Select Adult Seat (" + (j + 1)+"/"+adultTicketNo + ") : ");
                 seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                    j++;
+                }
                 actualTicketPrice = TicketController.TicketPrice(0, 1, 0, cineplexChosen, movieChosen, screeningChosen,seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
 
             for (int j = 0; j < seniorTicketNo; j++) {
-                if (j == 0){
-                    SeatFormatter.seatDisplay(screeningChosen);
-                }
+                SeatFormatter.seatDisplay(screeningChosen);
                 System.out.println("========================================");
                 System.out.println("Select Senior Seat (" + (j + 1)+"/"+seniorTicketNo + ") : ");
                 seatChosen = SeatFormatter.checkIfValidSeat(screeningChosen);
+                if (seatChosen.getSeatType() == Enum.SeatType.COUPLE_SEAT){
+                    j++;
+                }
                 actualTicketPrice = TicketController.TicketPrice(0, 0, 1, cineplexChosen, movieChosen, screeningChosen, seatChosen);
                 TicketController.addCartTicket(customer.getCartTickets(), movieChosen, cineplexChosen, screeningChosen, seatChosen, actualTicketPrice);
             }
@@ -130,12 +133,12 @@ public class TicketController {
         }
     
         /**
-         * Determines the ticket price based on certain conditions such as: 
-         * Age Group (Base Price)             Student: 7.0, Adult: 8.5, Senior: 4.0
-         * Seat Type (Base Price)             Couple Seat: 17.0
-         * Movie Type (Add-on Price)          3D: 2.0
-         * Cinema Type (Add-on Price)         Platinum Movie Suites: 5.0
-         * Day of Week (Add-on Price)         Weekend: 3.0, Holiday: 5.0
+         * Determines the ticket price based on certain conditions such as: <p>
+         * Age Group (Base Price)             Student: 7.0, Adult: 8.5, Senior: 4.0<p>
+         * Seat Type (Base Price)             Couple Seat: 17.0<p>
+         * Movie Type (Add-on Price)          3D: 2.0<p>
+         * Cinema Type (Add-on Price)         Platinum Movie Suites: 5.0<p>
+         * Day of Week (Add-on Price)         Weekend: 3.0, Holiday: 5.0<p>
          * @param student checks if ticket bought is a student ticket
          * @param adult checks if ticket bought is a adult ticket
          * @param senior checks if ticket bought is a senior ticket
@@ -605,7 +608,6 @@ public class TicketController {
          */
         public static void printTicket(Ticket ticket){
             //FOR PRINTRECEIPT
-
             System.out.println("Movie: " + ticket.getMovie().getMovieTitle());
             System.out.println("Cineplex: " + ticket.getCineplex().getCineplexName());
             System.out.println("Cinema: " + ticket.getCinema().getCinemaName());

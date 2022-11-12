@@ -11,7 +11,7 @@ import controller.*;
 public class ReviewUI {
 
     /**
-     * Initiate Review UI which allows customers to add, delete, edit or view the reviews 
+     * Initiates Review UI which allows customers to add, delete, edit or view the reviews 
      * @param customer customer object 
      * @throws Exception
      */
@@ -27,7 +27,7 @@ public class ReviewUI {
             System.out.println("(1) Add Review ");
             System.out.println("(2) Delete Review ");
             System.out.println("(3) Edit Review ");
-            System.out.println("(4) View your review(s) ");
+            System.out.println("(4) View your Review(s) ");
             System.out.println("(5) Back");
             System.out.println("========================================");
             try {

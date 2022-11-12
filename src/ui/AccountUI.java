@@ -18,7 +18,7 @@ public class AccountUI {
      */
     public static void WelcomePage() throws Exception{
         System.out.println("========================================");
-        System.out.println("Welcome to MOBLIMA");
+        System.out.println("Welcome to MOBLIMA Athay");
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         do{
@@ -26,12 +26,21 @@ public class AccountUI {
                 System.out.println("========================================");
                 System.out.println("(1) Login");
                 System.out.println("(2) Continue as guest");
+                System.out.println("(3) Exit");
+                System.out.println("========================================");
                 choice = sc.nextInt();
                 if (choice == 1) {
                     initiateLoginUI(0);
                 } else if (choice == 2) {
                     Login("guest", "guest");
                     CustomerMenuUI.guestMenuOptions();
+                }
+                else if (choice == 3){
+                    System.out.println("Thank you for using MOBLIMA Athay");
+                    System.exit(0);
+                }
+                else{
+                    System.out.println("Invalid Input. Please enter an integer (1-3):");
                 }
             }
             catch (Exception e) {
@@ -57,6 +66,7 @@ public class AccountUI {
             System.out.println("(3) Delete account");
             System.out.println("(4) Change Password");
             System.out.println("(5) Back");
+            System.out.println("========================================");
             try{
                 choice = sc.nextInt();
 
@@ -77,7 +87,7 @@ public class AccountUI {
                     AccountUI.WelcomePage();
                     break;
                 default:
-                    System.out.println("Invalid Choice");
+                    System.out.println("Invalid Choice. Please enter an integer (1-5): ");
                     break;
             }
             }
@@ -109,10 +119,10 @@ public class AccountUI {
             success = Login(username, password);
             switch (success){
                 case 0:
-                    System.out.println("Username or password incorrect");
+                    System.out.println("Username or password is incorrect");
                     System.out.println("========================================");
-                    System.out.println("1: Try again");
-                    System.out.println("2: Exit");
+                    System.out.println("(1) Try again");
+                    System.out.println("(2) Exit");
                     exitChoice = sc.nextInt();
                     break;
                 case 1:
@@ -127,7 +137,6 @@ public class AccountUI {
                         System.out.println("Logged in successfully");
                         CustomerMenuUI.customerMenuOptions(Initialise.customers.get(index));
                     }
-                    
                     break;
                 case 3:
                     CustomerMenuUI.guestMenuOptions();
@@ -138,7 +147,6 @@ public class AccountUI {
                 default:
                     AccountUI.WelcomePage();
                     break;
-                    
             }
         }while(exitChoice != 2 && success<5);
         if (exitChoice == 2)

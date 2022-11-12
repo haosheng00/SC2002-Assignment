@@ -2,6 +2,9 @@ package classes;
 
 import java.io.Serializable;
 
+/**
+ * Represents a ticket of the movie to be purchased/purchased
+ */
 public class Ticket implements Serializable{
 
     private Movie movie;

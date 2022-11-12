@@ -12,25 +12,20 @@ import classes.*;
 /**
  * Represents the controller that can configure screenings
  */
-
-/**
- * Represents the screening controller class
- */
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
 
     /**
      * Asks you to select a cineplex, a cinema, a movie, a screening date and time
      * and adds the screening to movie DB
-     * @param cineplexes, cineplexes pre-initialised
      * @throws IOException
      */
-    public static void addScreening(ArrayList<Cineplex> cineplexes) throws IOException{
-        int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);
+    public static void addScreening() throws IOException{
+        int cineplexChoice = DropDownMenu.initiateCineplexChoice(Initialise.cineplexes);
         if (cineplexChoice == -1){
             return;
         }
-        Cineplex cineplexChosen = cineplexes.get(cineplexChoice);
+        Cineplex cineplexChosen = Initialise.cineplexes.get(cineplexChoice);
         int cinemaChoice = DropDownMenu.initiateCinemaChoice(cineplexChosen.getCinemas());
         if (cinemaChoice == -1){
             return;

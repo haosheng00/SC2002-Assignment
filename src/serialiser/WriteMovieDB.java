@@ -139,7 +139,7 @@ public class WriteMovieDB {
 	}
 
 	/**
-	 * Pre-initialised some objects into the movie database
+	 * Pre-initialises some objects into the movie database
 	 * @throws Exception
 	 */
 	public static void preWriteMovieDB() throws Exception{

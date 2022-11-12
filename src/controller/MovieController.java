@@ -273,7 +273,15 @@ public class MovieController implements Serializable{
             return -1;
         }
         //Initialise.movies.get(index).setMovieStatus(MovieStatus.END_OF_SHOWING);
+        for (int i = 0; i < Initialise.cineplexes.size(); i++){
+            for(int j = 0; j < Initialise.cineplexes.get(i).getMovies().size(); j++){
+                if (Initialise.movies.get(index).getMovieTitle().equals(Initialise.cineplexes.get(i).getMovies().get(i).getMovieTitle())){
+                    Initialise.cineplexes.get(i).getMovies().remove(i);
+                }
+            }
+        }
         Initialise.movies.remove(Initialise.movies.get(index));
+        SerializeMovieDB.writeSerializedObject("Cineplex.dat", Initialise.cineplexes);
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
         System.out.println("Movie Deleted!");
         return 1;

@@ -87,10 +87,18 @@ public class Cinema implements Serializable{
         this.cinemaType = cinemaType;
     }
 
+    /**
+     * Returns the cineplex name
+     * @return cineplex name
+     */
     public String getCineplexName() {
         return cineplexName;
     }
 
+    /**
+     * Sets the cineplex name
+     * @param cineplexName cineplex name
+     */
     public void setCineplexName(String cineplexName) {
         this.cineplexName = cineplexName;
     }

@@ -17,11 +17,12 @@ public class AdminMenuUI{
         do{
             System.out.println("========================================");
             System.out.println("Hello! Please select an option.");
-            System.out.println("(1) - Movie Controls");
-            System.out.println("(2) - Screening Controls");
-            System.out.println("(3) - Ticket Controls");
-            System.out.println("(4) - Listing Controls");
-            System.out.println("(5) - Log out");
+            System.out.println("(1) Movie Controls");
+            System.out.println("(2) Screening Controls");
+            System.out.println("(3) Ticket Controls");
+            System.out.println("(4) Listing Controls");
+            System.out.println("(5) Log out");
+            System.out.println("========================================");
             try {
                 option = scanner.nextInt();
             switch(option){
@@ -47,7 +48,7 @@ public class AdminMenuUI{
             }
             }
             catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer: ");
+                System.out.println("Invalid input. Please enter an integer (1-5): ");
                 scanner.next();
             }
         }while (option != 5);

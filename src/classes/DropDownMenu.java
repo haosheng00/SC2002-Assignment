@@ -65,7 +65,7 @@ public class DropDownMenu {
             for (int i = 0; i < cineplexChosen.getMovies().size(); i++){
                 if (cineplexChosen.getMovies().get(i) == movie){
                     chosen = true;
-                    System.out.println("Already Chosen");
+                    System.out.println("Already Added");
                 }
             }
             if (!chosen){
