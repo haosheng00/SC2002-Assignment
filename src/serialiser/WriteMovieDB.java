@@ -68,19 +68,23 @@ public class WriteMovieDB {
 	 * Represents the screenings pre-initialised in the movie database
 	 */
 	public static ArrayList<Screening> screenings = new ArrayList<>(
-			List.of(new Screening(cineplexes.get(0).getCinemas().get(0), "20220220", "143000", preMovies.get(0)),
-					new Screening(cineplexes.get(0).getCinemas().get(2), "20220221", "143000", preMovies.get(1)),
-					new Screening(cineplexes.get(0).getCinemas().get(4), "20220222", "143000", preMovies.get(2)),
-					new Screening(cineplexes.get(1).getCinemas().get(0), "20220223", "143000", preMovies.get(0)),
-					new Screening(cineplexes.get(1).getCinemas().get(2), "20220224", "143000", preMovies.get(1)),
-					new Screening(cineplexes.get(1).getCinemas().get(4), "20220225", "143000", preMovies.get(2)),
-					new Screening(cinemasOrchard.get(0), "20220226", "143000", preMovies.get(0)),
-					new Screening(cinemasOrchard.get(2), "20220227", "143000", preMovies.get(1)),
-					new Screening(cinemasOrchard.get(4), "20220228", "143000", preMovies.get(2)),
-					new Screening(cineplexes.get(0).getCinemas().get(0), "20220229", "143000", preMovies.get(2)),
-					new Screening(cineplexes.get(0).getCinemas().get(2), "20220230", "143000", preMovies.get(0)),
-					new Screening(cineplexes.get(0).getCinemas().get(4), "20220301", "143000", preMovies.get(1)),
-					new Screening(cineplexes.get(0).getCinemas().get(2), "20220302", "143000", preMovies.get(1))));
+			List.of(new Screening(cinemasAMK.get(0), "20221209", "143000", preMovies.get(0)),
+					new Screening(cinemasAMK.get(0), "20221210", "153000", preMovies.get(0)),
+					new Screening(cinemasAMK.get(0), "20221211", "203000", preMovies.get(0)),
+					new Screening(cinemasAMK.get(0), "20221212", "223000", preMovies.get(5)),
+					new Screening(cinemasAMK.get(0), "20221217", "140000", preMovies.get(4)),
+					new Screening(cinemasAMK.get(2), "20221218", "153000", preMovies.get(1)),
+					new Screening(cinemasAMK.get(4), "20221219", "163000", preMovies.get(2)),
+					new Screening(cinemasAMK.get(0), "20221220", "143000", preMovies.get(0)),
+					new Screening(cinemasJEM.get(2), "20221221", "090000", preMovies.get(4)),
+					new Screening(cinemasJEM.get(4), "20221222", "103000", preMovies.get(4)),
+					new Screening(cinemasOrchard.get(0), "20221209", "143000", preMovies.get(0)),
+					new Screening(cinemasOrchard.get(2), "20221212", "133000", preMovies.get(1)),
+					new Screening(cinemasOrchard.get(4), "20221215", "143000", preMovies.get(2)),
+					new Screening(cinemasJEM.get(2), "20230101", "160000", preMovies.get(4)),
+					new Screening(cinemasJEM.get(2), "20230102", "140000", preMovies.get(4)),
+					new Screening(cinemasOrchard.get(0), "20221224", "200000", preMovies.get(1)),
+					new Screening(cinemasOrchard.get(0), "20221225", "220000", preMovies.get(1))));
 
 	/**
 	 * Represents the admin accounts pre-initialised in the movie database
@@ -98,7 +102,7 @@ public class WriteMovieDB {
 	 * Represents the public holidays recognized by Athay
 	 */
 	public static ArrayList<PublicHoliday> holidays = new ArrayList<PublicHoliday>(
-		List.of(new PublicHoliday("NEW YEARS DAY", "20220101"), 
+		List.of(new PublicHoliday("NEW YEARS DAY", "20230101"),
 				new PublicHoliday("CHINESE NEW YEAR", "20220201"),
 				new PublicHoliday("CHINESE NEW YEAR", "20220202"),
 				new PublicHoliday("GOOD FRIDAY", "20220415"),
