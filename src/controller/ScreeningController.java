@@ -12,10 +12,6 @@ import classes.*;
 /**
  * Represents the controller that can configure screenings
  */
-
-/**
- * Represents the screening controller class
- */
 public class ScreeningController {
     static Scanner sc = new Scanner(System.in);
 
@@ -72,7 +68,7 @@ public class ScreeningController {
     /**
      * Asks you to select a cineplex, a movie and a screening
      * and prints our the selected screening cinema, screening date and time
-     * @param cineplexes, cineplexes pre-initialised
+     * @param cineplexes cineplexes pre-initialised
      */
     public static void showScreening(ArrayList<Cineplex> cineplexes){
         int cineplexChoice = DropDownMenu.initiateCineplexChoice(cineplexes);

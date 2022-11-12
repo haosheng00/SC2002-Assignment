@@ -99,104 +99,104 @@ public class Movie implements Serializable{
         this.startDate = j;
     }
     /**
-     * Set the status of the movie from the enumeration options
-     * @param movieStatus
+     * Sets the status of the movie from the enumeration options
+     * @param movieStatus status of movie
      */
     public void setMovieStatus(Enum.MovieStatus movieStatus) {
         this.movieStatus = movieStatus;
     }
 
     /**
-     * Set the title of the movie to the specified movieTitle
-     * @param movieTitle
+     * Sets the title of the movie to the specified movieTitle
+     * @param movieTitle title of the movie
      */
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
 
     /**
-     * Set the movie genres list
-     * @param movieGenres
+     * Sets the movie genres list
+     * @param movieGenres the list of genres of the movie
      */
     public void setMovieGenres(ArrayList<MovieGenre> movieGenres) {
         this.movieGenres = movieGenres;
     }
 
     /**
-     * Set the synopsis of the movie
-     * @param synopsis
+     * Sets the synopsis of the movie
+     * @param synopsis the synopsis of the movie
      */
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
 
     /**
-     * Set the main director of the movie
-     * @param director
+     * Sets the main director of the movie
+     * @param director the director of the movie
      */
     public void setDirector(String director) {
         this.director = director;
     }
 
     /**
-     * Set the list of casts featured in the movie
-     * @param casts
+     * Sets the list of casts featured in the movie
+     * @param casts the array list of casts featured in the movie
      */
     public void setCasts(ArrayList<String> casts) {
         this.casts = casts;
     }
 
     /**
-     * Set the duration of the movie in minutes
-     * @param movieDuration
+     * Sets the duration of the movie in minutes
+     * @param movieDuration the duration of the movie
      */
     public void setMovieDuration(int movieDuration) {
         this.movieDuration = movieDuration;
     }
 
     /**
-     * Set the movie age rating/restriction from the enumeration options
-     * @param ageRestriction
+     * Sets the movie age rating/restriction from the enumeration options
+     * @param ageRestriction the age restriction of the movie
      */
     public void setAgeRestriction(Enum.AgeRestriction ageRestriction) {
         this.ageRestriction = ageRestriction;
     }
 
     /**
-     * Set whether the movie is 3D or not (i.e. 3D or 2D)
-     * @param is3D
+     * Sets whether the movie is 3D or not (i.e. 3D or 2D)
+     * @param is3D whether the movie is 3D
      */
     public void setIs3D(boolean is3D) {
         this.is3D = is3D;
     }
 
     /**
-     * Set the overall rating of the movie
-     * @param overallRating
+     * Sets the overall rating of the movie
+     * @param overallRating the overall rating of the movie
      */
     public void setOverallRating(double overallRating) {
         this.overallRating = overallRating;
     }
 
     /**
-     * Set the sales amount (total cost of tickets sold) of the movie
-     * @param sales
+     * Sets the sales amount (total cost of tickets sold) of the movie
+     * @param sales the total amount of sales done by the movie
      */
     public void setSales(double sales) {
         this.sales = sales;
     }
 
     /**
-     * Set the end of screening date of the movie
-     * @param expiryDate
+     * Sets the end of screening date of the movie
+     * @param expiryDate the end screening date of the movie
      */
     public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
     }
 
     /**
-     * Set the start of screening date of the movie
-     * @param startDate
+     * Sets the start of screening date of the movie
+     * @param startDate the start screening date of the movie
      */
     public void setStartDate(String startDate) {
         this.startDate = startDate;

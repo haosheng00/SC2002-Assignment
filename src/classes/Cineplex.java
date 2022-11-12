@@ -22,9 +22,9 @@ public class Cineplex implements Serializable{
 
     /**
      * Represents the cineplex initialised with a specific name, cinemas, and movies given
-     * @param cineplexName
-     * @param cinemas
-     * @param movies
+     * @param cineplexName the name of the cineplex
+     * @param cinemas the array list of cinemas in the cineplex
+     * @param movies the array list of movies shown in the cineplex
      */
     public Cineplex(String cineplexName, ArrayList<Cinema> cinemas, ArrayList<Movie> movies){
         this.cineplexName = cineplexName;
@@ -42,7 +42,7 @@ public class Cineplex implements Serializable{
 
     /**
      * Set the name of the cineplex to a specific cineplex name
-     * @param cineplexName
+     * @param cineplexName the name of the cineplex
      */
     public void setCineplexName(String cineplexName) {
         this.cineplexName = cineplexName;
@@ -58,7 +58,7 @@ public class Cineplex implements Serializable{
 
     /**
      * Set the list of cinemas in the cineplex to a specific list of cinemas
-     * @param cinemas
+     * @param cinemas the array list of cinemas in the cineplex
      */
     public void setCinemas(ArrayList<Cinema> cinemas) {
         this.cinemas = cinemas;
@@ -74,7 +74,7 @@ public class Cineplex implements Serializable{
 
     /**
      * Set the list of movies in the cineplex to a specific list of movies
-     * @param movies
+     * @param movies the array list of movies in the cineplex
      */
     public void setMovies(ArrayList<Movie> movies){
         this.movies = movies;

@@ -10,7 +10,10 @@ import serialiser.SerializeMovieDB;
  * Contains the initiation method for listing control UI
  */
 public class ListingUI {
-
+/**
+ * Represents the criteria for filtering top 5 movies 
+ */
+    private static int criteria;
     /**
      * Prints the movie sorting controls available to admin
      * @throws IOException
@@ -18,7 +21,7 @@ public class ListingUI {
     public static void initiateListingUI() throws IOException {
         
         Scanner sc = new Scanner(System.in);
-        int choice = 0;
+        criteria = 0;
         
         System.out.println("========================================");
         System.out.println("Please select listing control");
@@ -31,15 +34,15 @@ public class ListingUI {
         do {
             try {
                 ArrayList <Integer> listingCriteria = Initialise.listingCriteria;
-                choice = sc.nextInt();
-                if (choice == 4){
+                criteria = sc.nextInt();
+                if (criteria == 4){
                     return;
                 }
-                else if (choice <= 0 || choice >= 5) {
+                else if (criteria <= 0 || criteria >= 5) {
                     System.out.println("Invalid option. Please enter an integer (1-4): ");
                 }
                 else {
-                    listingCriteria.set(0, choice);
+                    listingCriteria.set(0, criteria);
                     SerializeMovieDB.writeSerializedObject("ListingCriteria.dat", Initialise.listingCriteria);
                     break;
                 }

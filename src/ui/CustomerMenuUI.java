@@ -42,18 +42,15 @@ public class CustomerMenuUI{
                             MovieController.printMovie(movieIndex);
                             break;
                         case 2:
-                            System.out.println("========================================");
                             TicketController.createBooking(Initialise.cineplexes, customer);
                             break;
                         case 3:
-                            System.out.println("========================================");
                             CustomerController.viewPastTickets(customer);
                             break;
                         case 4:
                             ReviewUI.initiateReviewUI(customer);
                             break;
                         case 5:
-                            //ADD TO SERIALIZER
                             MovieController.getTop5Movies(Initialise.listingCriteria.get(0));
                             break;
                         case 6:

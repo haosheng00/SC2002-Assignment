@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.*;
 
 import classes.*;
-//import controller.*;
 import initialiser.Initialise;
 import ui.*;
 import serialiser.*;
@@ -24,7 +23,6 @@ public class PaymentController {
         PaymentController.Payments = Payments;
     }
 
-    //checkout all tickets in the cart
     /**
      * Allows the customer to check out the tickets added with only credit card purchase option
      * @param customer customer object
@@ -75,7 +73,7 @@ public class PaymentController {
         //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
         System.out.println("========================================");
-        System.out.printf("The total amount is: %.2f\n", totalCharges);
+        System.out.printf("The total amount is: $%.2f\n", totalCharges);
         System.out.println();
         System.out.println("Please enter your credit card details:");
         System.out.println();
@@ -89,7 +87,7 @@ public class PaymentController {
         billingAddress = sc.next();
         System.out.println("Please enter your CVC/CVV: ");
         cvc = sc.next();
-        System.out.printf("The amount of %.2f ", totalCharges);
+        System.out.printf("The amount of $%.2f ", totalCharges);
         System.out.println("will be charged to your card, under the name " + name); 
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
@@ -176,6 +174,7 @@ public class PaymentController {
      */
     public static void printReceipt(ArrayList<Ticket> cartTickets) {
         int size = cartTickets.size();
+        System.out.println(" ");
         System.out.println("Receipt:");
         System.out.println();
         for (int i=0; i<size; i++) {
@@ -185,7 +184,8 @@ public class PaymentController {
             TicketController.printTicket(cartTickets.get(i));
             System.out.println();
         }
-        System.out.println("Total Payment: " + calcPayment(cartTickets));    
+        System.out.println(" ");
+        System.out.println("Total Payment: $" + calcPayment(cartTickets));    
     }
 
     /**
@@ -205,7 +205,6 @@ public class PaymentController {
         }
     }
  
-    //update sales of each movie and top5 array 
     /**
      * Updates the sales amount of the movie by adding the ticket charges of the movie in current payment to current total sales amount
      * @param cartTickets tickets added/purchased
@@ -285,8 +284,6 @@ public class PaymentController {
         }   
     }
  
-    //update ticket history for each customer
-    //add cartTickets to the boughtTix array
     /**
      * Updates the ticket history of the customer by adding tickets that was just purchased into bought tickets array list
      * @param cus customer

@@ -8,27 +8,28 @@ import initialiser.Initialise;
 public class LayoutPrinterOrdinary extends LayoutPrinter {
     /**
      * Prints the ORDINARY layout of the specific screening
-     * @param screening
+     * @param screening the screening which layout is to be printed
      */
-    public static void printLayout(Screening screening) {
+    @Override
+    public void printLayout(Screening screening) {
         System.out.printf("%50s", "Screen");
         System.out.println();
         int columnNumber = 1;
-        char rowNumber = LayoutPrinter.setNewRow('@');
+        char rowNumber = setNewRow('@');
         for (int i = 0; i < Initialise.Ordinary_Capacity; i++) {
             if (rowNumber >= 'I') {
                 screening.getSeat(i).setSeatType(Enum.SeatType.COUPLE_SEAT);
             }
             int leftSectionWidth = 4;
             while (rowNumber == 'A' && (columnNumber <= leftSectionWidth)) {
-                columnNumber = LayoutPrinter.printEmptySeats(columnNumber);
+                columnNumber = printEmptySeats(columnNumber);
             }
             int midSectionWidth = 10;
             if (columnNumber == leftSectionWidth + 1 || columnNumber == leftSectionWidth + midSectionWidth + 1) {
-                LayoutPrinter.printAisle();
+                printAisle();
             }
             if (rowNumber == 'A' && (columnNumber >= leftSectionWidth + midSectionWidth + 1)) {
-                rowNumber = LayoutPrinter.setNewRow(rowNumber);
+                rowNumber = setNewRow(rowNumber);
                 columnNumber = 1;
             }
             screening.getSeat(i).setEverything(rowNumber, columnNumber);
@@ -41,11 +42,11 @@ public class LayoutPrinterOrdinary extends LayoutPrinter {
             }
             int rightSectionWidth = 2;
             if (columnNumber >= leftSectionWidth + midSectionWidth + rightSectionWidth + 1 && i < Initialise.Ordinary_Capacity - 1) {
-                rowNumber = LayoutPrinter.setNewRow(rowNumber);
+                rowNumber = setNewRow(rowNumber);
                 columnNumber = 1;
             }
         }
-        LayoutPrinter.printLegend();
+        printLegend();
         System.out.println();
     }
 }

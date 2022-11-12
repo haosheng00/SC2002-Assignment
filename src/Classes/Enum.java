@@ -4,7 +4,10 @@ public class Enum {
     
     /* Movie */
 
-    // MovieStatus
+    /**
+     * Represents the screening status of the movie, with available options:
+     * Coming Soon, Preview, End of Showing and Now Showing
+     */
     public enum MovieStatus {
         COMING_SOON,
         PREVIEW,
@@ -12,7 +15,10 @@ public class Enum {
         NOW_SHOWING
     }
 
-    // MovieGenre
+    /**
+     * Represent the genre the movie belongs to, with available options:
+     * Action, Horror, Thriller, Adventure, Comedy, Anime, Romance, Drama, True Story and Others
+     */
     public enum MovieGenre {
         ACTION,
         HORROR,
@@ -26,7 +32,10 @@ public class Enum {
         OTHERS
     }
 
-    // AgeRestriction
+    /**
+     * Represents the movie age rating restriction, with available options:
+     * G, PG, PG13, NC16, M18 and R21 
+     */
     public enum AgeRestriction {
         G, 
         PG, 
@@ -36,20 +45,39 @@ public class Enum {
         R21
     }
 
-    // SeatType
+    /**
+     * Represents the type of seat in the cinema, with available options:
+     * Ordinary and Couple Seat
+     */
     public enum SeatType {
         COUPLE_SEAT,
         ORDINARY
     }
 
-    //TicketType
+    /**
+     * Represents the type of ticket (age group), with available options:
+     * Student, Adult and Senior Citizen
+     */
     public enum TicketType{
-        STUDENT,
-        ADULT,
-        SENIORCITIZEN
+        STUDENT ("Student"),
+        ADULT ("Adult"),
+        SENIORCITIZEN ("Senior Citizen");
+
+        private String ticketType;
+
+        TicketType(String ticketType){
+            this.ticketType = ticketType;
+        }
+
+        public String getTicketType(int j){
+            return ticketType;
+        }
     }
 
-    //DayOfWeek
+    /**
+     * Represents the day of the week, with available options:
+     * Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday
+     */
     public enum DayOfWeek{
         MONDAY,
         TUESDAY,
@@ -60,10 +88,23 @@ public class Enum {
         SUNDAY
     }
 
-    //CinemaType
+    /**
+     * Represents the type of cinema the movie is screening in, with available options:
+     * Platinum Movie Suites and Ordinary
+     */
     public enum CinemaType {
-        PLATINUMMOVIESUITES,
-        ORDINARY;
+        ORDINARY ("Ordinary"),
+        PLATINUMMOVIESUITES ("Platinum Movie Suites");
+
+        private String cinemaType;
+
+        CinemaType(String cinemaType){
+            this.cinemaType = cinemaType;
+        }
+
+        public String getCinemaType(int j){
+            return cinemaType;
+        }
     }
     
 }

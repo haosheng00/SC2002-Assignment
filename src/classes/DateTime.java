@@ -6,7 +6,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+/**
+ * Represents the Date Time class that handle that date and time in MOBLIMA
+ */
 public class DateTime {
     /**
      * Converts current date and time of format yyyyMMddHHmm

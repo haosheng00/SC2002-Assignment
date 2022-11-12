@@ -24,10 +24,10 @@ public class Cinema implements Serializable{
 
     /**
      * Represents the cinema initialised with a specific cinema name, cinema code and cinema type
-     * @param cinemaName
-     * @param cinemaCode
-     * @param cinemaType
-     * @param cineplexName
+     * @param cinemaName the cinema name
+     * @param cinemaCode the cinema code in XXX (alphabetic)
+     * @param cinemaType the cinema type of the cinema
+     * @param cineplexName the cineplex name where cinema is in
      */
     public Cinema(String cinemaName, String cinemaCode, Enum.CinemaType cinemaType, String cineplexName) {
         this.cinemaName = cinemaName;
@@ -46,7 +46,7 @@ public class Cinema implements Serializable{
 
     /**
      * Sets the name of the cinema to a specific name
-     * @param cinemaName
+     * @param cinemaName name of cinema
      */
     public void setCinemaName(String cinemaName){
         this.cinemaName = cinemaName;
@@ -64,7 +64,7 @@ public class Cinema implements Serializable{
     /**
      * Sets the cinema code of the cinema,
      * in the form of XXX, where XXX are Uppercase Alphabetic
-     * @param cinemaCode, in XXX
+     * @param cinemaCode in XXX (alphabetic)
      */
     public void setCinemaCode(String cinemaCode){
         this.cinemaCode = cinemaCode;
@@ -81,16 +81,24 @@ public class Cinema implements Serializable{
     /**
      * Sets the cinema type of the cinema to a specific cinema type:<p>
      *     ORDINARY or PLATINUMMOVIESUITES
-     * @param cinemaType
+     * @param cinemaType the cinema type of the cinema
      */
     public void setCinemaType(Enum.CinemaType cinemaType){
         this.cinemaType = cinemaType;
     }
 
+    /**
+     * Returns the cineplex name
+     * @return cineplex name
+     */
     public String getCineplexName() {
         return cineplexName;
     }
 
+    /**
+     * Sets the cineplex name
+     * @param cineplexName cineplex name
+     */
     public void setCineplexName(String cineplexName) {
         this.cineplexName = cineplexName;
     }

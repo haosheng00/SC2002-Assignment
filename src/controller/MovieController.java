@@ -456,6 +456,7 @@ public class MovieController implements Serializable{
                     else if (choice == 1) {
                         System.out.println("Movies by Overall Rating: ");
                         System.out.println();
+                        if (top5ByRatings.isEmpty()) System.out.println("Sorry, no movies with rating at the moment");
                         for (int i = 0; i < top5ByRatings.size(); i++) {
                             System.out.println("Movie " + (i + 1) + ":");
                             System.out.println("Movie Title: " + top5ByRatings.get(i).getMovieTitle());
