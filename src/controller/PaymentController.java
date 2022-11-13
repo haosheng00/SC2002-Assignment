@@ -281,8 +281,10 @@ public class PaymentController {
          * @param b movie b
          */
         public int compare(Movie a, Movie b) {
-            return (int)(b.getSales() - a.getSales());
-        }   
+            if (a.getSales() > b.getSales()) return -1;
+            if (a.getSales() < b.getSales()) return 1;
+            return 0;
+        }
     }
  
     /**

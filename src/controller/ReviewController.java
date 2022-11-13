@@ -84,7 +84,6 @@ public class ReviewController {
         movie.setOverallRating(updatedRating);
         //System.out.println("After: " + movie.getOverallRating());
 
-
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
         
         //update top5Rating
@@ -311,10 +310,12 @@ public class ReviewController {
     /**
      * Compares two movies by their overall ratings
      */
-    static class CompareByRating implements Comparator<Movie> {
+    static class CompareByRating implements Comparator<Movie> { 
         public int compare(Movie a, Movie b) {
-                    return (int)(b.getOverallRating() - a.getOverallRating());
-        }   
+            if (a.getOverallRating() > b.getOverallRating()) return -1;
+            if (a.getOverallRating() < b.getOverallRating()) return 1;
+            return 0;
+        }
     }
 
     /**
