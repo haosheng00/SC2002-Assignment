@@ -47,7 +47,6 @@ public class Review implements Serializable{
         this.movie = movie;
     }
 
-    //get & set variables
     /**
      * Returns the written review of the movie of the specified review
      * @return written review 

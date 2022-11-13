@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Includes the get and set methods for payment related details
  */
 public class Payment implements Serializable{
-    //only method of payment is thru credit card - online purchase
 
     /**
      * Represents the transaction ID in the format XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour,
@@ -34,8 +33,6 @@ public class Payment implements Serializable{
      */
     private String billingCardNumber;
     
-
-    //constructor
     /**
      * Represents the details of the particular payment made with the following details:
      * transaction ID, total ticket charges, cardholder's name, card expiry date, billing address and card number
@@ -54,8 +51,6 @@ public class Payment implements Serializable{
         this.billingAddress = billingAddress;
         this.billingCardNumber = billingCardNumber;
     }
-
-    //get set for all variables
 
     /**
      * Returns the transaction ID of the payment
