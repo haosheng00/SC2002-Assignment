@@ -87,20 +87,29 @@ public class CustomerController {
      */
     public static void deleteCustomer() throws Exception {
         int exit = -1;
+        String username;
         do {
-            System.out.println("Please enter username of account to delete: ");
-            String username = sc.next();
-            int exists = searchCustomer(username);
-            System.out.println(exists);
-            if (exists != -1) {
-                Initialise.customers.remove(exists);
-                SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
-                System.out.println("Removed customer");
-                //exit = 2;
-                break;
-                // to access in a static way --> CustomerController.sortCustomersList();
+            System.out.println("Please enter username: ");
+            username = sc.next();
+            int index = searchCustomer(username);
+            String match;
+            if (index != -1) {
+                System.out.println("Please enter Password: ");
+                match = sc.next();
+                if (match.equals(customers.get(index).getPassword())) {
+                    Initialise.customers.remove(index);
+                    SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
+                    System.out.println("Your account has been deleted");
+                    exit = 2;
+                } else {
+                    System.out.println("Wrong password ");
+                    System.out.println("Do you want to try again or exit? ");
+                    System.out.println("(1): Try again");
+                    System.out.println("(2): Exit");
+                    exit = sc.nextInt();
+                }
             } else {
-                System.out.println("Account with this username does not exist");
+                System.out.println("Sorry, user account with this username does not exist");
                 System.out.println("Do you want to try again or exit? ");
                 System.out.println("(1): Try again");
                 System.out.println("(2): Exit");
@@ -108,7 +117,7 @@ public class CustomerController {
             }
         } while (exit != 2);
         if (exit == 2) {
-            AccountUI.LoginUI(0);
+            AccountUI.WelcomePage();
         }
     }
 
