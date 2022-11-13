@@ -84,10 +84,10 @@ public class Movie implements Serializable{
      * @param ageRestriction age restriction of the movie
      * @param is3D whether the movie is 3D
      * @param overallRating overall rating of the movie
-     * @param i end date of the movie
-     * @param j start date of the movie
+     * @param startDate start screening date of the movie
+     * @param endDate end screening date of the movie
      */
-    public Movie(String movieTitle, Enum.MovieStatus movieStatus, ArrayList<MovieGenre> movieGenres, String synopsis, String director, ArrayList<String> casts, int movieDuration, double sales, Enum.AgeRestriction ageRestriction, boolean is3D, double overallRating, String i, String j){
+    public Movie(String movieTitle, Enum.MovieStatus movieStatus, ArrayList<MovieGenre> movieGenres, String synopsis, String director, ArrayList<String> casts, int movieDuration, double sales, Enum.AgeRestriction ageRestriction, boolean is3D, double overallRating, String startDate, String endDate){
         this.movieTitle = movieTitle;
         this.reviews = new ArrayList<>();
         this.sales = sales;
@@ -100,8 +100,8 @@ public class Movie implements Serializable{
         this.ageRestriction = ageRestriction;
         this.is3D = is3D;
         this.overallRating = overallRating;
-        this.expiryDate = i;
-        this.startDate = j;
+        this.expiryDate = startDate;
+        this.startDate = endDate;
         this.sales = 0;
     }
     
