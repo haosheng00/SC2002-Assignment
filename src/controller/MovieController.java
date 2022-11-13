@@ -73,7 +73,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle,MovieStatus.COMING_SOON, movieGenres,"Des","fdg",new ArrayList<String>() {{ add("Johnny"); add("Mary Kool"); add("Sarah Aga");}},122,0,Enum.AgeRestriction.PG,true,0,"112233","112233");
+            Movie newMovie = new Movie(movieTitle);
             System.out.println("========================================");
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");
