@@ -454,7 +454,7 @@ public class TicketController {
                 System.out.println("The current ticket add-on prices by day of week are:");
                 System.out.printf("(1) Weekdays (Monday to Friday) = $%.2f", priceByDay.get(0));
                 System.out.println();
-                System.out.printf("(2) Weekdays (Saturday and Sunday) = $%.2f", priceByDay.get(1));
+                System.out.printf("(2) Weekends (Saturday and Sunday) = $%.2f", priceByDay.get(1));
                 System.out.println();
                 System.out.printf("(3) Public Holiday = $%.2f", priceByDay.get(2));
       
