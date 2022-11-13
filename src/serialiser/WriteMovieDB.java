@@ -97,7 +97,7 @@ public class WriteMovieDB {
 	 * Represents the customer accounts pre-initialised in the movie database
 	 */
 	public static ArrayList<Customer> customers = new ArrayList<Customer>(
-			List.of(new Customer("guest", "guest", "123", "123"), new Customer("mary", "mary123", "hh", "123")));
+			List.of(new Customer("guest", "guest", "123", "123"), new Customer("mary", "mary123", "hh", "123"), new Customer("sean", "sean123", "hh", "123"), new Customer("joy", "joy123", "hh", "123")));
 
 	/**
 	 * Represents the public holidays recognized by Athay

@@ -71,8 +71,19 @@ public class ReviewController {
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
         //update overallRating
-        double updatedRating = (rating+movie.getOverallRating())/(movie.getReviews().size());
+        double updatedRating = 0;
+        double size = movie.getReviews().size();
+        //System.out.println("Before: " + movie.getOverallRating());
+        if (movie.getReviews().size() == 1) {
+            updatedRating = rating;
+        } 
+        else {
+            updatedRating = ((movie.getOverallRating()*(size-1))+rating)/size;
+        }
+        //System.out.println("size:" + movie.getReviews().size());
         movie.setOverallRating(updatedRating);
+        //System.out.println("After: " + movie.getOverallRating());
+
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
         
@@ -128,12 +139,14 @@ public class ReviewController {
 
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
 
+        size = movie.getReviews().size();
+
         //update ratings 
         if (movie.getReviews().size() == 0) {
             movie.setOverallRating(0);
         }
         else {
-            double updatedRating = (movie.getOverallRating()-oldRating)/(movie.getReviews().size());
+            double updatedRating = (movie.getOverallRating()*(size+1)-oldRating)/size;
             movie.setOverallRating(updatedRating);
         }
 
@@ -237,8 +250,14 @@ public class ReviewController {
         
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);       
                 
+        double updatedRating = 0;
         //update overallRating 
-        double updatedRating = (movie.getOverallRating()-oldRating+rating)/(movie.getReviews().size());
+        if (movie.getReviews().size() == 1) {
+            updatedRating = rating;
+        } 
+        else {
+            updatedRating = (movie.getOverallRating()*size-oldRating+rating)/size;
+        }
         movie.setOverallRating(updatedRating);
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);

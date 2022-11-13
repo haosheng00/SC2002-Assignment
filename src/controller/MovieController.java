@@ -394,7 +394,8 @@ public class MovieController implements Serializable{
         System.out.println("Age Rating: " + Initialise.movies.get(index).getAgeRestriction());
         System.out.println(Initialise.movies.get(index).getIs3D() ? "3D" : "2D");
         System.out.println("Duration: " + Initialise.movies.get(index).getMovieDuration());
-        System.out.println("Rating: " + Initialise.movies.get(index).getOverallRating());
+        System.out.printf("Rating: %.2f", Initialise.movies.get(index).getOverallRating());
+        System.out.println(" ");
         System.out.println("Start Screening Date: " + Initialise.movies.get(index).getStartDate());
         System.out.println("End Screening Date: " + Initialise.movies.get(index).getExpiryDate());
         System.out.println();
