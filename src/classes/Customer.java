@@ -43,27 +43,31 @@ public class Customer extends Account implements Serializable{
         this.boughtTickets = new ArrayList<>();
         this.pastReviews = new ArrayList<>();
     }
-/**
- * Sets a new email address for this customer 
- * @param email this customer's email
- */
+
+    /**
+     * Sets a new email address for this customer 
+     * @param email this customer's email
+     */
     public void setEmailAddress(String email){
         this.emailAddress = email;
     }
-/**
- * Sets a new mobile number for this customer
- * @param phno this customer's mobile number
- */
+
+    /**
+     * Sets a new mobile number for this customer
+     * @param phno this customer's mobile number
+     */
     public void setMobileNumber(String phno){
         this.mobileNumber = phno;
     }
-/**
- * Sets a new email address for this customer
- * @return this customer's email address
- */
+
+    /**
+     * Sets a new email address for this customer
+     * @return this customer's email address
+     */
     public String getEmailAddress(){
         return emailAddress;
     }
+    
     /**
      * To get a new mobile number for this customer 
      * @return this customer's email address
@@ -71,31 +75,35 @@ public class Customer extends Account implements Serializable{
     public String getMobileNumber(){
         return mobileNumber;
     }
-/**
- * To get the tickets in the cart of this customer's account
- * @return an array of this customer's cart tickets 
- */
+
+    /**
+     * To get the tickets in the cart of this customer's account
+     * @return an array of this customer's cart tickets 
+     */
     public ArrayList<Ticket> getCartTickets(){
         return cartTickets;
     }
-/**
- * To get all the tickets the customer ever purchased 
- * @return an array of this customer's past ticket purchases 
- */
+
+    /**
+     * To get all the tickets the customer ever purchased 
+     * @return an array of this customer's past ticket purchases 
+     */
     public ArrayList<Ticket> getBoughtTickets(){
         return boughtTickets;
     }
-/**
- * Sets the purchase history of this customer 
- * @param boughtTickets an array of customer's past ticket purchases 
- */
+
+    /**
+     * Sets the purchase history of this customer 
+     * @param boughtTickets an array of customer's past ticket purchases 
+     */
     public void setBoughtTickets(ArrayList<Ticket> boughtTickets){
         this.boughtTickets = boughtTickets;
     }
-/**
- * To get the past reviews of this customer 
- * @return an array of past reviews of this customer 
- */
+
+    /**
+     * To get the past reviews of this customer 
+     * @return an array of past reviews of this customer 
+     */
     public ArrayList<Review> getPastReviews (){
          return pastReviews;
     }

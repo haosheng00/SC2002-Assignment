@@ -6,15 +6,33 @@ import java.io.Serializable;
  * Represents a review class of movie
  */
 public class Review implements Serializable{
+    /**
+     * Represents the short written review given by customer for the movie
+     */
     private String description;
+
+    /**
+     * Represents the number rating given by customer for the movie, out of 5
+     */
     private double rating;
+
+    /**
+     * Represents the username of the customer who gave the review
+     */
     private String userName;
+
+    /**
+     * Represents the date and time the review was given
+     */
     private String dateTime;
+
+    /**
+     * Represents the movie the review was given for
+     */
     private Movie movie;
 
-    //constructor
     /**
-     * Represents the review of movie with the following details:
+     * Represents a review of movie with the following details:
      * @param description written description of review
      * @param rating number rating of movie given by reviewer
      * @param userName username of customer who gave the review
