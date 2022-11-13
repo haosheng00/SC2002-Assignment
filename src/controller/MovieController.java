@@ -56,6 +56,7 @@ public class MovieController implements Serializable{
 
         int exists = -2;
         int i;
+        int j = 0;
         System.out.println("========================================");
         System.out.println("Please enter new Movie Title:");
         movieTitle = sc.nextLine();
@@ -73,7 +74,7 @@ public class MovieController implements Serializable{
             exists = searchMovie(movieTitle);
         }
         while (exists == -1) {
-            Movie newMovie = new Movie(movieTitle);
+            Movie newMovie = new Movie(movieTitle, null, movieGenres, s, s, casts, j, j, null, false, j, s, s);
             System.out.println("========================================");
             System.out.println("Please select movie status:");
             System.out.println("(1) Coming soon");

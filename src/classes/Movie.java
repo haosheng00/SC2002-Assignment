@@ -87,9 +87,42 @@ public class Movie implements Serializable{
      * @param i end date of the movie
      * @param j start date of the movie
      */
-    public Movie(String movieTitle){
+    public Movie(String movieTitle, Enum.MovieStatus movieStatus, ArrayList<MovieGenre> movieGenres, String synopsis, String director, ArrayList<String> casts, int movieDuration, double sales, Enum.AgeRestriction ageRestriction, boolean is3D, double overallRating, String i, String j){
         this.movieTitle = movieTitle;
         this.reviews = new ArrayList<>();
+        this.sales = sales;
+        this.movieStatus = movieStatus;
+        this.movieGenres = movieGenres;
+        this.synopsis = synopsis;
+        this.director = director;
+        this.casts = casts;
+        this.movieDuration = movieDuration;
+        this.ageRestriction = ageRestriction;
+        this.is3D = is3D;
+        this.overallRating = overallRating;
+        this.expiryDate = i;
+        this.startDate = j;
+        this.sales = 0;
+    }
+    
+        /**
+         * Sets the status of the movie from the enumeration options
+         * @param movieStatus status of movie
+    
+        this.movieTitle = movieTitle;
+        this.reviews = new ArrayList<>();
+        this.sales = sales;
+        this.movieStatus = movieStatus;
+        this.movieGenres = movieGenres;
+        this.synopsis = synopsis;
+        this.director = director;
+        this.casts = casts;
+        this.movieDuration = movieDuration;
+        this.ageRestriction = ageRestriction;
+        this.is3D = is3D;
+        this.overallRating = overallRating;
+        this.expiryDate = i;
+        this.startDate = j;
         this.sales = 0;
     }
 
