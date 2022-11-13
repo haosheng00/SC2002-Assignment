@@ -192,7 +192,7 @@ public class Ticket implements Serializable{
     }
 
     /*
-     * Returns age group number of customer
+     * Returns age group of customer
      */
     public String getAgeGroup(int ageNo){
         if (ageNo == 1){
