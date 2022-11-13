@@ -188,13 +188,14 @@ public class TicketController {
             //CHECK WEEKDAY/WEEKEND/PH
             Date actualDate = DateTime.stringToDate(screeningChosen.getShowDate());
 
+            if(TicketController.isWeekend(actualDate)){
+                ticketPrice += Initialise.priceByDay.get(1);
+            }
+
             for (int i=0; i<holidays.size(); i++){
+
                 if ((screeningChosen.getShowDate()).equals((holidays.get(i).getPublicHolidayDate()))){
                     ticketPrice += Initialise.priceByDay.get(2);
-                    break;
-                }
-                else if(TicketController.isWeekend(actualDate)){
-                    ticketPrice += Initialise.priceByDay.get(1);
                     break;
                 }
             }

@@ -50,9 +50,9 @@ public class DateTime {
         String year = stringDate.substring(0,4);
         String month = stringDate.substring(4, 6);
         String day = stringDate.substring(6, 8);
-        String newstringdate = day + '-' + month + '-' + year;
+        String newStringDate = day + '-' + month + '-' + year;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date stringToDate = dateFormat.parse(newstringdate);
+        Date stringToDate = dateFormat.parse(newStringDate);
 
         return stringToDate;
     }
@@ -67,9 +67,9 @@ public class DateTime {
         String year = stringDate.substring(0,4);
         String month = stringDate.substring(4, 6);
         String day = stringDate.substring(6, 8);
-        String newstringdate = day + '-' + month + '-' + year;
+        String newStringDate = day + '-' + month + '-' + year;
         
-        return newstringdate;
+        return newStringDate;
     }
 
     /**
@@ -82,9 +82,9 @@ public class DateTime {
         String hours = stringTime.substring(0,2);
         String minutes = stringTime.substring(2, 4);
         String seconds = stringTime.substring(4, 6);
-        String newstringtime = hours + ':' + minutes + ':' + seconds;
+        String newStringTime = hours + ':' + minutes + ':' + seconds;
 
-        return newstringtime;
+        return newStringTime;
     }
 
         /**
@@ -98,17 +98,17 @@ public class DateTime {
         String year = stringDate.substring(0,4);
         String month = stringDate.substring(4, 6);
         String day = stringDate.substring(6, 8);
-        String newstringdate = day + '-' + month + '-' + year;
+        String newStringDate = day + '-' + month + '-' + year;
 
         String hours = stringTime.substring(0,2);
         String minutes = stringTime.substring(2, 4);
         String seconds = stringTime.substring(4, 6);
-        String newstringtime = hours + ':' + minutes + ':' + seconds;
+        String newStringTime = hours + ':' + minutes + ':' + seconds;
 
-        String newstringdatetime = newstringdate + ' ' + newstringtime;
+        String newStringDateTime = newStringDate + ' ' + newStringTime;
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Date stringToDateTime = dateFormat.parse(newstringdatetime);
+        Date stringToDateTime = dateFormat.parse(newStringDateTime);
 
         return stringToDateTime;
     }
