@@ -39,12 +39,7 @@ public class Initialise {
      */
     public static void initialiseMOBLIMA() throws Exception {
         //preWriteMovieDB will set values in .dat to the pre-initialised + remove all previously stored
-        WriteMovieDB.preWriteMovieDB();
+        //WriteMovieDB.preWriteMovieDB();
         ReadMovieDB.readMovieDB();
     }
-
-    //     public static void initialiseWrite() throws Exception {
-    //     WriteMovieDB.writeMovieDB();
-    //     // ReadMovieDB.readMovieDB();
-    // }
 }

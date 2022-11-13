@@ -71,17 +71,22 @@ public class Movie implements Serializable{
      */
     private String startDate;
 
-
-    /** Represents the movie with the specific movie title initialised with an empty review list and 0 sales amount
-     * @param movieTitle title of the movie
+    /**
+     * Represents the constructor for movie with given details
+     * @param movieTitle title of movie
+     * @param movieStatus status of movie
+     * @param movieGenres list of genres of the movie
+     * @param synopsis synopsis of the movie
+     * @param director director of the movie
+     * @param casts list of casts for the movie
+     * @param movieDuration duration of the movie
+     * @param sales total sales of the movie
+     * @param ageRestriction age restriction of the movie
+     * @param is3D whether the movie is 3D
+     * @param overallRating overall rating of the movie
+     * @param i end date of the movie
+     * @param j start date of the movie
      */
-    // public Movie(String movieTitle){
-    //     this.movieTitle = movieTitle;
-    //     this.reviews = new ArrayList<>();
-    //     this.sales = 0;
-    // }
-
-    //TODO: remove this
     public Movie(String movieTitle, Enum.MovieStatus movieStatus, ArrayList<MovieGenre> movieGenres, String synopsis, String director, ArrayList<String> casts, int movieDuration, double sales, Enum.AgeRestriction ageRestriction, boolean is3D, double overallRating, String i, String j){
         this.movieTitle = movieTitle;
         this.reviews = new ArrayList<>();
