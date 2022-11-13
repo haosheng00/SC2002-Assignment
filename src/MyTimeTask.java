@@ -37,7 +37,6 @@ public class MyTimeTask extends TimerTask {
                         movies.get(i).setMovieStatus(MovieStatus.NOW_SHOWING);
                     }
                 } catch (ParseException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -54,7 +53,6 @@ public class MyTimeTask extends TimerTask {
                         movies.get(i).setMovieStatus(MovieStatus.END_OF_SHOWING);
                     }
                 } catch (ParseException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }   
