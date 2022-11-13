@@ -41,7 +41,7 @@ public class DateTime {
 
     /**
      * Converts an input date in String to Date
-     * @param stringdate date in String type of format YYYYMMDD
+     * @param stringDate date in String type of format YYYYMMDD
      * @return date in Date type of format dd-MM-yyyy
      * @throws ParseException
      */
@@ -75,7 +75,7 @@ public class DateTime {
     /**
      * Converts an input date to formatted date in string
      * @param stringTime time in String type of format HHmmss
-     * @return time in String type of format HH-mm-ss
+     * @return time in String type of format HH:mm:ss
      */
     public static String timeFormatter(String stringTime){
 
@@ -87,10 +87,11 @@ public class DateTime {
         return newStringTime;
     }
 
-        /**
-     * Converts an input date in String to Date
-     * @param stringdate date in String type of format YYYYMMDD
-     * @return date in Date type of format dd-MM-yyyy
+    /**
+     *  Converts an input date in String to Date
+     * @param stringDate date in String type of format YYYYMMDD
+     * @param stringTime stringTime time in the string type of HHmmss
+     * @return date in Date type of format dd-MM-yyyy HH:mm:ss
      * @throws ParseException
      */
     public static Date stringToDateTime(String stringDate, String stringTime) throws ParseException{
