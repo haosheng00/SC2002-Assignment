@@ -63,11 +63,11 @@ public class Movie implements Serializable{
      */
     private ArrayList<Review> reviews;
     /**
-     * Represents the end of screening date of the movie in our cinema in the format YYYYMMDD
+     * Represents the end of screening date of the movie in our cinema in the format YYYY-MM-DD
      */
     private String expiryDate;
     /**
-     * Represents the start of screening date of the movie in our cinema in the format YYYYMMDD
+     * Represents the start of screening date of the movie in our cinema in the format YYYY-MM-DD
      */
     private String startDate;
 
@@ -302,7 +302,7 @@ public class Movie implements Serializable{
     }
 
     /**
-     * Returns the end of screening date of the movie in the format YYYYMMDD
+     * Returns the end of screening date of the movie in the format YYYY-MM-DD
      * @return end of screening date
      */
     public String getExpiryDate() {
@@ -310,7 +310,7 @@ public class Movie implements Serializable{
     }
 
     /**
-     * Returns the start of screening date of the movie in the format YYYYMMDD
+     * Returns the start of screening date of the movie in the format YYYY-MM-DD
      * @return start of screening date
      */
     public String getStartDate() {

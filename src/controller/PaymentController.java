@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 
 import classes.*;
@@ -82,6 +83,7 @@ public class PaymentController {
         cvc = sc.nextLine();
         System.out.printf("The amount of $%.2f ", totalCharges);
         System.out.println("will be charged to your card, under the name " + name); 
+
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
 
@@ -165,8 +167,9 @@ public class PaymentController {
     /**
      * Prints the details of the tickets added with the total cost of all the tickets added
      * @param cartTickets tickets added
+     * @throws ParseException
      */
-    public static void printReceipt(ArrayList<Ticket> cartTickets, String TID) {
+    public static void printReceipt(ArrayList<Ticket> cartTickets, String TID) throws ParseException {
         int size = cartTickets.size();
         System.out.println(" ");
         System.out.println("Receipt:");
@@ -179,14 +182,15 @@ public class PaymentController {
             TicketController.printTicket(cartTickets.get(i));
             System.out.println("\n");
         }
-        System.out.println("Total Payment: $" + calcPayment(cartTickets));    
+        System.out.printf("Total Payment: $%.2f", calcPayment(cartTickets));    
     }
 
     /**
      * Prints the details of the tickets added/purchased
      * @param Tickets tickets added/purchased
+     * @throws ParseException
      */
-    public static void showTickets(ArrayList<Ticket> Tickets) {
+    public static void showTickets(ArrayList<Ticket> Tickets) throws ParseException {
         System.out.println(" ");
         int size = Tickets.size();
         System.out.println("Tickets in cart:");

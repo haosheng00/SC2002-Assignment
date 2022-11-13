@@ -86,5 +86,31 @@ public class DateTime {
 
         return newstringtime;
     }
+
+        /**
+     * Converts an input date in String to Date
+     * @param stringdate date in String type of format YYYYMMDD
+     * @return date in Date type of format dd-MM-yyyy
+     * @throws ParseException
+     */
+    public static Date stringToDateTime(String stringDate, String stringTime) throws ParseException{
+
+        String year = stringDate.substring(0,4);
+        String month = stringDate.substring(4, 6);
+        String day = stringDate.substring(6, 8);
+        String newstringdate = day + '-' + month + '-' + year;
+
+        String hours = stringTime.substring(0,2);
+        String minutes = stringTime.substring(2, 4);
+        String seconds = stringTime.substring(4, 6);
+        String newstringtime = hours + ':' + minutes + ':' + seconds;
+
+        String newstringdatetime = newstringdate + ' ' + newstringtime;
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date stringToDateTime = dateFormat.parse(newstringdatetime);
+
+        return stringToDateTime;
+    }
     
 }

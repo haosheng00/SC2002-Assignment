@@ -230,7 +230,7 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("The current ticket base prices by age are:");
                 for (Enum.TicketType ticketType: Enum.TicketType.values()) {
-                    System.out.printf("(" + (j+1) + ") " + ticketType.getTicketType(j) + " = $ %.2f", priceByAge.get(j));
+                    System.out.printf("(" + (j+1) + ") " + ticketType.getTicketType(j) + " = $%.2f", priceByAge.get(j));
                     System.out.println();
                     j++;
                 }
@@ -353,7 +353,7 @@ public class TicketController {
                 System.out.println("========================================");
                 System.out.println("The current ticket add-on prices by cinema type are:");
                 for (Enum.CinemaType cinemaType: Enum.CinemaType.values()) {
-                    System.out.printf("(" + (j+1) + ") " + cinemaType.getCinemaType(j) + " = $ %.2f", priceByCinemaType.get(j));
+                    System.out.printf("(" + (j+1) + ") " + cinemaType.getCinemaType(j) + " = $%.2f", priceByCinemaType.get(j));
                     System.out.println();
                     j++;
                 }
@@ -451,11 +451,11 @@ public class TicketController {
             do {
                 System.out.println("========================================");
                 System.out.println("The current ticket add-on prices by day of week are:");
-                System.out.printf("(1) Weekdays (Monday to Friday) = $ %.2f", priceByDay.get(0));
+                System.out.printf("(1) Weekdays (Monday to Friday) = $%.2f", priceByDay.get(0));
                 System.out.println();
-                System.out.printf("(2) Weekdays (Saturday and Sunday) = $ %.2f", priceByDay.get(1));
+                System.out.printf("(2) Weekdays (Saturday and Sunday) = $%.2f", priceByDay.get(1));
                 System.out.println();
-                System.out.printf("(3) Public Holiday = $ %.2f", priceByDay.get(2));
+                System.out.printf("(3) Public Holiday = $%.2f", priceByDay.get(2));
       
                 System.out.printf(" \n\n");
                 System.out.println("Select day of week to update: ");
@@ -603,16 +603,16 @@ public class TicketController {
         /**
          * Prints the attributes of the ticket
          * @param ticket ticket of customer
+         * @throws ParseException
          */
-        public static void printTicket(Ticket ticket){
+        public static void printTicket(Ticket ticket) throws ParseException{
             //FOR PRINTRECEIPT
             System.out.println("Movie: " + ticket.getMovie().getMovieTitle());
             System.out.println("Cineplex: " + ticket.getCineplex().getCineplexName());
             System.out.println("Cinema: " + ticket.getCinema().getCinemaName());
-            System.out.println("Show Date: " + ticket.getShowDate());
-            System.out.println("Show Time: " + ticket.getShowTime());
+            System.out.println("Show Date and Time: " + DateTime.stringToDateTime(ticket.getShowDate(), ticket.getShowTime()));
             System.out.println("Seat: " + ticket.getSeat().getSeatId());
-            System.out.printf("Price " + ticket.getAgeGroup(ticket.getAgeNo()) + ": $ %.2f", ticket.getTicketPrice());
+            System.out.printf("Price " + ticket.getAgeGroup(ticket.getAgeNo()) + ": $%.2f", ticket.getTicketPrice());
         }
     }
 
