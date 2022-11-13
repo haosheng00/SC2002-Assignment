@@ -35,7 +35,6 @@ public class PaymentController {
 
         ArrayList <Ticket> cartTickets = customer.getCartTickets();
 
-        //get cart tickets from customer class
         showTickets(cartTickets);
         System.out.println("========================================");
         System.out.println("Would you like to proceed to check out your cart? (Enter 1 for yes, 0 to cancel check out)");
@@ -46,7 +45,6 @@ public class PaymentController {
                 if (choice != 0 && choice != 1) {
                     System.out.println("Invalid option. Please enter 0 or 1:");
                 }
-                //if cancel checkout
                 else if (choice == 0) {
                     System.out.println("Cancelling check out...");
                     for (int i = 0; i < customer.getCartTickets().size(); i++){
@@ -64,7 +62,6 @@ public class PaymentController {
             }
         } while (true);
     
-        //proceed with the checkout
         totalCharges = calcPayment(cartTickets);
         System.out.println("========================================");
         System.out.println(" ");
@@ -86,24 +83,19 @@ public class PaymentController {
 
         TID = createTID(cartTickets.get(0));
         madePayment(TID, totalCharges, name, cardExpirationDate, billingAddress, cardNumber);
-
-        //Print Receipt 
+ 
         printReceipt(cartTickets, TID);
 
-        //mark the seats as booked for all tickets in the cart 
         for (int i=0; i<cartTickets.size(); i++) {
             cartTickets.get(i).getSeat().setIsBooked(true);
         }
 
         SerializeMovieDB.writeSerializedObject("Screening.dat", Initialise.screenings);
 
-        //update Sales
         updateSales(cartTickets);
 
-        //update Ticket History for each customer
         updateTicketHistory(customer);
 
-        //clear cart tickets  - can remove func in customer class?
         customer.getCartTickets().clear();
 
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
@@ -135,17 +127,10 @@ public class PaymentController {
      * @return transaction ID
      */
     public static String createTID(Ticket t) {
-        //Each payment will have a transaction id (TID). 
-        //The TID is of the format XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour, m : minutes, XXX:cinemacodeinletters)
-        
-        //get XXX (CinemaCode) 
+    
         String cinemaCode = t.getCinema().getCinemaCode();
-        //get YYYYMMDDhhmm
         String dateTime = Initialise.dt.paymentDateTime();
-        //combine to get TID 
         String StringTID = cinemaCode + dateTime;
-        //convert string to int
-        //int TID = Integer.parseInt(StringTID);
         return StringTID;
     }
 
@@ -158,7 +143,6 @@ public class PaymentController {
         int size = cartTickets.size();
         double sum = 0;
         for (int i=0; i<size; i++) {
-            //change name accordingly
             sum += cartTickets.get(i).getTicketPrice();
         }
         return sum;
@@ -177,7 +161,6 @@ public class PaymentController {
         System.out.println("TID: " + TID);
         System.out.println(" ");
         for (int i=0; i<size; i++) {
-            //ticket number
             System.out.println("Ticket " + (i+1));
             TicketController.printTicket(cartTickets.get(i));
             System.out.println("\n");
@@ -196,7 +179,6 @@ public class PaymentController {
         System.out.println("Tickets in cart:");
         System.out.println(" ");
         for (int i=0; i<size; i++) {
-            //ticket number
             System.out.println("Ticket " + (i+1));
             TicketController.printTicket(Tickets.get(i));
             System.out.println("\n");
@@ -217,8 +199,6 @@ public class PaymentController {
         
         int size = cartTickets.size();
         int movieIndex = 0;
-        //iterate thru Tickets --> find movie and add ticketprice to sales 
-        //all tickets in cart have the same movie
         Movie movie = cartTickets.get(0).getMovie();
         ArrayList <Movie> movies = Initialise.movies;
         //get index of movie
@@ -229,42 +209,27 @@ public class PaymentController {
             }
         }
         Movie targetMovie = Initialise.movies.get(movieIndex);
-        //System.out.println("Before: " + targetMovie.getSales());
 
         for (i=0; i<size; i++) {
-            //update sales for each ticket 
-            //System.out.println("Ticket Price: " + cartTickets.get(i).getTicketPrice());
             targetMovie.setSales(targetMovie.getSales() + cartTickets.get(i).getTicketPrice());
         }
-        //System.out.println("After: " + targetMovie.getSales());
 
         SerializeMovieDB.writeSerializedObject("Movie.dat", Initialise.movies);
 
         int exist = 0;
-        //movie sales updated
-        //update top5 sales array 
         ArrayList <Movie> top5Sales = Initialise.top5BySales;
-        //check if movie is alr in the top5sales
         for (i=0; i< top5Sales.size(); i++) {
             if (movie.getMovieTitle().equals(top5Sales.get(i).getMovieTitle())) {
-                //System.out.println("Hello");
-                exist = 1;
-                //if exists, replace with movie with updated sales 
+                exist = 1; 
                 top5Sales.set(i,targetMovie);
                 break;
             }
         }
-        //add movie with updated sales into the top5sales array (if it isn't alr in the top5array)
         if (exist == 0) {
             top5Sales.add(targetMovie);
         }
-
-        //sort the array 
         Collections.sort(top5Sales, new CompareBySales());
-        
-        //remove last index if (size > 5)
-        if (top5Sales.size() > 5) {
-            //remove the sixth movie 
+        if (top5Sales.size() > 5) { 
             top5Sales.remove(5);
         }
 
@@ -297,7 +262,6 @@ public class PaymentController {
         int size = cartTickets.size(); 
         for (int i=0; i<size; i++) {
             cus.getBoughtTickets().add(cartTickets.get(i));
-            //cus.setBoughtTickets(cus.getBoughtTickets());
         }
         SerializeMovieDB.writeSerializedObject("Customer.dat", Initialise.customers);
     }
